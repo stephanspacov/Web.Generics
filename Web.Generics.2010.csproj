@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Web.Generics</RootNamespace>
-    <AssemblyName>Web.Generics</AssemblyName>
+    <AssemblyName>Web.Generics.2010</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <StartupObject>
@@ -149,6 +149,8 @@
   <ItemGroup>
     <Compile Include="DataAnnotations\LocalizedDisplayNameAttribute.cs" />
     <Compile Include="FilterCondition.cs" />
+    <Compile Include="FluentNHibernateHelper.cs" />
+    <Compile Include="GenericRepository.cs" />
     <Compile Include="GenericViewModelController.cs" />
     <Compile Include="FluentNHibernate\ColumnNullabilityConvention.cs" />
     <Compile Include="FluentNHibernate\IdPropertyAccessor.cs" />
@@ -158,6 +160,7 @@
     <Compile Include="ILogger.cs" />
     <Compile Include="InspiraSerializer.cs" />
     <Compile Include="IUnityMappingFactory.cs" />
+    <Compile Include="JsonFilter.cs" />
     <Compile Include="ModelAttributes\IdPropertyAttribute.cs" />
     <Compile Include="ContractResolver.cs" />
     <Compile Include="FluentNHibernate\FluentNHibernateHelper.cs" />
@@ -252,6 +255,6 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>copy "$(TargetDir)Web.Generics.* " "$(TargetDir)..\..\..\Inspira.WorkPlace\lib\Inspira"</PostBuildEvent>
+    <PostBuildEvent>rem copy "$(TargetDir)Web.Generics.* " "$(TargetDir)..\..\..\Inspira.WorkPlace\lib\Inspira"</PostBuildEvent>
   </PropertyGroup>
 </Project>
