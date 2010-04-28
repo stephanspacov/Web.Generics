@@ -57,7 +57,8 @@ namespace Web.Generics.FluentNHibernate
                                 ConventionBuilder.Reference.Always(x=>x.Not.Nullable()),
                                 ConventionBuilder.Reference.Always(x=>x.Cascade.None()),
                                 ConventionBuilder.HasMany.Always(x=>x.LazyLoad()),
-                                ConventionBuilder.HasMany.Always(x=>x.Inverse())
+                                ConventionBuilder.HasMany.Always(x=>x.Inverse()),
+                                ConventionBuilder.HasManyToMany.Always(x=>x.Table(x.TableName.Replace("ListTo", "").Substring(0, x.TableName.Length - 10)))
                             );
 
             autoMapping.GetType().GetMethod("UseOverridesFromAssemblyOf").MakeGenericMethod(RepositoryType).Invoke(autoMapping, null);
