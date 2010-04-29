@@ -348,12 +348,12 @@ namespace Web.Generics
 
         //
         // GET: /GenericArea/Test/Edit/5
-        virtual public ActionResult Edit(Int32 id)
+        private ActionResult Edit(Int32 id)
         {
             return Edit((Object)id);
         }
 
-        virtual protected ActionResult Edit(Object id)
+        virtual public ActionResult Edit(Object id)
         {
             return Details(id);
         }
