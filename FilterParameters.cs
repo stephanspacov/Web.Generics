@@ -77,5 +77,15 @@ namespace Web.Generics
                 return SortOrder == SortOrderEnum.Ascending;
             }
         }
+
+        public void AddCondition(String property, Object value)
+        {
+            this.AddCondition(property, FilterCondition.ComparerType.eq, value);
+        }
+
+        public void AddCondition(String property, FilterCondition.ComparerType comparer, Object value)
+        {
+            this.FilterConditions.Add(new FilterCondition { Property = property, Comparer = comparer, Value = value });
+        }
     }
 }

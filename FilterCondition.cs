@@ -17,7 +17,8 @@ namespace Web.Generics
             le,
             like,
             slike,
-            elike
+            elike,
+            In
         }
 
         public string Property { get; set; }
