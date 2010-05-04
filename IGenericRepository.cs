@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Web.Generics.HtmlHelpers;
 
 namespace Web.Generics
 {
@@ -8,10 +9,10 @@ namespace Web.Generics
 		Int32 Update(T obj);
 		Int32 Delete(T obj);
 		IList<T> Select();
-        IList<T> Select(FilterParameters filter);
+        IList<T> Select(IWebGrid filter);
 		T SelectById(Object id);
         Int32 Count();
-        Int32 Count(FilterParameters filter);
+        Int32 Count(IWebGrid filter);
         System.Collections.IList SelectByType(Type relatedEntityType);
     }
 }

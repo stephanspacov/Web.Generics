@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using log4net.Repository.Hierarchy;
+using Web.Generics.HtmlHelpers;
 
 namespace Web.Generics
 {
@@ -44,10 +45,10 @@ namespace Web.Generics
 			return this.genericRepository.Select();
 		}
 
-        virtual public IList<T> Select(FilterParameters filter)
+        virtual public IList<T> Select(IWebGrid pager)
         {
             WriteToLog("Select");
-            return this.genericRepository.Select(filter) ;
+            return this.genericRepository.Select(pager);
         }
 
         virtual public Int32 Count()
@@ -56,7 +57,7 @@ namespace Web.Generics
             return this.genericRepository.Count();
         }
 
-        virtual public Int32 Count(FilterParameters filter)
+        virtual public Int32 Count(IWebGrid filter)
         {
             WriteToLog("Count");
             return this.genericRepository.Count(filter);

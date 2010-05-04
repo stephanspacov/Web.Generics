@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using System.ComponentModel;
+using Web.Generics.HtmlHelpers;
 
 namespace Web.Generics
 {
-    public class FilterParameters
+    public class FilterParameters : IWebGrid
     {
         public enum SortOrderEnum
         {
@@ -49,6 +50,7 @@ namespace Web.Generics
         }
 
         public Boolean AllowPaging { get; set; }
+        public Boolean AllowSorting { get; set; }
         public SelectList PageSizes { get; set; }        
         public int Total { get; set; }
         public int NumberOfPages {
@@ -86,6 +88,75 @@ namespace Web.Generics
         public void AddCondition(String property, FilterCondition.ComparerType comparer, Object value)
         {
             this.FilterConditions.Add(new FilterCondition { Property = property, Comparer = comparer, Value = value });
+        }
+
+        public System.Collections.IEnumerable GetDataSourceEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<WebProperty> GetPropertyNames()
+        {
+            throw new NotImplementedException();
+        }
+
+        public object GetValue(object item, string propertyName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DefineSortProperty<TModel, TValue>(System.Linq.Expressions.Expression<Func<TModel, TValue>> expression)
+        {
+            throw new NotImplementedException();
+        }
+
+        SortOrder IWebSortable.SortOrder
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public bool SortingEnabled
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+
+        public int TotalItemCount
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public bool PagingEnabled
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

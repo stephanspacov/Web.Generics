@@ -13,5 +13,16 @@ namespace Web.Generics
         public Int32 Count(FilterParameters parameters) { return 0; }
         public IList<T> Select(FilterParameters parameters) { return null; }
         public System.Collections.IList SelectByType(Type relatedEntityType) { return null; }
+
+
+        public IList<T> Select(HtmlHelpers.IWebGrid filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Count(HtmlHelpers.IWebGrid filter)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

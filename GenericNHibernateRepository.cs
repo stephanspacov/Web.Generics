@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using NHibernate;
 using NHibernate.Criterion;
 using System.Reflection;
+using Web.Generics.HtmlHelpers;
 
 namespace Web.Generics
 {
@@ -57,7 +58,7 @@ namespace Web.Generics
             return this.Select(null);
         }
 
-        virtual public IList<T> Select(FilterParameters parameters)
+        virtual public IList<T> Select(IWebGrid parameters)
         {
             ICriteria criteria = session.CreateCriteria<T>();
 
@@ -72,11 +73,10 @@ namespace Web.Generics
                 }
             }
 
-
             return criteria.List<T>();
         }
 
-        virtual public Int32 Count(FilterParameters parameters)
+        virtual public Int32 Count(IWebGrid parameters)
         {
             ICriteria criteria = session.CreateCriteria<T>();
             if (parameters != null)
@@ -122,15 +122,15 @@ namespace Web.Generics
             }
         }
 
-        private static void CreateFilterBySearchQueryForFilterParameters(FilterParameters parameters, ref ICriteria criteria)
+        private static void CreateFilterBySearchQueryForFilterParameters(IWebGrid parameters, ref ICriteria criteria)
         {
-            if (parameters.FieldsToSearch.Count == 0)
-            {
-                parameters.FieldsToSearch = typeof(T).GetProperties().Where(x=>x.PropertyType == typeof(String)).Select(x=>x.Name).ToList<String>();
-            }
+            //if (parameters.FieldsToSearch.Count == 0)
+            //{
+                var fieldsToSearch = typeof(T).GetProperties().Where(x=>x.PropertyType == typeof(String)).Select(x=>x.Name).ToList<String>();
+            //}
 
             Disjunction disjunction = Restrictions.Disjunction();
-            foreach (String columnName in parameters.FieldsToSearch)
+            foreach (String columnName in fieldsToSearch)
             {
                 CreateAlias(criteria, columnName);
                 disjunction.Add(Restrictions.Like(columnName, parameters.SearchQuery, MatchMode.Anywhere));
@@ -138,11 +138,11 @@ namespace Web.Generics
             criteria.Add(disjunction);
         }
 
-        private static void CreatePagingAndSortingForFilterParameters(FilterParameters parameters, ref ICriteria criteria)
+        private static void CreatePagingAndSortingForFilterParameters(IWebGrid parameters, ref ICriteria criteria)
         {
             if (!String.IsNullOrEmpty(parameters.SortProperty))
             {
-                if (parameters.IsAscending)
+                if (parameters.SortOrder == SortOrder.Ascending)
                 {
                     criteria = criteria.AddOrder(Order.Asc(parameters.SortProperty));
                 }
@@ -157,7 +157,7 @@ namespace Web.Generics
             }
         }
 
-        private static void CreateCriteriaForFilterParameters(FilterParameters parameters, ref ICriteria criteria)
+        private static void CreateCriteriaForFilterParameters(IWebGrid parameters, ref ICriteria criteria)
         {
             if (!String.IsNullOrEmpty(parameters.SortProperty) && parameters.SortProperty.Contains("."))
             {
