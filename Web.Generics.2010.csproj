@@ -147,6 +147,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAnnotations\DataType.cs" />
     <Compile Include="DataAnnotations\LocalizedDisplayNameAttribute.cs" />
     <Compile Include="FilterCondition.cs" />
     <Compile Include="FluentNHibernateHelper.cs" />
@@ -156,8 +157,8 @@
     <Compile Include="FluentNHibernate\StringColumnLengthConvention.cs" />
     <Compile Include="FluentNHibernate\ForeignKeyConstraintNameConvention.cs" />
     <Compile Include="FluentNHibernate\PrimaryKeyNameConvention.cs" />
-    <Compile Include="HtmlHelpers\IWebGrid.cs" />
     <Compile Include="HtmlHelpers\IWebFilter.cs" />
+    <Compile Include="HtmlHelpers\IWebGrid.cs" />
     <Compile Include="HtmlHelpers\IWebGrid`1.cs" />
     <Compile Include="HtmlHelpers\IWebPager.cs" />
     <Compile Include="HtmlHelpers\IWebSortable.cs" />
@@ -225,6 +226,7 @@
     <Compile Include="CustomTypes\PhoneNumber.cs" />
     <Compile Include="CustomTypes\PostalCode.cs" />
     <Compile Include="Validators\CnpjAttribute.cs" />
+    <Compile Include="Validators\EmailAttribute.cs" />
     <Compile Include="Validators\PostalCodeAttribute.cs" />
     <Compile Include="Validators\CpfAttribute.cs" />
     <Compile Include="Validators\PhoneNumberAttribute.cs" />
@@ -251,6 +253,9 @@
   <ItemGroup>
     <Folder Include="ServiceFilters\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.Generics.csproj" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -262,6 +267,6 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>rem copy "$(TargetDir)Web.Generics.* " "$(TargetDir)..\..\..\Inspira.WorkPlace\lib\Inspira"</PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetDir)Web.Generics.* " "$(TargetDir)..\..\..\Inspira.WorkPlace\lib\Inspira"</PostBuildEvent>
   </PropertyGroup>
 </Project>

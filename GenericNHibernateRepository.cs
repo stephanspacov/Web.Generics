@@ -140,6 +140,8 @@ namespace Web.Generics
 
         private static void CreatePagingAndSortingForFilterParameters(IWebGrid parameters, ref ICriteria criteria)
         {
+            parameters.CorrectSortPropertyAndOrder();
+
             if (!String.IsNullOrEmpty(parameters.SortProperty))
             {
                 if (parameters.SortOrder == SortOrder.Ascending)

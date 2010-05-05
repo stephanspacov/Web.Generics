@@ -12,6 +12,7 @@ using System.Web;
 using Microsoft.Practices.Unity;
 using System.ComponentModel.DataAnnotations;
 using System.Collections;
+using Web.Generics.HtmlHelpers;
 
 namespace Web.Generics
 {
@@ -102,8 +103,6 @@ namespace Web.Generics
                 }
             }
 
-            CorrectSortPropertyAndOrder(viewModel);
-
             FilterParameters filterParameters = (FilterParameters)viewModel;
 
             foreach (String entity in viewModel.SelectListValues.Keys)
@@ -126,27 +125,6 @@ namespace Web.Generics
             PopulateDropDowns(viewModel);
 
             return FormatResult(viewModel);
-        }
-
-        public void CorrectSortPropertyAndOrder(TViewModel viewModel)
-        {
-            if (viewModel.NextPageIndex > 0) viewModel.PageIndex = viewModel.NextPageIndex;
-            if (String.IsNullOrEmpty(viewModel.SortProperty))
-            {
-                viewModel.SortProperty = viewModel.PreviousSortProperty;
-                viewModel.SortOrder = viewModel.PreviousSortOrder;
-            }
-            else
-            {
-                if (viewModel.PreviousSortProperty == viewModel.SortProperty && viewModel.PreviousSortOrder == FilterParameters.SortOrderEnum.Ascending)
-                {
-                    viewModel.SortOrder = FilterParameters.SortOrderEnum.Descending;
-                }
-                else
-                {
-                    viewModel.SortOrder = FilterParameters.SortOrderEnum.Ascending;
-                }
-            }
         }
 
         [HttpPost]

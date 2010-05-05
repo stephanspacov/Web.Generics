@@ -56,8 +56,31 @@ namespace Web.Generics.HtmlHelpers
         }
 
         public string SortProperty { get; set; }
+        public string PreviousSortProperty { get; set; }
         public SortOrder SortOrder { get; set; }
+        public SortOrder PreviousSortOrder { get; set; }
         public bool AllowSorting { get; set; }
+
+        public void CorrectSortPropertyAndOrder()
+        {
+            var viewModel = this;
+            if (String.IsNullOrEmpty(viewModel.SortProperty))
+            {
+                viewModel.SortProperty = viewModel.PreviousSortProperty;
+                viewModel.SortOrder = viewModel.PreviousSortOrder;
+            }
+            else
+            {
+                if (viewModel.PreviousSortProperty == viewModel.SortProperty && viewModel.PreviousSortOrder == SortOrder.Ascending)
+                {
+                    viewModel.SortOrder = SortOrder.Descending;
+                }
+                else
+                {
+                    viewModel.SortOrder = SortOrder.Ascending;
+                }
+            }
+        }
 
         public void DefineSortProperty<TModel, TValue>(System.Linq.Expressions.Expression<Func<TModel, TValue>> expression)
         {

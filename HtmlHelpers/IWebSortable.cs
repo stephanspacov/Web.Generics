@@ -10,7 +10,10 @@ namespace Web.Generics.HtmlHelpers
     {
         void DefineSortProperty<TModel, TValue>(Expression<Func<TModel, TValue>> expression);
         String SortProperty { get; set; }
+        String PreviousSortProperty { get; set; }
         SortOrder SortOrder { get; set; }
+        SortOrder PreviousSortOrder { get; set; }
         Boolean AllowSorting { get; set; }
+        void CorrectSortPropertyAndOrder();
     }
 }

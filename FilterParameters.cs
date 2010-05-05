@@ -28,7 +28,7 @@ namespace Web.Generics
         {
             this.PageIndex = Int32.Parse(page);
             this.PageSize = Int32.Parse(rows);
-            this.SortOrder = sord == "asc" ? SortOrderEnum.Ascending : SortOrderEnum.Descending;
+            this.SortOrder = sord == "asc" ? SortOrder.Ascending : SortOrder.Descending;
             this.SortProperty = sidx;
             this.FilterConditions = conditions;
         }
@@ -64,9 +64,9 @@ namespace Web.Generics
         public int PageIndex { get; set; }
         public int PageStartIndex { get { return PageSize * (PageIndex - 1); } }
         public string SortProperty { get; set; }
-        public SortOrderEnum SortOrder { get; set; }
+        public SortOrder SortOrder { get; set; }
         public string PreviousSortProperty { get; set; }
-        public SortOrderEnum PreviousSortOrder { get; set; }
+        public SortOrder PreviousSortOrder { get; set; }
         public int NextPageIndex { get; set; }
         public IList<FilterCondition> FilterConditions { get; set; }
 
@@ -76,7 +76,7 @@ namespace Web.Generics
         public Boolean IsAscending {
             get
             {
-                return SortOrder == SortOrderEnum.Ascending;
+                return SortOrder == SortOrder.Ascending;
             }
         }
 
@@ -158,5 +158,15 @@ namespace Web.Generics
                 throw new NotImplementedException();
             }
         }
+
+        #region IWebSortable Members
+
+
+        public void CorrectSortPropertyAndOrder()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }
