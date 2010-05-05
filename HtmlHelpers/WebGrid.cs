@@ -14,6 +14,7 @@ namespace Web.Generics.HtmlHelpers
             this.AllowPaging = true;
             this.AllowSorting = true;
             this.PageSize = 2;
+            this.PageIndex = 1;
             this.SortOrder = SortOrder.Ascending;
         }
 

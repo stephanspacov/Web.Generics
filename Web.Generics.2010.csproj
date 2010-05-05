@@ -157,7 +157,6 @@
     <Compile Include="FluentNHibernate\ForeignKeyConstraintNameConvention.cs" />
     <Compile Include="FluentNHibernate\PrimaryKeyNameConvention.cs" />
     <Compile Include="HtmlHelpers\IWebGrid.cs" />
-    <Compile Include="HtmlHelpers\GridHelper.cs" />
     <Compile Include="HtmlHelpers\IWebFilter.cs" />
     <Compile Include="HtmlHelpers\IWebGrid`1.cs" />
     <Compile Include="HtmlHelpers\IWebPager.cs" />
