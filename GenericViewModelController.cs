@@ -95,6 +95,8 @@ namespace Web.Generics
             grid.DataSource = this.genericService.Select(grid);
             grid.TotalItemCount = this.genericService.Count(grid);
 
+            PopulateDropDowns(viewModel);
+
             return View(viewModel);
         }
 
