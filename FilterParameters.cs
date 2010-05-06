@@ -92,81 +92,35 @@ namespace Web.Generics
 
         public System.Collections.IEnumerable GetDataSourceEnumerator()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public IEnumerable<WebProperty> GetPropertyNames()
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public object GetValue(object item, string propertyName)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public void DefineSortProperty<TModel, TValue>(System.Linq.Expressions.Expression<Func<TModel, TValue>> expression)
         {
-            throw new NotImplementedException();
+            return;
         }
 
-        SortOrder IWebSortable.SortOrder
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        SortOrder IWebSortable.SortOrder { get; set; }
 
-        public bool SortingEnabled
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public bool SortingEnabled { get; set; }
 
+        public int TotalItemCount { get; set; }
 
-        public int TotalItemCount
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public bool PagingEnabled
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        #region IWebSortable Members
-
+        public bool PagingEnabled { get; set; }
 
         public void CorrectSortPropertyAndOrder()
         {
-            throw new NotImplementedException();
+            return;
         }
-
-        #endregion
     }
 }
