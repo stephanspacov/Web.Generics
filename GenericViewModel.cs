@@ -25,7 +25,7 @@ namespace Web.Generics
 
         virtual public IList<Int32> DeletedItems { get; set; }
 
-        public IWebGrid<T> DefaultGrid { get; set; }
+        public WebGrid<T> DefaultGrid { get; set; }
 
         public List<PropertyInfo> Properties
         {
