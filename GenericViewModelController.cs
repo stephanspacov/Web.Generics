@@ -85,46 +85,17 @@ namespace Web.Generics
 
         //
         // GET /GenericArea/T/Index
-        virtual public ActionResult Index(TViewModel viewModel)
+        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
+        public ActionResult Index(TViewModel viewModel)
         {
-            /*
-            if (filterParameters.PreviousSortProperty == filterParameters.SortProperty && filterParameters.PreviousSortOrder == FilterParameters.SortOrderEnum.Ascending)
-            {
-                filterParameters.SortOrder = FilterParameters.SortOrderEnum.Descending;
-            }
-             * */
+            if (viewModel == null) viewModel = Activator.CreateInstance<TViewModel>();
 
-            if (viewModel.DeletedItems.Count > 0)
-            {
-                foreach (Int32 id in viewModel.DeletedItems)
-                {
-                    TModel obj = genericService.SelectById(id);
-                    genericService.Delete(obj);
-                }
-            }
+            var grid = viewModel.DefaultGrid;
 
-            FilterParameters filterParameters = (FilterParameters)viewModel;
+            grid.DataSource = this.genericService.Select(grid);
+            grid.TotalItemCount = this.genericService.Count(grid);
 
-            foreach (String entity in viewModel.SelectListValues.Keys)
-            {
-                Object selectedValue = viewModel.SelectListValues[entity];
-                Object defaultValueForType = Activator.CreateInstance(selectedValue.GetType());
-                if (selectedValue != defaultValueForType)
-                {
-                    filterParameters.FilterConditions.Add(new FilterCondition { Property=entity + ".ID", Comparer=FilterCondition.ComparerType.eq, Value=selectedValue  });
-                }
-            }
-
-            Int32 numberOfResults = this.genericService.Count(filterParameters);
-            IList<TModel> results = this.genericService.Select(filterParameters);
-
-            viewModel.InstanceList = results;
-            if (filterParameters.NextPageIndex > 0) filterParameters.PageIndex = filterParameters.NextPageIndex;
-            viewModel.GetCorrectValuesForFilter(filterParameters.PageIndex, numberOfResults, Request["goTo"], filterParameters.SortProperty);
-
-            PopulateDropDowns(viewModel);
-
-            return FormatResult(viewModel);
+            return View(viewModel);
         }
 
         [HttpPost]
