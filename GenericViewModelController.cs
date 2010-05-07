@@ -299,14 +299,19 @@ namespace Web.Generics
 
         //
         // GET: /GenericArea/Test/Edit/5
-        private ActionResult Edit(Int32 id)
+        virtual public ActionResult Edit(Int32 id)
         {
             return Edit((Object)id);
         }
 
-        virtual public ActionResult Edit(Object id)
+        virtual protected ActionResult Edit(String key)
         {
-            return Details(id);
+            return Edit((Object)key);
+        }
+
+        virtual protected ActionResult Edit(Object key)
+        {
+            return Details(key);
         }
 
         //
