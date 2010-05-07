@@ -11,6 +11,7 @@ namespace Web.Generics.HtmlHelpers
     {
         public WebGrid()
         {
+            this.FilterConditions = new List<FilterCondition>();
             this.AllowPaging = true;
             this.AllowSorting = true;
             this.PageSize = 10;
