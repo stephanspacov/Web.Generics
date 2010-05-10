@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Web.Generics</RootNamespace>
     <AssemblyName>Web.Generics</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <StartupObject>
     </StartupObject>
@@ -33,6 +33,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -151,6 +152,7 @@
     <Compile Include="DataAnnotations\LocalizedDisplayNameAttribute.cs" />
     <Compile Include="FilterCondition.cs" />
     <Compile Include="FluentNHibernateHelper.cs" />
+    <Compile Include="GenericEntityFrameworkRepository.cs" />
     <Compile Include="GenericViewModelController.cs" />
     <Compile Include="FluentNHibernate\ColumnNullabilityConvention.cs" />
     <Compile Include="FluentNHibernate\IdPropertyAccessor.cs" />
@@ -166,9 +168,11 @@
     <Compile Include="HtmlHelpers\WebGrid.cs" />
     <Compile Include="HtmlHelpers\WebProperty.cs" />
     <Compile Include="ILogger.cs" />
+    <Compile Include="IMembershipRepository.cs" />
     <Compile Include="InspiraSerializer.cs" />
     <Compile Include="IUnityMappingFactory.cs" />
     <Compile Include="JsonFilter.cs" />
+    <Compile Include="MembershipProvider.cs" />
     <Compile Include="ModelAttributes\IdPropertyAttribute.cs" />
     <Compile Include="ContractResolver.cs" />
     <Compile Include="FluentNHibernate\FluentNHibernateHelper.cs" />
@@ -194,12 +198,13 @@
     <Compile Include="jqGrid\jqGridRow.cs" />
     <Compile Include="NHibernateHelper.cs" />
     <Compile Include="NHibernateSessionFactory.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Compile Include="PasswordHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.2010.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>

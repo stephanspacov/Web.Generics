@@ -148,6 +148,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAnnotations\DataType.cs" />
+    <Compile Include="DataAnnotations\FormDisplay.cs" />
     <Compile Include="DataAnnotations\LocalizedDisplayNameAttribute.cs" />
     <Compile Include="FilterCondition.cs" />
     <Compile Include="GenericViewModelController.cs" />
@@ -156,6 +158,20 @@
     <Compile Include="FluentNHibernate\StringColumnLengthConvention.cs" />
     <Compile Include="FluentNHibernate\ForeignKeyConstraintNameConvention.cs" />
     <Compile Include="FluentNHibernate\PrimaryKeyNameConvention.cs" />
+    <Compile Include="HtmlHelpers\IWebFilter.cs" />
+    <Compile Include="HtmlHelpers\IWebGrid.cs" />
+    <Compile Include="HtmlHelpers\IWebGrid`1.cs" />
+    <Compile Include="HtmlHelpers\IWebPager.cs" />
+    <Compile Include="HtmlHelpers\IWebSortable.cs" />
+    <Compile Include="HtmlHelpers\jqGridHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HtmlHelpers\jqGridTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HtmlHelpers\SortOrder.cs" />
+    <Compile Include="HtmlHelpers\WebGrid.cs" />
+    <Compile Include="HtmlHelpers\WebProperty.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="InspiraSerializer.cs" />
     <Compile Include="IUnityMappingFactory.cs" />
@@ -176,20 +192,18 @@
     <Compile Include="GenericViewModelMaster.cs" />
     <Compile Include="GenericViewModel.cs" />
     <Compile Include="HtmlHelpers\FileUploadExtensions.cs" />
-    <Compile Include="HtmlHelpers\jqGridHelper.cs" />
-    <Compile Include="HtmlHelpers\jqGridTemplate.cs" />
     <Compile Include="IGenericRepository.cs" />
     <Compile Include="jqGrid\jqGridOptions.cs" />
     <Compile Include="jqGrid\jqGridResult.cs" />
     <Compile Include="jqGrid\jqGridRow.cs" />
     <Compile Include="NHibernateHelper.cs" />
     <Compile Include="NHibernateSessionFactory.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -216,6 +230,7 @@
     <Compile Include="CustomTypes\PhoneNumber.cs" />
     <Compile Include="CustomTypes\PostalCode.cs" />
     <Compile Include="Validators\CnpjAttribute.cs" />
+    <Compile Include="Validators\EmailAttribute.cs" />
     <Compile Include="Validators\PostalCodeAttribute.cs" />
     <Compile Include="Validators\CpfAttribute.cs" />
     <Compile Include="Validators\PhoneNumberAttribute.cs" />
