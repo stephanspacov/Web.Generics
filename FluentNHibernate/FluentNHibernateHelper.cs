@@ -46,7 +46,7 @@ namespace Web.Generics.FluentNHibernate
                             .Setup(s =>
                                 s.FindIdentity =
                                     property => property.Name == "ID")
-                            .Where(t => t.Namespace == typeof(T).Namespace)
+                            .Where(t=>t.BaseType != typeof(Exception))
                             .Conventions.Add(
                                 PrimaryKey.Name.Is(pk=>"ID"),
                                 DefaultCascade.SaveUpdate(),

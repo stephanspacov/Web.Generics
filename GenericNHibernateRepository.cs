@@ -140,7 +140,7 @@ namespace Web.Generics
 
         private static void CreatePagingAndSortingForFilterParameters(IWebGrid parameters, ref ICriteria criteria)
         {
-            parameters.CorrectSortPropertyAndOrder();
+            //parameters.CorrectSortPropertyAndOrder();
 
             if (!String.IsNullOrEmpty(parameters.SortProperty))
             {
@@ -171,83 +171,88 @@ namespace Web.Generics
             {
                 foreach (FilterCondition condition in parameters.FilterConditions)
                 {
-                    if (condition.Value.ToString().Trim().Length > 0)
+                    Func<String, Object, AbstractCriterion> expressionFunction = null;
+                    AbstractCriterion expression = null;
+
+                    String[] propertyStack = condition.Property.Split('.');
+                    Type propertyType = typeof(T);
+
+                    for (Int32 i = 0; i < propertyStack.Length; i++)
                     {
-                        Func<String, Object, AbstractCriterion> expressionFunction = null;
-                        AbstractCriterion expression = null;
+                        String property = propertyStack[i];
+                        propertyType = propertyType.GetProperty(property).PropertyType;
+                        if (i + 1 < propertyStack.Length)
+                        {
+                            criteria.CreateAlias(property, property);
+                        }
+                    }
 
-                        String[] propertyStack = condition.Property.Split('.');
-                        Type propertyType = typeof(T);
+                    if (propertyType == typeof(Int32?))
+                        condition.Value = int.Parse(condition.Value.ToString());
+                    else if (propertyType == typeof(Boolean?))
+                        condition.Value = Boolean.Parse(condition.Value.ToString());
+                    else if (propertyType == typeof(DateTime?))
+                        condition.Value = DateTime.Parse(condition.Value.ToString());
+                    else if (propertyType == typeof(String))
+                        condition.Value = condition.Value.ToString();
 
-                        for (Int32 i = 0; i < propertyStack.Length; i++)
+                    if (condition.Comparer == FilterCondition.ComparerType.eq)
+                    {
+                        if (condition.Value == null)
                         {
-                            String property = propertyStack[i];
-                            propertyType = propertyType.GetProperty(property).PropertyType;
-                            if (i + 1 < propertyStack.Length)
-                            {
-                                criteria.CreateAlias(property, property);
-                            }
-                        }
-
-                        if (propertyType == typeof(Int32?))
-                            condition.Value = int.Parse(condition.Value.ToString());
-                        else if (propertyType == typeof(Boolean?))
-                            condition.Value = Boolean.Parse(condition.Value.ToString());
-                        else if (propertyType == typeof(DateTime?))
-                            condition.Value = DateTime.Parse(condition.Value.ToString());
-                        else if (propertyType == typeof(String))
-                            condition.Value = condition.Value.ToString();
-
-                        if (condition.Comparer == FilterCondition.ComparerType.eq)
-                        {
-                            expressionFunction = Restrictions.Eq;
-                            expression = expressionFunction(condition.Property, condition.Value);
-                        }
-                        else if (condition.Comparer == FilterCondition.ComparerType.neq)
-                        {
-                            expressionFunction = Restrictions.Eq;
-                            expression = Restrictions.Not(expressionFunction(condition.Property, condition.Value));
-                        }
-                        else if (condition.Comparer == FilterCondition.ComparerType.like)
-                        {
-                            expression = Restrictions.Like(condition.Property, condition.Value.ToString(), MatchMode.Anywhere);
-                        }
-                        else if (condition.Comparer == FilterCondition.ComparerType.slike)
-                        {
-                            expression = Restrictions.Like(condition.Property, condition.Value.ToString(), MatchMode.Start);
-                        }
-                        else if (condition.Comparer == FilterCondition.ComparerType.elike)
-                        {
-                            expression = Restrictions.Like(condition.Property, condition.Value.ToString(), MatchMode.End);
-                        }
-                        else if (condition.Comparer == FilterCondition.ComparerType.lt)
-                        {
-                            expressionFunction = Restrictions.Lt;
-                            expression = expressionFunction(condition.Property, condition.Value);
-                        }
-                        else if (condition.Comparer == FilterCondition.ComparerType.le)
-                        {
-                            expressionFunction = Restrictions.Le;
-                            expression = expressionFunction(condition.Property, condition.Value);
-                        }
-                        else if (condition.Comparer == FilterCondition.ComparerType.gt)
-                        {
-                            expressionFunction = Restrictions.Gt;
-                            expression = expressionFunction(condition.Property, condition.Value);
-                        }
-                        else if (condition.Comparer == FilterCondition.ComparerType.ge)
-                        {
-                            expressionFunction = Restrictions.Ge;
-                            expression = expressionFunction(condition.Property, condition.Value);
+                            //expressionFunction = Restrictions.IsNull;
+                            expression = Restrictions.IsNull(condition.Property);
                         }
                         else
                         {
                             expressionFunction = Restrictions.Eq;
                             expression = expressionFunction(condition.Property, condition.Value);
                         }
-
-                        criteria = criteria.Add(expression);
                     }
+                    else if (condition.Comparer == FilterCondition.ComparerType.neq)
+                    {
+                        expressionFunction = Restrictions.Eq;
+                        expression = Restrictions.Not(expressionFunction(condition.Property, condition.Value));
+                    }
+                    else if (condition.Comparer == FilterCondition.ComparerType.like)
+                    {
+                        expression = Restrictions.Like(condition.Property, condition.Value.ToString(), MatchMode.Anywhere);
+                    }
+                    else if (condition.Comparer == FilterCondition.ComparerType.slike)
+                    {
+                        expression = Restrictions.Like(condition.Property, condition.Value.ToString(), MatchMode.Start);
+                    }
+                    else if (condition.Comparer == FilterCondition.ComparerType.elike)
+                    {
+                        expression = Restrictions.Like(condition.Property, condition.Value.ToString(), MatchMode.End);
+                    }
+                    else if (condition.Comparer == FilterCondition.ComparerType.lt)
+                    {
+                        expressionFunction = Restrictions.Lt;
+                        expression = expressionFunction(condition.Property, condition.Value);
+                    }
+                    else if (condition.Comparer == FilterCondition.ComparerType.le)
+                    {
+                        expressionFunction = Restrictions.Le;
+                        expression = expressionFunction(condition.Property, condition.Value);
+                    }
+                    else if (condition.Comparer == FilterCondition.ComparerType.gt)
+                    {
+                        expressionFunction = Restrictions.Gt;
+                        expression = expressionFunction(condition.Property, condition.Value);
+                    }
+                    else if (condition.Comparer == FilterCondition.ComparerType.ge)
+                    {
+                        expressionFunction = Restrictions.Ge;
+                        expression = expressionFunction(condition.Property, condition.Value);
+                    }
+                    else
+                    {
+                        expressionFunction = Restrictions.Eq;
+                        expression = expressionFunction(condition.Property, condition.Value);
+                    }
+
+                    criteria = criteria.Add(expression);
                 }
             }
         }

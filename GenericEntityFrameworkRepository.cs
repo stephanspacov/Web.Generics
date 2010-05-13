@@ -82,5 +82,26 @@ namespace Web.Generics
         }
 
         #endregion
+
+
+        public IList<T> Select(HtmlHelpers.IWebGrid filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public T SelectById(object id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Count(HtmlHelpers.IWebGrid filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public System.Collections.IList SelectByType(Type relatedEntityType)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

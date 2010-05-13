@@ -16,10 +16,11 @@ namespace Web.Generics.HtmlHelpers
             this.AllowSorting = true;
             this.PageSize = 10;
             this.PageIndex = 1;
-            this.SortOrder = SortOrder.Ascending;
+            this.DataSource = new List<T>();
+            //this.SortOrder = SortOrder.Ascending;
         }
 
-        public IList<T> DataSource { get; set; }
+        public IEnumerable<T> DataSource { get; set; }
         public IEnumerable GetDataSourceEnumerator()
         {
             return (IEnumerable)DataSource;

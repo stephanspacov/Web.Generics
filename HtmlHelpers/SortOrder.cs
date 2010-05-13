@@ -7,6 +7,6 @@ namespace Web.Generics.HtmlHelpers
 {
     public enum SortOrder
     {
-        Ascending, Descending
+        NotSet, Ascending, Descending
     }
 }

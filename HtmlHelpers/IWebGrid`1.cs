@@ -7,6 +7,6 @@ namespace Web.Generics.HtmlHelpers
 {
     public interface IWebGrid<T> : IWebGrid
     {
-        IList<T> DataSource { get; set; }
+        IEnumerable<T> DataSource { get; set; }
     }
 }
