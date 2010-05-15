@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using log4net.Repository.Hierarchy;
 using Web.Generics.HtmlHelpers;
+using Web.Generics.Infrastructure.Logging;
 
 namespace Web.Generics
 {

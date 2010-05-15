@@ -10,6 +10,7 @@ namespace Web.Generics
 	{
         public GenericViewModel()
         {
+			this.DefaultGrid = new WebGrid<T>();
             this.Instance = Activator.CreateInstance<T>();
             this.InstanceList = Activator.CreateInstance<List<T>>();
             this.DeletedItems = new List<Int32>();

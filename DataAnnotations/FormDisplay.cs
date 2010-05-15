@@ -15,6 +15,8 @@ namespace Web.Generics.DataAnnotations
 
     public class FormDisplay : System.ComponentModel.DataAnnotations.DisplayColumnAttribute
     {
+		public FormDisplay() : base("") { }
+
         public string GroupName;
         public int Order;
         public FieldSize FieldSize;

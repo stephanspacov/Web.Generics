@@ -172,15 +172,26 @@
     <Compile Include="HtmlHelpers\SortOrder.cs" />
     <Compile Include="HtmlHelpers\WebGrid.cs" />
     <Compile Include="HtmlHelpers\WebProperty.cs" />
-    <Compile Include="ILogger.cs" />
+    <Compile Include="IMembershipRepository.cs" />
+    <Compile Include="Infrastructure\Logging\ILogger.cs" />
+    <Compile Include="Infrastructure\ConfigurationFactory.cs" />
+    <Compile Include="Infrastructure\GenericControllerFactory.cs" />
+    <Compile Include="ApplicationServices\IInversionOfControlContainer.cs" />
+    <Compile Include="Infrastructure\InversionOfControl\DuplicateTypeException.cs" />
+    <Compile Include="Infrastructure\InversionOfControl\IInversionOfControlMapper.cs" />
+    <Compile Include="Infrastructure\InversionOfControl\InversionOfControlContainer.cs" />
+    <Compile Include="Infrastructure\InversionOfControl\UnboundInterfaceException.cs" />
+    <Compile Include="Infrastructure\InversionOfControl\Unity\UnityInversionOfControlContainer.cs" />
+    <Compile Include="Infrastructure\Logging\Log4NetLogger.cs" />
     <Compile Include="InspiraSerializer.cs" />
     <Compile Include="IUnityMappingFactory.cs" />
+    <Compile Include="JsonFilter.cs" />
+    <Compile Include="MembershipProvider.cs" />
     <Compile Include="ModelAttributes\IdPropertyAttribute.cs" />
     <Compile Include="ContractResolver.cs" />
     <Compile Include="FluentNHibernate\FluentNHibernateHelper.cs" />
     <Compile Include="CustomUnityControllerFactory.cs" />
     <Compile Include="DataAnnotations\DropDownListAttribute.cs" />
-    <Compile Include="DatabaseSetup.cs" />
     <Compile Include="FilterParameters.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -203,6 +214,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Compile Include="PasswordHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
