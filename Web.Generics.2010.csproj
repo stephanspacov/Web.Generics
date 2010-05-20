@@ -150,17 +150,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationServices\IInversionOfControlContainer.cs" />
     <Compile Include="DataAnnotations\DataType.cs" />
     <Compile Include="DataAnnotations\LocalizedDisplayNameAttribute.cs" />
     <Compile Include="FilterCondition.cs" />
     <Compile Include="FluentNHibernateHelper.cs" />
-    <Compile Include="GenericEntityFrameworkRepository.cs" />
-    <Compile Include="GenericViewModelController.cs" />
     <Compile Include="FluentNHibernate\ColumnNullabilityConvention.cs" />
     <Compile Include="FluentNHibernate\IdPropertyAccessor.cs" />
     <Compile Include="FluentNHibernate\StringColumnLengthConvention.cs" />
     <Compile Include="FluentNHibernate\ForeignKeyConstraintNameConvention.cs" />
     <Compile Include="FluentNHibernate\PrimaryKeyNameConvention.cs" />
+    <Compile Include="GenericViewModelController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="HtmlHelpers\IWebFilter.cs" />
     <Compile Include="HtmlHelpers\IWebGrid.cs" />
     <Compile Include="HtmlHelpers\IWebGrid`1.cs" />
@@ -169,8 +171,17 @@
     <Compile Include="HtmlHelpers\SortOrder.cs" />
     <Compile Include="HtmlHelpers\WebGrid.cs" />
     <Compile Include="HtmlHelpers\WebProperty.cs" />
-    <Compile Include="ILogger.cs" />
+    <Compile Include="IMembershipConverter.cs" />
     <Compile Include="IMembershipRepository.cs" />
+    <Compile Include="Infrastructure\ConfigurationFactory.cs" />
+    <Compile Include="Infrastructure\GenericControllerFactory.cs" />
+    <Compile Include="Infrastructure\InversionOfControl\DuplicateTypeException.cs" />
+    <Compile Include="Infrastructure\InversionOfControl\IInversionOfControlMapper.cs" />
+    <Compile Include="Infrastructure\InversionOfControl\InversionOfControlContainer.cs" />
+    <Compile Include="Infrastructure\InversionOfControl\UnboundInterfaceException.cs" />
+    <Compile Include="Infrastructure\InversionOfControl\Unity\UnityInversionOfControlContainer.cs" />
+    <Compile Include="Infrastructure\Logging\ILogger.cs" />
+    <Compile Include="Infrastructure\Logging\Log4NetLogger.cs" />
     <Compile Include="InspiraSerializer.cs" />
     <Compile Include="IUnityMappingFactory.cs" />
     <Compile Include="JsonFilter.cs" />
@@ -180,7 +191,6 @@
     <Compile Include="FluentNHibernate\FluentNHibernateHelper.cs" />
     <Compile Include="CustomUnityControllerFactory.cs" />
     <Compile Include="DataAnnotations\DropDownListAttribute.cs" />
-    <Compile Include="DatabaseSetup.cs" />
     <Compile Include="FilterParameters.cs">
       <SubType>Code</SubType>
     </Compile>

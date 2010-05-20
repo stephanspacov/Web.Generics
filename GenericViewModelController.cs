@@ -269,11 +269,15 @@ namespace Web.Generics
         // POST: /GenericArea/Test/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        virtual public ActionResult Create(TViewModel viewModel)
+        virtual public ActionResult Create(TViewModel viewModel, string returnUrl)
         {
             if (ModelState.IsValid)
             {
                 this.genericService.Insert(viewModel.Instance);
+                if (!String.IsNullOrEmpty(returnUrl))
+                {
+                    return Redirect(returnUrl);
+                }
                 return RedirectToAction("Index");
             }
             PopulateDropDowns(viewModel);
@@ -282,7 +286,7 @@ namespace Web.Generics
 
         //
         // GET: /GenericArea/Test/Delete/5
-        virtual public ActionResult Delete(int id)
+        virtual public ActionResult Delete(int id, string returnUrl)
         {
             return Details(id);
         }
@@ -291,9 +295,13 @@ namespace Web.Generics
         // POST: /GenericArea/Test/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        virtual public ActionResult Delete(TModel obj)
+        virtual public ActionResult Delete(TModel obj, string returnUrl)
         {
             this.genericService.Delete(obj);
+            if (!String.IsNullOrEmpty(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
             return RedirectToAction("Index");
         }
 
@@ -318,11 +326,15 @@ namespace Web.Generics
         // POST: /GenericArea/Test/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        virtual public ActionResult Edit(TViewModel viewModel)
+        virtual public ActionResult Edit(TViewModel viewModel, string returnUrl)
         {
             if (ModelState.IsValid)
             {
                 this.genericService.Update(viewModel.Instance);
+                if (!String.IsNullOrEmpty(returnUrl))
+                {
+                    return Redirect(returnUrl);
+                }
                 return RedirectToAction("Index");
             }
             PopulateDropDowns(viewModel);

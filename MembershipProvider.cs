@@ -1,39 +1,73 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Web.Security;
-namespace Inspira.Membership.MembershipProvider
+using System.Reflection;
+
+namespace Web.Generics
 {
     public class MembershipProvider : System.Web.Security.MembershipProvider
     {
+        private static IMembershipRepository repository;
 
-        private IMembershipRepository repository;
-
-        public MembershipProvider(IMembershipRepository repository)
+        public IMembershipRepository Repository
         {
-            this.repository = repository;
+            get
+            {
+                if (repository == null)
+                    repository = this.GetRepository();
+                return repository;
+            }
+        }
+
+        private IMembershipRepository GetRepository()
+        {
+            string assembly = String.Empty;
+            string repositoryType = String.Empty;
+
+            System.Configuration.Configuration configuration = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
+            System.Web.Configuration.MembershipSection membershipSection = (System.Web.Configuration.MembershipSection)configuration.GetSection("system.web/membership");
+
+            foreach (System.Configuration.ProviderSettings p in membershipSection.Providers)
+            {
+                if (p.Name == membershipSection.DefaultProvider)
+                {
+                    assembly = p.Parameters["repositoryAssembly"];
+                    repositoryType = p.Parameters["repository"];
+                }
+            }
+
+            Assembly thisAssembly = Assembly.GetAssembly(typeof(MembershipProvider));
+            string currentAssembly = thisAssembly.FullName;
+
+            if (assembly != currentAssembly)
+                thisAssembly = Assembly.Load(assembly);
+
+            Type repType = thisAssembly.GetType(repositoryType);
+            return (IMembershipRepository)Activator.CreateInstance(repType, true);
         }
 
         public override string ApplicationName
         {
             get
             {
-                throw new NotImplementedException();
+                System.Configuration.Configuration configuration = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
+                System.Web.Configuration.MembershipSection membershipSection = (System.Web.Configuration.MembershipSection)configuration.GetSection("system.web/membership");
+
+                foreach (System.Configuration.ProviderSettings p in membershipSection.Providers)
+                    if (p.Name == membershipSection.DefaultProvider)
+                        return p.Parameters["applicationName"];
+
+                return String.Empty;
             }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            set { }
         }
 
         public override bool ChangePassword(string username, string oldPassword, string newPassword)
         {
             string hashedOldPassword = PasswordHelper.ComputeHash(oldPassword);
             string hashedNewPassword = PasswordHelper.ComputeHash(newPassword);
-            if (repository.SelectUserByLogin(username, hashedOldPassword) != null) 
+            if (Repository.SelectUserByLogin(username, hashedOldPassword) != null) 
             {
-                repository.ChangePassword(username, hashedNewPassword);
+                Repository.ChangePassword(username, hashedNewPassword);
                 return true;
             }
             return false;
@@ -46,23 +80,22 @@ namespace Inspira.Membership.MembershipProvider
 
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)
         {
-
-            if (!repository.IsUserNameUnique(username))
+            if (!Repository.IsUserNameUnique(username))
             {
                 status = MembershipCreateStatus.DuplicateUserName;
                 return null;
             }
 
-            if (!repository.IsEmailUnique(email)) 
+            if (!Repository.IsEmailUnique(email)) 
             {
                 status = MembershipCreateStatus.DuplicateEmail;
                 return null;
             }
 
             string hashedPassword = PasswordHelper.ComputeHash(password);
-            repository.CreateUser
+            Repository.CreateUser
                 (new MembershipUser(
-                this.ToString(),
+                "InspiraMembershipProvider",
                 username,
                 null,
                 email,
@@ -79,7 +112,7 @@ namespace Inspira.Membership.MembershipProvider
                 hashedPassword
                 );
 
-            MembershipUser user = repository.SelectUserByLogin(username, hashedPassword);
+            MembershipUser user = Repository.SelectUserByLogin(username, hashedPassword);
 
             if (user != null)
             {
@@ -92,38 +125,57 @@ namespace Inspira.Membership.MembershipProvider
                 status = MembershipCreateStatus.UserRejected;
 
             return user;
-
         }
 
         public override bool DeleteUser(string username, bool deleteAllRelatedData)
         {
-            repository.DeleteUser(username, deleteAllRelatedData);
+            Repository.DeleteUser(username, deleteAllRelatedData);
             return true;
         }
 
         public override bool EnablePasswordReset
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                System.Configuration.Configuration configuration = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
+                System.Web.Configuration.MembershipSection membershipSection = (System.Web.Configuration.MembershipSection)configuration.GetSection("system.web/membership");
+
+                foreach (System.Configuration.ProviderSettings p in membershipSection.Providers)
+                    if (p.Name == membershipSection.DefaultProvider)
+                        return Convert.ToBoolean(p.Parameters["enablePasswordReset"]);
+
+                return false;
+            }
         }
 
         public override bool EnablePasswordRetrieval
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                System.Configuration.Configuration configuration = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
+                System.Web.Configuration.MembershipSection membershipSection = (System.Web.Configuration.MembershipSection)configuration.GetSection("system.web/membership");
+
+                foreach (System.Configuration.ProviderSettings p in membershipSection.Providers)
+                    if (p.Name == membershipSection.DefaultProvider)
+                        return Convert.ToBoolean(p.Parameters["enablePasswordRetrieval"]);
+
+                return false;
+            }
         }
 
         public override MembershipUserCollection FindUsersByEmail(string emailToMatch, int pageIndex, int pageSize, out int totalRecords)
         {
-            return repository.FindUsersByEmail(emailToMatch, pageIndex, pageSize, out totalRecords);
+            return Repository.FindUsersByEmail(emailToMatch, pageIndex, pageSize, out totalRecords);
         }
 
         public override MembershipUserCollection FindUsersByName(string usernameToMatch, int pageIndex, int pageSize, out int totalRecords)
         {
-            return repository.FindUsersByName(usernameToMatch, pageIndex, pageSize, out totalRecords);
+            return Repository.FindUsersByName(usernameToMatch, pageIndex, pageSize, out totalRecords);
         }
 
         public override MembershipUserCollection GetAllUsers(int pageIndex, int pageSize, out int totalRecords)
         {
-            return repository.GetAllUsers(pageIndex, pageSize, out totalRecords);
+            return Repository.GetAllUsers(pageIndex, pageSize, out totalRecords);
         }
 
         public override int GetNumberOfUsersOnline()
@@ -138,37 +190,77 @@ namespace Inspira.Membership.MembershipProvider
 
         public override MembershipUser GetUser(string username, bool userIsOnline)
         {
-            return repository.SelectUserByName(username);
+            return Repository.SelectUserByName(username);
         }
 
         public override MembershipUser GetUser(object providerUserKey, bool userIsOnline)
         {
-            return repository.SelectUserByID((int)providerUserKey);
+            return Repository.SelectUserByID((int)providerUserKey);
         }
 
         public override string GetUserNameByEmail(string email)
         {
-            return repository.GetUserNameByEmail(email);
+            return Repository.GetUserNameByEmail(email);
         }
 
         public override int MaxInvalidPasswordAttempts
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                System.Configuration.Configuration configuration = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
+                System.Web.Configuration.MembershipSection membershipSection = (System.Web.Configuration.MembershipSection)configuration.GetSection("system.web/membership");
+
+                foreach (System.Configuration.ProviderSettings p in membershipSection.Providers)
+                    if (p.Name == membershipSection.DefaultProvider)
+                        return Convert.ToInt32(p.Parameters["maxInvalidPasswordAttempts"]);
+
+                return -1;
+            }
         }
 
         public override int MinRequiredNonAlphanumericCharacters
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                System.Configuration.Configuration configuration = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
+                System.Web.Configuration.MembershipSection membershipSection = (System.Web.Configuration.MembershipSection)configuration.GetSection("system.web/membership");
+
+                foreach (System.Configuration.ProviderSettings p in membershipSection.Providers)
+                    if (p.Name == membershipSection.DefaultProvider)
+                        return Convert.ToInt32(p.Parameters["minRequiredNonalphanumericCharacters"]);
+
+                return -1;
+            }
         }
 
         public override int MinRequiredPasswordLength
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                System.Configuration.Configuration configuration = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
+                System.Web.Configuration.MembershipSection membershipSection = (System.Web.Configuration.MembershipSection)configuration.GetSection("system.web/membership");
+
+                foreach (System.Configuration.ProviderSettings p in membershipSection.Providers)
+                    if (p.Name == membershipSection.DefaultProvider)
+                        return Convert.ToInt32(p.Parameters["minRequiredPasswordLength"]);
+
+                return -1;
+            }
         }
 
         public override int PasswordAttemptWindow
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                System.Configuration.Configuration configuration = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
+                System.Web.Configuration.MembershipSection membershipSection = (System.Web.Configuration.MembershipSection)configuration.GetSection("system.web/membership");
+
+                foreach (System.Configuration.ProviderSettings p in membershipSection.Providers)
+                    if (p.Name == membershipSection.DefaultProvider)
+                        return Convert.ToInt32(p.Parameters["passwordAttemptWindow"]);
+
+                return -1;
+            }
         }
 
         public override MembershipPasswordFormat PasswordFormat
@@ -208,7 +300,7 @@ namespace Inspira.Membership.MembershipProvider
 
         public override bool ValidateUser(string username, string password)
         {
-            if (repository.SelectUserByLogin(username, PasswordHelper.ComputeHash(password)) != null)
+            if (Repository.SelectUserByLogin(username, PasswordHelper.ComputeHash(password)) != null)
                 return true;
             else
                 return false;

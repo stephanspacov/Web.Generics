@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 
-namespace Inspira.Membership
+namespace Web.Generics
 {
     internal class PasswordHelper
     {
