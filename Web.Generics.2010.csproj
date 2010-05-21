@@ -284,6 +284,6 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>copy "$(TargetDir)Web.Generics.* " "$(TargetDir)..\..\..\Inspira.WorkPlace\lib\Inspira"</PostBuildEvent>
+    <PostBuildEvent>rem copy "$(TargetDir)Web.Generics.* " "$(TargetDir)..\..\..\Inspira.WorkPlace\lib\Inspira"</PostBuildEvent>
   </PropertyGroup>
 </Project>
