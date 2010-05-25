@@ -95,7 +95,7 @@ namespace Web.Generics
             string hashedPassword = PasswordHelper.ComputeHash(password);
             Repository.CreateUser
                 (new MembershipUser(
-                "InspiraMembershipProvider",
+                Membership.Provider.Name,
                 username,
                 null,
                 email,
