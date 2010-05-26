@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Security;
 using System.Reflection;
+using System.Configuration.Provider;
 
 namespace Web.Generics
 {
@@ -38,11 +39,25 @@ namespace Web.Generics
             Assembly thisAssembly = Assembly.GetAssembly(typeof(MembershipProvider));
             string currentAssembly = thisAssembly.FullName;
 
-            if (assembly != currentAssembly)
-                thisAssembly = Assembly.Load(assembly);
+            try
+            {
+                if (assembly != currentAssembly)
+                    thisAssembly = Assembly.Load(assembly);
+            }
+            catch (Exception e)
+            {
+                throw new ProviderException("Inspira MembershipProvider: Error loading the repository's assembly.");
+            }
 
-            Type repType = thisAssembly.GetType(repositoryType);
-            return (IMembershipRepository)Activator.CreateInstance(repType, true);
+            try
+            {
+                Type repType = thisAssembly.GetType(repositoryType);
+                return (IMembershipRepository)Activator.CreateInstance(repType, true);
+            }
+            catch (Exception e)
+            {
+                throw new ProviderException("Error creating instance of the repository.");
+            }
         }
 
         public override string ApplicationName
@@ -275,7 +290,7 @@ namespace Web.Generics
 
         public override bool RequiresQuestionAndAnswer
         {
-            get { throw new NotImplementedException(); }
+            get { return false; }
         }
 
         public override bool RequiresUniqueEmail
@@ -285,7 +300,9 @@ namespace Web.Generics
 
         public override string ResetPassword(string username, string answer)
         {
-            throw new NotImplementedException();
+            string newPass = PasswordHelper.ComputeHash(PasswordHelper.Generate());
+            repository.ChangePassword(username, newPass);
+            return newPass;
         }
 
         public override bool UnlockUser(string userName)
