@@ -5,6 +5,7 @@ using NHibernate;
 using NHibernate.Criterion;
 using System.Reflection;
 using Web.Generics.HtmlHelpers;
+using System.Web;
 
 namespace Web.Generics
 {
@@ -19,7 +20,15 @@ namespace Web.Generics
 
         public GenericNHibernateRepository() {
             NHibernateSessionFactory<T>.RepositoryType = this.GetType();
-            session = NHibernateSessionFactory<T>.OpenSession();
+
+            if (!HttpContext.Current.Items.Contains("NHibernateSession"))
+            {
+                session = NHibernateSessionFactory<T>.OpenSession();
+                HttpContext.Current.Items.Add("NHibernateSession", session);
+            }
+            else {
+                session = (ISession)HttpContext.Current.Items["NHibernateSession"];
+            }            
         }
 
         virtual public Int32 Insert(T obj)
