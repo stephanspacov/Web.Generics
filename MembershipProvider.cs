@@ -285,7 +285,16 @@ namespace Web.Generics
 
         public override string PasswordStrengthRegularExpression
         {
-            get { throw new NotImplementedException(); }
+            get 
+            {
+                System.Configuration.Configuration configuration = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
+                System.Web.Configuration.MembershipSection membershipSection = (System.Web.Configuration.MembershipSection)configuration.GetSection("system.web/membership");
+
+                foreach (System.Configuration.ProviderSettings p in membershipSection.Providers)
+                    if (p.Name == membershipSection.DefaultProvider)
+                        return p.Parameters["passwordStrengthRegularExpression"];
+                return string.Empty;
+            }
         }
 
         public override bool RequiresQuestionAndAnswer

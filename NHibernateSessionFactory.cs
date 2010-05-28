@@ -9,6 +9,7 @@ namespace Web.Generics
     public static class NHibernateSessionFactoryConfig
     {
         public static Boolean UseFluentNHibernate = true;
+        public static String SchemaGenerationDirectory;
     }
 
     public static class NHibernateSessionFactory<T>
