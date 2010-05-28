@@ -300,9 +300,10 @@ namespace Web.Generics
 
         public override string ResetPassword(string username, string answer)
         {
-            string newPass = PasswordHelper.ComputeHash(PasswordHelper.Generate());
+            string pass = PasswordHelper.Generate();
+            string newPass = PasswordHelper.ComputeHash(pass);
             repository.ChangePassword(username, newPass);
-            return newPass;
+            return pass;
         }
 
         public override bool UnlockUser(string userName)
