@@ -28,7 +28,7 @@ namespace Web.Generics
         {
             this.PageIndex = Int32.Parse(page);
             this.PageSize = Int32.Parse(rows);
-            this.SortOrder = sord == "asc" ? SortOrder.Ascending : SortOrder.Descending;
+            this.SortOrder = sord == "Ascending" ? SortOrder.Ascending : SortOrder.Descending;
             this.SortProperty = sidx;
             this.FilterConditions = conditions;
         }

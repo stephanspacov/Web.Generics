@@ -171,8 +171,8 @@
     <Compile Include="HtmlHelpers\SortOrder.cs" />
     <Compile Include="HtmlHelpers\WebGrid.cs" />
     <Compile Include="HtmlHelpers\WebProperty.cs" />
-    <Compile Include="IMembershipConverter.cs" />
     <Compile Include="IMembershipRepository.cs" />
+    <Compile Include="IMembershipRoleRepository.cs" />
     <Compile Include="Infrastructure\ConfigurationFactory.cs" />
     <Compile Include="Infrastructure\GenericControllerFactory.cs" />
     <Compile Include="Infrastructure\InversionOfControl\DuplicateTypeException.cs" />
@@ -231,6 +231,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="RoleProvider.cs" />
     <Compile Include="Singleton.cs" />
     <Compile Include="CustomTypes\Age.cs" />
     <Compile Include="CustomTypes\BrazilianPhoneNumber.cs" />

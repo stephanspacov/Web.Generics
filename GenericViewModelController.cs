@@ -92,6 +92,8 @@ namespace Web.Generics
 
             var grid = viewModel.DefaultGrid;
 
+            grid.CorrectSortPropertyAndOrder();
+
             grid.DataSource = this.genericService.Select(grid);
             grid.TotalItemCount = this.genericService.Count(grid);
 
