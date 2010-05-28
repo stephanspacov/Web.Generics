@@ -238,7 +238,7 @@ namespace Web.Generics
         }
 
         // Post: Upload File
-        public string UploadFile(HttpPostedFileBase FileData) 
+        virtual public string UploadFile(HttpPostedFileBase FileData) 
         {
             string fileDir = Request.MapPath("~/Files/" + typeof(T).Name + "/");
             string fileName = DateTime.Now.ToString("ddMMyyhhss") + FileData.FileName;

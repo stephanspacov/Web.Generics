@@ -55,7 +55,7 @@ namespace Web.Generics
         {
             using (ITransaction transaction = session.BeginTransaction())
             {
-                obj = (T)session.Merge(obj);
+                obj = this.SelectById(obj.GetType().GetProperty("ID").GetValue(obj, null));
                 session.Delete(obj);
                 transaction.Commit();
             }

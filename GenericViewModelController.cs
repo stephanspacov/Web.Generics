@@ -35,7 +35,7 @@ namespace Web.Generics
                 case "json":
                     return Content(SerializeAsJson(model.InstanceList, true));
                 case "xml":
-//                    return new XmlResult(model.Instance);
+                //                    return new XmlResult(model.Instance);
                 case "xls":
                 default:
                     throw new FormatException(
@@ -276,12 +276,15 @@ namespace Web.Generics
             if (ModelState.IsValid)
             {
                 this.genericService.Insert(viewModel.Instance);
+
                 if (!String.IsNullOrEmpty(returnUrl))
                 {
                     return Redirect(returnUrl);
                 }
+
                 return RedirectToAction("Index");
             }
+
             PopulateDropDowns(viewModel);
             return View(viewModel);
         }
@@ -299,11 +302,26 @@ namespace Web.Generics
         [ValidateAntiForgeryToken]
         virtual public ActionResult Delete(TModel obj, string returnUrl)
         {
-            this.genericService.Delete(obj);
-            if (!String.IsNullOrEmpty(returnUrl))
+            try
             {
-                return Redirect(returnUrl);
+                this.genericService.Delete(obj);
+                if (!String.IsNullOrEmpty(returnUrl))
+                {
+                    return Redirect(returnUrl);
+                }
             }
+            catch
+            {
+                ViewData["EntityHasRelationshipError"] = true;
+
+                TViewModel viewModel = Activator.CreateInstance<TViewModel>();
+                viewModel.Instance = obj;
+
+                PopulateDropDowns(viewModel);
+
+                return FormatResult(viewModel);
+            }
+
             return RedirectToAction("Index");
         }
 
