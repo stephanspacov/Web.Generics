@@ -23,10 +23,13 @@ namespace Web.Generics.Infrastructure
 
 				var autoDiscoverRepositories = true;
 				if (autoDiscoverRepositories) {
-					foreach (var entityType in typeof(T).Assembly.GetTypes()) {
-						var interfaceType = typeof(IGenericRepository<>).MakeGenericType(entityType);
-						var implementationType = typeof(GenericNHibernateRepository<>).MakeGenericType(entityType);
-						container.RegisterType(interfaceType, implementationType);
+					foreach (Type entityType in typeof(T).Assembly.GetTypes()) {
+                        if(entityType.IsClass)
+                        {
+					        var interfaceType = typeof(IGenericRepository<>).MakeGenericType(entityType);
+					        var implementationType = typeof(GenericNHibernateRepository<>).MakeGenericType(entityType);
+					        container.RegisterType(interfaceType, implementationType);
+                        }
 					}
 				}else {
 					container.RegisterType<IGenericRepository<T>, GenericNHibernateRepository<T>>();
