@@ -54,6 +54,7 @@ namespace Web.Generics.FluentNHibernate
                                 new ColumnNullabilityConvention(),
                                 new ForeignKeyConstraintNameConvention(),
                                 new StringColumnLengthConvention(),
+                                new EnumConvention(),
                                 ForeignKey.EndsWith("_ID"),
                                 ConventionBuilder.Reference.Always(x=>x.Not.Nullable()),
                                 ConventionBuilder.Reference.Always(x=>x.Cascade.None()),
