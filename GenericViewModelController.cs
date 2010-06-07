@@ -284,28 +284,22 @@ namespace Web.Generics
         // POST: /GenericArea/Test/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        virtual public ActionResult Create(TViewModel viewModel, string returnUrl)
+        virtual public ActionResult Create(TViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
                 this.genericService.Insert(viewModel.Instance);
 
-                if (!String.IsNullOrEmpty(returnUrl))
-                {
-                    return Redirect(returnUrl);
-                }
-
                 return RedirectToAction("Index");
             }
 
             PopulateDropDowns(viewModel);
-            TempData["returnUrl"] = returnUrl;
             return View(viewModel);
         }
 
         //
         // GET: /GenericArea/Test/Delete/5
-        virtual public ActionResult Delete(int id, string returnUrl)
+        virtual public ActionResult Delete(int id)
         {
             return Details(id);
         }
@@ -314,15 +308,11 @@ namespace Web.Generics
         // POST: /GenericArea/Test/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        virtual public ActionResult Delete(TModel obj, string returnUrl)
+        virtual public ActionResult Delete(TModel obj)
         {
             try
             {
                 this.genericService.Delete(obj);
-                if (!String.IsNullOrEmpty(returnUrl))
-                {
-                    return Redirect(returnUrl);
-                }
             }
             catch
             {
@@ -360,19 +350,14 @@ namespace Web.Generics
         // POST: /GenericArea/Test/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        virtual public ActionResult Edit(TViewModel viewModel, string returnUrl)
+        virtual public ActionResult Edit(TViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
                 this.genericService.Update(viewModel.Instance);
-                if (!String.IsNullOrEmpty(returnUrl))
-                {
-                    return Redirect(returnUrl);
-                }
                 return RedirectToAction("Index");
             }
             PopulateDropDowns(viewModel);
-            TempData["returnUrl"] = returnUrl;
             return View(viewModel);
         }
 
