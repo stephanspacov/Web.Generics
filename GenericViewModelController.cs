@@ -83,16 +83,15 @@ namespace Web.Generics
             return FormatResult(viewModel);
         }
 
-        //
-        // GET /GenericArea/T/Index
-        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
-        public ActionResult Index(TViewModel viewModel)
+        [AcceptVerbs("GET")]
+        virtual public ActionResult Index()
         {
-            if (viewModel == null) viewModel = Activator.CreateInstance<TViewModel>();
-
+            TViewModel viewModel = Activator.CreateInstance<TViewModel>();
+            if (Session[viewModel.GetType().ToString()] != null)
+            {
+                viewModel = (TViewModel)Session[viewModel.GetType().ToString()];
+            }
             var grid = viewModel.DefaultGrid;
-
-            grid.CorrectSortPropertyAndOrder();
 
             grid.DataSource = this.genericService.Select(grid);
             grid.TotalItemCount = this.genericService.Count(grid);
@@ -100,6 +99,20 @@ namespace Web.Generics
             PopulateDropDowns(viewModel);
 
             return View(viewModel);
+        }
+
+        [AcceptVerbs("POST")]
+        virtual public ActionResult Index(TViewModel viewModel)
+        {
+            var grid = viewModel.DefaultGrid;
+
+            grid.DataSource = this.genericService.Select(grid);
+            grid.TotalItemCount = this.genericService.Count(grid);
+
+            PopulateDropDowns(viewModel);
+
+            Session.Add(viewModel.GetType().ToString(), viewModel);
+            return FormatResult(viewModel);
         }
 
         [HttpPost]
@@ -210,7 +223,7 @@ namespace Web.Generics
             return FormatResult(viewModel);
         }
 
-        private void PopulateDropDowns(TViewModel viewModel)
+        protected void PopulateDropDowns(TViewModel viewModel)
         {
             TModel model = viewModel.Instance;
 
@@ -286,6 +299,7 @@ namespace Web.Generics
             }
 
             PopulateDropDowns(viewModel);
+            TempData["returnUrl"] = returnUrl;
             return View(viewModel);
         }
 
@@ -358,6 +372,7 @@ namespace Web.Generics
                 return RedirectToAction("Index");
             }
             PopulateDropDowns(viewModel);
+            TempData["returnUrl"] = returnUrl;
             return View(viewModel);
         }
 

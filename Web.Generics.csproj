@@ -152,6 +152,7 @@
     <Compile Include="DataAnnotations\FormDisplay.cs" />
     <Compile Include="DataAnnotations\LocalizedDisplayNameAttribute.cs" />
     <Compile Include="FilterCondition.cs" />
+    <Compile Include="FluentNHibernateHelper.cs" />
     <Compile Include="GenericViewModelController.cs" />
     <Compile Include="FluentNHibernate\ColumnNullabilityConvention.cs" />
     <Compile Include="FluentNHibernate\IdPropertyAccessor.cs" />
@@ -173,6 +174,7 @@
     <Compile Include="HtmlHelpers\WebGrid.cs" />
     <Compile Include="HtmlHelpers\WebProperty.cs" />
     <Compile Include="IMembershipRepository.cs" />
+    <Compile Include="IMembershipRoleRepository.cs" />
     <Compile Include="Infrastructure\Logging\ILogger.cs" />
     <Compile Include="Infrastructure\ConfigurationFactory.cs" />
     <Compile Include="Infrastructure\GenericControllerFactory.cs" />
@@ -230,6 +232,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="RoleProvider.cs" />
     <Compile Include="Singleton.cs" />
     <Compile Include="CustomTypes\Age.cs" />
     <Compile Include="CustomTypes\BrazilianPhoneNumber.cs" />
