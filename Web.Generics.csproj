@@ -153,6 +153,7 @@
     <Compile Include="DataAnnotations\LocalizedDisplayNameAttribute.cs" />
     <Compile Include="FilterCondition.cs" />
     <Compile Include="FluentNHibernateHelper.cs" />
+    <Compile Include="FluentNHibernate\EnumConvention.cs" />
     <Compile Include="GenericViewModelController.cs" />
     <Compile Include="FluentNHibernate\ColumnNullabilityConvention.cs" />
     <Compile Include="FluentNHibernate\IdPropertyAccessor.cs" />
