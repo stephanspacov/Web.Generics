@@ -2,6 +2,7 @@
 using System.Web.Security;
 using System.Reflection;
 using System.Configuration.Provider;
+using System.Web;
 
 namespace Web.Generics
 {
@@ -322,13 +323,19 @@ namespace Web.Generics
 
         public override void UpdateUser(MembershipUser user)
         {
-            throw new NotImplementedException();
+            repository.UpdateUser(user);
         }
 
         public override bool ValidateUser(string username, string password)
         {
-            if (Repository.SelectUserByLogin(username, PasswordHelper.ComputeHash(password)) != null)
+            MembershipUser user = Repository.SelectUserByLogin(username, PasswordHelper.ComputeHash(password));
+            if (user != null)
+            {
+                HttpContext.Current.Response.Cookies.Add(new HttpCookie("LastActivityDate", user.LastLoginDate.ToString()));
+                user.LastActivityDate = DateTime.Now;
+                Repository.UpdateUser(user);
                 return true;
+            }
             else
                 return false;
         }
