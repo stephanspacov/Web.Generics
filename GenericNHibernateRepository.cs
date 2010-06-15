@@ -189,10 +189,20 @@ namespace Web.Generics
                     for (Int32 i = 0; i < propertyStack.Length; i++)
                     {
                         String property = propertyStack[i];
-                        propertyType = propertyType.GetProperty(property).PropertyType;
-                        if (i + 1 < propertyStack.Length)
+
+                        try
                         {
-                            criteria.CreateAlias(property, property);
+                            var propertyValue = propertyType.GetProperty(property);
+
+                            propertyType = propertyValue.PropertyType;
+                            if (i + 1 < propertyStack.Length)
+                            {
+                                criteria.CreateAlias(property, property);
+                            }
+                        }
+                        catch (NullReferenceException exc)
+                        {
+                            throw new ApplicationException("Propriedade não encontrada: " + property, exc);
                         }
                     }
 
