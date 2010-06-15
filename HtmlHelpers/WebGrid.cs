@@ -103,9 +103,17 @@ namespace Web.Generics.HtmlHelpers
         }
 
         public object GetValue(object item, string propertyName) {
+
             if (item == null) return null;
 
-            return item.GetType().GetProperty(propertyName).GetValue(item, null);
+            var propertyInfo = item.GetType().GetProperty(propertyName);
+
+            if (propertyInfo == null)
+            {
+                throw new Exception(String.Format("Propriedade {0} não existe na entidade {1}", propertyName, item.GetType()));
+            }
+
+            return propertyInfo.GetValue(item, null);
         }
     }
 }
