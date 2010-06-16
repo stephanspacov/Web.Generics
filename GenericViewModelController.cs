@@ -261,7 +261,23 @@ namespace Web.Generics
                         Object obj = pInfo.GetValue(model, null);
                         if (obj != null)
                         {
-                            selValue = obj.GetType().GetProperty("ID").GetValue(obj, null);
+                            var propertyInfo = obj.GetType().GetProperty("ID");
+
+                            if (propertyInfo == null)
+                            {
+                                if (obj.GetType().IsEnum)
+                                {
+                                    selValue = obj.ToString();
+                                }
+                                else
+                                {
+                                    throw new Exception(String.Format("Não existe a propriedade {0} na entidade {1}", "ID", obj.GetType()));
+                                }
+                            }
+                            else
+                            {
+                                selValue = propertyInfo.GetValue(obj, null);
+                            }
                         }
                     }
 
