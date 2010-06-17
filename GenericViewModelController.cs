@@ -126,7 +126,7 @@ namespace Web.Generics
                 {
                     Comparer = FilterCondition.ComparerType.eq,
                     Property = key,
-                    Value = value;
+                    Value = value
                 });
             }
         }
