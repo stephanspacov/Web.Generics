@@ -125,7 +125,7 @@ namespace Web.Generics
                 viewModel.DefaultGrid.FilterConditions.Add(new FilterCondition
                 {
                     Comparer = FilterCondition.ComparerType.eq,
-                    Property = key,
+                    Property = key + ".ID",
                     Value = value
                 });
             }

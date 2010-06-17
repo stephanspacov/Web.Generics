@@ -14,7 +14,7 @@ namespace Web.Generics.HtmlHelpers
             this.FilterConditions = new List<FilterCondition>();
             this.AllowPaging = true;
             this.AllowSorting = true;
-            this.PageSize = 2;
+            this.PageSize = 10;
             this.PageIndex = 1;
             this.DataSource = new List<T>();
             //this.SortOrder = SortOrder.Ascending;
