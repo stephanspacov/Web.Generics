@@ -106,6 +106,8 @@ namespace Web.Generics
         {
             var grid = viewModel.DefaultGrid;
 
+            CreateDropDownFilters(viewModel);
+
             grid.DataSource = this.genericService.Select(grid);
             grid.TotalItemCount = this.genericService.Count(grid);
 
@@ -113,6 +115,20 @@ namespace Web.Generics
 
             Session.Add(viewModel.GetType().ToString(), viewModel);
             return FormatResult(viewModel);
+        }
+
+        private void CreateDropDownFilters(TViewModel viewModel)
+        {
+            foreach (String key in viewModel.SelectListValues.Keys)
+            {
+                Object value = viewModel.SelectListValues[key];
+                viewModel.DefaultGrid.FilterConditions.Add(new FilterCondition
+                {
+                    Comparer = FilterCondition.ComparerType.eq,
+                    Property = key,
+                    Value = value;
+                });
+            }
         }
 
         [HttpPost]
@@ -125,8 +141,7 @@ namespace Web.Generics
             {
                 FilterCondition condition = new FilterCondition();
                 condition.Property = Properties[i];
-                condition.Comparer = (FilterCondition.ComparerType)Enum.
-                    Parse(typeof(FilterCondition.ComparerType), Comparers[i]);
+                condition.Comparer = (FilterCondition.ComparerType)Enum.Parse(typeof(FilterCondition.ComparerType), Comparers[i]);
                 condition.Value = Values[i];
                 conditions.Add(condition);
             }
