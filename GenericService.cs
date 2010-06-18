@@ -83,5 +83,10 @@ namespace Web.Generics
         {
             return this.genericRepository.SelectByType(relatedEntityType);
         }
+
+        public void Evict(object obj)
+        {
+            this.genericRepository.Evict(obj);
+        }
     }
 }

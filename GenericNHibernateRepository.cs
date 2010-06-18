@@ -64,10 +64,15 @@ namespace Web.Generics
 
         virtual public IList<T> Select()
         {
-            return this.Select(null);
+            return this.Select(null, false);
         }
 
         virtual public IList<T> Select(IWebGrid parameters)
+        {
+            return this.Select(parameters, false);
+        }
+
+        virtual public IList<T> Select(IWebGrid parameters, bool evict)
         {
             ICriteria criteria = session.CreateCriteria<T>();
 
@@ -81,8 +86,14 @@ namespace Web.Generics
                     CreateFilterBySearchQueryForFilterParameters(parameters, ref criteria);
                 }
             }
+            IList<T> result = criteria.List<T>();
 
-            return criteria.List<T>();
+            if (evict)
+            {
+                this.Evict(result);
+            }
+
+            return result;
         }
 
         virtual public Int32 Count(IWebGrid parameters)
@@ -113,7 +124,19 @@ namespace Web.Generics
 
         virtual public T SelectById(Object id)
         {
-           return session.Get<T>(id);
+            return SelectById(id, false);
+        }
+
+        virtual public T SelectById(Object id, bool evict)
+        {
+            T result = session.Get<T>(id);
+
+            if (evict)
+            {
+                this.Evict(result);
+            }
+
+            return result;
         }
 
         private static void CreateAlias(ICriteria criteria, string columnName)
@@ -133,10 +156,7 @@ namespace Web.Generics
 
         private static void CreateFilterBySearchQueryForFilterParameters(IWebGrid parameters, ref ICriteria criteria)
         {
-            //if (parameters.FieldsToSearch.Count == 0)
-            //{
-                var fieldsToSearch = typeof(T).GetProperties().Where(x=>x.PropertyType == typeof(String)).Select(x=>x.Name).ToList<String>();
-            //}
+            var fieldsToSearch = typeof(T).GetProperties().Where(x=>x.PropertyType == typeof(String)).Select(x=>x.Name).ToList<String>();
 
             Disjunction disjunction = Restrictions.Disjunction();
             foreach (String columnName in fieldsToSearch)
@@ -144,6 +164,7 @@ namespace Web.Generics
                 CreateAlias(criteria, columnName);
                 disjunction.Add(Restrictions.Like(columnName, parameters.SearchQuery, MatchMode.Anywhere));
             }
+
             criteria.Add(disjunction);
         }
 
@@ -274,6 +295,11 @@ namespace Web.Generics
                     criteria = criteria.Add(expression);
                 }
             }
+        }
+
+        public void Evict(object obj)
+        {
+            this.session.Evict(obj);
         }
 
         public System.Collections.IList SelectByType(Type relatedEntityType)

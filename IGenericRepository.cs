@@ -14,5 +14,6 @@ namespace Web.Generics
         Int32 Count();
         Int32 Count(IWebGrid filter);
         System.Collections.IList SelectByType(Type relatedEntityType);
+        void Evict(object obj);
     }
 }

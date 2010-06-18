@@ -24,5 +24,10 @@ namespace Web.Generics
         {
             throw new NotImplementedException();
         }
+
+        public void Evict(object obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
