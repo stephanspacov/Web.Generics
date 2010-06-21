@@ -28,15 +28,35 @@ namespace Web.Generics
             }
             else if (!filterContext.HttpContext.User.Identity.IsAuthenticated)
             {
-                // auth failed, redirect to login page
-                if (AccessDeniedUrl != null && AccessDeniedUrl != String.Empty)
-                    filterContext.Result = Redirect();
-                else
-                    filterContext.Result = new HttpUnauthorizedResult();
+                Deny(filterContext);
             }
             else
             {
+                if(!VerifyRoles(filterContext))
+                    Deny(filterContext);
             }
+        }
+
+        private void Deny(AuthorizationContext filterContext)
+        {
+            // auth failed, redirect to login page
+            if (AccessDeniedUrl != null && AccessDeniedUrl != String.Empty)
+                filterContext.Result = Redirect();
+            else
+                filterContext.Result = new HttpUnauthorizedResult();
+        }
+
+        private bool VerifyRoles(AuthorizationContext filterContext)
+        {
+            bool result = true;
+
+            string[] roles = Roles.Trim().Split(new char[] { ',' });
+
+            foreach (string role in roles)
+                if (!filterContext.HttpContext.User.IsInRole(role))
+                    result = false;
+
+            return result;
         }
 
         private ActionResult Redirect()
