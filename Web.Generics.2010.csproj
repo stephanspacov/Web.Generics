@@ -244,6 +244,7 @@
     <Compile Include="CustomTypes\Money.cs" />
     <Compile Include="CustomTypes\PhoneNumber.cs" />
     <Compile Include="CustomTypes\PostalCode.cs" />
+    <Compile Include="SpecializedAuthorizeAttribute.cs" />
     <Compile Include="Validators\CnpjAttribute.cs" />
     <Compile Include="Validators\EmailAttribute.cs" />
     <Compile Include="Validators\PostalCodeAttribute.cs" />
