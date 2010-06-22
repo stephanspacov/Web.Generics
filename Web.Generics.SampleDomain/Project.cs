@@ -5,7 +5,6 @@ using System.Text;
 
 namespace Web.Generics.SampleDomain
 {
-	// Is the aggregation root
 	public class Project
 	{
 		virtual public Int32 ID { get; set; }

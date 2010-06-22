@@ -14,58 +14,70 @@ namespace Web.Generics.Tests
 	[TestClass]
 	public class RepositoryTests
 	{
-        IGenericRepository<Project> projectRepository;
-        IGenericRepository<Task> taskRepository;
+		IGenericRepository<Project> projectRepository;
+		IGenericRepository<Task> taskRepository;
 
 		[TestInitialize]
 		public void Initialize()
 		{
-            NHibernateSessionFactoryConfig.ConfigFilePath = @"..\..\..\Web.Generics.Tests\hibernate.cfg.xml";
-            //projectRepository = new Web.Generics.GenericNHibernateRepository<Project>();
-            taskRepository = new Web.Generics.GenericNHibernateRepository<Task>();
+			NHibernateSessionFactoryConfig.ConfigFilePath = @"..\..\..\Web.Generics.Tests\hibernate.cfg.xml";
+			//projectRepository = new Web.Generics.GenericNHibernateRepository<Projects>();
+			taskRepository = new Web.Generics.GenericNHibernateRepository<Task>();
 		}
 
-        [TestMethod]
-        public void SelectWithTwoTableFilter()
-        {
-            taskRepository.Select(new FilterParameters
-            {
-                FilterConditions = new [] {
+
+		[TestMethod]
+		public void SelectWithOneTableFilter()
+		{
+			taskRepository.Select(new FilterParameters
+			{
+				FilterConditions = new[] {
+                    new FilterCondition { Property="Project.ID", Value=1 }
+                }
+			});
+		}
+
+		[TestMethod]
+		public void SelectWithTwoTableFilter()
+		{
+			taskRepository.Select(new FilterParameters
+			{
+				FilterConditions = new[] {
                     new FilterCondition { Property="Project.Customer.ID", Value=1 }
                 }
-            });
-        }
+			});
+		}
 
 		[TestMethod]
 		public void SelectWithLambdaExpressions()
 		{
-/*			var project = new Project { Name = "Project 1" };
-			repository.Insert(project);
+			/*			var project = new Projects { Name = "Projects 1" };
+						repository.Insert(project);
 
-			var projectsFromDb = repository.Select(p => p.ID == 1);
+						var projectsFromDb = repository.Select(p => p.ID == 1);
 
-			var retrievedOk = (projectsFromDb.Count == 1 && projectsFromDb[0].Name == project.Name);
-			Assert.IsTrue(retrievedOk);*/
+						var retrievedOk = (projectsFromDb.Count == 1 && projectsFromDb[0].Name == project.Name);
+						Assert.IsTrue(retrievedOk);*/
 		}
 
 		[TestMethod]
 		public void InsertProjectWithTasks()
 		{
-/*			var projectWithTasks = new Project
-			{
-				Name = "Project with tasks",
-				Tasks = new [] {
-					new Task { Name = "Task 1" },
-					new Task { Name = "Task 2" }
-				},
-			};
+			/*			var projectWithTasks = new Projects
+						{
+							Name = "Projects with tasks",
+							Tasks = new [] {
+								new Task { Name = "Task 1" },
+								new Task { Name = "Task 2" }
+							},
+						};
 
-			projectWithTasks.Tasks.Select(t => t.Project = projectWithTasks);
+						projectWithTasks.Tasks.Select(t => t.Projects = projectWithTasks);
 
-			repository.Insert(projectWithTasks);
+						repository.Insert(projectWithTasks);
 
-			IList<Project> projects = repository.Select(p => p.ID == projectWithTasks.ID);
-			Assert.IsTrue(projects[0].Tasks.Count == 2);*/
+						IList<Projects> projects = repository.Select(p => p.ID == projectWithTasks.ID);
+						Assert.IsTrue(projects[0].Tasks.Count == 2);*/
 		}
 	}
 }

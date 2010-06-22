@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Web.Generics.SampleDomain
 {
-	// one-to-many relationship with Project
+	// one-to-many relationship with Projects
 	public class Task
 	{
 		virtual public Int32 ID { get; set; }

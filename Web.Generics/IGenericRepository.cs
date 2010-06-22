@@ -11,7 +11,7 @@ namespace Web.Generics
 		Int32 Delete(T obj);
 		IList<T> Select();
 		IList<T> Select(Expression<Func<T, Boolean>> expr);
-		[Obsolete("Usar Select com lambda expressions")]
+		//[Obsolete("Usar Select com lambda expressions")]
         IList<T> Select(IWebGrid filter);
 		T SelectById(Object id);
         Int32 Count();
