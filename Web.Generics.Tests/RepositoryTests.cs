@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+//using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Web.Generics.SampleDomain;
 using System.Collections.Generic;
 using Web.Generics.FluentNHibernate;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Web.Generics.Tests
 {

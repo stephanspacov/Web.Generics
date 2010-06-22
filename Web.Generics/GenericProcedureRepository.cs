@@ -29,5 +29,15 @@ namespace Web.Generics
         {
             throw new NotImplementedException();
         }
-    }
+
+		#region IGenericRepository<T> Members
+
+
+		public IList<T> Select(System.Linq.Expressions.Expression<Func<T, bool>> expr)
+		{
+			throw new NotImplementedException();
+		}
+
+		#endregion
+	}
 }
