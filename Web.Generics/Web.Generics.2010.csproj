@@ -157,7 +157,6 @@
     <Compile Include="FluentNHibernateHelper.cs" />
     <Compile Include="FluentNHibernate\ColumnNullabilityConvention.cs" />
     <Compile Include="FluentNHibernate\EnumConvention.cs" />
-    <Compile Include="FluentNHibernate\IdPropertyAccessor.cs" />
     <Compile Include="FluentNHibernate\StringColumnLengthConvention.cs" />
     <Compile Include="FluentNHibernate\ForeignKeyConstraintNameConvention.cs" />
     <Compile Include="FluentNHibernate\PrimaryKeyNameConvention.cs" />

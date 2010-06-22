@@ -32,7 +32,7 @@ namespace Web.Generics.Infrastructure
                         }
 					}
 				}else {
-                    container.RegisterType<IGenericRepository<T>, GenericEntityFrameworkRepository<T>>();
+                    //container.RegisterType<IGenericRepository<T>, GenericEntityFrameworkRepository<T>>();
 				}
 				container.RegisterType<ILogger, Log4NetLogger>();
 				mapper.DefineMappings(container);
