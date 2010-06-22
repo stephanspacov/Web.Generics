@@ -19,25 +19,26 @@ namespace Web.Generics.FluentNHibernate
             {
                 if (_sessionFactory == null)
                 {
+                    Console.WriteLine("FluentNHibernateHelper.CreateSessionFactory: {0}", NHibernateSessionFactoryConfig.ConfigFilePath);
                     _sessionFactory = CreateSessionFactory();
                 }
                 return _sessionFactory;
             }
         }
 
-        public static String ConfigFilePath { get; set; }
         public static Type RepositoryType { get; set; }
 
         private static ISessionFactory CreateSessionFactory()
         {
             var configuration = new Configuration();
-            if (ConfigFilePath == null)
+            if (NHibernateSessionFactoryConfig.ConfigFilePath == null)
             {
                 configuration.Configure();
             }
             else
             {
-                configuration.Configure(ConfigFilePath);
+                Console.WriteLine("FluentNHibernateHelper.CreateSessionFactory: {0}", NHibernateSessionFactoryConfig.ConfigFilePath);
+                configuration.Configure(NHibernateSessionFactoryConfig.ConfigFilePath);
             }
             configuration.AddAssembly(typeof(T).Assembly);
 

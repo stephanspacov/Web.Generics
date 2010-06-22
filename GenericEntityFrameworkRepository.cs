@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.Objects;
+using System.Linq.Expressions;
 
 namespace Web.Generics
 {
@@ -61,6 +62,11 @@ namespace Web.Generics
             return this.ObjectSet.ToList<T>();
         }
 
+        public IList<T> Select(Expression<Func<T, Boolean>> expression)
+        {
+            return this.ObjectSet.Where(expression).ToList<T>();
+        }
+
         public T SelectById(int id)
         {
             return this.ObjectSet.SingleOrDefault<T>();
@@ -100,6 +106,12 @@ namespace Web.Generics
         }
 
         public System.Collections.IList SelectByType(Type relatedEntityType)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void Evict(object obj)
         {
             throw new NotImplementedException();
         }

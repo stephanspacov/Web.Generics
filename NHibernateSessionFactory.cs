@@ -10,11 +10,11 @@ namespace Web.Generics
     {
         public static Boolean UseFluentNHibernate = true;
         public static String SchemaGenerationDirectory;
+        public static String ConfigFilePath;
     }
 
     public static class NHibernateSessionFactory<T>
     {
-        public static String ConfigFilePath { get; set; }
         public static Type RepositoryType { get; set; }
 
         public static ISession OpenSession()

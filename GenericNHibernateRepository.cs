@@ -21,6 +21,12 @@ namespace Web.Generics
         public GenericNHibernateRepository() {
             NHibernateSessionFactory<T>.RepositoryType = this.GetType();
 
+            if (HttpContext.Current == null)
+            {
+                session = NHibernateSessionFactory<T>.OpenSession();
+                return;
+            }
+
             if (!HttpContext.Current.Items.Contains("NHibernateSession"))
             {
                 session = NHibernateSessionFactory<T>.OpenSession();
@@ -141,15 +147,16 @@ namespace Web.Generics
 
         private static void CreateAlias(ICriteria criteria, string columnName)
         {
-            if (!String.IsNullOrEmpty(columnName))
+            if (String.IsNullOrEmpty(columnName)) return;
+
+            var aliasStack = new Stack<String>(columnName.Split('.'));
+
+            while (aliasStack.Count > 0)
             {
-                if (columnName.Contains("."))
+                string referencedTableName = aliasStack.Pop();
+                if (criteria.GetCriteriaByAlias(referencedTableName) == null)
                 {
-                    string referencedTableName = columnName.Split('.').GetValue(0).ToString();
-                    if (criteria.GetCriteriaByAlias(referencedTableName) == null)
-                    {
-                        criteria.CreateAlias(referencedTableName, referencedTableName);
-                    }
+                    criteria.CreateAlias(referencedTableName, referencedTableName);
                 }
             }
         }

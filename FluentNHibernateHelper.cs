@@ -7,6 +7,7 @@ using NHibernate.Tool.hbm2ddl;
 using System.IO;
 using System;
 using FluentNHibernate.Conventions.Helpers;
+using Web.Generics.FluentNHibernate;
 
 namespace Web.Generics
 {
@@ -25,18 +26,16 @@ namespace Web.Generics
             }
         }
 
-        public static String ConfigFilePath { get; set; }
-
         private static ISessionFactory CreateSessionFactory()
         {
             var configuration = new Configuration();
-            if (ConfigFilePath == null)
+            if (NHibernateSessionFactoryConfig.ConfigFilePath == null)
             {
                 configuration.Configure();
             }
             else
             {
-                configuration.Configure(ConfigFilePath);
+                configuration.Configure(NHibernateSessionFactoryConfig.ConfigFilePath);
             }
             configuration.AddAssembly(typeof(T).Assembly);
 
