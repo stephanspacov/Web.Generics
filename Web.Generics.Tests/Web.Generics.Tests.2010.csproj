@@ -33,29 +33,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime, Version=3.1.0.39271, Culture=neutral, PublicKeyToken=3a9cab8f8d22bfb7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\NHibernate\Antlr3.Runtime.dll</HintPath>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\lib\FluentNHibernate\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Core">
-      <HintPath>..\lib\NHibernate\Castle.Core.dll</HintPath>
+      <HintPath>..\lib\FluentNHibernate\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Castle.DynamicProxy2">
-      <HintPath>..\lib\NHibernate\Castle.DynamicProxy2.dll</HintPath>
+      <HintPath>..\lib\FluentNHibernate\Castle.DynamicProxy2.dll</HintPath>
     </Reference>
-    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\NHibernate\Iesi.Collections.dll</HintPath>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\lib\FluentNHibernate\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\lib\FluentNHibernate\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\lib\FluentNHibernate\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\Arquivos de programas\Microsoft Visual Studio 9.0\Common7\IDE\PublicAssemblies\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate, Version=2.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\NHibernate\NHibernate.dll</HintPath>
+    <Reference Include="NHibernate">
+      <HintPath>..\lib\FluentNHibernate\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate.ByteCode.Castle">
-      <HintPath>..\lib\NHibernate\NHibernate.ByteCode.Castle.dll</HintPath>
+      <HintPath>..\lib\FluentNHibernate\NHibernate.ByteCode.Castle.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
