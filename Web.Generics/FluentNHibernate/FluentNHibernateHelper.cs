@@ -31,6 +31,7 @@ namespace Web.Generics.FluentNHibernate
         private static ISessionFactory CreateSessionFactory()
         {
             var configuration = new Configuration();
+            
             if (NHibernateSessionFactoryConfig.ConfigFilePath == null)
             {
                 configuration.Configure();
@@ -51,7 +52,7 @@ namespace Web.Generics.FluentNHibernate
                             .Conventions.Add(
                                 PrimaryKey.Name.Is(pk=>"ID"),
                                 DefaultCascade.SaveUpdate(),
-                                DefaultLazy.Never(),
+                                DefaultLazy.Always(),
                                 new ColumnNullabilityConvention(),
                                 new ForeignKeyConstraintNameConvention(),
                                 new StringColumnLengthConvention(),
@@ -59,7 +60,6 @@ namespace Web.Generics.FluentNHibernate
                                 ForeignKey.EndsWith("_ID"),
                                 ConventionBuilder.Reference.Always(x=>x.Not.Nullable()),
                                 ConventionBuilder.Reference.Always(x=>x.Cascade.None()),
-                                ConventionBuilder.HasMany.Always(x=>x.LazyLoad()),
                                 ConventionBuilder.HasMany.Always(x=>x.Inverse()),
                                 ConventionBuilder.HasManyToMany.Always(x=>x.Table(x.TableName.Replace("ListTo", "").Substring(0, x.TableName.Length - 10)))
                             );

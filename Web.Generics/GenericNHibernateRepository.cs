@@ -46,6 +46,7 @@ namespace Web.Generics
 				session.Save(obj);
 				transaction.Commit();
 			}
+
 			return 0;
 		}
 
@@ -55,7 +56,8 @@ namespace Web.Generics
 			{
 				session.Update(obj);
 				transaction.Commit();
-			}
+            }
+
 			return 0;
 		}
 
@@ -66,21 +68,17 @@ namespace Web.Generics
 				obj = this.SelectById(obj.GetType().GetProperty("ID").GetValue(obj, null));
 				session.Delete(obj);
 				transaction.Commit();
-			}
+            }
+
 			return 0;
 		}
 
 		virtual public IList<T> Select()
 		{
-			return this.Select(null, false);
+            return this.Select(null as IWebGrid);
 		}
 
 		virtual public IList<T> Select(IWebGrid parameters)
-		{
-			return this.Select(parameters, false);
-		}
-
-		virtual public IList<T> Select(IWebGrid parameters, bool evict)
 		{
 			ICriteria criteria = session.CreateCriteria<T>();
 
@@ -95,11 +93,6 @@ namespace Web.Generics
 				}
 			}
 			IList<T> result = criteria.List<T>();
-
-			if (evict)
-			{
-				this.Evict(result);
-			}
 
 			return result;
 		}
@@ -129,20 +122,10 @@ namespace Web.Generics
 
 			return ((Int32)criteria.List()[0]);
 		}
-
+        
 		virtual public T SelectById(Object id)
 		{
-			return SelectById(id, false);
-		}
-
-		virtual public T SelectById(Object id, bool evict)
-		{
 			T result = session.Get<T>(id);
-
-			if (evict)
-			{
-				this.Evict(result);
-			}
 
 			return result;
 		}
@@ -305,11 +288,6 @@ namespace Web.Generics
 					criteria = criteria.Add(expression);
 				}
 			}
-		}
-
-		public void Evict(object obj)
-		{
-			this.session.Evict(obj);
 		}
 
 		public System.Collections.IList SelectByType(Type relatedEntityType)
