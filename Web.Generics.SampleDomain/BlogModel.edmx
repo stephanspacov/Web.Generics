@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Inspira.Blog.DomainModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="InspiraBlogDomainModelStoreContainer">
+    <EntitySet Name="Posts" EntityType="Inspira.Blog.DomainModel.Store.Posts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Comments" EntityType="Inspira.Blog.DomainModel.Store.Comments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tags" EntityType="Inspira.Blog.DomainModel.Store.Tags" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PostTag" EntityType="Inspira.Blog.DomainModel.Store.PostTag" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="PostComment" Association="Inspira.Blog.DomainModel.Store.PostComment">
+      <End Role="Post" EntitySet="Posts" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostTag_Post" Association="Inspira.Blog.DomainModel.Store.FK_PostTag_Post">
+      <End Role="Post" EntitySet="Posts" />
+      <End Role="PostTag" EntitySet="PostTag" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostTag_Tag" Association="Inspira.Blog.DomainModel.Store.FK_PostTag_Tag">
+      <End Role="Tag" EntitySet="Tags" />
+      <End Role="PostTag" EntitySet="PostTag" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Posts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="IsPublished" Type="bit" Nullable="false" />
+    <Property Name="PublishedAt" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdatedAt" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AuthorName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AuthorEmail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="IsApproved" Type="bit" Nullable="false" />
+    <Property Name="ApprovedAt" Type="datetime" Nullable="false" />
+    <Property Name="AuthorUrl" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Post_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PostTag">
+    <Key>
+      <PropertyRef Name="Posts_ID" />
+      <PropertyRef Name="Tags_ID" />
+    </Key>
+    <Property Name="Posts_ID" Type="int" Nullable="false" />
+    <Property Name="Tags_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="PostComment">
+    <End Role="Post" Type="Inspira.Blog.DomainModel.Store.Posts" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Comment" Type="Inspira.Blog.DomainModel.Store.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="Post_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostTag_Post">
+    <End Role="Post" Type="Inspira.Blog.DomainModel.Store.Posts" Multiplicity="1" />
+    <End Role="PostTag" Type="Inspira.Blog.DomainModel.Store.PostTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PostTag">
+        <PropertyRef Name="Posts_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostTag_Tag">
+    <End Role="PostTag" Type="Inspira.Blog.DomainModel.Store.PostTag" Multiplicity="*" />
+    <End Role="Tag" Type="Inspira.Blog.DomainModel.Store.Tags" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PostTag">
+        <PropertyRef Name="Tags_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Inspira.Blog.DomainModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="BlogModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Posts" EntityType="Inspira.Blog.DomainModel.Post" />
+          <EntitySet Name="Comments" EntityType="Inspira.Blog.DomainModel.Comment" />
+          <AssociationSet Name="PostComment" Association="Inspira.Blog.DomainModel.PostComment">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <EntitySet Name="Tags" EntityType="Inspira.Blog.DomainModel.Tag" />
+          <AssociationSet Name="PostTag" Association="Inspira.Blog.DomainModel.PostTag">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="Tag" EntitySet="Tags" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedAt" Nullable="false" />
+          <Property Type="Boolean" Name="IsPublished" Nullable="false" />
+          <Property Type="DateTime" Name="PublishedAt" Nullable="false" />
+          <Property Type="DateTime" Name="LastUpdatedAt" Nullable="false" />
+          <NavigationProperty Name="Comments" Relationship="Inspira.Blog.DomainModel.PostComment" FromRole="Post" ToRole="Comment" />
+          <NavigationProperty Name="Tags" Relationship="Inspira.Blog.DomainModel.PostTag" FromRole="Post" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <Property Type="String" Name="AuthorName" Nullable="false" />
+          <Property Type="String" Name="AuthorEmail" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedAt" Nullable="false" />
+          <Property Type="Boolean" Name="IsApproved" Nullable="false" />
+          <Property Type="DateTime" Name="ApprovedAt" Nullable="false" />
+          <Property Type="String" Name="AuthorUrl" Nullable="false" />
+          <NavigationProperty Name="Post" Relationship="Inspira.Blog.DomainModel.PostComment" FromRole="Comment" ToRole="Post" />
+        </EntityType>
+        <Association Name="PostComment">
+          <End Type="Inspira.Blog.DomainModel.Post" Role="Post" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Inspira.Blog.DomainModel.Comment" Role="Comment" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Text" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedAt" Nullable="false" />
+          <NavigationProperty Name="Posts" Relationship="Inspira.Blog.DomainModel.PostTag" FromRole="Tag" ToRole="Post" />
+        </EntityType>
+        <Association Name="PostTag">
+          <End Type="Inspira.Blog.DomainModel.Post" Role="Post" Multiplicity="*" />
+          <End Type="Inspira.Blog.DomainModel.Tag" Role="Tag" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="InspiraBlogDomainModelStoreContainer" CdmEntityContainer="BlogModelContainer">
+    <EntitySetMapping Name="Posts">
+      <EntityTypeMapping TypeName="IsTypeOf(Inspira.Blog.DomainModel.Post)">
+        <MappingFragment StoreEntitySet="Posts">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+          <ScalarProperty Name="PublishedAt" ColumnName="PublishedAt" />
+          <ScalarProperty Name="LastUpdatedAt" ColumnName="LastUpdatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="IsTypeOf(Inspira.Blog.DomainModel.Comment)">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+          <ScalarProperty Name="AuthorEmail" ColumnName="AuthorEmail" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="ApprovedAt" ColumnName="ApprovedAt" />
+          <ScalarProperty Name="AuthorUrl" ColumnName="AuthorUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags">
+      <EntityTypeMapping TypeName="IsTypeOf(Inspira.Blog.DomainModel.Tag)">
+        <MappingFragment StoreEntitySet="Tags">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PostComment" TypeName="Inspira.Blog.DomainModel.PostComment" StoreEntitySet="Comments">
+      <EndProperty Name="Post">
+        <ScalarProperty Name="ID" ColumnName="Post_ID" />
+      </EndProperty>
+      <EndProperty Name="Comment">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PostTag" TypeName="Inspira.Blog.DomainModel.PostTag" StoreEntitySet="PostTag">
+      <EndProperty Name="Post">
+        <ScalarProperty Name="ID" ColumnName="Posts_ID" />
+      </EndProperty>
+      <EndProperty Name="Tag">
+        <ScalarProperty Name="ID" ColumnName="Tags_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+  </edmx:Designer>
+</edmx:Edmx>
