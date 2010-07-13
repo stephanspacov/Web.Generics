@@ -38,17 +38,8 @@ namespace Inspira.Blog.WebMvc
             AreaRegistration.RegisterAllAreas();
             RegisterRoutes(RouteTable.Routes);
 
-            ApplicationInitializer.Configure(new InversionOfControlMapper());
-/*            ConfigurationFactory.Configure {
-                InversionOfControlContainer = new UnityInversionOfControlContainer(),
-                RepositoryContext = new NHibernateRepositoryContext(
-            );
-            */
-
-            // NHibernateSessionFactoryConfig.RepositoryType = typeof(WebLogService);
-            // new ConfigurationFactory<WebLog>(InversionOfControlContainer.Unity, new InversionOfControlMapper()).Configure();
-        }
-
-        
+            NHibernateSessionFactoryConfig.RepositoryType = typeof(WebLogService);
+            new ConfigurationFactory<WebLog>(InversionOfControlContainer.Unity, new InversionOfControlMapper()).Configure();
+        }        
     }
 }

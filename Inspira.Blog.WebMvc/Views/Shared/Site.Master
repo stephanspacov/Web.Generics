@@ -20,7 +20,8 @@
             </div> 
             
             <div id="menucontainer">            
-                <ul id="menu">              
+                <ul id="menu">
+                    <li><%: Html.ActionLink("Create your blog", "Register", "Account")%></li>
                     <li><%: Html.ActionLink("Home", "Index", "Home")%></li>
                 </ul>
             
@@ -29,7 +30,6 @@
 
         <div id="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-
             <div id="footer">
             </div>
         </div>
