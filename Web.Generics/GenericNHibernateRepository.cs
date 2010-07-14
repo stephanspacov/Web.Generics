@@ -132,7 +132,7 @@ namespace Web.Generics
 
 		private static void CreateAlias(ICriteria criteria, string columnName)
 		{
-			if (String.IsNullOrEmpty(columnName)) return;
+			if (String.IsNullOrEmpty(columnName) || !columnName.Contains('.')) return;
 
 			var aliasStack = new Stack<String>(columnName.Split('.'));
 
