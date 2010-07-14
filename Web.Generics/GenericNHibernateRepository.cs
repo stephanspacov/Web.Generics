@@ -211,7 +211,11 @@ namespace Web.Generics
 							if (i + 1 < propertyStack.Length)
 							{
 								if (i > 0) criteria = criteria.GetCriteriaByAlias(propertyStack[i - 1]);
-								criteria.CreateAlias(property, property);
+
+                                if (criteria.GetCriteriaByAlias(property) == null)
+                                {
+                                    criteria.CreateAlias(property, property);
+                                }
 							}
 						}
 						catch (NullReferenceException exc)
