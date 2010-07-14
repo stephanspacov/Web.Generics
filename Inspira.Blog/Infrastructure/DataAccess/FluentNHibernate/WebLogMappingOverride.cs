@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Inspira.Blog.DomainModel;
 using FluentNHibernate.Automapping.Alterations;
+using Inspira.Blog.DomainModel;
 using FluentNHibernate.Automapping;
 
 namespace Inspira.Blog.Infrastructure.DataAccess.FluentNHibernate
 {
-    public class UserMappingOverride : IAutoMappingOverride<User>
+    public class WebLogMappingOverride : IAutoMappingOverride<WebLog>
     {
-        public void Override(AutoMapping<User> mapping)
+        public void Override(AutoMapping<WebLog> mapping)
         {
-            mapping.Table("[User]");
-            mapping.HasManyToMany(x => x.Blogs).Table("User_WebLog");
+            mapping.HasManyToMany(x => x.Owners).Table("User_Blog");
         }
     }
 }

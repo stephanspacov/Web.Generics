@@ -12,7 +12,7 @@ namespace Inspira.Blog.Infrastructure.DataAccess.FluentNHibernate
     {
         public void Override(AutoMapping<Post> mapping)
         {
-            mapping.HasManyToMany(p => p.Tags).Table("PostTag");
+            mapping.HasManyToMany(p => p.Tags).Table("Post_Tag");
             mapping.References(p => p.WebLog).Nullable();
         }
     }

@@ -10,6 +10,7 @@ namespace Inspira.Blog.DomainModel
         public WebLog()
         {
             this.Posts = new List<Post>();
+            this.Owners = new List<User>();
         }
 
         virtual public Int32 ID { get; set; }

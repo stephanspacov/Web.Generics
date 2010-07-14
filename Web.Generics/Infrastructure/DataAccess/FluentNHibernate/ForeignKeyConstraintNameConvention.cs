@@ -5,7 +5,7 @@ using System.Text;
 using FluentNHibernate.Conventions.Instances;
 using FluentNHibernate.Conventions;
 
-namespace Web.Generics.FluentNHibernate
+namespace Web.Generics.Infrastructure.DataAccess.FluentNHibernate
 {
     public class ForeignKeyConstraintNameConvention : IHasManyConvention, IHasManyToManyConvention
     {

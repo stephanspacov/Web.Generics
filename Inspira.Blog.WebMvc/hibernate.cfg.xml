@@ -10,6 +10,6 @@
     <property name="adonet.batch_size">500</property>
     <property name="proxyfactory.factory_class">NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle</property>
     <!-- mapping assembly="" / -->
-    <!-- <property name="hbm2ddl.auto">create-drop</property> -->
+    <!--<property name="hbm2ddl.auto">create-drop</property>-->
   </session-factory>
 </hibernate-configuration>

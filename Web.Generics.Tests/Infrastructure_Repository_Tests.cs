@@ -6,6 +6,7 @@ using Web.Generics.ApplicationServices.DataAccess;
 using Web.Generics.Infrastructure.DataAccess.EntityFramework;
 using Web.Generics.Infrastructure.DataAccess.NHibernate;
 using Web.Generics.Tests.Repositories;
+using Web.Generics.Infrastructure.DataAccess.FluentNHibernate;
 
 namespace Web.Generics.Tests
 {
@@ -37,8 +38,7 @@ relacionamento trinario
             NHibernateSessionFactoryConfig.ConfigFilePath = @"..\..\..\Web.Generics.Tests\hibernate.cfg.xml";
             NHibernateSessionFactoryConfig.RepositoryType = typeof(PostRepository);
 
-            var nhibernateSession = FluentNHibernate.FluentNHibernateHelper<Post>.OpenSession();
-            var context = new NHibernateRepositoryContext(nhibernateSession);
+            var nhibernateSession = FluentNHibernateHelper<Post>.OpenSession(); var context = new NHibernateRepositoryContext(nhibernateSession);
 
             //var context = new EntityFrameworkRepositoryContext(new BlogContext());
             webLogRepository = new GenericRepository<WebLog>(context);
@@ -56,9 +56,12 @@ relacionamento trinario
 		public void SelectWithLambdaExpressions()
 		{
             var title = Guid.NewGuid().ToString();
-            var webLog = new WebLog { Owners = new [] {new User { Name = "user " + title }}, Title="weblog " + title, CreatedAt = DateTime.Now };
+            var user = new User { Name = "user " + title };
+            var webLog = new WebLog { Title = "weblog " + title, CreatedAt = DateTime.Now };
             var post = new Post { Title = title, Text = "oi", CreatedAt = DateTime.Now, LastUpdatedAt = DateTime.Now, PublishedAt = DateTime.Now };
 
+            webLog.Owners.Add(user);
+            user.Blogs.Add(webLog);
             webLog.Posts.Add(post);
             post.WebLog = webLog;
 
@@ -160,6 +163,7 @@ relacionamento trinario
             post.WebLog = webLog;
 
             webLogRepository.SaveOrUpdate(webLog);
+            webLogRepository.SaveChanges();
 
             var posts = (from w in webLogRepository.Select()
                          from p in w.Posts

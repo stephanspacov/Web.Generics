@@ -5,7 +5,7 @@ using System.Text;
 using FluentNHibernate.Conventions;
 using FluentNHibernate.Conventions.Instances;
 
-namespace Web.Generics.FluentNHibernate
+namespace Web.Generics.Infrastructure.DataAccess.FluentNHibernate
 {
     public class PrimaryKeyNameConvention : IIdConvention
     {

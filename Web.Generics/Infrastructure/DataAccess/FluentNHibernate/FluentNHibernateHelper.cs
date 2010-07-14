@@ -8,9 +8,10 @@ using System.IO;
 using System;
 using FluentNHibernate.Conventions.Helpers;
 using Web.Generics.Infrastructure.DataAccess.NHibernate;
-using Web.Generics.Infrastructure.DataAccess.FluentNHibernate;
+using FluentNHibernate.MappingModel.Collections;
+using System.Collections.Generic;
 
-namespace Web.Generics.FluentNHibernate
+namespace Web.Generics.Infrastructure.DataAccess.FluentNHibernate
 {
     public class FluentNHibernateHelper<T>
     {
@@ -56,7 +57,6 @@ namespace Web.Generics.FluentNHibernate
                                 DefaultLazy.Always(),
                                 new ColumnNullabilityConvention(),
                                 new ForeignKeyConstraintNameConvention(),
-                                new TableNameConvention(),
                                 new StringColumnLengthConvention(),
                                 new EnumConvention(),
                                 ForeignKey.EndsWith("_ID")//,

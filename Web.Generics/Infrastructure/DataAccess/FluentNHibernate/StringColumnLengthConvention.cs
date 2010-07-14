@@ -7,7 +7,7 @@ using FluentNHibernate.Conventions.Inspections;
 using FluentNHibernate.Conventions.Instances;
 using FluentNHibernate.Conventions.AcceptanceCriteria;
 
-namespace Web.Generics.FluentNHibernate
+namespace Web.Generics.Infrastructure.DataAccess.FluentNHibernate
 {
     public class StringColumnLengthConvention
         : IPropertyConvention, IPropertyConventionAcceptance

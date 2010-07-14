@@ -8,29 +8,34 @@
         <EntityContainer Name="InspiraBlogModelStoreContainer">
           <EntitySet Name="Comment" EntityType="Inspira.BlogModel.Store.Comment" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Post" EntityType="Inspira.BlogModel.Store.Post" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PostTag" EntityType="Inspira.BlogModel.Store.PostTag" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Post_Tag" EntityType="Inspira.BlogModel.Store.Post_Tag" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Tag" EntityType="Inspira.BlogModel.Store.Tag" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="User" EntityType="Inspira.BlogModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User_WebLog" EntityType="Inspira.BlogModel.Store.User_WebLog" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WebLog" EntityType="Inspira.BlogModel.Store.WebLog" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="Comments_Post_FK" Association="Inspira.BlogModel.Store.Comments_Post_FK">
+          <AssociationSet Name="FK_Blogs_User" Association="Inspira.BlogModel.Store.FK_Blogs_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="User_WebLog" EntitySet="User_WebLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_Post" Association="Inspira.BlogModel.Store.FK_Comments_Post">
             <End Role="Post" EntitySet="Post" />
             <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
-          <AssociationSet Name="FK3CE72142E1D88D59" Association="Inspira.BlogModel.Store.FK3CE72142E1D88D59">
-            <End Role="User" EntitySet="User" />
+          <AssociationSet Name="FK_Owners_WebLog" Association="Inspira.BlogModel.Store.FK_Owners_WebLog">
             <End Role="WebLog" EntitySet="WebLog" />
+            <End Role="User_WebLog" EntitySet="User_WebLog" />
           </AssociationSet>
-          <AssociationSet Name="FKF7D255A58259B71" Association="Inspira.BlogModel.Store.FKF7D255A58259B71">
-            <End Role="Post" EntitySet="Post" />
-            <End Role="PostTag" EntitySet="PostTag" />
-          </AssociationSet>
-          <AssociationSet Name="FKF7D255A9F912607" Association="Inspira.BlogModel.Store.FKF7D255A9F912607">
+          <AssociationSet Name="FK_Posts_Tag" Association="Inspira.BlogModel.Store.FK_Posts_Tag">
             <End Role="Tag" EntitySet="Tag" />
-            <End Role="PostTag" EntitySet="PostTag" />
+            <End Role="Post_Tag" EntitySet="Post_Tag" />
           </AssociationSet>
-          <AssociationSet Name="Posts_WebLog_FK" Association="Inspira.BlogModel.Store.Posts_WebLog_FK">
+          <AssociationSet Name="FK_Posts_WebLog" Association="Inspira.BlogModel.Store.FK_Posts_WebLog">
             <End Role="WebLog" EntitySet="WebLog" />
             <End Role="Post" EntitySet="Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tags_Post" Association="Inspira.BlogModel.Store.FK_Tags_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Post_Tag" EntitySet="Post_Tag" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Comment">
@@ -46,7 +51,7 @@
           <Property Name="CreatedAt" Type="datetime" Nullable="false" />
           <Property Name="IsApproved" Type="bit" Nullable="false" />
           <Property Name="ApprovedAt" Type="datetime" Nullable="false" />
-          <Property Name="Post_ID" Type="int" Nullable="false" />
+          <Property Name="Post_ID" Type="int" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
@@ -57,11 +62,11 @@
           <Property Name="Text" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="CreatedAt" Type="datetime" Nullable="false" />
           <Property Name="IsPublished" Type="bit" Nullable="false" />
-          <Property Name="PublishedAt" Type="datetime" Nullable="false" />
+          <Property Name="PublishedAt" Type="datetime" />
           <Property Name="LastUpdatedAt" Type="datetime" Nullable="false" />
           <Property Name="WebLog_ID" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="PostTag">
+        <EntityType Name="Post_Tag">
           <Key>
             <PropertyRef Name="Post_ID" />
             <PropertyRef Name="Tag_ID" />
@@ -84,6 +89,14 @@
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
         </EntityType>
+        <EntityType Name="User_WebLog">
+          <Key>
+            <PropertyRef Name="User_ID" />
+            <PropertyRef Name="WebLog_ID" />
+          </Key>
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="WebLog_ID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="WebLog">
           <Key>
             <PropertyRef Name="ID" />
@@ -91,23 +104,21 @@
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="CreatedAt" Type="datetime" Nullable="false" />
-          <Property Name="Owner_ID" Type="int" />
-          <Property Name="User_ID" Type="int" />
         </EntityType>
-        <Association Name="Blogs_User_FK">
-          <End Role="User" Type="Inspira.BlogModel.Store.User" Multiplicity="0..1" />
-          <End Role="WebLog" Type="Inspira.BlogModel.Store.WebLog" Multiplicity="*" />
+        <Association Name="FK_Blogs_User">
+          <End Role="User" Type="Inspira.BlogModel.Store.User" Multiplicity="1" />
+          <End Role="User_WebLog" Type="Inspira.BlogModel.Store.User_WebLog" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="WebLog">
+            <Dependent Role="User_WebLog">
               <PropertyRef Name="User_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Comments_Post_FK">
-          <End Role="Post" Type="Inspira.BlogModel.Store.Post" Multiplicity="1" />
+        <Association Name="FK_Comments_Post">
+          <End Role="Post" Type="Inspira.BlogModel.Store.Post" Multiplicity="0..1" />
           <End Role="Comment" Type="Inspira.BlogModel.Store.Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Post">
@@ -118,43 +129,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK3CE72142E1D88D59">
-          <End Role="User" Type="Inspira.BlogModel.Store.User" Multiplicity="0..1" />
-          <End Role="WebLog" Type="Inspira.BlogModel.Store.WebLog" Multiplicity="*" />
+        <Association Name="FK_Owners_WebLog">
+          <End Role="WebLog" Type="Inspira.BlogModel.Store.WebLog" Multiplicity="1" />
+          <End Role="User_WebLog" Type="Inspira.BlogModel.Store.User_WebLog" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="WebLog">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="WebLog">
-              <PropertyRef Name="Owner_ID" />
+            <Dependent Role="User_WebLog">
+              <PropertyRef Name="WebLog_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FKF7D255A58259B71">
-          <End Role="Post" Type="Inspira.BlogModel.Store.Post" Multiplicity="1" />
-          <End Role="PostTag" Type="Inspira.BlogModel.Store.PostTag" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Post">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="PostTag">
-              <PropertyRef Name="Post_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FKF7D255A9F912607">
+        <Association Name="FK_Posts_Tag">
           <End Role="Tag" Type="Inspira.BlogModel.Store.Tag" Multiplicity="1" />
-          <End Role="PostTag" Type="Inspira.BlogModel.Store.PostTag" Multiplicity="*" />
+          <End Role="Post_Tag" Type="Inspira.BlogModel.Store.Post_Tag" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Tag">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="PostTag">
+            <Dependent Role="Post_Tag">
               <PropertyRef Name="Tag_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Posts_WebLog_FK">
+        <Association Name="FK_Posts_WebLog">
           <End Role="WebLog" Type="Inspira.BlogModel.Store.WebLog" Multiplicity="1" />
           <End Role="Post" Type="Inspira.BlogModel.Store.Post" Multiplicity="*" />
           <ReferentialConstraint>
@@ -163,6 +162,18 @@
             </Principal>
             <Dependent Role="Post">
               <PropertyRef Name="WebLog_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tags_Post">
+          <End Role="Post" Type="Inspira.BlogModel.Store.Post" Multiplicity="1" />
+          <End Role="Post_Tag" Type="Inspira.BlogModel.Store.Post_Tag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Post_Tag">
+              <PropertyRef Name="Post_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -176,19 +187,19 @@
           <EntitySet Name="Tags" EntityType="Inspira.Blog.DomainModel.Tag" />
           <EntitySet Name="Users" EntityType="Inspira.Blog.DomainModel.User" />
           <EntitySet Name="WebLogs" EntityType="Inspira.Blog.DomainModel.WebLog" />
-          <AssociationSet Name="Comments_Post_FK" Association="Inspira.Blog.DomainModel.Comments_Post_FK">
+          <AssociationSet Name="FK_Comments_Post" Association="Inspira.Blog.DomainModel.FK_Comments_Post">
             <End Role="Post" EntitySet="Posts" />
             <End Role="Comment" EntitySet="Comments" />
           </AssociationSet>
-          <AssociationSet Name="Posts_WebLog_FK" Association="Inspira.Blog.DomainModel.Posts_WebLog_FK">
+          <AssociationSet Name="FK_Posts_WebLog" Association="Inspira.Blog.DomainModel.FK_Posts_WebLog">
             <End Role="WebLog" EntitySet="WebLogs" />
             <End Role="Post" EntitySet="Posts" />
           </AssociationSet>
-          <AssociationSet Name="PostTag" Association="Inspira.Blog.DomainModel.PostTag">
-            <End Role="Post" EntitySet="Posts" />
+          <AssociationSet Name="Post_Tag" Association="Inspira.Blog.DomainModel.Post_Tag">
             <End Role="Tag" EntitySet="Tags" />
+            <End Role="Post" EntitySet="Posts" />
           </AssociationSet>
-          <AssociationSet Name="FK3CE72142E1D88D59" Association="Inspira.Blog.DomainModel.FK3CE72142E1D88D59">
+          <AssociationSet Name="User_WebLog" Association="Inspira.Blog.DomainModel.User_WebLog">
             <End Role="User" EntitySet="Users" />
             <End Role="WebLog" EntitySet="WebLogs" />
           </AssociationSet>
@@ -197,141 +208,153 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="Text" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="AuthorName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="AuthorEmail" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="AuthorUrl" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
-          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
-          <Property Name="ApprovedAt" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="Post" Relationship="Inspira.Blog.DomainModel.Comments_Post_FK" FromRole="Comment" ToRole="Post" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Text" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AuthorName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AuthorEmail" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AuthorUrl" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedAt" Nullable="false" />
+          <Property Type="Boolean" Name="IsApproved" Nullable="false" />
+          <Property Type="DateTime" Name="ApprovedAt" Nullable="false" />
+          <NavigationProperty Name="Post" Relationship="Inspira.Blog.DomainModel.FK_Comments_Post" FromRole="Comment" ToRole="Post" />
         </EntityType>
         <EntityType Name="Post">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="Text" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
-          <Property Name="IsPublished" Type="Boolean" Nullable="false" />
-          <Property Name="PublishedAt" Type="DateTime" Nullable="false" />
-          <Property Name="LastUpdatedAt" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="Comments" Relationship="Inspira.Blog.DomainModel.Comments_Post_FK" FromRole="Post" ToRole="Comment" />
-          <NavigationProperty Name="WebLog" Relationship="Inspira.Blog.DomainModel.Posts_WebLog_FK" FromRole="Post" ToRole="WebLog" />
-          <NavigationProperty Name="Tags" Relationship="Inspira.Blog.DomainModel.PostTag" FromRole="Post" ToRole="Tag" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Text" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedAt" Nullable="false" />
+          <Property Type="Boolean" Name="IsPublished" Nullable="false" />
+          <Property Type="DateTime" Name="PublishedAt" />
+          <Property Type="DateTime" Name="LastUpdatedAt" Nullable="false" />
+          <NavigationProperty Name="Comments" Relationship="Inspira.Blog.DomainModel.FK_Comments_Post" FromRole="Post" ToRole="Comment" />
+          <NavigationProperty Name="WebLog" Relationship="Inspira.Blog.DomainModel.FK_Posts_WebLog" FromRole="Post" ToRole="WebLog" />
+          <NavigationProperty Name="Tags" Relationship="Inspira.Blog.DomainModel.Post_Tag" FromRole="Post" ToRole="Tag" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Text" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="Posts" Relationship="Inspira.Blog.DomainModel.PostTag" FromRole="Tag" ToRole="Post" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Text" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedAt" Nullable="false" />
+          <NavigationProperty Name="Posts" Relationship="Inspira.Blog.DomainModel.Post_Tag" FromRole="Tag" ToRole="Post" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Blogs" Relationship="Inspira.Blog.DomainModel.FK3CE72142E1D88D59" FromRole="User" ToRole="WebLog" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Blogs" Relationship="Inspira.Blog.DomainModel.User_WebLog" FromRole="User" ToRole="WebLog" />
         </EntityType>
         <EntityType Name="WebLog">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="CreatedAt" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="Posts" Relationship="Inspira.Blog.DomainModel.Posts_WebLog_FK" FromRole="WebLog" ToRole="Post" />
-          <NavigationProperty Name="Owner" Relationship="Inspira.Blog.DomainModel.FK3CE72142E1D88D59" FromRole="WebLog" ToRole="User" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedAt" Nullable="false" />
+          <NavigationProperty Name="Posts" Relationship="Inspira.Blog.DomainModel.FK_Posts_WebLog" FromRole="WebLog" ToRole="Post" />
+          <NavigationProperty Name="Owners" Relationship="Inspira.Blog.DomainModel.User_WebLog" FromRole="WebLog" ToRole="User" />
         </EntityType>
-        <Association Name="Comments_Post_FK">
-          <End Role="Post" Type="Inspira.Blog.DomainModel.Post" Multiplicity="1" >
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Comment" Type="Inspira.Blog.DomainModel.Comment" Multiplicity="*" />
+        <Association Name="FK_Comments_Post">
+          <End Type="Inspira.Blog.DomainModel.Post" Role="Post" Multiplicity="0..1" />
+          <End Type="Inspira.Blog.DomainModel.Comment" Role="Comment" Multiplicity="*" />
         </Association>
-        <Association Name="Posts_WebLog_FK">
-          <End Role="WebLog" Type="Inspira.Blog.DomainModel.WebLog" Multiplicity="1" >
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Post" Type="Inspira.Blog.DomainModel.Post" Multiplicity="*" />
+        <Association Name="FK_Posts_WebLog">
+          <End Type="Inspira.Blog.DomainModel.WebLog" Role="WebLog" Multiplicity="1" />
+          <End Type="Inspira.Blog.DomainModel.Post" Role="Post" Multiplicity="*" />
         </Association>
-        <Association Name="PostTag">
-          <End Role="Post" Type="Inspira.Blog.DomainModel.Post" Multiplicity="*" >
-          </End>
-          <End Role="Tag" Type="Inspira.Blog.DomainModel.Tag" Multiplicity="*" >
-          </End>
+        <Association Name="Post_Tag">
+          <End Type="Inspira.Blog.DomainModel.Tag" Role="Tag" Multiplicity="*" />
+          <End Type="Inspira.Blog.DomainModel.Post" Role="Post" Multiplicity="*" />
         </Association>
-        <Association Name="FK3CE72142E1D88D59">
-          <End Type="Inspira.Blog.DomainModel.User" Role="User" Multiplicity="0..1" >
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="Inspira.Blog.DomainModel.WebLog" Role="WebLog" Multiplicity="*" >
-          </End>
+        <Association Name="User_WebLog">
+          <End Type="Inspira.Blog.DomainModel.User" Role="User" Multiplicity="*" />
+          <End Type="Inspira.Blog.DomainModel.WebLog" Role="WebLog" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="InspiraBlogModelStoreContainer" CdmEntityContainer="BlogModelContainer">
-          <EntitySetMapping Name="Comments"><EntityTypeMapping TypeName="Inspira.Blog.DomainModel.Comment"><MappingFragment StoreEntitySet="Comment">
-            <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="Title" ColumnName="Title" />
-            <ScalarProperty Name="Text" ColumnName="Text" />
-            <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
-            <ScalarProperty Name="AuthorEmail" ColumnName="AuthorEmail" />
-            <ScalarProperty Name="AuthorUrl" ColumnName="AuthorUrl" />
-            <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-            <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-            <ScalarProperty Name="ApprovedAt" ColumnName="ApprovedAt" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Posts"><EntityTypeMapping TypeName="Inspira.Blog.DomainModel.Post"><MappingFragment StoreEntitySet="Post">
-            <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="Title" ColumnName="Title" />
-            <ScalarProperty Name="Text" ColumnName="Text" />
-            <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-            <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
-            <ScalarProperty Name="PublishedAt" ColumnName="PublishedAt" />
-            <ScalarProperty Name="LastUpdatedAt" ColumnName="LastUpdatedAt" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Tags"><EntityTypeMapping TypeName="Inspira.Blog.DomainModel.Tag"><MappingFragment StoreEntitySet="Tag">
-            <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="Text" ColumnName="Text" />
-            <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="Users"><EntityTypeMapping TypeName="Inspira.Blog.DomainModel.User"><MappingFragment StoreEntitySet="User">
-            <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="Name" ColumnName="Name" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="WebLogs"><EntityTypeMapping TypeName="Inspira.Blog.DomainModel.WebLog"><MappingFragment StoreEntitySet="WebLog">
-            <ScalarProperty Name="ID" ColumnName="ID" />
-            <ScalarProperty Name="Title" ColumnName="Title" />
-            <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <AssociationSetMapping Name="Comments_Post_FK" TypeName="Inspira.Blog.DomainModel.Comments_Post_FK" StoreEntitySet="Comment">
-            <EndProperty Name="Post">
-              <ScalarProperty Name="ID" ColumnName="Post_ID" />
-            </EndProperty>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="Inspira.Blog.DomainModel.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="ApprovedAt" ColumnName="ApprovedAt" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="AuthorUrl" ColumnName="AuthorUrl" />
+                <ScalarProperty Name="AuthorEmail" ColumnName="AuthorEmail" />
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="Inspira.Blog.DomainModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="LastUpdatedAt" ColumnName="LastUpdatedAt" />
+                <ScalarProperty Name="PublishedAt" ColumnName="PublishedAt" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tags">
+            <EntityTypeMapping TypeName="Inspira.Blog.DomainModel.Tag">
+              <MappingFragment StoreEntitySet="Tag">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Inspira.Blog.DomainModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebLogs">
+            <EntityTypeMapping TypeName="Inspira.Blog.DomainModel.WebLog">
+              <MappingFragment StoreEntitySet="WebLog">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Comments_Post" TypeName="Inspira.Blog.DomainModel.FK_Comments_Post" StoreEntitySet="Comment">
             <EndProperty Name="Comment">
               <ScalarProperty Name="ID" ColumnName="ID" />
             </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="Posts_WebLog_FK" TypeName="Inspira.Blog.DomainModel.Posts_WebLog_FK" StoreEntitySet="Post">
-            <EndProperty Name="WebLog">
-              <ScalarProperty Name="ID" ColumnName="WebLog_ID" />
+            <EndProperty Name="Post">
+              <ScalarProperty Name="ID" ColumnName="Post_ID" />
             </EndProperty>
+            <Condition ColumnName="Post_ID" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Posts_WebLog" TypeName="Inspira.Blog.DomainModel.FK_Posts_WebLog" StoreEntitySet="Post">
             <EndProperty Name="Post">
               <ScalarProperty Name="ID" ColumnName="ID" />
             </EndProperty>
+            <EndProperty Name="WebLog">
+              <ScalarProperty Name="ID" ColumnName="WebLog_ID" />
+            </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="PostTag" TypeName="Inspira.Blog.DomainModel.PostTag" StoreEntitySet="PostTag">
+          <AssociationSetMapping Name="Post_Tag" TypeName="Inspira.Blog.DomainModel.Post_Tag" StoreEntitySet="Post_Tag">
             <EndProperty Name="Post">
               <ScalarProperty Name="ID" ColumnName="Post_ID" />
             </EndProperty>
@@ -339,14 +362,13 @@
               <ScalarProperty Name="ID" ColumnName="Tag_ID" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="FK3CE72142E1D88D59" TypeName="Inspira.Blog.DomainModel.FK3CE72142E1D88D59" StoreEntitySet="WebLog">
+          <AssociationSetMapping Name="User_WebLog" TypeName="Inspira.Blog.DomainModel.User_WebLog" StoreEntitySet="User_WebLog">
             <EndProperty Name="WebLog">
-              <ScalarProperty Name="ID" ColumnName="ID" />
+              <ScalarProperty Name="ID" ColumnName="WebLog_ID" />
             </EndProperty>
             <EndProperty Name="User">
-              <ScalarProperty Name="ID" ColumnName="Owner_ID" />
+              <ScalarProperty Name="ID" ColumnName="User_ID" />
             </EndProperty>
-            <Condition ColumnName="Owner_ID" IsNull="false" />
           </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
@@ -362,7 +384,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
@@ -370,26 +392,27 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="BlogModel">
-        <EntityTypeShape EntityType="Inspira.Blog.DomainModel.Comment" Width="1.5" PointX="7.5" PointY="1.125" Height="2.5783902994791665" IsExpanded="true" />
-        <EntityTypeShape EntityType="Inspira.Blog.DomainModel.Post" Width="1.5" PointX="5.25" PointY="2.25" Height="2.5783902994791661" IsExpanded="true" />
-        <EntityTypeShape EntityType="Inspira.Blog.DomainModel.Tag" Width="1.5" PointX="7.5" PointY="4.375" Height="1.5923063151041674" IsExpanded="true" />
-        <EntityTypeShape EntityType="Inspira.Blog.DomainModel.User" Width="1.5" PointX="0.75" PointY="2.75" Height="1.5923063151041652" IsExpanded="true" />
-        <EntityTypeShape EntityType="Inspira.Blog.DomainModel.WebLog" Width="1.5" PointX="3" PointY="2.625" Height="1.9210009765624996" IsExpanded="true" />
-        <AssociationConnector Association="Inspira.Blog.DomainModel.Comments_Post_FK" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="2.9766951497395833" />
-          <ConnectorPoint PointX="7.5" PointY="2.9766951497395833" />
+        <EntityTypeShape EntityType="Inspira.Blog.DomainModel.Comment" Width="1.5" PointX="7.5" PointY="1" Height="2.5783902994791665" />
+        <EntityTypeShape EntityType="Inspira.Blog.DomainModel.Post" Width="1.5" PointX="5.25" PointY="1" Height="2.5783902994791674" />
+        <EntityTypeShape EntityType="Inspira.Blog.DomainModel.Tag" Width="1.5" PointX="3" PointY="5.5" Height="1.5923063151041674" />
+        <EntityTypeShape EntityType="Inspira.Blog.DomainModel.User" Width="1.5" PointX="0.75" PointY="1.5" Height="1.4279589843749996" />
+        <EntityTypeShape EntityType="Inspira.Blog.DomainModel.WebLog" Width="1.5" PointX="3" PointY="1.375" Height="1.7566536458333317" />
+        <AssociationConnector Association="Inspira.Blog.DomainModel.FK_Comments_Post" >
+          <ConnectorPoint PointX="6.75" PointY="2.2891951497395833" />
+          <ConnectorPoint PointX="7.5" PointY="2.2891951497395833" />
         </AssociationConnector>
-        <AssociationConnector Association="Inspira.Blog.DomainModel.Posts_WebLog_FK" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="3.6676741536458333" />
-          <ConnectorPoint PointX="5.25" PointY="3.6676741536458333" />
+        <AssociationConnector Association="Inspira.Blog.DomainModel.FK_Posts_WebLog" >
+          <ConnectorPoint PointX="4.5" PointY="2.2533268229166659" />
+          <ConnectorPoint PointX="5.25" PointY="2.2533268229166659" />
         </AssociationConnector>
-        <AssociationConnector Association="Inspira.Blog.DomainModel.PostTag" ManuallyRouted="false">
-          <ConnectorPoint PointX="6.75" PointY="4.6016951497395828" />
-          <ConnectorPoint PointX="7.5" PointY="4.6016951497395828" />
+        <AssociationConnector Association="Inspira.Blog.DomainModel.Post_Tag" >
+          <ConnectorPoint PointX="4.5" PointY="6.2961531575520837" />
+          <ConnectorPoint PointX="6" PointY="6.2961531575520837" />
+          <ConnectorPoint PointX="6" PointY="3.5783902994791674" />
         </AssociationConnector>
-        <AssociationConnector Association="Inspira.Blog.DomainModel.FK3CE72142E1D88D59" >
-          <ConnectorPoint PointX="2.25" PointY="4.1299902343750006" />
-          <ConnectorPoint PointX="3" PointY="4.1299902343750006" />
+        <AssociationConnector Association="Inspira.Blog.DomainModel.User_WebLog" >
+          <ConnectorPoint PointX="2.25" PointY="2.2139794921875" />
+          <ConnectorPoint PointX="3" PointY="2.2139794921875" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
