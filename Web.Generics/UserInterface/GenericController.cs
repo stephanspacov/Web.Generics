@@ -16,10 +16,12 @@ using System.Collections;
 //using Web.Generics.UserInterface.JqGrid;
 using Web.Generics.DomainServices;
 using Web.Generics.Infrastructure.Logging;
+using Web.Generics.UserInterface.Compression;
 
 namespace Web.Generics
 {
     [Loggable]
+    [Gzip]
     public class GenericController<TModel, TViewModel> : Controller where TViewModel : GenericViewModel<TModel>
     {
         private GenericService<TModel> genericService;

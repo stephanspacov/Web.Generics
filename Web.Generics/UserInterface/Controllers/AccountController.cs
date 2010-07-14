@@ -7,12 +7,13 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
-using Inspira.Blog.WebMvc.Models;
+using Web.Generics.UserInterface.Models;
+using Web.Generics.UserInterface.Compression;
 
-namespace Inspira.Blog.WebMvc.Controllers
+namespace Web.Generics.UserInterface.Controllers
 {
-
     [HandleError]
+    [Gzip]
     public class AccountController : Controller
     {
 

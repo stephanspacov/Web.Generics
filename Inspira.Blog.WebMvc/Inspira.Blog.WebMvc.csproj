@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\lib\Iesi.Collections\Iesi.Collections.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -65,17 +68,16 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\section\home.css" />
     <Content Include="Global.asax" />
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -87,19 +89,19 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
-    <Content Include="Scripts\jquery-1.4.1.js" />
-    <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\MicrosoftAjax.js" />
-    <Content Include="Scripts\MicrosoftAjax.debug.js" />
-    <Content Include="Scripts\MicrosoftMvcAjax.js" />
-    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
-    <Content Include="Scripts\MicrosoftMvcValidation.js" />
-    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="assets\css\common\Site.css" />
+    <Content Include="assets\js\libs\jquery-1.4.1.js" />
+    <Content Include="assets\js\libs\jquery-1.4.1.min.js" />
+    <Content Include="assets\js\libs\jquery-1.4.1-vsdoc.js" />
+    <Content Include="assets\js\libs\jquery.validate.js" />
+    <Content Include="assets\js\libs\jquery.validate.min.js" />
+    <Content Include="assets\js\libs\jquery.validate-vsdoc.js" />
+    <Content Include="assets\js\libs\MicrosoftAjax.js" />
+    <Content Include="assets\js\libs\MicrosoftAjax.debug.js" />
+    <Content Include="assets\js\libs\MicrosoftMvcAjax.js" />
+    <Content Include="assets\js\libs\MicrosoftMvcAjax.debug.js" />
+    <Content Include="assets\js\libs\MicrosoftMvcValidation.js" />
+    <Content Include="assets\js\libs\MicrosoftMvcValidation.debug.js" />
     <Content Include="Views\Account\ChangePassword.aspx" />
     <Content Include="Views\Account\ChangePasswordSuccess.aspx" />
     <Content Include="Views\Account\LogOn.aspx" />
@@ -112,13 +114,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="assets\img\common\" />
+    <Folder Include="assets\img\section\" />
+    <Folder Include="assets\js\common\" />
+    <Folder Include="assets\js\section\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Inspira.Blog\Inspira.Blog.csproj">
       <Project>{A882E9BB-3675-462F-9A82-C7F6B9787752}</Project>
       <Name>Inspira.Blog</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Web.Generics.SampleDomain\Inspira.Blog.DomainModel.csproj">
+    <ProjectReference Include="..\Inspira.Blog.DomainModel\Inspira.Blog.DomainModel.csproj">
       <Project>{627CA4A4-77E9-4D89-8C43-BF80696752D7}</Project>
       <Name>Inspira.Blog.DomainModel</Name>
     </ProjectReference>

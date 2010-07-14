@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Generics.2010", "Web.Generics\Web.Generics.2010.csproj", "{D0E43897-9D2D-42CD-937D-7DAA55441EF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inspira.Blog.DomainModel", "Web.Generics.SampleDomain\Inspira.Blog.DomainModel.csproj", "{627CA4A4-77E9-4D89-8C43-BF80696752D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inspira.Blog.DomainModel", "Inspira.Blog.DomainModel\Inspira.Blog.DomainModel.csproj", "{627CA4A4-77E9-4D89-8C43-BF80696752D7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Generics.Tests.2010", "Web.Generics.Tests\Web.Generics.Tests.2010.csproj", "{75E352B6-12DC-499B-B11C-285B8FF5E47E}"
 EndProject

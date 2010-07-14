@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace Inspira.Blog.WebMvc.Models
+namespace Web.Generics.UserInterface.Models
 {
 
     #region Models

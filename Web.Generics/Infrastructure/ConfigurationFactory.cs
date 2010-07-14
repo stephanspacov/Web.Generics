@@ -12,6 +12,8 @@ using Web.Generics.Infrastructure.Authentication;
 using NHibernate;
 using Web.Generics.FluentNHibernate;
 using Web.Generics.Infrastructure.DataAccess.EntityFramework;
+using System.Web;
+using System.Web.Routing;
 
 namespace Web.Generics.Infrastructure
 {
@@ -57,6 +59,12 @@ namespace Web.Generics.Infrastructure
 
 			// logging
 			// log4net.Config.XmlConfigurator.Configure();
+
+            Route route = new Route("Util/{action}/{parameters}", new MvcRouteHandler()) {
+	            Defaults = new RouteValueDictionary(new { controller = "Util", parameters = UrlParameter.Optional })
+	        };
+
+            RouteTable.Routes.Insert(0, route);
 		}
 
         public IInversionOfControlContainer GetInversionOfControlContainer()

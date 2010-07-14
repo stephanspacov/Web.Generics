@@ -59,7 +59,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Web.Generics.SampleDomain\Inspira.Blog.DomainModel.csproj">
+    <ProjectReference Include="..\Inspira.Blog.DomainModel\Inspira.Blog.DomainModel.csproj">
       <Project>{627CA4A4-77E9-4D89-8C43-BF80696752D7}</Project>
       <Name>Inspira.Blog.DomainModel</Name>
     </ProjectReference>

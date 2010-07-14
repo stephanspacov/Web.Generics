@@ -7,10 +7,13 @@ using Inspira.Blog.WebMvc.ViewModels;
 using Inspira.Blog.DomainModel;
 using Web.Generics.DomainServices;
 using Inspira.Blog.DomainServices;
+using Web.Generics.Util;
+using Web.Generics.UserInterface.Compression;
 
 namespace Inspira.Blog.WebMvc.Controllers
 {
     [HandleError]
+    [Gzip]
     public class HomeController : Controller
     {
         private readonly WebLogService webLogService;
@@ -27,6 +30,7 @@ namespace Inspira.Blog.WebMvc.Controllers
             viewModel.WebLogs = this.webLogService.Select();
             viewModel.LastWebLogs = this.webLogService.SelectRecent(2);
             viewModel.LastPublishedPosts = this.postService.SelectLastPublishedPosts(5);
+
             return View(viewModel);
         }
     }

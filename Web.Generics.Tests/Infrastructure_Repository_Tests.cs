@@ -37,11 +37,11 @@ relacionamento trinario
 		{
             NHibernateSessionFactoryConfig.ConfigFilePath = @"..\..\..\Web.Generics.Tests\hibernate.cfg.xml";
             NHibernateSessionFactoryConfig.RepositoryType = typeof(PostRepository);
-            var nhibernateSession = FluentNHibernate.FluentNHibernateHelper<Post>.OpenSession();
+            //var nhibernateSession = FluentNHibernate.FluentNHibernateHelper<Post>.OpenSession();
 
-            var context = new NHibernateRepositoryContext(nhibernateSession);
+            //var context = new NHibernateRepositoryContext(nhibernateSession);
 
-            //var context = new EntityFrameworkRepositoryContext(new BlogContext());
+            var context = new EntityFrameworkRepositoryContext(new BlogContext());
             webLogRepository = new GenericRepository<WebLog>(context);
             tagRepository = new TagRepository(context);
             
@@ -160,10 +160,11 @@ relacionamento trinario
 
             webLogRepository.SaveOrUpdate(webLog);
 
-            var posts = (from w in webLogRepository.Select()
+/*            var posts = (from w in webLogRepository.Select()
                          from p in w.Posts
                          where p.Title == title
-                         select p).ToList(); 
+                         select p).ToList(); */
+            var posts = webLogRepository.Select().SelectMany(w => w.Posts).Where(p => p.Title == title).ToList();
 
             Assert.AreEqual(1, posts.Count);
         }
