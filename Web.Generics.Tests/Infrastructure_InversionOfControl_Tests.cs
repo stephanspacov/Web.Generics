@@ -1,18 +1,12 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Data.Objects;
 using Inspira.Blog.DomainModel;
-using Web.Generics.Infrastructure;
-using Web.Generics.Infrastructure.InversionOfControl;
-using Web.Generics.Tests.InversionOfControl;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Web.Generics.ApplicationServices.DataAccess;
 using Web.Generics.ApplicationServices.InversionOfControl;
-using Web.Generics.Tests.Repositories;
-using Web.Generics.Infrastructure.DataAccess;
+using Web.Generics.Infrastructure;
 using Web.Generics.Infrastructure.DataAccess.NHibernate;
-using NHibernate;
-using System.Data.Objects;
+using Web.Generics.Tests.InversionOfControl;
+using Web.Generics.Tests.Repositories;
 
 namespace Web.Generics.Tests
 {

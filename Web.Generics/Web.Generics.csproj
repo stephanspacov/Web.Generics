@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Web.Generics</RootNamespace>
     <AssemblyName>Web.Generics</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <StartupObject>
     </StartupObject>
@@ -33,6 +33,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,170 +55,81 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime, Version=3.1.0.39271, Culture=neutral, PublicKeyToken=3a9cab8f8d22bfb7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\NHibernate\Antlr3.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\NHibernate\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.DynamicProxy2">
-      <HintPath>lib\NHibernate\Castle.DynamicProxy2.dll</HintPath>
-    </Reference>
-    <Reference Include="FluentNHibernate, Version=1.0.0.593, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\FluentNHibernate\FluentNHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="Iesi.Collections">
-      <HintPath>lib\NHibernate\Iesi.Collections.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Log4net\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ObjectBuilder2, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Unity\Microsoft.Practices.ObjectBuilder2.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Unity\Microsoft.Practices.Unity.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Unity\Microsoft.Practices.Unity.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\UnitTest\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.VisualStudio.TeamSystem.Data.UnitTesting, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\UnitTest\Microsoft.VisualStudio.TeamSystem.Data.UnitTesting.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Web.Mvc">
-      <HintPath>..\Inspira.WorkPlace\lib\MvcFutures\Microsoft.Web.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Web.Mvc.Build">
-      <HintPath>..\Inspira.WorkPlace\lib\MvcFutures\Microsoft.Web.Mvc.Build.dll</HintPath>
-    </Reference>
-    <Reference Include="MvcContrib, Version=2.0.34.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\MvcContrib\MvcContrib.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Json.Net\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate, Version=2.1.0.3001, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\NHibernate\NHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.0.3001, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\NHibernate\NHibernate.ByteCode.Castle.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.configuration" />
-    <Reference Include="System.Core">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data" />
-    <Reference Include="System.Data.SQLite, Version=1.0.65.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Sqlite\System.Data.SQLite.DLL</HintPath>
-    </Reference>
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization">
-      <RequiredTargetFramework>3.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Abstractions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Web.Routing">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="DataAnnotations\DataType.cs" />
-    <Compile Include="DataAnnotations\FormDisplay.cs" />
-    <Compile Include="DataAnnotations\LocalizedDisplayNameAttribute.cs" />
-    <Compile Include="FilterCondition.cs" />
-    <Compile Include="FluentNHibernateHelper.cs" />
-    <Compile Include="FluentNHibernate\EnumConvention.cs" />
-    <Compile Include="GenericViewModelController.cs" />
-    <Compile Include="FluentNHibernate\ColumnNullabilityConvention.cs" />
-    <Compile Include="FluentNHibernate\StringColumnLengthConvention.cs" />
-    <Compile Include="FluentNHibernate\ForeignKeyConstraintNameConvention.cs" />
-    <Compile Include="FluentNHibernate\PrimaryKeyNameConvention.cs" />
-    <Compile Include="HtmlHelpers\IWebFilter.cs" />
-    <Compile Include="HtmlHelpers\IWebGrid.cs" />
-    <Compile Include="HtmlHelpers\IWebGrid`1.cs" />
-    <Compile Include="HtmlHelpers\IWebPager.cs" />
-    <Compile Include="HtmlHelpers\IWebSortable.cs" />
-    <Compile Include="HtmlHelpers\jqGridHelper.cs">
+    <Compile Include="ApplicationInitializer.cs" />
+    <Compile Include="ApplicationServices\DataAccess\GenericRepository.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="HtmlHelpers\jqGridTemplate.cs">
+    <Compile Include="ApplicationServices\DataAccess\IRepository.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="HtmlHelpers\SortOrder.cs" />
-    <Compile Include="HtmlHelpers\WebGrid.cs" />
-    <Compile Include="HtmlHelpers\WebProperty.cs" />
-    <Compile Include="IMembershipRepository.cs" />
-    <Compile Include="IMembershipRoleRepository.cs" />
-    <Compile Include="Infrastructure\Logging\ILogger.cs" />
-    <Compile Include="Infrastructure\ConfigurationFactory.cs" />
-    <Compile Include="Infrastructure\GenericControllerFactory.cs" />
-    <Compile Include="ApplicationServices\IInversionOfControlContainer.cs" />
-    <Compile Include="Infrastructure\InversionOfControl\DuplicateTypeException.cs" />
-    <Compile Include="Infrastructure\InversionOfControl\IInversionOfControlMapper.cs" />
-    <Compile Include="Infrastructure\InversionOfControl\InversionOfControlContainer.cs" />
-    <Compile Include="Infrastructure\InversionOfControl\UnboundInterfaceException.cs" />
-    <Compile Include="Infrastructure\InversionOfControl\Unity\UnityInversionOfControlContainer.cs" />
-    <Compile Include="Infrastructure\Logging\Log4NetLogger.cs" />
-    <Compile Include="InspiraSerializer.cs" />
-    <Compile Include="IUnityMappingFactory.cs" />
-    <Compile Include="JsonFilter.cs" />
-    <Compile Include="MembershipProvider.cs" />
-    <Compile Include="ModelAttributes\IdPropertyAttribute.cs" />
-    <Compile Include="ContractResolver.cs" />
-    <Compile Include="FluentNHibernate\FluentNHibernateHelper.cs" />
-    <Compile Include="CustomUnityControllerFactory.cs" />
-    <Compile Include="DataAnnotations\DropDownListAttribute.cs" />
-    <Compile Include="FilterParameters.cs">
+    <Compile Include="ApplicationServices\DataAccess\IRepositoryContext.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GenericController.cs" />
-    <Compile Include="GenericIndexViewModel.cs" />
-    <Compile Include="GenericNHibernateRepository.cs" />
-    <Compile Include="GenericProcedureRepository.cs" />
-    <Compile Include="GenericService.cs" />
-    <Compile Include="GenericViewModelMaster.cs" />
-    <Compile Include="GenericViewModel.cs" />
-    <Compile Include="HtmlHelpers\FileUploadExtensions.cs" />
-    <Compile Include="IGenericRepository.cs" />
-    <Compile Include="jqGrid\jqGridOptions.cs" />
-    <Compile Include="jqGrid\jqGridResult.cs" />
-    <Compile Include="jqGrid\jqGridRow.cs" />
-    <Compile Include="NHibernateHelper.cs" />
-    <Compile Include="NHibernateSessionFactory.cs" />
+    <Compile Include="ApplicationServices\InversionOfControl\DuplicateTypeException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationServices\InversionOfControl\IInversionOfControlContainer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationServices\InversionOfControl\IInversionOfControlMapper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationServices\InversionOfControl\InversionOfControlContainer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ApplicationServices\InversionOfControl\UnboundInterfaceException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DomainModel\CustomTypes\Age.cs" />
+    <Compile Include="DomainModel\CustomTypes\BrazilianPhoneNumber.cs" />
+    <Compile Include="DomainModel\CustomTypes\BrazilianPostalCode.cs" />
+    <Compile Include="DomainModel\CustomTypes\Cnpj.cs" />
+    <Compile Include="DomainModel\CustomTypes\Cpf.cs" />
+    <Compile Include="DomainModel\CustomTypes\EmailAddress.cs" />
+    <Compile Include="DomainModel\CustomTypes\ImageFile.cs" />
+    <Compile Include="DomainModel\CustomTypes\Money.cs" />
+    <Compile Include="DomainModel\CustomTypes\PhoneNumber.cs" />
+    <Compile Include="DomainModel\CustomTypes\PostalCode.cs" />
+    <Compile Include="Infrastructure\DataAccess\EntityFramework\EntityFrameworkRepositoryContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\DataAccess\FluentNHibernate\ColumnNullabilityConvention.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\DataAccess\FluentNHibernate\EnumConvention.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\DataAccess\FluentNHibernate\FluentNHibernateHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\DataAccess\FluentNHibernate\ForeignKeyConstraintNameConvention.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\DataAccess\FluentNHibernate\PrimaryKeyNameConvention.cs" />
+    <Compile Include="Infrastructure\DataAccess\FluentNHibernate\StringColumnLengthConvention.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\DataAccess\FluentNHibernate\TableNameConvention.cs" />
+    <Compile Include="Infrastructure\DataAccess\NHibernate\NHibernateRepositoryContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\DataAccess\NHibernate\NHibernateSessionFactoryConfig.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\Logging\ILogger.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\Logging\Log4NetLogger.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\Singleton.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="PasswordHelper.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DomainServices\GenericService.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -232,25 +144,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="RoleProvider.cs" />
-    <Compile Include="Singleton.cs" />
-    <Compile Include="CustomTypes\Age.cs" />
-    <Compile Include="CustomTypes\BrazilianPhoneNumber.cs" />
-    <Compile Include="CustomTypes\BrazilianPostalCode.cs" />
-    <Compile Include="CustomTypes\Cnpj.cs" />
-    <Compile Include="CustomTypes\Cpf.cs" />
-    <Compile Include="CustomTypes\EmailAddress.cs" />
-    <Compile Include="CustomTypes\ImageFile.cs" />
-    <Compile Include="CustomTypes\Money.cs" />
-    <Compile Include="CustomTypes\PhoneNumber.cs" />
-    <Compile Include="CustomTypes\PostalCode.cs" />
-    <Compile Include="Validators\CnpjAttribute.cs" />
-    <Compile Include="Validators\EmailAttribute.cs" />
-    <Compile Include="Validators\PostalCodeAttribute.cs" />
-    <Compile Include="Validators\CpfAttribute.cs" />
-    <Compile Include="Validators\PhoneNumberAttribute.cs" />
-    <Compile Include="ViewHelper.cs" />
-    <Compile Include="ViewModelMaster.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -270,7 +163,52 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ServiceFilters\" />
+    <Reference Include="Antlr3.Runtime, Version=3.1.0.39271, Culture=neutral, PublicKeyToken=3a9cab8f8d22bfb7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NHibernate\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NHibernate\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NHibernate\Castle.DynamicProxy2.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=1.1.0.685, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NHibernate\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\lib\NHibernate\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Log4Net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Unity\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NHibernate\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NHibernate\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Linq, Version=1.1.0.1001, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NHibernate\NHibernate.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.SQLite, Version=1.0.60.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\SQLite\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.XML" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -283,7 +221,6 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>rem copy "$(TargetDir)Web.Generics.* " "$(TargetDir)..\..\..\Inspira.WorkPlace\lib\Inspira"</PostBuildEvent>
   </PropertyGroup>
 </Project>

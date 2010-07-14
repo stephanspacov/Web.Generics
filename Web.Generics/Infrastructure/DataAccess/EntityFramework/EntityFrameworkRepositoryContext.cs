@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Data.Objects;
+using System.Linq;
+using Web.Generics.ApplicationServices.DataAccess;
 
 namespace Web.Generics.Infrastructure.DataAccess.EntityFramework
 {

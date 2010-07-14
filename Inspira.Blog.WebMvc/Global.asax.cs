@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 using Inspira.Blog.DomainModel;
-using Web.Generics.Infrastructure;
-using Web.Generics.Infrastructure.InversionOfControl;
-using Inspira.Blog.Infrastructure;
-using Inspira.Blog.Infrastructure.InversionOfControl;
 using Inspira.Blog.DomainServices;
+using Inspira.Blog.Infrastructure.InversionOfControl;
+using Web.Generics.ApplicationServices.InversionOfControl;
+using Web.Generics.Infrastructure;
 using Web.Generics.Infrastructure.DataAccess.NHibernate;
-using Web.Generics.Infrastructure.InversionOfControl.Unity;
-using Web.Generics;
-using Web.Generics.Util;
 
 namespace Inspira.Blog.WebMvc
 {

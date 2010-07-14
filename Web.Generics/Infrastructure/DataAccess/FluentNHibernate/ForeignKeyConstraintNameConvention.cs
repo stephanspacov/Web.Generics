@@ -7,13 +7,19 @@ using FluentNHibernate.Conventions;
 
 namespace Web.Generics.FluentNHibernate
 {
-    public class ForeignKeyConstraintNameConvention
-        : IHasManyConvention
+    public class ForeignKeyConstraintNameConvention : IHasManyConvention, IHasManyToManyConvention
     {
         public void Apply(IOneToManyCollectionInstance instance)
         {
             instance.Key.ForeignKey(
-                String.Format("{0}_{1}_FK", instance.Member.Name, instance.EntityType.Name)
+                String.Format("FK_{0}_{1}", instance.Member.Name, instance.EntityType.Name)
+            );
+        }
+
+        public void Apply(IManyToManyCollectionInstance instance)
+        {
+            instance.Key.ForeignKey(
+                String.Format("FK_{0}_{1}", instance.Member.Name, instance.EntityType.Name)
             );
         }
     }

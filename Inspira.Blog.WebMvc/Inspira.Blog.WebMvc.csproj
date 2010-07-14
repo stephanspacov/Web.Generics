@@ -69,12 +69,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MarcioController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Pessoa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
+    <Compile Include="ViewModels\MeloViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\section\home.css" />
@@ -82,6 +85,8 @@
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\Marcio\Melo.aspx" />
+    <Content Include="Views\Marcio\Silva.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -128,9 +133,17 @@
       <Project>{627CA4A4-77E9-4D89-8C43-BF80696752D7}</Project>
       <Name>Inspira.Blog.DomainModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Web.Generics\Web.Generics.2010.csproj">
+    <ProjectReference Include="..\Web.Generics.WebMvc\Web.Generics.WebMvc.csproj">
+      <Project>{F6200C98-8601-49C8-B471-6DECACCD297C}</Project>
+      <Name>Web.Generics.WebMvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Web.Generics.Web\Web.Generics.Web.csproj">
+      <Project>{083470E3-7BDA-4BE4-9DB2-8AD3E56C8647}</Project>
+      <Name>Web.Generics.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Web.Generics\Web.Generics.csproj">
       <Project>{D0E43897-9D2D-42CD-937D-7DAA55441EF4}</Project>
-      <Name>Web.Generics.2010</Name>
+      <Name>Web.Generics</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

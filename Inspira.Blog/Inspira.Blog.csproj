@@ -63,9 +63,9 @@
       <Project>{627CA4A4-77E9-4D89-8C43-BF80696752D7}</Project>
       <Name>Inspira.Blog.DomainModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Web.Generics\Web.Generics.2010.csproj">
+    <ProjectReference Include="..\Web.Generics\Web.Generics.csproj">
       <Project>{D0E43897-9D2D-42CD-937D-7DAA55441EF4}</Project>
-      <Name>Web.Generics.2010</Name>
+      <Name>Web.Generics</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

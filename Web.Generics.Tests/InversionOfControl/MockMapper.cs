@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Web.Generics.Infrastructure.InversionOfControl;
-using Web.Generics.ApplicationServices.InversionOfControl;
+﻿using Web.Generics.ApplicationServices.InversionOfControl;
 
 namespace Web.Generics.Tests.InversionOfControl
 {

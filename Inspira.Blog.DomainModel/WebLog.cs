@@ -16,7 +16,7 @@ namespace Inspira.Blog.DomainModel
         virtual public String Title { get; set; }
         virtual public DateTime CreatedAt { get; set; }
 
-        virtual public User Owner { get; set; }
+        virtual public IList<User> Owners { get; set; }
         virtual public IList<Post> Posts { get; set; }
     }
 }

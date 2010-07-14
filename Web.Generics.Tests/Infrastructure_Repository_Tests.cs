@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Linq;
-//using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
+using Inspira.Blog.DomainModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Web.Generics.Infrastructure.DataAccess;
+using Web.Generics.ApplicationServices.DataAccess;
+using Web.Generics.Infrastructure.DataAccess.EntityFramework;
 using Web.Generics.Infrastructure.DataAccess.NHibernate;
 using Web.Generics.Tests.Repositories;
-using Web.Generics.Infrastructure.DataAccess.EntityFramework;
-using Inspira.Blog.DomainModel;
 
 namespace Web.Generics.Tests
 {
@@ -18,6 +16,7 @@ namespace Web.Generics.Tests
 	public class Infrastructure_Repository_Tests
 	{
         static GenericRepository<WebLog> webLogRepository;
+        static GenericRepository<User> userRepository;
         static TagRepository tagRepository;
 
         /*
@@ -37,25 +36,27 @@ relacionamento trinario
 		{
             NHibernateSessionFactoryConfig.ConfigFilePath = @"..\..\..\Web.Generics.Tests\hibernate.cfg.xml";
             NHibernateSessionFactoryConfig.RepositoryType = typeof(PostRepository);
-            //var nhibernateSession = FluentNHibernate.FluentNHibernateHelper<Post>.OpenSession();
 
-            //var context = new NHibernateRepositoryContext(nhibernateSession);
+            var nhibernateSession = FluentNHibernate.FluentNHibernateHelper<Post>.OpenSession();
+            var context = new NHibernateRepositoryContext(nhibernateSession);
 
-            var context = new EntityFrameworkRepositoryContext(new BlogContext());
+            //var context = new EntityFrameworkRepositoryContext(new BlogContext());
             webLogRepository = new GenericRepository<WebLog>(context);
+            userRepository = new GenericRepository<User>(context);
             tagRepository = new TagRepository(context);
             
             // zero o banco antes de executar cada teste
-            tagRepository.Select().ToList().ForEach(t => tagRepository.Delete(t));
-            webLogRepository.Select().ToList().ForEach(w => webLogRepository.Delete(w));
-            context.SaveChanges();
+            //tagRepository.Select().ToList().ForEach(t => tagRepository.Delete(t));
+            //userRepository.Select().ToList().ForEach(u => userRepository.Delete(u));
+            //webLogRepository.Select().ToList().ForEach(w => webLogRepository.Delete(w));
+            //context.SaveChanges();
 		}
 
     	[TestMethod]
 		public void SelectWithLambdaExpressions()
 		{
             var title = Guid.NewGuid().ToString();
-            var webLog = new WebLog { Owner = new User { Name = "user " + title }, Title="weblog " + title, CreatedAt = DateTime.Now };
+            var webLog = new WebLog { Owners = new [] {new User { Name = "user " + title }}, Title="weblog " + title, CreatedAt = DateTime.Now };
             var post = new Post { Title = title, Text = "oi", CreatedAt = DateTime.Now, LastUpdatedAt = DateTime.Now, PublishedAt = DateTime.Now };
 
             webLog.Posts.Add(post);
@@ -76,7 +77,7 @@ relacionamento trinario
 		{
             var title = Guid.NewGuid().ToString();
 
-            var webLog = new WebLog { Owner = new User { Name = "user " + title }, Title = "weblog " + title, CreatedAt = DateTime.Now };            
+            var webLog = new WebLog { Owners = new[] { new User { Name = "user " + title } }, Title = "weblog " + title, CreatedAt = DateTime.Now };            
             var post = new Post
             {
                 Title = title,
@@ -116,7 +117,7 @@ relacionamento trinario
 
             var tags = tagRepository.Select(t => t.Text.Contains("tag1")).ToList();
 
-            var webLog = new WebLog { Owner = new User { Name = "user " + title }, Title = "weblog " + title, CreatedAt = DateTime.Now };
+            var webLog = new WebLog { Owners = new[] { new User { Name = "user " + title } }, Title = "weblog " + title, CreatedAt = DateTime.Now };
             var post = new Post
             {
                 Title = title,
@@ -146,7 +147,7 @@ relacionamento trinario
         {
             var title = Guid.NewGuid().ToString();
 
-            var webLog = new WebLog { Owner = new User { Name = "user " + title }, Title = "weblog " + title, CreatedAt = DateTime.Now };
+            var webLog = new WebLog { Owners = new[] { new User { Name = "user " + title } }, Title = "weblog " + title, CreatedAt = DateTime.Now };
             var post = new Post
             {
                 Title = title,
@@ -160,11 +161,10 @@ relacionamento trinario
 
             webLogRepository.SaveOrUpdate(webLog);
 
-/*            var posts = (from w in webLogRepository.Select()
+            var posts = (from w in webLogRepository.Select()
                          from p in w.Posts
                          where p.Title == title
-                         select p).ToList(); */
-            var posts = webLogRepository.Select().SelectMany(w => w.Posts).Where(p => p.Title == title).ToList();
+                         select p).ToList();
 
             Assert.AreEqual(1, posts.Count);
         }

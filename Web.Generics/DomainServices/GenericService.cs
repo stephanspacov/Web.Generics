@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using Web.Generics.Infrastructure.Logging;
-using Web.Generics.Infrastructure.DataAccess;
 using System.Linq.Expressions;
+using Web.Generics.ApplicationServices.DataAccess;
 
 namespace Web.Generics.DomainServices
 {

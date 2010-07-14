@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Inspira.Blog.DomainModel;
-using Web.Generics.Infrastructure.DataAccess;
 using System.Web.Mvc;
+using Inspira.Blog.DomainModel;
+using Web.Generics.ApplicationServices.DataAccess;
 
 namespace Inspira.Blog.WebMvc.Controllers
 {

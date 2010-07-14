@@ -1,15 +1,16 @@
-﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BAB0F562-8E33-4355-BC97-FE5F0A092F68}</ProjectGuid>
+    <ProjectGuid>{75E352B6-12DC-499B-B11C-285B8FF5E47E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Web.Generics.Tests</RootNamespace>
     <AssemblyName>Web.Generics.Tests</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,53 +37,96 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\NHibernate\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Castle.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Castle.Core">
       <HintPath>..\lib\NHibernate\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Castle.DynamicProxy2">
       <HintPath>..\lib\NHibernate\Castle.DynamicProxy2.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=1.1.0.685, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\FluentNHibernate\FluentNHibernate.dll</HintPath>
     </Reference>
     <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\NHibernate\Iesi.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="log4net">
+      <HintPath>..\lib\Log4Net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\Arquivos de programas\Microsoft Visual Studio 9.0\Common7\IDE\PublicAssemblies\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate, Version=2.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\NHibernate\NHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="NHibernate.ByteCode.Castle">
       <HintPath>..\lib\NHibernate\NHibernate.ByteCode.Castle.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data.SQLite, Version=1.0.60.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.SQLite">
       <HintPath>..\lib\SQLite\System.Data.SQLite.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Infrastructure_Authentication_Tests.cs" />
+    <Compile Include="Infrastructure_Logging_Tests.cs" />
+    <Compile Include="InversionOfControl\IMathPower.cs" />
+    <Compile Include="Infrastructure_InversionOfControl_Tests.cs" />
+    <Compile Include="InversionOfControl\MathMock.cs" />
+    <Compile Include="InversionOfControl\MockMapper.cs" />
+    <Compile Include="InversionOfControl\PowerOfTwo.cs" />
+    <Compile Include="Logging\MockLogger.cs" />
+    <Compile Include="Repositories\LogTestController.cs" />
+    <Compile Include="UserInterface\PostController.cs" />
+    <Compile Include="UserInterface\PostService.cs" />
+    <Compile Include="UserInterface\PostViewModel.cs" />
+    <Compile Include="Repositories\BlogContext.cs" />
+    <Compile Include="Repositories\IPostRepository.cs" />
+    <Compile Include="Repositories\NHibernate\PostMappingOverride.cs" />
+    <Compile Include="Repositories\PostRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepositoryTests.cs" />
+    <Compile Include="Repositories\UnitOfWork.cs" />
+    <Compile Include="Infrastructure_Repository_Tests.cs" />
+    <Compile Include="Repositories\TagRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="hibernate.cfg.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Web.Generics.SampleDomain\Web.Generics.SampleDomain.csproj">
+    <ProjectReference Include="..\Inspira.Blog.DomainModel\Inspira.Blog.DomainModel.csproj">
       <Project>{627CA4A4-77E9-4D89-8C43-BF80696752D7}</Project>
-      <Name>Web.Generics.SampleDomain</Name>
+      <Name>Inspira.Blog.DomainModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Web.Generics.WebMvc\Web.Generics.WebMvc.csproj">
+      <Project>{F6200C98-8601-49C8-B471-6DECACCD297C}</Project>
+      <Name>Web.Generics.WebMvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Web.Generics.Web\Web.Generics.Web.csproj">
+      <Project>{083470E3-7BDA-4BE4-9DB2-8AD3E56C8647}</Project>
+      <Name>Web.Generics.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\Web.Generics\Web.Generics.csproj">
       <Project>{D0E43897-9D2D-42CD-937D-7DAA55441EF4}</Project>
       <Name>Web.Generics</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="hibernate.cfg.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.Objects;
 using Web.Generics.Infrastructure.DataAccess;
+using Web.Generics.ApplicationServices.DataAccess;
 
 namespace Web.Generics.Tests.Repositories
 {
