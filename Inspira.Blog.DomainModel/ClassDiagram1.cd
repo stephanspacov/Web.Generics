@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Inspira.Blog.DomainModel.Comment">
+    <Position X="1.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAgEAACCAAAAAASABAAAACAAAACAAAAAA=</HashCode>
+      <FileName>Comment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Inspira.Blog.DomainModel.Post">
+    <Position X="3" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAgEAAACAAAAAQAAAAAEAAAAAACBAAIAA=</HashCode>
+      <FileName>Post.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Inspira.Blog.DomainModel.Tag">
+    <Position X="1.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAABCAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Tag.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>
