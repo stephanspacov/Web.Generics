@@ -76,6 +76,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
@@ -119,6 +120,7 @@
     <Content Include="rascunhoshtml\Default.aspx" />
     <Content Include="rascunhoshtml\Login.aspx" />
     <Content Include="rascunhoshtml\Painel.aspx" />
+    <Content Include="Views\Blog\Index.aspx" />
     <Content Include="Views\Shared\Create.aspx" />
     <Content Include="Views\Shared\Delete.aspx" />
     <Content Include="Views\Shared\Details.aspx" />
