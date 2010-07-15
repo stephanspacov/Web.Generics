@@ -6,10 +6,10 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="server">
     <div class="block" id="block-text">
         <div class="content">
-            <h2 class="title">
-                Index</h2>
+            <h2 class="title">Título do blog</h2>
             <div class="inner">
-            <span class="description">João - 00:00hs</span>
+                <h3>Título do Post</h3>
+                <span class="gray">João - 24 Jul 2010 00:00hs</span>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt nibh
                     eu mauris sagittis vitae varius dui laoreet. Proin tempor leo bibendum metus hendrerit

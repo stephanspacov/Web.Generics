@@ -14,9 +14,8 @@ namespace Web.Generics.UserInterface.Controllers
 {
     [HandleError]
     [Gzip]
-    public class AccountController : Controller
+    public partial class AccountController : Controller
     {
-
         public IFormsAuthenticationService FormsService { get; set; }
         public IMembershipService MembershipService { get; set; }
 

@@ -15,5 +15,19 @@ namespace Web.Generics.UserInterface.HtmlHelpers
             items.Select(i => String.Format(format, properties.Select(p => p.Invoke(i)).ToArray())).ToList().ForEach(i => returnValue += "<li>" + i + "</li>");
             return returnValue + "</ul>";
         }
+
+        public static String Grid(this HtmlHelper helper, IEnumerable items)
+        {
+            var returnValue = "<table><tr><td>";
+            returnValue += "Aqui vem o grid";
+            return returnValue + "</td></tr></table>";
+        }
+
+        public static String Grid<T>(this HtmlHelper helper, IEnumerable<T> items)
+        {
+            var returnValue = "<table><tr><td>";
+            returnValue += "Aqui vem o grid";            
+            return returnValue + "</td></tr></table>";
+        }
     }
 }

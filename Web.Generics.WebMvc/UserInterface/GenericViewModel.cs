@@ -5,13 +5,13 @@ using System.Web.Mvc;
 using Web.Generics.HtmlHelpers;
 //using Web.Generics.HtmlHelpers;
 
-namespace Web.Generics
+namespace Web.Generics.UserInterface
 {
     public class GenericViewModel<T>
 	{
         public GenericViewModel()
         {
-			//this.DefaultGrid = new WebGrid<T>();
+			this.DefaultGrid = new WebGrid<T>();
             this.Instance = Activator.CreateInstance<T>();
             this.InstanceList = Activator.CreateInstance<List<T>>();
             this.DeletedItems = new List<Int32>();

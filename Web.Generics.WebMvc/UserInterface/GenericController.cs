@@ -6,7 +6,7 @@ using Web.Generics.DomainServices;
 using Web.Generics.Infrastructure.Logging;
 using Web.Generics.UserInterface.Compression;
 
-namespace Web.Generics
+namespace Web.Generics.UserInterface
 {
     [Loggable]
     [Gzip]
@@ -27,10 +27,10 @@ namespace Web.Generics
                 viewModel = (TViewModel)Session[viewModel.GetType().ToString()];
             }
             var grid = viewModel.DefaultGrid;
-            var expression = grid.GetFilterExpression();
+            //var expression = grid.GetFilterExpression();
 
-            Int32 itemCount;
-            grid.DataSource = this.genericService.Select(expression, out itemCount);
+            Int32 itemCount = 10;
+            grid.DataSource = this.genericService.Select();
             grid.TotalItemCount = itemCount;
 
             PopulateDropDowns(viewModel);

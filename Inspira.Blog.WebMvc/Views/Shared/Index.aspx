@@ -1,5 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
-<%@ Import Namespace="Web.Generics.HtmlHelpers" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Web.Generics.UserInterface.GenericViewModel<Inspira.Blog.DomainModel.WebLog>>" %>
+<%@ Import Namespace="Web.Generics.UserInterface.HtmlHelpers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 	Index
@@ -7,6 +7,6 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <div id='Content'>  
-    <%= Html.jqGridForModel()%>
+    <%= Html.Grid(Model.InstanceList) %>
 </div>      
 </asp:Content>

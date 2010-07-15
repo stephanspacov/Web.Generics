@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Inspira.Blog.DomainModel;
 using System.Web.Mvc;
+using Web.Generics.Web.Mvc;
+using Web.Generics.UserInterface;
 
 namespace Web.Generics.Tests
 {

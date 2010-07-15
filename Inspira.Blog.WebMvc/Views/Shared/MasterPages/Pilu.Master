@@ -5,8 +5,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><asp:ContentPlaceHolder runat="server" ID="TitleContent">TODO_TITLE</asp:ContentPlaceHolder></title>
+    <link rel="Stylesheet" type="text/css" href='<%=ResolveClientUrl("~/Util/Minify/?url=common/base.css|common/themes/olive/style.css")%>' media="screen" />
+    <%--
     <link rel="Stylesheet" type="text/css" href='<%=ResolveClientUrl("~/assets/css/common/base.css")%>' media="screen" />
-    <link rel="Stylesheet" type="text/css" href='<%=ResolveClientUrl("~/assets/css/common/themes/default/style.css")%>' id="current-theme" media="screen" />
+    <link rel="Stylesheet" type="text/css" href='<%=ResolveClientUrl("~/assets/css/common/themes/olive/style.css")%>' id="current-theme" media="screen" />
+     --%>
 </head>
 <body>
   <div id="container">

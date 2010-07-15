@@ -4,12 +4,12 @@ using System.Web.Routing;
 using NHibernate;
 using Web.Generics.ApplicationServices.DataAccess;
 using Web.Generics.ApplicationServices.InversionOfControl;
-using Web.Generics.Infrastructure.Authentication;
 using Web.Generics.Infrastructure.DataAccess.EntityFramework;
 using Web.Generics.Infrastructure.DataAccess.FluentNHibernate;
 using Web.Generics.Infrastructure.DataAccess.NHibernate;
 using Web.Generics.Infrastructure.InversionOfControl.Unity;
 using Web.Generics.Infrastructure.Logging;
+using Web.Generics.Web.Mvc.Infrastructure;
 
 namespace Web.Generics.Infrastructure
 {
@@ -45,7 +45,7 @@ namespace Web.Generics.Infrastructure
 				container.RegisterType<ILogger, Log4NetLogger>();
 				mapper.DefineMappings(container);
 			}
-			this.controllerFactory = new GenericControllerFactory(container);
+			this.controllerFactory = new GenericControllerFactory<T>(container);
 		}
 
 		public void Configure()
@@ -56,6 +56,7 @@ namespace Web.Generics.Infrastructure
 			// logging
 			// log4net.Config.XmlConfigurator.Configure();
 
+            // minify
             Route route = new Route("Util/{action}/{parameters}", new MvcRouteHandler()) {
 	            Defaults = new RouteValueDictionary(new { controller = "Util", parameters = UrlParameter.Optional })
 	        };

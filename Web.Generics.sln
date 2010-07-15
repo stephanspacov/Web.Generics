@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inspira.Blog", "Inspira.Blo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Generics.Web", "Web.Generics.Web\Web.Generics.Web.csproj", "{083470E3-7BDA-4BE4-9DB2-8AD3E56C8647}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Generics.WebMvc", "Web.Generics.WebMvc\Web.Generics.WebMvc.csproj", "{F6200C98-8601-49C8-B471-6DECACCD297C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Generics.Web.Mvc", "Web.Generics.WebMvc\Web.Generics.Web.Mvc.csproj", "{F6200C98-8601-49C8-B471-6DECACCD297C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inspira.Blog.Tests", "Inspira.Blog.Tests\Inspira.Blog.Tests.csproj", "{EC08898C-87A4-463B-813B-FB369A0C10E9}"
 EndProject

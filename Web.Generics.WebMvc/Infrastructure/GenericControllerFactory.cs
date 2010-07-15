@@ -6,10 +6,11 @@ using Microsoft.Practices.Unity;
 using System.Web.Routing;
 using Web.Generics.ApplicationServices;
 using Web.Generics.ApplicationServices.InversionOfControl;
+using Web.Generics.UserInterface;
 
-namespace Web.Generics.Infrastructure.Authentication
+namespace Web.Generics.Web.Mvc.Infrastructure
 {
-	public class GenericControllerFactory : DefaultControllerFactory
+    public class GenericControllerFactory<TModel> : DefaultControllerFactory
 	{
 		private readonly IInversionOfControlContainer container;
 		public GenericControllerFactory(IInversionOfControlContainer container)
@@ -20,18 +21,18 @@ namespace Web.Generics.Infrastructure.Authentication
 		protected override Type GetControllerType(RequestContext requestContext, string controllerName)
 		{
 			Type controllerType = base.GetControllerType(requestContext, controllerName);
-			//if (controllerType == null)
-			//{
+			if (controllerType == null)
+			{
 				// specific controller does not exist... try the generic one
-				//var entityType = typeof(TModel).Assembly.GetType(typeof(TModel).Namespace + "." + controllerName);
-				//if (entityType == null)
-				//{
-					//return null;
-				//}
+				var entityType = typeof(TModel).Assembly.GetType(typeof(TModel).Namespace + "." + controllerName);
+				if (entityType == null)
+				{
+					return null;
+				}
 
-				//var genericViewModelType = typeof(GenericViewModel<>).MakeGenericType(entityType);
-				///controllerType = typeof(GenericController<,>).MakeGenericType(entityType, genericViewModelType);
-			//}
+				var genericViewModelType = typeof(GenericViewModel<>).MakeGenericType(entityType);
+				controllerType = typeof(GenericController<,>).MakeGenericType(entityType, genericViewModelType);
+			}
 			return controllerType;
 		}
 

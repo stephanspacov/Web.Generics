@@ -12,7 +12,7 @@ namespace Web.Generics.HtmlHelpers
     {
         public WebGrid()
         {
-            this.FilterConditions = new List<FilterCondition>();
+            //this.FilterConditions = new List<FilterCondition>();
             this.AllowPaging = true;
             this.AllowSorting = true;
             this.PageSize = 10;
@@ -27,7 +27,7 @@ namespace Web.Generics.HtmlHelpers
             return (IEnumerable)DataSource;
         }
 
-        public IList<FilterCondition> FilterConditions { get; set; }
+        //public IList<FilterCondition> FilterConditions { get; set; }
         public string SearchQuery { get; set; }
 
         public int PageIndex { get; set; }
@@ -120,6 +120,12 @@ namespace Web.Generics.HtmlHelpers
         internal Expression<Func<T, Boolean>> GetFilterExpression()
         {
             return null;
+        }
+
+
+        Expression<Func<T, bool>> IWebGrid<T>.GetFilterExpression()
+        {
+            throw new NotImplementedException();
         }
     }
 }

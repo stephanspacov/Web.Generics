@@ -8,6 +8,8 @@ using Web.Generics.Infrastructure.DataAccess.NHibernate;
 using Web.Generics.Tests.InversionOfControl;
 using Web.Generics.Tests.Repositories;
 using Inspira.Blog.Infrastructure.DataAccess.EntityFramework;
+using Web.Generics.Web.Mvc;
+using Web.Generics.UserInterface;
 
 namespace Web.Generics.Tests
 {
