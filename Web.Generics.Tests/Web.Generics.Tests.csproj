@@ -93,7 +93,6 @@
     <Compile Include="UserInterface\PostController.cs" />
     <Compile Include="UserInterface\PostService.cs" />
     <Compile Include="UserInterface\PostViewModel.cs" />
-    <Compile Include="Repositories\BlogContext.cs" />
     <Compile Include="Repositories\IPostRepository.cs" />
     <Compile Include="Repositories\NHibernate\PostMappingOverride.cs" />
     <Compile Include="Repositories\PostRepository.cs" />
@@ -106,6 +105,10 @@
     <ProjectReference Include="..\Inspira.Blog.DomainModel\Inspira.Blog.DomainModel.csproj">
       <Project>{627CA4A4-77E9-4D89-8C43-BF80696752D7}</Project>
       <Name>Inspira.Blog.DomainModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inspira.Blog\Inspira.Blog.csproj">
+      <Project>{A882E9BB-3675-462F-9A82-C7F6B9787752}</Project>
+      <Name>Inspira.Blog</Name>
     </ProjectReference>
     <ProjectReference Include="..\Web.Generics.WebMvc\Web.Generics.WebMvc.csproj">
       <Project>{F6200C98-8601-49C8-B471-6DECACCD297C}</Project>

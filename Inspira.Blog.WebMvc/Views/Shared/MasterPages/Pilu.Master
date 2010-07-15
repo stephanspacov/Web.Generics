@@ -1,0 +1,44 @@
+﻿<%@ Master Language="C#" Inherits="WebMvc.Views.Shared.MasterPages.Pilu" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title><asp:ContentPlaceHolder runat="server" ID="TitleContent">TODO_TITLE</asp:ContentPlaceHolder></title>
+    <link rel="Stylesheet" type="text/css" href='<%=ResolveClientUrl("~/assets/css/common/base.css")%>' media="screen" />
+    <link rel="Stylesheet" type="text/css" href='<%=ResolveClientUrl("~/assets/css/common/themes/default/style.css")%>' id="current-theme" media="screen" />
+</head>
+<body>
+  <div id="container">
+<asp:ContentPlaceHolder runat="server" ID="HeaderContent">
+    <div id="header">
+        <h1><a href='<%=ResolveClientUrl("~/")%>'>TODO_H1</a></h1>
+        <div id="user-navigation">
+            <ul class="wat-cf">
+          <% if (Page.User.Identity.IsAuthenticated && Membership.GetUser() != null) { %>
+                <li class="first" style="color: #fff">Olá, <%=Page.User.Identity.Name %>. Último acesso em <%=Membership.GetUser().LastLoginDate %> [<a id="A2" runat="server" href="~/Account/Register">Alterar dados</a>]</li>
+                <li><a class="change-password" href='<%=ResolveClientUrl("~/Account/ChangePassword")%>'>Alterar senha</a></li>
+                <li><a class="logout" href='<%=ResolveClientUrl("~/Account/LogOff")%>'>Sair</a></li>
+          <% } else { %>
+                <li><a href='<%=ResolveClientUrl("~/Account/LogOn")%>'>Login</a></li>
+                <li><a href='<%=ResolveClientUrl("~/Account/Register")%>'>Cadastro</a></li>
+          <% } %>
+            </ul>
+        </div>
+        <div id="main-navigation">
+            <% Html.RenderPartial("Header"); %>
+            <% Html.RenderPartial("Menu"); %>
+        </div>
+    </div>
+</asp:ContentPlaceHolder>
+
+    <div id="wrapper" class="wat-cf">
+      <div id="main">
+         <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+      </div>
+    </div>
+
+    <asp:ContentPlaceHolder runat="server" ID="BoxContent" />
+    </div>
+</body>
+</html>

@@ -16,7 +16,7 @@ namespace Inspira.Blog.DomainServices
 
         public IList<Post> SelectLastPublishedPosts(int qty)
         {
-            return this.postRepository.Select(p => p.IsPublished == true).OrderByDescending(p => p.PublishedAt).Take(qty).ToList();
+            return this.postRepository.Query().Where(p => p.IsPublished == true).OrderByDescending(p => p.PublishedAt).Take(qty).ToList();
         }
     }
 }

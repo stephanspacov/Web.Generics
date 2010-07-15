@@ -8,8 +8,7 @@ namespace Web.Generics.ApplicationServices.DataAccess
 {
     public interface IRepository<T>
     {
-        IQueryable<T> Select();
-        IQueryable<T> Select(Expression<Func<T, Boolean>> filter);
+        IQueryable<T> Query();
         void SaveOrUpdate(T obj);
         void Delete(T obj);
         T SelectById(object id);

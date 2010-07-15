@@ -394,8 +394,8 @@
       <Diagram Name="BlogModel">
         <EntityTypeShape EntityType="Inspira.Blog.DomainModel.Comment" Width="1.5" PointX="7.5" PointY="1" Height="2.5783902994791665" />
         <EntityTypeShape EntityType="Inspira.Blog.DomainModel.Post" Width="1.5" PointX="5.25" PointY="1" Height="2.5783902994791674" />
-        <EntityTypeShape EntityType="Inspira.Blog.DomainModel.Tag" Width="1.5" PointX="3" PointY="5.5" Height="1.5923063151041674" />
-        <EntityTypeShape EntityType="Inspira.Blog.DomainModel.User" Width="1.5" PointX="0.75" PointY="1.5" Height="1.4279589843749996" />
+        <EntityTypeShape EntityType="Inspira.Blog.DomainModel.Tag" Width="1.5" PointX="7.5" PointY="4" Height="1.5923063151041674" />
+        <EntityTypeShape EntityType="Inspira.Blog.DomainModel.User" Width="1.5" PointX="0.875" PointY="1.375" Height="1.4279589843749996" />
         <EntityTypeShape EntityType="Inspira.Blog.DomainModel.WebLog" Width="1.5" PointX="3" PointY="1.375" Height="1.7566536458333317" />
         <AssociationConnector Association="Inspira.Blog.DomainModel.FK_Comments_Post" >
           <ConnectorPoint PointX="6.75" PointY="2.2891951497395833" />
@@ -406,13 +406,13 @@
           <ConnectorPoint PointX="5.25" PointY="2.2533268229166659" />
         </AssociationConnector>
         <AssociationConnector Association="Inspira.Blog.DomainModel.Post_Tag" >
-          <ConnectorPoint PointX="4.5" PointY="6.2961531575520837" />
-          <ConnectorPoint PointX="6" PointY="6.2961531575520837" />
+          <ConnectorPoint PointX="7.5" PointY="4.7961531575520837" />
+          <ConnectorPoint PointX="6" PointY="4.7961531575520837" />
           <ConnectorPoint PointX="6" PointY="3.5783902994791674" />
         </AssociationConnector>
         <AssociationConnector Association="Inspira.Blog.DomainModel.User_WebLog" >
-          <ConnectorPoint PointX="2.25" PointY="2.2139794921875" />
-          <ConnectorPoint PointX="3" PointY="2.2139794921875" />
+          <ConnectorPoint PointX="2.375" PointY="2.0889794921875" />
+          <ConnectorPoint PointX="3" PointY="2.0889794921875" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

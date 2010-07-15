@@ -7,6 +7,7 @@ using Web.Generics.Infrastructure.DataAccess.EntityFramework;
 using Web.Generics.Infrastructure.DataAccess.NHibernate;
 using Web.Generics.Tests.Repositories;
 using Web.Generics.Infrastructure.DataAccess.FluentNHibernate;
+using Inspira.Blog.Infrastructure.DataAccess.EntityFramework;
 
 namespace Web.Generics.Tests
 {
@@ -68,7 +69,7 @@ relacionamento trinario
             webLogRepository.SaveOrUpdate(webLog);
             webLogRepository.SaveChanges();
 
-            var posts = (from w in webLogRepository.Select()
+            var posts = (from w in webLogRepository.Query()
                             from p in w.Posts
                             where p.Title == title
                             select p).ToList(); 
@@ -105,7 +106,7 @@ relacionamento trinario
             webLogRepository.SaveOrUpdate(webLog);
             webLogRepository.SaveChanges();
 
-            var posts = (from w in webLogRepository.Select()
+            var posts = (from w in webLogRepository.Query()
                          from p in w.Posts
                          where p.Title == title
                          select p).ToList(); 
@@ -118,7 +119,7 @@ relacionamento trinario
         {
             var title = Guid.NewGuid().ToString();
 
-            var tags = tagRepository.Select(t => t.Text.Contains("tag1")).ToList();
+            var tags = tagRepository.Query().Where(t => t.Text.Contains("tag1")).ToList();
 
             var webLog = new WebLog { Owners = new[] { new User { Name = "user " + title } }, Title = "weblog " + title, CreatedAt = DateTime.Now };
             var post = new Post
@@ -137,7 +138,7 @@ relacionamento trinario
             webLogRepository.SaveOrUpdate(webLog);
             webLogRepository.SaveChanges();
 
-            var posts = (from w in webLogRepository.Select()
+            var posts = (from w in webLogRepository.Query()
                          from p in w.Posts
                          where p.Title == title
                          select p).ToList();
@@ -165,7 +166,7 @@ relacionamento trinario
             webLogRepository.SaveOrUpdate(webLog);
             webLogRepository.SaveChanges();
 
-            var posts = (from w in webLogRepository.Select()
+            var posts = (from w in webLogRepository.Query()
                          from p in w.Posts
                          where p.Title == title
                          select p).ToList();

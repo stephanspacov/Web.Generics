@@ -17,7 +17,7 @@ namespace Inspira.Blog.DomainServices
 
         public IList<WebLog> SelectRecent(int qty)
         {
-            return this.webLogRepository.Select().OrderByDescending(w => w.CreatedAt).Take(qty).ToList();
+            return this.webLogRepository.Query().OrderByDescending(w => w.CreatedAt).Take(qty).ToList();
         }
     }
 }

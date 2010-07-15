@@ -69,7 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MarcioController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -78,15 +77,48 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
     <Compile Include="ViewModels\MeloViewModel.cs" />
+    <Compile Include="Views\Shared\MasterPages\Pilu.Master.cs">
+      <DependentUpon>Pilu.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\common\base.css" />
+    <Content Include="assets\css\common\themes\amro\style.css" />
+    <Content Include="assets\css\common\themes\bec-green\style.css" />
+    <Content Include="assets\css\common\themes\bec\style.css" />
+    <Content Include="assets\css\common\themes\blue\style.css" />
+    <Content Include="assets\css\common\themes\default\style.css" />
+    <Content Include="assets\css\common\themes\djime-cerulean\style.css" />
+    <Content Include="assets\css\common\themes\drastic-dark\style.css" />
+    <Content Include="assets\css\common\themes\kathleene\style.css" />
+    <Content Include="assets\css\common\themes\olive\style.css" />
+    <Content Include="assets\css\common\themes\orange\style.css" />
+    <Content Include="assets\css\common\themes\reidb-greenish\style.css" />
+    <Content Include="assets\css\common\themes\warehouse\style.css" />
     <Content Include="assets\css\section\home.css" />
+    <Content Include="assets\img\common\avatar.png" />
+    <Content Include="assets\img\common\icons\application_edit.png" />
+    <Content Include="assets\img\common\icons\cross.png" />
+    <Content Include="assets\img\common\icons\key.png" />
+    <Content Include="assets\img\common\icons\tick.png" />
     <Content Include="Global.asax" />
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\Marcio\Melo.aspx" />
-    <Content Include="Views\Marcio\Silva.aspx" />
+    <Content Include="rascunhoshtml\Cadastro.aspx" />
+    <Content Include="rascunhoshtml\CriaEditaPost.aspx" />
+    <Content Include="rascunhoshtml\Default.aspx" />
+    <Content Include="rascunhoshtml\Login.aspx" />
+    <Content Include="rascunhoshtml\Painel.aspx" />
+    <Content Include="Views\Shared\Create.aspx" />
+    <Content Include="Views\Shared\Delete.aspx" />
+    <Content Include="Views\Shared\Details.aspx" />
+    <Content Include="Views\Shared\Edit.aspx" />
+    <Content Include="Views\Shared\Header.ascx" />
+    <Content Include="Views\Shared\Index.aspx" />
+    <Content Include="Views\Shared\Menu.ascx" />
+    <Content Include="Views\Shared\Pager.ascx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -94,7 +126,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="assets\css\common\Site.css" />
+    <Content Include="assets\css\common\site.css" />
     <Content Include="assets\js\libs\jquery-1.4.1.js" />
     <Content Include="assets\js\libs\jquery-1.4.1.min.js" />
     <Content Include="assets\js\libs\jquery-1.4.1-vsdoc.js" />
@@ -114,12 +146,11 @@
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Shared\LogOnUserControl.ascx" />
-    <Content Include="Views\Shared\Site.Master" />
+    <Content Include="Views\Shared\MasterPages\Mvc.Master" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="assets\img\common\" />
     <Folder Include="assets\img\section\" />
     <Folder Include="assets\js\common\" />
     <Folder Include="assets\js\section\" />
@@ -145,6 +176,12 @@
       <Project>{D0E43897-9D2D-42CD-937D-7DAA55441EF4}</Project>
       <Name>Web.Generics</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\MasterPages\Pilu.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Site.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

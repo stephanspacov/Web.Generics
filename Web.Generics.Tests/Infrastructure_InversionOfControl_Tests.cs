@@ -7,6 +7,7 @@ using Web.Generics.Infrastructure;
 using Web.Generics.Infrastructure.DataAccess.NHibernate;
 using Web.Generics.Tests.InversionOfControl;
 using Web.Generics.Tests.Repositories;
+using Inspira.Blog.Infrastructure.DataAccess.EntityFramework;
 
 namespace Web.Generics.Tests
 {

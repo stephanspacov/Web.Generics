@@ -7,26 +7,33 @@ namespace Inspira.Blog.WebMvc.Controllers
 {
     public class TestController : Controller
     {
-        private readonly GenericRepository<Post> postRepository;
-        public TestController(GenericRepository<Post> postRepository)
+        private readonly GenericRepository<WebLog> webLogRepository;
+        public TestController(GenericRepository<WebLog> webLogRepository)
         {
-            this.postRepository = postRepository;
+            this.webLogRepository = webLogRepository;
         }
 
+        WebLog[] webLogs = new WebLog[5];
         public ActionResult InsertPosts()
         {
+            var user = new User { ID = 32, Name="oi" };
+            for (Int32 i = 0; i < 5; i++) {
+                webLogs[i] = new WebLog { ID = i + 32, Title = "titulo " + i, CreatedAt=DateTime.Now, Owners = new[] { user } };
+                this.webLogRepository.SaveOrUpdate(webLogs[i]);
+            }
+
             for (Int32 i = 0; i < 100; i++)
             {
-                this.postRepository.SaveOrUpdate(CreateRandomPost(i));
+                CreateRandomPost(i);
             }
-            this.postRepository.SaveChanges();
+            this.webLogRepository.SaveChanges();
             return Content("Posts inseridos");
         }
 
-        private Post CreateRandomPost(Int32 i)
+        private void CreateRandomPost(Int32 i)
         {
             var rnd = new Random(i * (int)DateTime.Now.Ticks);
-            return new Post
+            var post = new Post
             {
                 CreatedAt = DateTime.Now.AddSeconds(-new Random().Next()),
                 IsPublished = rnd.NextDouble() < 0.5,
@@ -34,8 +41,14 @@ namespace Inspira.Blog.WebMvc.Controllers
                 PublishedAt = DateTime.Now.AddMilliseconds(-rnd.Next()),
                 Text = "Texto do post aleatório " + Guid.NewGuid().ToString(),
                 Title = "Post aleatório " + Guid.NewGuid().ToString(),
-                WebLog = new WebLog { ID = rnd.Next(5) + 1 }
+                WebLog = webLogs[rnd.Next(5)]
             };
+            post.WebLog.Posts.Add(post);
+        }
+
+        public ActionResult Cadastro()
+        {
+            return View();
         }
     }
 }

@@ -26,18 +26,18 @@ namespace Web.Generics.DomainServices
 
 		virtual public IList<T> Select()
 		{
-			return this.genericRepository.Select().ToList();
+			return this.genericRepository.Query().ToList();
 		}
 
         virtual public IList<T> Select(Expression<Func<T, Boolean>> expression)
         {
-            return this.genericRepository.Select(expression).ToList();
+            return this.genericRepository.Query().Where(expression).ToList();
         }
 
         virtual public IList<T> Select(Expression<Func<T, Boolean>> expression, out Int32 totalItemCount)
         {
             totalItemCount = 0;
-            return this.genericRepository.Select(expression).ToList();
+            return this.genericRepository.Query().Where(expression).ToList();
         }
 
         internal T SelectById(object id)

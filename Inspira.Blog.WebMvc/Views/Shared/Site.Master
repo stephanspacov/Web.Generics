@@ -1,38 +1,13 @@
-﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" MasterPageFile="MasterPages/Pilu.Master" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
-    <link rel="Stylesheet" type="text/css" href="/Util/Minify/?url=common/site.css|section/home.css" />
-</head>
+<asp:Content ID="Content1"  runat="server" ContentPlaceHolderID="TitleContent">
+    <asp:ContentPlaceHolder runat="server" ID="TitleContent" />
+</asp:Content>
 
-<body>
-    <div class="page">
+<asp:Content ID="Content2" runat="server" ContentPlaceHolderID="MainContent">
+    <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+</asp:Content>
 
-        <div id="header">
-            <div id="title">
-                <h1>Blog da Inspira</h1>
-            </div>
-              
-            <div id="logindisplay">
-                <% Html.RenderPartial("LogOnUserControl"); %>
-            </div> 
-            
-            <div id="menucontainer">            
-                <ul id="menu">
-                    <li><%: Html.ActionLink("Create your blog", "Register", "Account")%></li>
-                    <li><%: Html.ActionLink("Home", "Index", "Home")%></li>
-                </ul>
-            
-            </div>
-        </div>
-
-        <div id="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-            <div id="footer">
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+<asp:Content ID="Content3" runat="server" ContentPlaceHolderID="BoxContent">
+    <asp:ContentPlaceHolder runat="server" ID="BoxContent" />
+</asp:Content>

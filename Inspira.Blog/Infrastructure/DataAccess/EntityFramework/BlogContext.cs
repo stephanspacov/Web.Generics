@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.Objects;
 
-namespace Web.Generics.Tests.Repositories
+namespace Inspira.Blog.Infrastructure.DataAccess.EntityFramework
 {
     public class BlogContext : ObjectContext
     {
