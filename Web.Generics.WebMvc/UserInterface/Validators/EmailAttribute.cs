@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
-namespace Web.Generics.Validators
+namespace Web.Generics.UserInterface.Validators
 {
     public class EmailAttribute : ValidationAttribute
     {

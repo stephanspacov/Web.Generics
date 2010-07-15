@@ -59,6 +59,9 @@
     <Compile Include="UserInterface\Compression\GzipAttribute.cs" />
     <Compile Include="UserInterface\Controllers\AccountController.cs" />
     <Compile Include="UserInterface\Controllers\UtilController.cs" />
+    <Compile Include="UserInterface\DataAnnotations\DataType.cs" />
+    <Compile Include="UserInterface\DataAnnotations\DropDownListAttribute.cs" />
+    <Compile Include="UserInterface\DataAnnotations\InspiraSerializer.cs" />
     <Compile Include="UserInterface\GenericController.cs" />
     <Compile Include="UserInterface\GenericViewModel.cs" />
     <Compile Include="UserInterface\HtmlHelpers\FileUploadExtensions.cs">
@@ -87,6 +90,11 @@
     </Compile>
     <Compile Include="UserInterface\HtmlHelpers\WebGrid.cs" />
     <Compile Include="UserInterface\HtmlHelpers\WebProperty.cs" />
+    <Compile Include="UserInterface\Validators\CnpjAttribute.cs" />
+    <Compile Include="UserInterface\Validators\CpfAttribute.cs" />
+    <Compile Include="UserInterface\Validators\EmailAttribute.cs" />
+    <Compile Include="UserInterface\Validators\PhoneNumberAttribute.cs" />
+    <Compile Include="UserInterface\Validators\PostalCodeAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Web.Generics.Web\Web.Generics.Web.csproj">

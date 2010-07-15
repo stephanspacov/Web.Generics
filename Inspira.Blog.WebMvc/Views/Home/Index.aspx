@@ -4,13 +4,21 @@
     Inspira - Blogs
 </asp:Content>
 
+<asp:Content ContentPlaceHolderID="HeaderContent" runat="server" Visible="false"></asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <div class="block" id="block-text">
     <div class="content">
-        <h2 class="title">Join us!</h2>
+        <h2 class="title">Blog</h2>
         <div class="inner">
+            <h3>Join us</h3>
             <div>
                 <%= Html.ActionLink("Create your blog", "SignUp", "Account")  %>
+            </div>
+
+            <h3>Already has a blog?</h3>
+            <div>
+                <%= Html.ActionLink("Log in", "LogOn", "Account")  %>
             </div>
 
             <div id="all-blogs">

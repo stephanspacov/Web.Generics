@@ -86,6 +86,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Account\SignUpViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
     <Compile Include="ViewModels\MeloViewModel.cs" />
     <Compile Include="Views\Shared\MasterPages\Pilu.Master.cs">
@@ -122,6 +123,7 @@
     <Content Include="rascunhoshtml\Default.aspx" />
     <Content Include="rascunhoshtml\Login.aspx" />
     <Content Include="rascunhoshtml\Painel.aspx" />
+    <Content Include="Views\Account\SignUpConfirm.aspx" />
     <Content Include="Views\Blog\Index.aspx" />
     <Content Include="Views\Shared\Create.aspx" />
     <Content Include="Views\Shared\Delete.aspx" />
@@ -131,7 +133,7 @@
     <Content Include="Views\Shared\Index.aspx" />
     <Content Include="Views\Shared\Menu.ascx" />
     <Content Include="Views\Shared\Pager.ascx" />
-    <Content Include="Views\Test\Cadastro.aspx" />
+    <Content Include="Views\Account\SignUp.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -169,6 +171,7 @@
     <Folder Include="assets\img\section\" />
     <Folder Include="assets\js\common\" />
     <Folder Include="assets\js\section\" />
+    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Inspira.Blog\Inspira.Blog.csproj">
