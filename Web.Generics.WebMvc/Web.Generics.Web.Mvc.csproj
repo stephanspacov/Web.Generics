@@ -63,33 +63,27 @@
     <Compile Include="UserInterface\DataAnnotations\DropDownListAttribute.cs" />
     <Compile Include="UserInterface\DataAnnotations\InspiraSerializer.cs" />
     <Compile Include="UserInterface\GenericController.cs" />
+    <Compile Include="UserInterface\GenericListViewModel.cs" />
     <Compile Include="UserInterface\GenericViewModel.cs" />
     <Compile Include="UserInterface\HtmlHelpers\FileUploadExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UserInterface\HtmlHelpers\IWebFilter.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="UserInterface\HtmlHelpers\IWebGrid.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="UserInterface\HtmlHelpers\IWebGrid`1.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="UserInterface\HtmlHelpers\IWebPager.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="UserInterface\HtmlHelpers\IWebSortable.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="UserInterface\HtmlHelpers\Filter.cs" />
+    <Compile Include="UserInterface\HtmlHelpers\FilterComparerType.cs" />
+    <Compile Include="UserInterface\HtmlHelpers\FilterCondition.cs" />
+    <Compile Include="UserInterface\HtmlHelpers\Grid.cs" />
+    <Compile Include="UserInterface\HtmlHelpers\GridCell.cs" />
+    <Compile Include="UserInterface\HtmlHelpers\GridColumn.cs" />
+    <Compile Include="UserInterface\HtmlHelpers\GridOptions.cs" />
+    <Compile Include="UserInterface\HtmlHelpers\GridRow.cs" />
+    <Compile Include="UserInterface\HtmlHelpers\RowList.cs" />
+    <Compile Include="UserInterface\HtmlHelpers\RowListDataSource.cs" />
     <Compile Include="UserInterface\HtmlHelpers\SortOrder.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="UserInterface\HtmlHelpers\UserInterfaceExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UserInterface\HtmlHelpers\WebGrid.cs" />
-    <Compile Include="UserInterface\HtmlHelpers\WebProperty.cs" />
     <Compile Include="UserInterface\Validators\CnpjAttribute.cs" />
     <Compile Include="UserInterface\Validators\CpfAttribute.cs" />
     <Compile Include="UserInterface\Validators\EmailAttribute.cs" />

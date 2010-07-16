@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* 
+css reset
+http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/  
+*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline}:focus{outline:0}body{line-height:1;color:black;background:white}ol,ul{list-style:none}table{border-collapse:separate;border-spacing:0}caption,th,td{text-align:left;font-weight:normal}blockquote:before,blockquote:after,q:before,q:after{content:""}blockquote,q{quotes:"" ""}
+/* 
+clear fix
+http://www.webtoolkit.info/css-clearfix.html
+*/
+.clearfix:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0}.clearfix{display:inline-block}html[xmlns] .clearfix{display:block}* html .clearfix{height:1%}
+/*
+classes reutilizaveis
+*/
+.imgrpl{display:block;font-size:1px;text-indent:-9000px;}
+.show{display:block;}
+.hide{display:none;}
+.hidden{visibility:hidden;}
+.nb{border:none;background:transparent;}
+.fl{float:left;display:inline;}
+.fr{float:right;display:inline;}
+.fn{float:none !important;}
+.cb{clear: both;}
+.selfix{vertical-align: 0 !important;vertical-align: -2px;}
+.radfix{width:13px !important;height:13px !important;width:15px;height:15px;vertical-align: -2px;border:none;background:none;padding:0;margin:0;}
+.dotted{padding-bottom: 9px; margin-bottom: 9px; border-bottom: 1px dotted #999;}
+.oh{overflow:hidden;}
+.block_line{margin:10px 0 !important;}
+.nomargin{margin:0 0 0 0 !important;}
+.tal{text-align:left !important;}
+.tac{text-align:center !important;}
+.pr{position:relative;}
+.error_message{color:Red;}

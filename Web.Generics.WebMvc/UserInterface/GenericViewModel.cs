@@ -11,7 +11,7 @@ namespace Web.Generics.UserInterface
 	{
         public GenericViewModel()
         {
-			this.DefaultGrid = new WebGrid<T>();
+			//this.DefaultGrid = new WebGrid<T>();
             this.Instance = Activator.CreateInstance<T>();
             this.InstanceList = Activator.CreateInstance<List<T>>();
             this.DeletedItems = new List<Int32>();
@@ -27,7 +27,7 @@ namespace Web.Generics.UserInterface
 
         virtual public IList<Int32> DeletedItems { get; set; }
 
-        public IWebGrid<T> DefaultGrid { get; set; }
+        //public IWebGrid<T> DefaultGrid { get; set; }
 
         public List<PropertyInfo> Properties
         {

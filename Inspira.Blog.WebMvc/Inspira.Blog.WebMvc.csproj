@@ -77,10 +77,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\GridDataBinder.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\WebLogController.cs" />
+    <Compile Include="Areas\Admin\ViewModels\WebLog\ListViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -89,6 +93,7 @@
     <Compile Include="ViewModels\Account\SignUpViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
     <Compile Include="ViewModels\MeloViewModel.cs" />
+    <Compile Include="ViewModels\Post\IndexViewModel.cs" />
     <Compile Include="Views\Shared\MasterPages\Pilu.Master.cs">
       <DependentUpon>Pilu.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -96,7 +101,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Home\Index.aspx" />
+    <Content Include="Areas\Admin\Views\WebLog\Index.aspx" />
     <Content Include="assets\css\common\base.css" />
+    <Content Include="assets\css\common\custom.css" />
+    <Content Include="assets\css\common\extras.css" />
+    <Content Include="assets\css\common\reset.css" />
+    <Content Include="assets\css\common\print.css" />
     <Content Include="assets\css\common\themes\amro\style.css" />
     <Content Include="assets\css\common\themes\bec-green\style.css" />
     <Content Include="assets\css\common\themes\bec\style.css" />
@@ -111,10 +121,41 @@
     <Content Include="assets\css\common\themes\warehouse\style.css" />
     <Content Include="assets\css\section\home.css" />
     <Content Include="assets\img\common\avatar.png" />
+    <Content Include="assets\img\common\icons\add-icon.gif" />
     <Content Include="assets\img\common\icons\application_edit.png" />
+    <Content Include="assets\img\common\icons\calendar.png" />
     <Content Include="assets\img\common\icons\cross.png" />
+    <Content Include="assets\img\common\icons\delete-icon.gif" />
+    <Content Include="assets\img\common\icons\edit-icon.gif" />
+    <Content Include="assets\img\common\icons\icon_tooltip.gif" />
     <Content Include="assets\img\common\icons\key.png" />
+    <Content Include="assets\img\common\icons\login-icon.gif" />
+    <Content Include="assets\img\common\icons\save-icon.gif" />
+    <Content Include="assets\img\common\icons\send-icon.gif" />
     <Content Include="assets\img\common\icons\tick.png" />
+    <Content Include="assets\img\common\icons\upload-icon.gif" />
+    <Content Include="assets\img\common\icons\upload\icon_Generic_big.png" />
+    <Content Include="assets\img\common\icons\upload\icon_Generic_small.png" />
+    <Content Include="assets\img\common\icons\upload\icon_HTM_big.png" />
+    <Content Include="assets\img\common\icons\upload\icon_HTM_small.png" />
+    <Content Include="assets\img\common\icons\upload\icon_JPG_big.png" />
+    <Content Include="assets\img\common\icons\upload\icon_JPG_small.png" />
+    <Content Include="assets\img\common\icons\upload\icon_PDF_big.png" />
+    <Content Include="assets\img\common\icons\upload\icon_PDF_small.png" />
+    <Content Include="assets\img\common\icons\upload\icon_PNG_big.png" />
+    <Content Include="assets\img\common\icons\upload\icon_PNG_small.png" />
+    <Content Include="assets\img\common\icons\upload\icon_PPT_big.png" />
+    <Content Include="assets\img\common\icons\upload\icon_PPT_small.png" />
+    <Content Include="assets\img\common\icons\upload\icon_PSD_big.png" />
+    <Content Include="assets\img\common\icons\upload\icon_PSD_small.png" />
+    <Content Include="assets\img\common\icons\upload\icon_SWF_big.png" />
+    <Content Include="assets\img\common\icons\upload\icon_SWF_small.png" />
+    <Content Include="assets\img\common\icons\upload\icon_TXT_big.png" />
+    <Content Include="assets\img\common\icons\upload\icon_TXT_small.png" />
+    <Content Include="assets\img\common\icons\upload\icon_XLS_big.png" />
+    <Content Include="assets\img\common\icons\upload\icon_XLS_small.png" />
+    <Content Include="assets\img\common\icons\upload\icon_ZIP_big.png" />
+    <Content Include="assets\img\common\icons\upload\icon_ZIP_small.png" />
     <Content Include="Global.asax" />
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -124,7 +165,7 @@
     <Content Include="rascunhoshtml\Login.aspx" />
     <Content Include="rascunhoshtml\Painel.aspx" />
     <Content Include="Views\Account\SignUpConfirm.aspx" />
-    <Content Include="Views\Blog\Index.aspx" />
+    <Content Include="Views\Post\Index.aspx" />
     <Content Include="Views\Shared\Create.aspx" />
     <Content Include="Views\Shared\Delete.aspx" />
     <Content Include="Views\Shared\Details.aspx" />
@@ -165,12 +206,12 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\App_Data\" />
     <Folder Include="assets\img\section\" />
     <Folder Include="assets\js\common\" />
     <Folder Include="assets\js\section\" />
+    <Folder Include="Views\Blog\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
@@ -219,7 +260,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>46511</DevelopmentServerPort>
+          <DevelopmentServerPort>5864</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

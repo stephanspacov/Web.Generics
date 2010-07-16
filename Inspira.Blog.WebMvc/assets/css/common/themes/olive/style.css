@@ -225,6 +225,10 @@ p {
   color: #FFF;
 }
 
+.table th button {
+  color: #FFF;
+}
+
 .table td {
   border-bottom:1px solid #F0F0EE;
 }

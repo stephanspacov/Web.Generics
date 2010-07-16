@@ -11,6 +11,6 @@ namespace Inspira.Blog.WebMvc.ViewModels
         public Boolean VeioDoFuturo { get; set; }
         public String Anos { get; set; }
         public String Nome { get; set; }
-        IList<Post> Posts { get; set; }
+        IList<Inspira.Blog.DomainModel.Post> Posts { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Linq.Expressions;
 
-namespace Web.Generics.HtmlHelpers
+namespace Web.Generics.UserInterface.HtmlHelpers
 {
     public interface IWebSortable
     {

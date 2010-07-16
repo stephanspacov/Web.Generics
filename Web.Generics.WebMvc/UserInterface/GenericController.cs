@@ -26,12 +26,12 @@ namespace Web.Generics.UserInterface
             {
                 viewModel = (TViewModel)Session[viewModel.GetType().ToString()];
             }
-            var grid = viewModel.DefaultGrid;
+            //var grid = viewModel.DefaultGrid;
             //var expression = grid.GetFilterExpression();
 
-            Int32 itemCount = 10;
-            grid.DataSource = this.genericService.Select();
-            grid.TotalItemCount = itemCount;
+            //Int32 itemCount = 10;
+            //grid.DataSource = this.genericService.Select();
+            //grid.TotalItemCount = itemCount;
 
             PopulateDropDowns(viewModel);
 
@@ -41,15 +41,15 @@ namespace Web.Generics.UserInterface
         [AcceptVerbs(HttpVerbs.Post)]
         virtual public ActionResult Index(TViewModel viewModel)
         {
-            var grid = viewModel.DefaultGrid;
+            //var grid = viewModel.DefaultGrid;
 
             //CreateDropDownFilters(viewModel);
 
-            var expression = grid.GetFilterExpression();
+            //var expression = grid.GetFilterExpression();
 
-            Int32 totalItemCount;
-            grid.DataSource = this.genericService.Select(expression, out totalItemCount);
-            grid.TotalItemCount = totalItemCount;
+            //Int32 totalItemCount;
+            //grid.DataSource = this.genericService.Select(expression, out totalItemCount);
+            //grid.TotalItemCount = totalItemCount;
 
             PopulateDropDowns(viewModel);
 

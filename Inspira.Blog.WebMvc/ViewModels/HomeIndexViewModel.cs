@@ -10,6 +10,6 @@ namespace Inspira.Blog.WebMvc.ViewModels
     {
         public IList<WebLog> WebLogs { get; set; }
         public IList<WebLog> LastWebLogs { get; set; }
-        public IList<Post> LastPublishedPosts { get; set; }
+        public IList<Inspira.Blog.DomainModel.Post> LastPublishedPosts { get; set; }
     }
 }

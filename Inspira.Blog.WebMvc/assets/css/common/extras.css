@@ -1,0 +1,103 @@
+.clear { clear: both; height: 0; }
+.centralize{    margin:auto;}
+
+.group {
+  margin-bottom: 5px;
+  width:100%;  /*usado para nao deixar quebrar a linearidade entre label e input*/
+  overflow:hidden;
+}
+
+th.last {
+    width: auto !important;
+}  
+
+input.date{
+    width:70px !important;   /*não pode aumentar essa largura!*/
+}  
+
+/*div.pagination span, div.pagination button
+{
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}*/
+
+table button 
+{
+    background: Transparent;
+    border: none 0 Transparent !important;
+    padding: 0 0 0 0 !important;
+    /* color: #817c55; */
+    font-weight: bold;
+    cursor: pointer !important;
+}
+
+div#footer div.block p
+{
+    height: 15px !important;
+    line-height: 15px !important;
+}
+/*
+div#user-navigation 
+{
+    position: absolute !important;
+    top: 65px !important;
+    width: 150px !important;
+}*/
+
+span.welcome-message 
+{
+    display: block;
+    position: absolute;
+    right: 30px;
+    bottom:15px;
+    font-size:11px;
+    color: #b2ab9b;
+}
+
+div#main 
+{
+    width: 100% !important;
+}
+
+#main .block div.content 
+{
+    padding-top: 10px !important;
+    overflow:hidden;
+}
+
+div.login 
+{
+    width:465px;
+}
+
+td.boolean
+{
+    text-align: center;
+}
+
+td.yes
+{
+    width: 16px;
+    height: 16px;
+	background: url('../RedRails/images/icons/tick.png') no-repeat;
+}
+
+td.no
+{
+	background: url('../RedRails/images/icons/cross.png') no-repeat;
+}
+
+.ui-datepicker-trigger 
+{
+    cursor: pointer;
+    position: relative;
+    top: 3px;
+    width: 16px;
+    height: 16px;
+}
+
+td.grid-buttons 
+{
+	width: 80px;
+}

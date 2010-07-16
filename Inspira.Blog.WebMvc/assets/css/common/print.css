@@ -1,0 +1,49 @@
+﻿/* CSS para telas do Admin */
+body{
+	font-family: serif;  /*A primeira opção será a Times N.R.*/
+	background: none;
+}
+
+p{  font: normal 10pt serif;    color:#757575;  }
+h2{ font: bold 20pt serif;}
+a{  font: underlined 10pt sans-serif;    color:#0004E6;}
+img {border: none;}
+
+
+
+
+
+
+
+
+
+
+
+table    
+{
+    border-collapse:collapse;
+}
+table tr th, table tr td
+{
+    border:2px solid grey;
+    padding:5px 20px;
+}
+table tr th button,
+table tfoot tr td
+{
+    border:none;
+    background:transparent;
+    font-weight:bold;
+}
+
+
+
+
+/*sumir*/
+.noprint,
+button, a.button,
+span.welcome-message,
+table input.select-all, table img,
+#user-navigation, #main-navigation, fieldset{   display:none;   }
+table tr th button{ display:block;}
+
