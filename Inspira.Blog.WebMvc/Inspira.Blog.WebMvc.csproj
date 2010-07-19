@@ -79,6 +79,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\GridDataBinder.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\WebLogController.cs" />
     <Compile Include="Areas\Admin\ViewModels\WebLog\ListViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -101,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Home\Index.aspx" />
+    <Content Include="Areas\Admin\Views\Post\Create.aspx" />
     <Content Include="Areas\Admin\Views\WebLog\Index.aspx" />
     <Content Include="assets\css\common\base.css" />
     <Content Include="assets\css\common\custom.css" />
