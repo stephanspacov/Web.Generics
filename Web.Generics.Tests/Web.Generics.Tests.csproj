@@ -108,6 +108,7 @@
     <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="Infrastructure_Repository_Tests.cs" />
     <Compile Include="Repositories\TagRepository.cs" />
+    <Compile Include="UserInterface_Grids.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Inspira.Blog.DomainModel\Inspira.Blog.DomainModel.csproj">
