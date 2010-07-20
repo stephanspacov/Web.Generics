@@ -35,6 +35,8 @@ namespace Web.Generics.UserInterface.HtmlHelpers
 		{
 			var grid = gridExpression.Compile().Invoke(htmlHelper.ViewData.Model);
 
+			if (grid == null) throw new ArgumentNullException();
+
 			var gridName = gridExpression.Body.ToString();
 			gridName = gridName.Substring(gridName.IndexOf(".") + 1);
 
@@ -86,6 +88,23 @@ namespace Web.Generics.UserInterface.HtmlHelpers
 			if (allowPaging || allowSorting) buffer.Append("</form>");
 
 			return buffer.ToString();
+		}
+
+		public static String FilterForGrid<TViewModel, TGrid>(this HtmlHelper<TViewModel> htmlHelper, Expression<Func<TViewModel, TGrid>> gridExpression, TViewModel viewModel) where TGrid : Grid
+		{
+			var gridName = gridExpression.Body.ToString();
+			gridName = gridName.Substring(gridName.IndexOf(".") + 1);
+
+			var sb = new StringBuilder();
+			sb.Append("<form class='form' method='get' action='#'>");
+			sb.AppendFormat("<div class='group'><label for='{0}.{1}' class='label'>Search</label><input type='text' class='text_field' name='{0}.{1}' id='{0}.{1}' /><span class='description'></span></div>", gridName, "SearchQuery");
+
+			foreach (var property in typeof(TViewModel).GetProperties())
+			{
+				sb.AppendFormat("<div class='group'><label for='{0}.{1}' class='label'>{2}</label><input type='text' class='text_field' name='{0}.{1}' id='{0}.{1}' /><span class='description'></span></div>", gridName, property.Name, property.Name);
+			}
+			sb.Append("</form>");
+			return sb.ToString();
 		}
 	}
 }

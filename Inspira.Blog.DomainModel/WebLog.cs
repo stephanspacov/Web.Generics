@@ -19,5 +19,10 @@ namespace Inspira.Blog.DomainModel
 
         virtual public IList<User> Owners { get; set; }
         virtual public IList<Post> Posts { get; set; }
+
+		public override string ToString()
+		{
+			return this.Title;
+		}
     }
 }

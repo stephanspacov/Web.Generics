@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Web.Mvc;
 using Web.Generics.HtmlHelpers;
+using Web.Generics.UserInterface.HtmlHelpers;
 //using Web.Generics.HtmlHelpers;
 
 namespace Web.Generics.UserInterface
@@ -11,25 +12,28 @@ namespace Web.Generics.UserInterface
 	{
         public GenericViewModel()
         {
-			//this.DefaultGrid = new WebGrid<T>();
+			this.DefaultGrid = new Grid();
             this.Instance = Activator.CreateInstance<T>();
-            this.InstanceList = Activator.CreateInstance<List<T>>();
-            this.DeletedItems = new List<Int32>();
-            this.SelectLists = new Dictionary<String, SelectList>();
-            this.SelectListValues = new Dictionary<String, Object>();
+            //this.InstanceList = Activator.CreateInstance<List<T>>();
+            //this.DeletedItems = new List<Int32>();
+            //this.SelectLists = new Dictionary<String, SelectList>();
+            //this.SelectListValues = new Dictionary<String, Object>();
         }
 
+		public Grid DefaultGrid { get; set; }
 		virtual public T Instance { get; set; }
+
+		/*
 		virtual public IList<T> InstanceList { get; set; }
 
         virtual public IDictionary<String, SelectList> SelectLists { get; private set; }
         virtual public IDictionary<String, Object> SelectListValues { get; private set; }
 
-        virtual public IList<Int32> DeletedItems { get; set; }
+        virtual public IList<Int32> DeletedItems { get; set; }*/
 
         //public IWebGrid<T> DefaultGrid { get; set; }
 
-        public List<PropertyInfo> Properties
+/*        public List<PropertyInfo> Properties
         {
             get
             {
@@ -41,6 +45,6 @@ namespace Web.Generics.UserInterface
                 }
                 return props;
             }
-        }
+        }*/
     }
 }

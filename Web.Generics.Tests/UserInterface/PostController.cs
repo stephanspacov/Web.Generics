@@ -6,12 +6,13 @@ using Inspira.Blog.DomainModel;
 using System.Web.Mvc;
 using Web.Generics.Web.Mvc;
 using Web.Generics.UserInterface;
+using Web.Generics.Tests.Repositories;
 
 namespace Web.Generics.Tests
 {
     public class PostController : GenericController<Post, PostViewModel>
     {
-        public PostController(PostService service) : base(service)
+		public PostController(PostRepository repository) : base(repository)
         {
         }
     }

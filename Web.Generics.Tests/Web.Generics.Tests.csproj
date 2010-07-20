@@ -89,6 +89,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContextFactory.cs" />
     <Compile Include="Infrastructure_Authentication_Tests.cs" />
     <Compile Include="Infrastructure_Logging_Tests.cs" />
     <Compile Include="InversionOfControl\IMathPower.cs" />

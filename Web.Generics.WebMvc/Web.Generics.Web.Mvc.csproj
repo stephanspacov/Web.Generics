@@ -72,6 +72,7 @@
     <Compile Include="UserInterface\HtmlHelpers\FilterComparerType.cs" />
     <Compile Include="UserInterface\HtmlHelpers\FilterCondition.cs" />
     <Compile Include="UserInterface\HtmlHelpers\Grid.cs" />
+    <Compile Include="UserInterface\HtmlHelpers\GridBuilder.cs" />
     <Compile Include="UserInterface\HtmlHelpers\GridCell.cs" />
     <Compile Include="UserInterface\HtmlHelpers\GridColumn.cs" />
     <Compile Include="UserInterface\HtmlHelpers\GridOptions.cs" />

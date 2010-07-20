@@ -95,13 +95,10 @@
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
     <Compile Include="ViewModels\MeloViewModel.cs" />
     <Compile Include="ViewModels\Post\IndexViewModel.cs" />
-    <Compile Include="Views\Shared\MasterPages\Pilu.Master.cs">
-      <DependentUpon>Pilu.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Home\Index.aspx" />
+    <Content Include="Areas\Admin\Views\WebLog\Index_.aspx" />
     <Content Include="Areas\Admin\Views\Post\Create.aspx" />
     <Content Include="Areas\Admin\Views\WebLog\Index.aspx" />
     <Content Include="assets\css\common\base.css" />
@@ -168,12 +165,12 @@
     <Content Include="rascunhoshtml\Painel.aspx" />
     <Content Include="Views\Account\SignUpConfirm.aspx" />
     <Content Include="Views\Post\Index.aspx" />
-    <Content Include="Views\Shared\Create.aspx" />
-    <Content Include="Views\Shared\Delete.aspx" />
-    <Content Include="Views\Shared\Details.aspx" />
-    <Content Include="Views\Shared\Edit.aspx" />
+    <Content Include="Areas\Admin\Views\Shared\Create.aspx" />
+    <Content Include="Areas\Admin\Views\Shared\Delete.aspx" />
+    <Content Include="Areas\Admin\Views\Shared\Details.aspx" />
+    <Content Include="Areas\Admin\Views\Shared\Edit.aspx" />
     <Content Include="Views\Shared\Header.ascx" />
-    <Content Include="Views\Shared\Index.aspx" />
+    <Content Include="Areas\Admin\Views\Shared\Index.aspx" />
     <Content Include="Views\Shared\Menu.ascx" />
     <Content Include="Views\Shared\Pager.ascx" />
     <Content Include="Views\Account\SignUp.aspx" />
@@ -208,7 +205,6 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\App_Data\" />
     <Folder Include="assets\img\section\" />
     <Folder Include="assets\js\common\" />
@@ -262,7 +258,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>5864</DevelopmentServerPort>
+          <DevelopmentServerPort>57745</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

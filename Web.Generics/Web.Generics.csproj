@@ -117,6 +117,7 @@
     <Compile Include="Infrastructure\DataAccess\FluentNHibernate\StringColumnLengthConvention.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Infrastructure\DataAccess\LinqExtensions.cs" />
     <Compile Include="Infrastructure\DataAccess\NHibernate\NHibernateRepositoryContext.cs">
       <SubType>Code</SubType>
     </Compile>

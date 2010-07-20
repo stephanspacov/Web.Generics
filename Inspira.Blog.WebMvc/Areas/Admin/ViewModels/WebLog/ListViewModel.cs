@@ -13,11 +13,9 @@ namespace Inspira.Blog.WebMvc.Areas.Admin.ViewModels.WebLog
 			this.DefaultGrid = new Grid();
 			this.Wrapper = new Wrapper();
 			Wrapper.OutroGrid = new Grid();
-			this.OutroGrid = new Grid();
 		}
 
 		public Grid DefaultGrid { get; set; }
-		public Grid OutroGrid { get; set; }
 		public Wrapper Wrapper { get; set; }
     }
 

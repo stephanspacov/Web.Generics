@@ -3,11 +3,6 @@ using System.Linq;
 using Inspira.Blog.DomainModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Web.Generics.ApplicationServices.DataAccess;
-using Web.Generics.Infrastructure.DataAccess.EntityFramework;
-using Web.Generics.Infrastructure.DataAccess.NHibernate;
-using Web.Generics.Tests.Repositories;
-using Web.Generics.Infrastructure.DataAccess.FluentNHibernate;
-using Inspira.Blog.Infrastructure.DataAccess.EntityFramework;
 
 namespace Web.Generics.Tests
 {
@@ -36,12 +31,8 @@ relacionamento trinario
 		[TestInitialize]
 		public void TestInitialize()
 		{
-            NHibernateSessionFactoryConfig.ConfigFilePath = @"..\..\..\Web.Generics.Tests\hibernate.cfg.xml";
-            NHibernateSessionFactoryConfig.RepositoryType = typeof(PostRepository);
+			var context = ContextFactory.GetContext();
 
-            var nhibernateSession = FluentNHibernateHelper<Post>.OpenSession(); var context = new NHibernateRepositoryContext(nhibernateSession);
-
-            //var context = new EntityFrameworkRepositoryContext(new BlogContext());
             webLogRepository = new GenericRepository<WebLog>(context);
             userRepository = new GenericRepository<User>(context);
             tagRepository = new TagRepository(context);

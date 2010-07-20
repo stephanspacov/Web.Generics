@@ -4,14 +4,14 @@
     <asp:ContentPlaceHolder runat="server" ID="TitleContent" />
 </asp:Content>
 
-<asp:Content ID="Content1" runat="server" ContentPlaceHolderID="MainContent">
+<asp:Content runat="server" ContentPlaceHolderID="MainContent">
     <asp:ContentPlaceHolder runat="server" ID="MainContent" />
 </asp:Content>
 
-<asp:Content ID="Content2" runat="server" ContentPlaceHolderID="BoxContent">
+<asp:Content runat="server" ContentPlaceHolderID="BoxContent">
     <asp:ContentPlaceHolder runat="server" ID="BoxContent" />
 </asp:Content>
 
-<asp:Content runat="server" runat="server" ContentPlaceHolderID="HeaderContent">
+<asp:Content runat="server" ContentPlaceHolderID="HeaderContent">
     <asp:ContentPlaceHolder runat="server" ID="HeaderContent" />
 </asp:Content>

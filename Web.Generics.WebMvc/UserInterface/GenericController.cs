@@ -1,46 +1,44 @@
 ﻿using System;
+using System.Linq;
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using Web.Generics.DomainServices;
 using Web.Generics.Infrastructure.Logging;
 using Web.Generics.UserInterface.Compression;
+using Web.Generics.UserInterface.HtmlHelpers;
+using Web.Generics.ApplicationServices.DataAccess;
 
 namespace Web.Generics.UserInterface
 {
     [Loggable]
     [Gzip]
-    public class GenericController<TModel, TViewModel> : Controller where TViewModel : GenericViewModel<TModel>
+    public class GenericController<TModel, TViewModel> : Controller where TViewModel : GenericViewModel<TModel> where TModel : class, new()
     {
-        private GenericService<TModel> genericService;
-        public GenericController(GenericService<TModel> genericService)
+		private readonly GenericRepository<TModel> genericRepository;
+		public GenericController(GenericRepository<TModel> genericRepository)
         {
-            this.genericService = genericService;
+			this.genericRepository = genericRepository;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        virtual public ActionResult Index()
+		virtual public ActionResult Index(TViewModel viewModel)
         {
-            TViewModel viewModel = Activator.CreateInstance<TViewModel>();
-            if (Session[viewModel.GetType().ToString()] != null)
-            {
-                viewModel = (TViewModel)Session[viewModel.GetType().ToString()];
-            }
-            //var grid = viewModel.DefaultGrid;
-            //var expression = grid.GetFilterExpression();
+			// obj
+			var webLogGridBuilder = new GridBuilder(viewModel.DefaultGrid);
 
-            //Int32 itemCount = 10;
-            //grid.DataSource = this.genericService.Select();
-            //grid.TotalItemCount = itemCount;
+			// parameters -> data source
+			var webLogDataSource = webLogGridBuilder.GetDataSourceByParameters(genericRepository).ToList();
 
-            PopulateDropDowns(viewModel);
+			// data source -> grid
+			webLogGridBuilder.Populate(webLogDataSource);
 
-            return View(viewModel);
+			return View(viewModel);
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        virtual public ActionResult Index(TViewModel viewModel)
-        {
+        // [AcceptVerbs(HttpVerbs.Post)]
+        // virtual public ActionResult Index(TViewModel viewModel)
+        // {
             //var grid = viewModel.DefaultGrid;
 
             //CreateDropDownFilters(viewModel);
@@ -51,11 +49,12 @@ namespace Web.Generics.UserInterface
             //grid.DataSource = this.genericService.Select(expression, out totalItemCount);
             //grid.TotalItemCount = totalItemCount;
 
-            PopulateDropDowns(viewModel);
+            //PopulateDropDowns(viewModel);
 
-            Session.Add(viewModel.GetType().ToString(), viewModel);
-            return FormatResult(viewModel);
-        }
+            //Session.Add(viewModel.GetType().ToString(), viewModel);
+            //return FormatResult(viewModel);
+        //}
+
         /*
         private void CreateDropDownFilters(TViewModel viewModel)
         {
@@ -260,7 +259,7 @@ namespace Web.Generics.UserInterface
         {
             if (ModelState.IsValid)
             {
-                this.genericService.SaveOrUpdate(viewModel.Instance);
+                this.genericRepository.SaveOrUpdate(viewModel.Instance);
 
                 return RedirectToAction("Index");
             }
@@ -284,7 +283,7 @@ namespace Web.Generics.UserInterface
         {
             try
             {
-                this.genericService.Delete(obj);
+                this.genericRepository.Delete(obj);
             }
             catch
             {
@@ -326,7 +325,7 @@ namespace Web.Generics.UserInterface
         {
             if (ModelState.IsValid)
             {
-                this.genericService.SaveOrUpdate(viewModel.Instance);
+                this.genericRepository.SaveOrUpdate(viewModel.Instance);
                 return RedirectToAction("Index");
             }
             PopulateDropDowns(viewModel);
