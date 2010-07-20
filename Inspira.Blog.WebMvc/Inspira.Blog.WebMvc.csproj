@@ -94,6 +94,7 @@
     <Compile Include="ViewModels\Account\SignUpViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
     <Compile Include="ViewModels\MeloViewModel.cs" />
+    <Compile Include="ViewModels\Post\DetailsViewModel.cs" />
     <Compile Include="ViewModels\Post\IndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +165,7 @@
     <Content Include="rascunhoshtml\Login.aspx" />
     <Content Include="rascunhoshtml\Painel.aspx" />
     <Content Include="Views\Account\SignUpConfirm.aspx" />
+    <Content Include="Views\Post\Details.aspx" />
     <Content Include="Views\Post\Index.aspx" />
     <Content Include="Areas\Admin\Views\Shared\Create.aspx" />
     <Content Include="Areas\Admin\Views\Shared\Delete.aspx" />

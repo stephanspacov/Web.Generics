@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Inspira.Blog.WebMvc.ViewModels.Post;
+using Inspira.Blog.WebMvc.ViewModels.Posts;
 using Inspira.Blog.DomainModel;
 
 namespace Inspira.Blog.WebMvc.Controllers
@@ -15,18 +15,29 @@ namespace Inspira.Blog.WebMvc.Controllers
 
         public ActionResult Index()
         {
-			var viewModel = new IndexViewModel();
+            var viewModel = new IndexViewModel();
 
-			var post = new Post();
-			post.Title = "titulo";
-			post.Text = "texto";
-			post.PublishedAt = DateTime.Now.AddDays(-3);
+            var post = new Post();
+            post.Title = "titulo";
+            post.Text = "texto";
+            post.PublishedAt = DateTime.Now.AddDays(-3);
 
-			viewModel.PostsPublicados.Add(post);
-			viewModel.PostsPublicados.Add(new Post { PublishedAt = DateTime.Now, Title = "Título do Post", Text = "bla bla bla bla" + Environment.NewLine + " bla bla bla bla bla" });
+            viewModel.PostsPublicados.Add(post);
 
-			return View(viewModel);
+            return View(viewModel);
         }
 
+        public ActionResult Details(Int32 id)
+        {
+            var viewModel = new DetailsViewModel();
+
+            var post = new Post();
+            post.Title = "titulo" + id;
+            post.Text = "texto";
+            post.PublishedAt = DateTime.Now.AddDays(-3);
+            viewModel.Post = post;
+
+            return View(viewModel);
+        }
     }
 }
