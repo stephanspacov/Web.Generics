@@ -77,7 +77,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\GridDataBinder.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\WebLogController.cs" />
@@ -93,12 +92,23 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Account\SignUpViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
-    <Compile Include="ViewModels\MeloViewModel.cs" />
     <Compile Include="ViewModels\Post\DetailsViewModel.cs" />
     <Compile Include="ViewModels\Post\IndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Home\Index.aspx" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\DateTime.ascx" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\Decimal.ascx" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\Filter.ascx" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\Grid.ascx" />
+    <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\Pager.ascx" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\DateTime.ascx" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\FileUpload.ascx" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\Html.ascx" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\__Object.ascx" />
+    <Content Include="Areas\Admin\Views\Shared\Partial\Details.ascx" />
+    <Content Include="Areas\Admin\Views\Shared\Partial\Form.ascx" />
+    <Content Include="Areas\Admin\Views\Shared\Partial\Grid.ascx" />
     <Content Include="Areas\Admin\Views\WebLog\Index_.aspx" />
     <Content Include="Areas\Admin\Views\Post\Create.aspx" />
     <Content Include="Areas\Admin\Views\WebLog\Index.aspx" />
@@ -212,7 +222,6 @@
     <Folder Include="assets\js\common\" />
     <Folder Include="assets\js\section\" />
     <Folder Include="Views\Blog\" />
-    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Inspira.Blog\Inspira.Blog.csproj">

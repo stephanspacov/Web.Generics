@@ -4,15 +4,15 @@ using System.Reflection;
 using System.Web.Mvc;
 using Web.Generics.HtmlHelpers;
 using Web.Generics.UserInterface.HtmlHelpers;
+using Web.Generics.WebMvc.UserInterface;
 //using Web.Generics.HtmlHelpers;
 
 namespace Web.Generics.UserInterface
 {
-    public class GenericViewModel<T>
+    public class GenericViewModel<T> : GenericViewModel
 	{
         public GenericViewModel()
         {
-			this.DefaultGrid = new Grid();
             this.Instance = Activator.CreateInstance<T>();
             //this.InstanceList = Activator.CreateInstance<List<T>>();
             //this.DeletedItems = new List<Int32>();
@@ -20,7 +20,6 @@ namespace Web.Generics.UserInterface
             //this.SelectListValues = new Dictionary<String, Object>();
         }
 
-		public Grid DefaultGrid { get; set; }
 		virtual public T Instance { get; set; }
 
 		/*

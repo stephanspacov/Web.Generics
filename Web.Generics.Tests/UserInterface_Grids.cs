@@ -54,9 +54,9 @@ namespace Web.Generics.Tests
 			gridBuilder.Populate(dataSource);
 
 			Assert.AreEqual(3, grid.Columns.Count);
-			Assert.AreEqual(2, grid.Rows.Count);
+			Assert.AreEqual(1, grid.Rows.Count);
 			Assert.AreEqual(DateTime.Today.ToString(), grid.Rows[0].Cells[2].Text);
-			Assert.AreEqual("Blog 2", grid.Rows[1].Cells[1].Text);
+			Assert.AreEqual("Blog 2", grid.Rows[0].Cells[1].Text);
 		}
 	}
 }

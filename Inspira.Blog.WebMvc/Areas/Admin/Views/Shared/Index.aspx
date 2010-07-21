@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Web.Generics.UserInterface.GenericViewModel<Inspira.Blog.DomainModel.WebLog>>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Web.Generics.UserInterface.GenericViewModel>" %>
 <%@ Import Namespace="Web.Generics.UserInterface.HtmlHelpers" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
@@ -8,5 +8,5 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 <div id='Content'>  
     <%= Html.Grid(model => model.DefaultGrid) %>
-</div>      
+</div>
 </asp:Content>

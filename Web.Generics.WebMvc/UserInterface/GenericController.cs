@@ -8,6 +8,7 @@ using Web.Generics.Infrastructure.Logging;
 using Web.Generics.UserInterface.Compression;
 using Web.Generics.UserInterface.HtmlHelpers;
 using Web.Generics.ApplicationServices.DataAccess;
+using Web.Generics.CustomTypes;
 
 namespace Web.Generics.UserInterface
 {
@@ -33,7 +34,7 @@ namespace Web.Generics.UserInterface
 			// data source -> grid
 			webLogGridBuilder.Populate(webLogDataSource);
 
-			return View(viewModel);
+			return View((GenericViewModel)viewModel);
         }
 
         // [AcceptVerbs(HttpVerbs.Post)]
@@ -245,9 +246,13 @@ namespace Web.Generics.UserInterface
         // GET: /GenericArea/Test/Create
         virtual public ActionResult Create()
         {
-            TViewModel viewModel = (TViewModel)Activator.CreateInstance(typeof(TViewModel));
-            viewModel.Instance = (TModel)Activator.CreateInstance(typeof(TModel));
-            PopulateDropDowns(viewModel);
+            //TViewModel viewModel = (TViewModel)Activator.CreateInstance(typeof(TViewModel));
+            //viewModel.Instance = (TModel)Activator.CreateInstance(typeof(TModel));
+            //PopulateDropDowns(viewModel);
+
+			var viewModel = new GenericViewModel();
+			viewModel.Instance = new PhoneNumber("11-123423") { Cpf = new Cpf("29948003810") };
+
             return View(viewModel);
         }
 
