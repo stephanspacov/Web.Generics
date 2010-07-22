@@ -5,6 +5,7 @@ using Inspira.Blog.Infrastructure.DataAccess.EntityFramework;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Web.Generics.ApplicationServices.DataAccess;
 using Web.Generics.Infrastructure.DataAccess.EntityFramework;
+using Web.Generics.UserInterface.HtmlHelpers;
 
 namespace Inspira.Blog.Tests
 {
@@ -27,7 +28,7 @@ namespace Inspira.Blog.Tests
             var webLog = new WebLog { Title = webLogID, CreatedAt = DateTime.Now };
             var post = new Post { Title = postID, Text = "oi", CreatedAt = DateTime.Now, LastUpdatedAt = DateTime.Now, PublishedAt = DateTime.Now };
 
-            webLog.Owners.Add(user);
+            webLog.Collaborators.Add(user);
             user.Blogs.Add(webLog);
             webLog.Posts.Add(post);
             post.WebLog = webLog;

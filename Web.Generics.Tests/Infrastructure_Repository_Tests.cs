@@ -52,7 +52,7 @@ relacionamento trinario
             var webLog = new WebLog { Title = "weblog " + title, CreatedAt = DateTime.Now };
             var post = new Post { Title = title, Text = "oi", CreatedAt = DateTime.Now, LastUpdatedAt = DateTime.Now, PublishedAt = DateTime.Now };
 
-            webLog.Owners.Add(user);
+            webLog.Collaborators.Add(user);
             user.Blogs.Add(webLog);
             webLog.Posts.Add(post);
             post.WebLog = webLog;
@@ -72,7 +72,7 @@ relacionamento trinario
 		{
             var title = Guid.NewGuid().ToString();
 
-            var webLog = new WebLog { Owners = new[] { new User { Name = "user " + title } }, Title = "weblog " + title, CreatedAt = DateTime.Now };            
+            var webLog = new WebLog { Collaborators = new[] { new User { Name = "user " + title } }, Title = "weblog " + title, CreatedAt = DateTime.Now };            
             var post = new Post
             {
                 Title = title,
@@ -112,7 +112,7 @@ relacionamento trinario
 
             var tags = tagRepository.Query().Where(t => t.Text.Contains("tag1")).ToList();
 
-            var webLog = new WebLog { Owners = new[] { new User { Name = "user " + title } }, Title = "weblog " + title, CreatedAt = DateTime.Now };
+            var webLog = new WebLog { Collaborators = new[] { new User { Name = "user " + title } }, Title = "weblog " + title, CreatedAt = DateTime.Now };
             var post = new Post
             {
                 Title = title,
@@ -142,7 +142,7 @@ relacionamento trinario
         {
             var title = Guid.NewGuid().ToString();
 
-            var webLog = new WebLog { Owners = new[] { new User { Name = "user " + title } }, Title = "weblog " + title, CreatedAt = DateTime.Now };
+            var webLog = new WebLog { Collaborators = new[] { new User { Name = "user " + title } }, Title = "weblog " + title, CreatedAt = DateTime.Now };
             var post = new Post
             {
                 Title = title,

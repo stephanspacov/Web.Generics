@@ -10,7 +10,7 @@ namespace Inspira.Blog.WebMvc.Areas.Admin.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Post");
         }
     }
 }

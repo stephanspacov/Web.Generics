@@ -15,5 +15,7 @@ namespace Inspira.Blog.DomainModel
         virtual public Int32 ID { get; set; }
         virtual public String Name { get; set; }
         virtual public IList<WebLog> Blogs { get; set; }
+		virtual public String Email { get; set; }
+		virtual public String Password { get; set; }
     }
 }

@@ -20,8 +20,8 @@ namespace Web.Generics.Tests
 			this.WebLogs = new GenericRepository<WebLog>(context);
 
 			var owner = new User { Name = "user" };
-			this.WebLogs.SaveOrUpdate(new WebLog { CreatedAt = DateTime.Today, Title = "Blog 1", Owners = new[] { owner } });
-			this.WebLogs.SaveOrUpdate(new WebLog { CreatedAt = DateTime.Today, Title = "Blog 2", Owners = new[] { owner } });
+			this.WebLogs.SaveOrUpdate(new WebLog { CreatedAt = DateTime.Today, Title = "Blog 1", Collaborators = new[] { owner } });
+			this.WebLogs.SaveOrUpdate(new WebLog { CreatedAt = DateTime.Today, Title = "Blog 2", Collaborators = new[] { owner } });
 
 			this.WebLogs.SaveChanges();
 		}

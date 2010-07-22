@@ -18,7 +18,7 @@ namespace Inspira.Blog.WebMvc.Controllers
         {
             var user = new User { ID = 32, Name="oi" };
             for (Int32 i = 0; i < 5; i++) {
-                webLogs[i] = new WebLog { ID = i + 32, Title = "titulo " + i, CreatedAt=DateTime.Now, Owners = new[] { user } };
+                webLogs[i] = new WebLog { ID = i + 32, Title = "titulo " + i, CreatedAt=DateTime.Now, Collaborators = new[] { user } };
                 this.webLogRepository.SaveOrUpdate(webLogs[i]);
             }
 

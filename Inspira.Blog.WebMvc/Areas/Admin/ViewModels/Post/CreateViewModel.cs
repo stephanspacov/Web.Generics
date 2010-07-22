@@ -7,12 +7,16 @@ using Web.Generics.UserInterface.Validators;
 
 namespace Inspira.Blog.WebMvc.Areas.Admin.ViewModels.Post
 {
-    public class CreateViewModel
-    {
-            [Required]
-            public String PostTitle { get; set; }
+	public class CreateViewModel
+	{
+		public Boolean BlogCreated { get; set; }
 
-            [Required]
-            public String TextArea { get; set; }
-    }
+		public Int32 PostID { get; set; }
+
+		[Required]
+		public String PostTitle { get; set; }
+
+		[Required]
+		public String PostText { get; set; }
+	}
 }

@@ -13,7 +13,9 @@ namespace Inspira.Blog.Infrastructure.DataAccess.FluentNHibernate
         public void Override(AutoMapping<Post> mapping)
         {
             mapping.HasManyToMany(p => p.Tags).Table("Post_Tag");
-            mapping.References(p => p.WebLog).Nullable();
+			mapping.Map(p => p.PublishedAt).Nullable();
+			mapping.Map(p => p.Title).Length(255);
+			mapping.Map(p => p.Text).Length(4000);
         }
     }
 }

@@ -81,6 +81,7 @@
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\WebLogController.cs" />
     <Compile Include="Areas\Admin\ViewModels\Post\CreateViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Post\IndexViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\WebLog\ListViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
@@ -98,6 +99,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Home\Index.aspx" />
+    <Content Include="Areas\Admin\Views\Post\Index.aspx" />
+    <Content Include="Areas\Admin\Views\Post\PublishConfirm.aspx" />
     <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\DateTime.ascx" />
     <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\Decimal.ascx" />
     <Content Include="Areas\Admin\Views\Shared\DisplayTemplates\Filter.ascx" />
