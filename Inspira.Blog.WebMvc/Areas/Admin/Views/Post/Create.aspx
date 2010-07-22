@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Inspira.Blog.WebMvc.ViewModels.Account.SignUpViewModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Inspira.Blog.WebMvc.Areas.Admin.ViewModels.Post.CreateViewModel>" %>
 
 <asp:Content ID="Content5" ContentPlaceHolderID="TitleContent" runat="server">
     Inspira - Blogs - Create a Blog
@@ -11,16 +11,17 @@
                 <div class="group fieldWithErrors">
                     <label class="label">
                         Title: <span class="error">
-                            <input class="text_field" type="text">
-                            <%= Html.ValidationMessageFor(v => v.BlogTitle) %></span>
+                            <%= Html.ValidationMessageFor(v => v.PostTitle) %></span>
                     </label>
+                    <%= Html.TextBoxFor(v => v.PostTitle, new { @class = "text_field" })%>
                     <span class="description">Ex: Mark's text</span>
                 </div>
                 <div class="group fieldWithErrors">
                     <label class="label">
-                        Text:
+                        Text:<span class="error">
+                            <%= Html.ValidationMessageFor(v => v.TextArea) %></span>
                     </label>
-                    <textarea class="text_area" rows="10" cols="80"></textarea>
+                    <%=Html.TextAreaFor(v => v.TextArea, new { @class = "text_area", rows="10", cols="80"}) %>
                     <span class="description">Write here a long text</span>
                 </div>
                 <div class="group navform wat-cf">

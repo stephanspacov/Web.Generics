@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Inspira.Blog.WebMvc.Areas.Admin.ViewModels.Post;
+
 
 namespace Inspira.Blog.WebMvc.Areas.Admin.Controllers
 {
@@ -13,6 +15,14 @@ namespace Inspira.Blog.WebMvc.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(CreateViewModel viewModel)
+        {
+            if (!ModelState.IsValid) return View(viewModel);
+
             return View();
         }
 
