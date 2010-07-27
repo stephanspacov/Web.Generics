@@ -10,10 +10,10 @@ using Web.Generics.Tests.Repositories;
 
 namespace Web.Generics.Tests
 {
-    public class PostController : GenericController<Post, PostViewModel>
+    public class PostController 
     {
-		public PostController(PostRepository repository) : base(repository)
-        {
-        }
+		//public PostController(PostRepository repository) : base(repository)
+        //{
+        //}
     }
 }

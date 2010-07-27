@@ -16,10 +16,10 @@ namespace Web.Generics.UserInterface
     [Gzip]
     public class GenericController<TModel, TViewModel> : Controller where TViewModel : GenericViewModel<TModel> where TModel : class, new()
     {
-		private readonly GenericRepository<TModel> genericRepository;
-		public GenericController(GenericRepository<TModel> genericRepository)
+		private readonly GenericService<TModel> genericService;
+		public GenericController(GenericService<TModel> genericService)
         {
-			this.genericRepository = genericRepository;
+			this.genericService = genericService;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -29,7 +29,7 @@ namespace Web.Generics.UserInterface
 			var webLogGridBuilder = new GridBuilder(viewModel.DefaultGrid);
 
 			// parameters -> data source
-			var webLogDataSource = webLogGridBuilder.GetDataSourceByParameters(genericRepository).ToList();
+			var webLogDataSource = webLogGridBuilder.GetDataSourceByParameters(genericService.GenericRepository).ToList();
 
 			// data source -> grid
 			webLogGridBuilder.Populate(webLogDataSource);
@@ -264,7 +264,7 @@ namespace Web.Generics.UserInterface
         {
             if (ModelState.IsValid)
             {
-                this.genericRepository.SaveOrUpdate(viewModel.Instance);
+                this.genericService.SaveOrUpdate(viewModel.Instance);
 
                 return RedirectToAction("Index");
             }
@@ -288,7 +288,7 @@ namespace Web.Generics.UserInterface
         {
             try
             {
-                this.genericRepository.Delete(obj);
+                this.genericService.Delete(obj);
             }
             catch
             {
@@ -330,7 +330,7 @@ namespace Web.Generics.UserInterface
         {
             if (ModelState.IsValid)
             {
-                this.genericRepository.SaveOrUpdate(viewModel.Instance);
+                this.genericService.SaveOrUpdate(viewModel.Instance);
                 return RedirectToAction("Index");
             }
             PopulateDropDowns(viewModel);

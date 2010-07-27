@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace Web.Generics.ApplicationServices.DataAccess
 {
-    public interface IRepository<T>
+    public interface IRepository<T> : IQueryable<T>
     {
         IQueryable<T> Query();
         void SaveOrUpdate(T obj);

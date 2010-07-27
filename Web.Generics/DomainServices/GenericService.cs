@@ -9,6 +9,14 @@ namespace Web.Generics.DomainServices
 	public class GenericService<T>
 	{
         private readonly IRepository<T> genericRepository;
+		public IRepository<T> GenericRepository
+		{
+			get
+			{
+				return this.genericRepository;
+			}
+		}
+
         public GenericService(IRepository<T> genericRepository)
         {
             this.genericRepository = genericRepository;
@@ -44,5 +52,5 @@ namespace Web.Generics.DomainServices
         {
             return this.genericRepository.SelectById(id);
         }
-    }
+	}
 }
