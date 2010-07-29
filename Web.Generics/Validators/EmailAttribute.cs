@@ -20,7 +20,7 @@ namespace Web.Generics.Validators
             String email = Convert.ToString(value);
             if (String.IsNullOrEmpty(email))
             {
-                return false;
+                return true; // isso permite validar e-mails não obrigatórios ([Email] + [Required])
             }
 
             Match match = regex.Match(email);
