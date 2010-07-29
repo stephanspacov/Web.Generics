@@ -14,6 +14,7 @@ namespace Web.Generics.UserInterface
 {
     [Loggable]
     [Gzip]
+	[HandleError]
     public class GenericController<TModel, TViewModel> : Controller where TViewModel : GenericViewModel<TModel> where TModel : class, new()
     {
 		private readonly GenericService<TModel> genericService;
@@ -246,13 +247,8 @@ namespace Web.Generics.UserInterface
         // GET: /GenericArea/Test/Create
         virtual public ActionResult Create()
         {
-            //TViewModel viewModel = (TViewModel)Activator.CreateInstance(typeof(TViewModel));
-            //viewModel.Instance = (TModel)Activator.CreateInstance(typeof(TModel));
-            //PopulateDropDowns(viewModel);
-
-			var viewModel = new GenericViewModel();
-			viewModel.Instance = new PhoneNumber("11-123423") { Cpf = new Cpf("29948003810") };
-
+            TViewModel viewModel = (TViewModel)Activator.CreateInstance(typeof(TViewModel));
+            viewModel.Instance = (TModel)Activator.CreateInstance(typeof(TModel));
             return View(viewModel);
         }
 
