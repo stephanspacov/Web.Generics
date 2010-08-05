@@ -47,7 +47,7 @@ namespace Web.Generics
             }
             catch (Exception e)
             {
-                throw new ProviderException("Inspira MembershipProvider: Error loading the repository's assembly.");
+                throw new ProviderException("Inspira MembershipProvider: Error loading the repository's assembly.", e);
             }
 
             try
@@ -57,7 +57,7 @@ namespace Web.Generics
             }
             catch (Exception e)
             {
-                throw new ProviderException("Error creating instance of the repository.");
+                throw new ProviderException("Error creating instance of the repository.", e);
             }
         }
 
