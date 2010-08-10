@@ -20,8 +20,6 @@ namespace Web.Generics
 
 		public GenericNHibernateRepository()
 		{
-			NHibernateSessionFactory<T>.RepositoryType = this.GetType();
-
 			if (HttpContext.Current == null)
 			{
 				session = NHibernateSessionFactory<T>.OpenSession();

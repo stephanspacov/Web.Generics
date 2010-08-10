@@ -5,6 +5,7 @@ using Web.Generics.ApplicationServices;
 using Web.Generics.Infrastructure.InversionOfControl;
 using Web.Generics.Infrastructure.InversionOfControl.Unity;
 using Web.Generics.Infrastructure.Logging;
+using Web.Generics.FluentNHibernate;
 
 namespace Web.Generics.Infrastructure
 {
@@ -47,6 +48,8 @@ namespace Web.Generics.Infrastructure
 
 			// logging
 			// log4net.Config.XmlConfigurator.Configure();
+
+            FluentNHibernateHelper<T>.DefineSessionFactory();
 		}
 	}
 }

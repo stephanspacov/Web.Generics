@@ -7,23 +7,18 @@ using NHibernate.Tool.hbm2ddl;
 using System.IO;
 using System;
 using FluentNHibernate.Conventions.Helpers;
+using System.Diagnostics;
+using Web.Generics.Infrastructure.Logging;
+using System.Web;
 
 namespace Web.Generics.FluentNHibernate
 {
     public class FluentNHibernateHelper<T>
     {
-        private static ISessionFactory _sessionFactory;
-        private static ISessionFactory SessionFactory
-        {
-            get
-            {
-                if (_sessionFactory == null)
-                {
-                    Console.WriteLine("FluentNHibernateHelper.CreateSessionFactory: {0}", NHibernateSessionFactoryConfig.ConfigFilePath);
-                    _sessionFactory = CreateSessionFactory();
-                }
-                return _sessionFactory;
-            }
+        static ILogger logger = new Log4NetLogger("Web_Generics");
+        private static ISessionFactory SessionFactory {
+            get { return (ISessionFactory)HttpContext.Current.Application["SessionFactory"]; }
+            set { HttpContext.Current.Application["SessionFactory"] = value; }
         }
 
         public static Type RepositoryType { get; set; }
@@ -34,11 +29,12 @@ namespace Web.Generics.FluentNHibernate
             
             if (NHibernateSessionFactoryConfig.ConfigFilePath == null)
             {
+                logger.Debug("FluentNHibernateHelper.CreateSessionFactory - configurando fluent");
                 configuration.Configure();
             }
             else
             {
-                Console.WriteLine("FluentNHibernateHelper.CreateSessionFactory: {0}", NHibernateSessionFactoryConfig.ConfigFilePath);
+                logger.Debug("FluentNHibernateHelper.CreateSessionFactory - configurando fluent (com path): {0}", NHibernateSessionFactoryConfig.ConfigFilePath);
                 configuration.Configure(NHibernateSessionFactoryConfig.ConfigFilePath);
             }
             configuration.AddAssembly(typeof(T).Assembly);
@@ -84,6 +80,11 @@ namespace Web.Generics.FluentNHibernate
         public static ISession OpenSession()
         {
             return SessionFactory.OpenSession();
+        }
+
+        internal static void DefineSessionFactory()
+        {
+            SessionFactory = CreateSessionFactory();
         }
     }
 }

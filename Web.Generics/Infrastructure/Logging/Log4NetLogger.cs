@@ -9,7 +9,13 @@ namespace Web.Generics.Infrastructure.Logging
 {
 	public class Log4NetLogger : ILogger
 	{
-		ILog logger = log4net.LogManager.GetLogger("LogInFile");
+		ILog logger;
+        public Log4NetLogger() : this("LogInFile") { }
+        internal Log4NetLogger(String logName)
+        {
+            this.logger = log4net.LogManager.GetLogger(logName);
+        }
+
 		public void Debug(String logMessage, params object[] parameters)
 		{
 			logger.Debug(String.Format(logMessage, parameters));
