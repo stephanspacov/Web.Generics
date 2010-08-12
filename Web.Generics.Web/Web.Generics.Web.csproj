@@ -41,6 +41,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
@@ -48,6 +49,8 @@
     <Compile Include="ApplicationServices\Authentication\IMembershipConverter.cs" />
     <Compile Include="ApplicationServices\Authentication\IMembershipRepository.cs" />
     <Compile Include="ApplicationServices\Authentication\IMembershipRoleRepository.cs" />
+    <Compile Include="Captcha\Captcha.cs" />
+    <Compile Include="Captcha\CaptchaResult.cs" />
     <Compile Include="Configuration\EnumResourceProperty.cs" />
     <Compile Include="Configuration\EnumResourcePropertyCollection.cs" />
     <Compile Include="Configuration\WebGenericsSection.cs" />
