@@ -13,11 +13,17 @@ using Web.Generics.Web.Mvc.Infrastructure;
 
 namespace Web.Generics.Infrastructure
 {
-	public class ConfigurationFactory<T> where T:class
+	public class ConfigurationFactory
 	{
-		private readonly IControllerFactory controllerFactory;
-        private readonly IInversionOfControlContainer container = null;
-		public ConfigurationFactory(InversionOfControlContainer containerType, IInversionOfControlMapper mapper)
+		private static IControllerFactory controllerFactory;
+        private static IInversionOfControlContainer container = null;
+		private static ConfigurationFactory instance = null;
+
+		private ConfigurationFactory()
+		{
+		}
+
+		public static void Initialize<T>(InversionOfControlContainer containerType, IInversionOfControlMapper mapper)
 		{
 			if (containerType  == InversionOfControlContainer.Unity)
 			{
@@ -45,10 +51,12 @@ namespace Web.Generics.Infrastructure
 				container.RegisterType<ILogger, Log4NetLogger>();
 				mapper.DefineMappings(container);
 			}
-			this.controllerFactory = new GenericControllerFactory<T>(container);
+			controllerFactory = new GenericControllerFactory<T>(container);
+
+			Configure();
 		}
 
-		public void Configure()
+		private static void Configure()
 		{
 			// IoC / DI
 			ControllerBuilder.Current.SetControllerFactory(controllerFactory);
@@ -64,7 +72,7 @@ namespace Web.Generics.Infrastructure
             RouteTable.Routes.Insert(0, route);
 		}
 
-        public IInversionOfControlContainer GetInversionOfControlContainer()
+        public static IInversionOfControlContainer GetInversionOfControlContainer()
         {
             return container;
         }

@@ -24,10 +24,8 @@ namespace Web.Generics.Tests
             NHibernateSessionFactoryConfig.ConfigFilePath = @"..\..\..\Web.Generics.Tests\hibernate.cfg.xml";
             NHibernateSessionFactoryConfig.RepositoryType = typeof(PostRepository);
 
-            var configFactory = new ConfigurationFactory<Post>(InversionOfControlContainer.Unity, new MockMapper());
-            configFactory.Configure();
-
-            container = configFactory.GetInversionOfControlContainer();
+            ConfigurationFactory.Initialize<Post>(InversionOfControlContainer.Unity, new MockMapper());
+			container = ConfigurationFactory.GetInversionOfControlContainer();
 
             //var nhibernateSession = FluentNHibernate.FluentNHibernateHelper<Post>.OpenSession();
 

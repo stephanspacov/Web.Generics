@@ -8,7 +8,7 @@ namespace Web.Generics.ApplicationServices.DataAccess
 {
     public class GenericRepository<T> : IRepository<T>, IQueryable<T> where T : class
     {
-        private readonly IRepositoryContext context;
+        protected readonly IRepositoryContext context;
         public GenericRepository(IRepositoryContext context)
         {
             this.context = context;
