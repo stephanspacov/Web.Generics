@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
+using Web.Generics.ModelAttributes;
 
 namespace Web.Generics
 {
@@ -18,8 +20,10 @@ namespace Web.Generics
 		}
 
 		public static Object GetParamObject(Object obj)
-		{
-			return new { id =  obj.GetType().GetProperty("ID").GetValue(obj, null) };
+        {
+            IdPropertyAttribute idProperty = (IdPropertyAttribute)obj.GetType().GetCustomAttributes(typeof(IdPropertyAttribute), true).SingleOrDefault();
+            string idPropertyName = idProperty != null ? idProperty.PropertyName : "ID";
+            return new { id = obj.GetType().GetProperty(idPropertyName).GetValue(obj, null) };
 		}
 	}
 }

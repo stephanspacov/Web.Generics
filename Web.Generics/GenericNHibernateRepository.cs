@@ -6,6 +6,7 @@ using NHibernate.Criterion;
 using System.Reflection;
 using Web.Generics.HtmlHelpers;
 using System.Web;
+using Web.Generics.ModelAttributes;
 
 namespace Web.Generics
 {
@@ -62,8 +63,10 @@ namespace Web.Generics
 		virtual public Int32 Delete(T obj)
 		{
 			using (ITransaction transaction = session.BeginTransaction())
-			{
-				obj = this.SelectById(obj.GetType().GetProperty("ID").GetValue(obj, null));
+            {
+                IdPropertyAttribute idProperty = (IdPropertyAttribute)obj.GetType().GetCustomAttributes(typeof(IdPropertyAttribute), true).SingleOrDefault();
+                string idPropertyName = idProperty != null ? idProperty.PropertyName : "ID";
+                obj = this.SelectById(obj.GetType().GetProperty(idPropertyName).GetValue(obj, null));
 				session.Delete(obj);
 				transaction.Commit();
             }

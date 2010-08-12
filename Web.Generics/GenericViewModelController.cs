@@ -13,6 +13,7 @@ using Microsoft.Practices.Unity;
 using System.ComponentModel.DataAnnotations;
 using System.Collections;
 using Web.Generics.HtmlHelpers;
+using Web.Generics.ModelAttributes;
 
 namespace Web.Generics
 {
@@ -125,14 +126,13 @@ namespace Web.Generics
                 viewModel.DefaultGrid.FilterConditions.Add(new FilterCondition
                 {
                     Comparer = FilterCondition.ComparerType.eq,
-                    Property = key + ".ID",
+                    Property = key + ".id" + key,
                     Value = value
                 });
             }
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         virtual public ActionResult FilterParams(IList<String> Properties, IList<String> Comparers, IList<String> Values)
         {
             List<FilterCondition> conditions = new List<FilterCondition>();
@@ -250,6 +250,8 @@ namespace Web.Generics
                 if (pInfo.PropertyType.Namespace == modelType.Namespace)
                 {
                     Type relatedEntityType = pInfo.PropertyType;
+                    IdPropertyAttribute idPropertyRelatedEntity = (IdPropertyAttribute)relatedEntityType.GetCustomAttributes(typeof(IdPropertyAttribute), true).SingleOrDefault();
+                    string idPropertyNameRelatedEntity = idPropertyRelatedEntity != null ? idPropertyRelatedEntity.PropertyName : "ID";
 
                     String modelTypeName = relatedEntityType.Name;
                     String modelFullTypeName = relatedEntityType.FullName;
@@ -276,7 +278,9 @@ namespace Web.Generics
                         Object obj = pInfo.GetValue(model, null);
                         if (obj != null)
                         {
-                            var propertyInfo = obj.GetType().GetProperty("ID");
+                            IdPropertyAttribute idProperty = (IdPropertyAttribute)obj.GetType().GetCustomAttributes(typeof(IdPropertyAttribute), true).SingleOrDefault();
+                            string idPropertyName = idProperty != null ? idProperty.PropertyName : "ID";
+                            var propertyInfo = obj.GetType().GetProperty(idPropertyName);
 
                             if (propertyInfo == null)
                             {
@@ -286,7 +290,7 @@ namespace Web.Generics
                                 }
                                 else
                                 {
-                                    throw new Exception(String.Format("Não existe a propriedade {0} na entidade {1}", "ID", obj.GetType()));
+                                    throw new Exception(String.Format("Não existe a propriedade {0} na entidade {1}", idPropertyName, obj.GetType()));
                                 }
                             }
                             else
@@ -296,7 +300,7 @@ namespace Web.Generics
                         }
                     }
 
-                    viewModel.SelectLists[modelTypeName] = new SelectList((IEnumerable)selectResult, "ID", displayPropertyName, selValue);
+                    viewModel.SelectLists[modelTypeName] = new SelectList((IEnumerable)selectResult, idPropertyNameRelatedEntity, displayPropertyName, selValue);
                 }
             }
         }
@@ -314,7 +318,6 @@ namespace Web.Generics
         //
         // POST: /GenericArea/Test/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
         virtual public ActionResult Create(TViewModel viewModel)
         {
             if (ModelState.IsValid)
@@ -338,7 +341,6 @@ namespace Web.Generics
         //
         // POST: /GenericArea/Test/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
         virtual public ActionResult Delete(TModel obj)
         {
             try
@@ -380,7 +382,6 @@ namespace Web.Generics
         //
         // POST: /GenericArea/Test/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
         virtual public ActionResult Edit(TViewModel viewModel)
         {
             if (ModelState.IsValid)
