@@ -48,6 +48,9 @@
     <Compile Include="ApplicationServices\Authentication\IMembershipConverter.cs" />
     <Compile Include="ApplicationServices\Authentication\IMembershipRepository.cs" />
     <Compile Include="ApplicationServices\Authentication\IMembershipRoleRepository.cs" />
+    <Compile Include="Configuration\EnumResourceProperty.cs" />
+    <Compile Include="Configuration\EnumResourcePropertyCollection.cs" />
+    <Compile Include="Configuration\WebGenericsSection.cs" />
     <Compile Include="Infrastructure\Authentication\MembershipProvider.cs" />
     <Compile Include="Infrastructure\Authentication\PasswordHelper.cs" />
     <Compile Include="Infrastructure\Authentication\RoleProvider.cs" />
