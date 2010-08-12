@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationServices\Authentication\AccountModels.cs" />
+    <Compile Include="Extensions\SelectListHelper.cs" />
     <Compile Include="Infrastructure\ConfigurationFactory.cs" />
     <Compile Include="Infrastructure\GenericControllerFactory.cs">
       <SubType>Code</SubType>
