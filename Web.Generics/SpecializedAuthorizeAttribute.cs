@@ -41,9 +41,11 @@ namespace Web.Generics
         {
             // auth failed, redirect to login page
             if (AccessDeniedUrl != null && AccessDeniedUrl != String.Empty)
-                filterContext.Result = Redirect();
-            else
-                filterContext.Result = new HttpUnauthorizedResult();
+            {
+                filterContext.Result = Redirect(filterContext.HttpContext.Server.UrlEncode(filterContext.HttpContext.Request.Url.AbsoluteUri));
+            }
+
+            filterContext.Result = new HttpUnauthorizedResult();
         }
 
         private bool VerifyRoles(AuthorizationContext filterContext)
@@ -59,9 +61,9 @@ namespace Web.Generics
             return result;
         }
 
-        private ActionResult Redirect()
+        private ActionResult Redirect(string returnUrl)
         {
-            HttpContext.Current.Response.Redirect(AccessDeniedUrl);
+            HttpContext.Current.Response.Redirect(string.Concat(HttpContext.Current.Request.ApplicationPath + AccessDeniedUrl, "?ReturnUrl=", returnUrl));
             return null;
         }
 
