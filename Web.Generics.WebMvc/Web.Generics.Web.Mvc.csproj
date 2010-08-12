@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="ActionResultExtensions\ImageResult.cs" />
     <Compile Include="ApplicationServices\Authentication\AccountModels.cs" />
+    <Compile Include="ApplicationServices\Authentication\SpecializedAuthorizeAttribute.cs" />
     <Compile Include="Captcha\CaptchaService.cs" />
     <Compile Include="Extensions\SelectListHelper.cs" />
     <Compile Include="Infrastructure\ConfigurationFactory.cs" />
