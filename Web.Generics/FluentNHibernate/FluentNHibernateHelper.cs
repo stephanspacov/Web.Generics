@@ -23,7 +23,7 @@ namespace Web.Generics.FluentNHibernate
 
         public static Type RepositoryType { get; set; }
 
-        private static ISessionFactory CreateSessionFactory()
+        public static ISessionFactory CreateSessionFactory()
         {
             var configuration = new Configuration();
             
