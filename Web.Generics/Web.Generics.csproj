@@ -88,6 +88,8 @@
     <Compile Include="ApplicationServices\InversionOfControl\UnboundInterfaceException.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ApplicationServices\Scheduler\Scheduler.cs" />
+    <Compile Include="ApplicationServices\Scheduler\Time.cs" />
     <Compile Include="DomainModel\CustomTypes\Age.cs" />
     <Compile Include="DomainModel\CustomTypes\BrazilianPhoneNumber.cs" />
     <Compile Include="DomainModel\CustomTypes\BrazilianPostalCode.cs" />
@@ -218,6 +220,7 @@
     </Reference>
     <Reference Include="System.XML" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

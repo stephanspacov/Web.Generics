@@ -20,7 +20,7 @@ namespace Web.Generics.DataAnnotations
         {
             get
             {
-                return Resources.ResourceManager.GetString(this.resourceName);
+                return System.Resources.ResourceManager.GetString(this.resourceName);
             }
         }
     }
