@@ -6,7 +6,7 @@ using System.Web.Mvc.Html;
 using System.Web.Mvc;
 
 
-namespace Web.Generics.WebMvc.Extensions
+namespace Web.Generics.UserInterface.Extensions
 {
     public static class SelectListHelper
     {

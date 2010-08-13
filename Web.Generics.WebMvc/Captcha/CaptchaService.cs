@@ -5,7 +5,7 @@ using System.Text;
 using System.Web;
 using System.Drawing;
 
-namespace Web.Generics.WebMvc.Captcha
+namespace Web.Generics.ApplicationServices
 {
     // Raphael Cruzeiro 2010-08-12
     /// <summary>

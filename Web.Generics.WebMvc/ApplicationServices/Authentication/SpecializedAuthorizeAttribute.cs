@@ -5,7 +5,7 @@ using System.Web.Security;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Web.Generics.WebMvc
+namespace Web.Generics.ApplicationServices
 {
     // Raphael Cruzeiro / Zhao Qiyan 2010-08-12
     /// <summary>
