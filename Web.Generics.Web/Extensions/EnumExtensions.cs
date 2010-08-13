@@ -13,7 +13,7 @@ namespace Web.Generics.Web.Extensions
     {
         // Raphael Cruzeiro 2010-08-12
         /// <summary>
-        /// Converts the enum to a friendly string. If no frindly string is defined returns the enum's ToString method
+        /// Converts the enum to a friendly string. If no friendly string is defined returns the enum's ToString method
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="enu"></param>
