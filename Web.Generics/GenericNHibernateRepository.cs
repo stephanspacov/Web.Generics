@@ -23,7 +23,8 @@ namespace Web.Generics
 		{
 			if (HttpContext.Current == null)
 			{
-				session = NHibernateSessionFactory<T>.OpenSession();
+                session = NHibernateHelper<T>.OpenSession();
+				//session = NHibernateSessionFactory<T>.OpenSession();
 				return;
 			}
 
@@ -93,7 +94,8 @@ namespace Web.Generics
 					CreateFilterBySearchQueryForFilterParameters(parameters, ref criteria);
 				}
 			}
-			IList<T> result = criteria.List<T>();
+			
+            IList<T> result = criteria.List<T>();
 
 			return result;
 		}

@@ -16,9 +16,28 @@ namespace Web.Generics.FluentNHibernate
     public class FluentNHibernateHelper<T>
     {
         static ILogger logger = new Log4NetLogger("Web_Generics");
+
+        private static ISessionFactory container;
+
         private static ISessionFactory SessionFactory {
-            get { return (ISessionFactory)HttpContext.Current.Application["SessionFactory"]; }
-            set { HttpContext.Current.Application["SessionFactory"] = value; }
+            get
+            {
+                if (HttpContext.Current != null)
+                    return (ISessionFactory)HttpContext.Current.Application["SessionFactory"];
+                else
+                {
+                    if(container == null)
+                        container = CreateSessionFactory();
+                    return container;
+                }
+            }
+            set 
+            {
+                if (HttpContext.Current != null)
+                    HttpContext.Current.Application["SessionFactory"] = value;
+                else
+                    container = value;
+            }
         }
 
         public static Type RepositoryType { get; set; }
