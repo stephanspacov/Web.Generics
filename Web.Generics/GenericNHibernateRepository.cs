@@ -21,10 +21,9 @@ namespace Web.Generics
 
 		public GenericNHibernateRepository()
 		{
-			if (HttpContext.Current == null)
+			if (HttpContext.Current == null)//
 			{
-                session = NHibernateHelper<T>.OpenSession();
-				//session = NHibernateSessionFactory<T>.OpenSession();
+				session = NHibernateSessionFactory<T>.OpenSession();
 				return;
 			}
 
