@@ -10,6 +10,7 @@ using FluentNHibernate.Conventions.Helpers;
 using Web.Generics.Infrastructure.DataAccess.NHibernate;
 using FluentNHibernate.MappingModel.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Web.Generics.Infrastructure.DataAccess.FluentNHibernate
 {
@@ -22,14 +23,14 @@ namespace Web.Generics.Infrastructure.DataAccess.FluentNHibernate
             {
                 if (_sessionFactory == null)
                 {
-                    Console.WriteLine("FluentNHibernateHelper.CreateSessionFactory: {0}", NHibernateSessionFactoryConfig.ConfigFilePath);
+                    Debug.WriteLine("FluentNHibernateHelper.CreateSessionFactory: {0}", NHibernateSessionFactoryConfig.ConfigFilePath);
                     _sessionFactory = CreateSessionFactory();
                 }
                 return _sessionFactory;
             }
         }
 
-        private static ISessionFactory CreateSessionFactory()
+        public static ISessionFactory CreateSessionFactory()
         {
             var configuration = new Configuration();
             if (NHibernateSessionFactoryConfig.ConfigFilePath == null)
