@@ -10,11 +10,6 @@ namespace Web.Generics
 {
     public class FilterParameters : IWebGrid
     {
-        public enum SortOrderEnum
-        {
-            Ascending, Descending
-        }
-
         public FilterParameters()
         {
             this.FilterConditions = new List<FilterCondition>();
@@ -110,8 +105,6 @@ namespace Web.Generics
             return;
         }
 
-        SortOrder IWebSortable.SortOrder { get; set; }
-
         public bool SortingEnabled { get; set; }
 
         public int TotalItemCount { get; set; }
@@ -120,7 +113,6 @@ namespace Web.Generics
 
         public void CorrectSortPropertyAndOrder()
         {
-            return;
         }
     }
 }

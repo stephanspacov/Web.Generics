@@ -162,7 +162,9 @@
     <Compile Include="HtmlHelpers\IWebGrid.cs" />
     <Compile Include="HtmlHelpers\IWebGrid`1.cs" />
     <Compile Include="HtmlHelpers\IWebPager.cs" />
-    <Compile Include="HtmlHelpers\IWebSortable.cs" />
+    <Compile Include="HtmlHelpers\IWebSortable.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="HtmlHelpers\SortOrder.cs" />
     <Compile Include="HtmlHelpers\WebGrid.cs" />
     <Compile Include="HtmlHelpers\WebProperty.cs" />
