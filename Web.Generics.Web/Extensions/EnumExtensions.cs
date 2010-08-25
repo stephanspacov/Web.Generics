@@ -7,7 +7,7 @@ using System.Configuration;
 using System.Reflection;
 using System.Resources;
 
-namespace Web.Generics.Web.Extensions
+namespace Web.Generics.UserInterface.Extensions
 {
     public static class EnumExtensions
     {

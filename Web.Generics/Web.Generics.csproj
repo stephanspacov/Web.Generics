@@ -90,6 +90,11 @@
     </Compile>
     <Compile Include="ApplicationServices\Scheduler\Scheduler.cs" />
     <Compile Include="ApplicationServices\Scheduler\Time.cs" />
+    <Compile Include="Infrastructure\Security\IMembershipRepository.cs" />
+    <Compile Include="Infrastructure\Security\IMembershipRoleRepository.cs" />
+    <Compile Include="Infrastructure\Security\MembershipProvider.cs" />
+    <Compile Include="Infrastructure\Security\PasswordHelper.cs" />
+    <Compile Include="Infrastructure\Security\RoleProvider.cs" />
     <Compile Include="DomainModel\CustomTypes\Age.cs" />
     <Compile Include="DomainModel\CustomTypes\BrazilianPhoneNumber.cs" />
     <Compile Include="DomainModel\CustomTypes\BrazilianPostalCode.cs" />
@@ -213,11 +218,15 @@
       <HintPath>..\lib\NHibernate\NHibernate.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.SQLite, Version=1.0.60.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\SQLite\System.Data.SQLite.dll</HintPath>
     </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup />
