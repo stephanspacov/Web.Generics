@@ -90,11 +90,6 @@
     </Compile>
     <Compile Include="ApplicationServices\Scheduler\Scheduler.cs" />
     <Compile Include="ApplicationServices\Scheduler\Time.cs" />
-    <Compile Include="Infrastructure\Security\IMembershipRepository.cs" />
-    <Compile Include="Infrastructure\Security\IMembershipRoleRepository.cs" />
-    <Compile Include="Infrastructure\Security\MembershipProvider.cs" />
-    <Compile Include="Infrastructure\Security\PasswordHelper.cs" />
-    <Compile Include="Infrastructure\Security\RoleProvider.cs" />
     <Compile Include="DomainModel\CustomTypes\Age.cs" />
     <Compile Include="DomainModel\CustomTypes\BrazilianPhoneNumber.cs" />
     <Compile Include="DomainModel\CustomTypes\BrazilianPostalCode.cs" />

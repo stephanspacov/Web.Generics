@@ -6,18 +6,18 @@ using System.Security.Cryptography;
 
 namespace Web.Generics.Infrastructure.Authentication
 {
-    internal class PasswordHelper
+    public class PasswordHelper
     {
         private static SHA1Managed hasher = new SHA1Managed();
 
-        internal static string ComputeHash(string password)
+        public static string ComputeHash(string password)
         {
             byte[] passwordBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(password);
             byte[] passwordHash = hasher.ComputeHash(passwordBytes);
             return Convert.ToBase64String(passwordHash, 0, passwordHash.Length);
         }
 
-        internal static string Generate()
+        public static string Generate()
         {
 
             string result = String.Empty;
