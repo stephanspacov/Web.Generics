@@ -24,16 +24,16 @@ namespace Web.Generics.Tests
             NHibernateSessionFactoryConfig.ConfigFilePath = @"..\..\..\Web.Generics.Tests\hibernate.cfg.xml";
             NHibernateSessionFactoryConfig.RepositoryType = typeof(PostRepository);
 
-            ConfigurationFactory.Initialize<Post>(InversionOfControlContainer.Unity, new MockMapper());
-			container = ConfigurationFactory.GetInversionOfControlContainer();
+            //ConfigurationFactory.Initialize<Post>(InversionOfControlContainer.Unity, new MockMapper());
+			//container = ConfigurationFactory.GetInversionOfControlContainer();
 
             //var nhibernateSession = FluentNHibernate.FluentNHibernateHelper<Post>.OpenSession();
 
-            container.RegisterType<IRepository<Post>, GenericRepository<Post>>();
-            container.RegisterType<IPostRepository, PostRepository>();
+            //container.RegisterType<IRepository<Post>, GenericRepository<Post>>();
+            //container.RegisterType<IPostRepository, PostRepository>();
             //container.RegisterInstance<ISession>(nhibernateSession);
             //container.RegisterType<IRepositoryContext, NHibernateRepositoryContext>();
-            container.RegisterType<ObjectContext, BlogContext>();
+            //container.RegisterType<ObjectContext, BlogContext>();
         }
 
         [TestMethod]

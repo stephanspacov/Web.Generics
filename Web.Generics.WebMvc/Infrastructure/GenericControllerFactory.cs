@@ -7,15 +7,18 @@ using System.Web.Routing;
 using Web.Generics.ApplicationServices;
 using Web.Generics.ApplicationServices.InversionOfControl;
 using Web.Generics.UserInterface;
+using System.Reflection;
 
 namespace Web.Generics.Web.Mvc.Infrastructure
 {
-    public class GenericControllerFactory<TModel> : DefaultControllerFactory
+    public class GenericControllerFactory : DefaultControllerFactory
 	{
 		private readonly IInversionOfControlContainer container;
-		public GenericControllerFactory(IInversionOfControlContainer container)
+        private readonly Assembly domainAssembly;
+		public GenericControllerFactory(Assembly domainAssembly, IInversionOfControlContainer container)
 		{
 			this.container = container;
+            this.domainAssembly = domainAssembly;
 		}
 
 		protected override Type GetControllerType(RequestContext requestContext, string controllerName)
@@ -24,7 +27,7 @@ namespace Web.Generics.Web.Mvc.Infrastructure
 			if (controllerType == null)
 			{
 				// specific controller does not exist... try the generic one
-				var entityType = typeof(TModel).Assembly.GetType(typeof(TModel).Namespace + "." + controllerName);
+                var entityType = domainAssembly.GetType(domainAssembly.GetTypes()[0].Namespace + "." + controllerName);
 				if (entityType == null)
 				{
 					return null;

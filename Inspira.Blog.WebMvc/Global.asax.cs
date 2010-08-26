@@ -30,7 +30,7 @@ namespace Inspira.Blog.WebMvc
 
             NHibernateSessionFactoryConfig.RepositoryType = typeof(WebLogService);
             
-			ConfigurationFactory.Initialize<WebLog>(InversionOfControlContainer.Unity, new InversionOfControlMapper());
+			//ConfigurationFactory.Initialize<WebLog>(InversionOfControlContainer.Unity, new InversionOfControlMapper());
         }
     }
 }
