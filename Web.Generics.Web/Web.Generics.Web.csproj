@@ -8,7 +8,7 @@
     <ProjectGuid>{083470E3-7BDA-4BE4-9DB2-8AD3E56C8647}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Web.Generics.Web</RootNamespace>
+    <RootNamespace>Web.Generics</RootNamespace>
     <AssemblyName>Web.Generics.Web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -55,6 +55,7 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationManager.cs" />
     <Compile Include="ApplicationServices\Authentication\IMembershipConverter.cs" />
     <Compile Include="ApplicationServices\Authentication\IMembershipRepository.cs" />
     <Compile Include="ApplicationServices\Authentication\IMembershipRoleRepository.cs" />

@@ -6,6 +6,7 @@ using Inspira.Blog.Infrastructure.InversionOfControl;
 using Web.Generics.ApplicationServices.InversionOfControl;
 using Web.Generics.Infrastructure;
 using Web.Generics.Infrastructure.DataAccess.NHibernate;
+using Web.Generics;
 
 namespace Inspira.Blog.WebMvc
 {
@@ -28,7 +29,10 @@ namespace Inspira.Blog.WebMvc
             AreaRegistration.RegisterAllAreas();
             RegisterRoutes(RouteTable.Routes);
 
-            NHibernateSessionFactoryConfig.RepositoryType = typeof(WebLogService);
+            ApplicationManager.Initialize(new ApplicationConfiguration());
+            //AspNetApplicationManager.BindSessionToCurrentContext();
+            //AspNetApplicationManager.UnbindSession();
+            MvcApplicationManager.DefineControllerFactory(typeof(WebLog).Assembly);
             
 			//ConfigurationFactory.Initialize<WebLog>(InversionOfControlContainer.Unity, new InversionOfControlMapper());
         }

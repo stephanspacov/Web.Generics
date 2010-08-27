@@ -10,6 +10,11 @@ namespace Web.Generics.Infrastructure.DataAccess.NHibernate
     public class NHibernateRepositoryContext : IRepositoryContext
     {
         private readonly ISession session;
+        public NHibernateRepositoryContext()
+        {
+            this.session = ApplicationManager.GetCurrentSession();
+        }
+
         public NHibernateRepositoryContext(ISession session)
         {
             this.session = session;
