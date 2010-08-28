@@ -36,9 +36,9 @@ namespace Web.Generics.Infrastructure.DataAccess.EntityFramework
             this.objectContext.DeleteObject(obj);
         }
 
-        public T SelectById<T>(object id)
+        public T SelectById<T>(Object id)
         {
-            throw new NotImplementedException();
+			throw new NotImplementedException();
         }
     }
 }

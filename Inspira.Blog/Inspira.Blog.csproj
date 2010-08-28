@@ -49,12 +49,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Data.Entity" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DomainServices\PostService.cs">
@@ -62,10 +58,9 @@
     </Compile>
     <Compile Include="DomainServices\WebLogService.cs" />
     <Compile Include="Infrastructure\DataAccess\EntityFramework\BlogContext.cs" />
-    <Compile Include="Infrastructure\DataAccess\FluentNHibernate\PostMappingOverride.cs" />
-    <Compile Include="Infrastructure\DataAccess\FluentNHibernate\UserMappingOverride.cs" />
     <Compile Include="Infrastructure\DataAccess\UnitOfWork.cs" />
     <Compile Include="Infrastructure\InversionOfControl\InversionOfControlMapper.cs" />
+    <Compile Include="Infrastructure\DataAccess\FluentNHibernate\MappingConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

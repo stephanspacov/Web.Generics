@@ -28,6 +28,9 @@ namespace Web.Generics
 
         public class InversionOfControlConfiguration
         {
+			public InversionOfControlConfiguration()
+			{				
+			}
             public IInversionOfControlMapper MapperInstance { get; set; }
         }
     }

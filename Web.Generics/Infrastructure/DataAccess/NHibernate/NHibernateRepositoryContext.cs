@@ -15,11 +15,6 @@ namespace Web.Generics.Infrastructure.DataAccess.NHibernate
             this.session = ApplicationManager.GetCurrentSession();
         }
 
-        public NHibernateRepositoryContext(ISession session)
-        {
-            this.session = session;
-        }
-
         public void SaveChanges()
         {
             session.Flush();

@@ -9,7 +9,7 @@
 		<property name="connection.release_mode">auto</property>
 		<property name="hbm2ddl.auto">create-drop</property>
 		<property name="adonet.batch_size">500</property>
-		<property name="proxyfactory.factory_class">NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle</property>
+		<property name="proxyfactory.factory_class">NHibernate.ByteCode.LinFu.ProxyFactoryFactory, NHibernate.ByteCode.LinFu</property>
 		<!--<mapping assembly="Web.Generics.Tests" />-->
 	</session-factory>
 </hibernate-configuration>

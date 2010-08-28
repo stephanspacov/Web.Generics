@@ -79,11 +79,13 @@ namespace Web.Generics.UserInterface.HtmlHelpers
 			buffer.Append("</tbody></table>");
 
 			// pager
+			/*
 			buffer.AppendFormat("<div class='actions-bar wat-cf'><div class='actions'><button class='button' type='submit' name='{0}.Delete'><img src='{1}' alt='Delete' />Delete </button></div><div class='pagination'>", gridName, urlHelper.Content("/assets/img/common/icons/delete-icon.gif"));
 			buffer.Append("<span class='disabled prev_page'>« Previous</span>");
 			buffer.Append("<span class='current'>1</span><a rel='next' href='#'>2</a>");
 			buffer.Append("<a rel='next' class='next_page' href='#'>Next »</a>");
 			buffer.Append("</div></div>");
+			*/
 
 			if (allowPaging || allowSorting) buffer.Append("</form>");
 

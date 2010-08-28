@@ -11,9 +11,10 @@ namespace Web.Generics
 {
     public static partial class MvcApplicationManager
     {
-        public static void DefineControllerFactory(Assembly domainAssembly)
+        public static void DefineControllerFactory()
         {
-            IInversionOfControlContainer container = null; // TODO: puxar de ApplicationManager
+			var domainAssembly = ApplicationManager.ApplicationConfiguration.DomainAssembly;
+			var container = ApplicationManager.Container;
             var controllerFactory = new GenericControllerFactory(domainAssembly, container);
             ControllerBuilder.Current.SetControllerFactory(controllerFactory);
         }

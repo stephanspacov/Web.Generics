@@ -11,19 +11,19 @@ namespace Web.Generics
 {
     public static partial class AspNetApplicationManager
     {
-        public static void BindSessionToCurrentContext(ISessionFactory sessionFactory)
+        public static void BindSessionToCurrentContext()
         {
             Trace.WriteLine(DateTime.Now + "    Opening a new session factory (" + HttpContext.Current.Request.RawUrl + ")", "NHTests");
-            var session = sessionFactory.OpenSession();
+            var session = ApplicationManager.SessionFactory.OpenSession();
             ManagedWebSessionContext.Bind(
                 HttpContext.Current,
                 session
              );
         }
 
-        public static void UnbindSession(ISessionFactory sessionFactory)
+        public static void UnbindSession()
         {
-            ISession session = ManagedWebSessionContext.Unbind(HttpContext.Current, sessionFactory);
+			ISession session = ManagedWebSessionContext.Unbind(HttpContext.Current, ApplicationManager.SessionFactory);
             if (session != null)
             {
                 if (session.Transaction != null &&

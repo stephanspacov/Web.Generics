@@ -15,7 +15,6 @@ namespace Inspira.Blog.WebMvc.Controllers
         // GET: /Post/
         private readonly GenericRepository<WebLog> WebLogs;
         public PostController(GenericRepository<WebLog> WebLogs)
-
         {
             this.WebLogs = WebLogs;
         }

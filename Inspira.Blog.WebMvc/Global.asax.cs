@@ -3,10 +3,10 @@ using System.Web.Routing;
 using Inspira.Blog.DomainModel;
 using Inspira.Blog.DomainServices;
 using Inspira.Blog.Infrastructure.InversionOfControl;
-using Web.Generics.ApplicationServices.InversionOfControl;
 using Web.Generics.Infrastructure;
-using Web.Generics.Infrastructure.DataAccess.NHibernate;
 using Web.Generics;
+using Web.Generics.Infrastructure.Logging;
+using Inspira.Blog.Infrastructure.DataAccess.FluentNHibernate;
 
 namespace Inspira.Blog.WebMvc
 {
@@ -29,12 +29,29 @@ namespace Inspira.Blog.WebMvc
             AreaRegistration.RegisterAllAreas();
             RegisterRoutes(RouteTable.Routes);
 
-            ApplicationManager.Initialize(new ApplicationConfiguration());
-            //AspNetApplicationManager.BindSessionToCurrentContext();
-            //AspNetApplicationManager.UnbindSession();
-            MvcApplicationManager.DefineControllerFactory(typeof(WebLog).Assembly);
-            
-			//ConfigurationFactory.Initialize<WebLog>(InversionOfControlContainer.Unity, new InversionOfControlMapper());
+			ApplicationManager.Initialize(new ApplicationConfiguration
+			{
+				DomainAssembly = typeof(WebLog).Assembly,
+				Fluent = new ApplicationConfiguration.FluentConfiguration
+				{
+					MappingConfigurationInstance = new MappingConfiguration(),
+				},
+				InversionOfControl = new ApplicationConfiguration.InversionOfControlConfiguration
+				{
+					MapperInstance = new InversionOfControlMapper(),
+				}
+			});
+			MvcApplicationManager.DefineControllerFactory();
         }
+
+		protected void Application_BeginRequest()
+		{
+			AspNetApplicationManager.BindSessionToCurrentContext();
+		}
+
+		protected void Application_EndRequest()
+		{
+			AspNetApplicationManager.UnbindSession();
+		}
     }
 }

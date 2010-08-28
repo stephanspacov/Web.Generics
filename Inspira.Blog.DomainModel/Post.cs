@@ -9,6 +9,7 @@ namespace Inspira.Blog.DomainModel
     {
         public Post()
         {
+			this.WebLog = new WebLog();
             this.Tags = new List<Tag>();
             this.Comments = new List<Comment>();
         }

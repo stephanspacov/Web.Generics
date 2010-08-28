@@ -14,10 +14,10 @@ namespace Inspira.Blog.WebMvc.Areas.Admin.Controllers
 {
 	public class PostController : Controller
 	{
-		private readonly GenericRepository<WebLog> WebLogs;
-		public PostController(GenericRepository<WebLog> WebLogs)
+		private readonly GenericRepository<Post> postRepository;
+		public PostController(GenericRepository<Post> postRepository)
 		{
-			this.WebLogs = WebLogs;
+			this.postRepository = postRepository;
 		}
 
 		public ActionResult Index()
@@ -36,14 +36,13 @@ namespace Inspira.Blog.WebMvc.Areas.Admin.Controllers
 			return View(viewModel);
 		}
 
-		public ActionResult Create(Int32 id)
+		public ActionResult Create(Int32? id)
 		{
 			var viewModel = new CreateViewModel();
 
 			if (id > 0)
 			{
-				var webLog = WebLogs.Where(w => w.ID == 1).SingleOrDefault(); // TODO
-				var post = webLog.Posts.Where(p => p.ID == id).SingleOrDefault();
+				var post = postRepository.Where(p => p.ID == id).SingleOrDefault();
 				viewModel.PostID = post.ID;
 				viewModel.PostText = post.Text;
 				viewModel.PostTitle = post.Title;
@@ -58,8 +57,6 @@ namespace Inspira.Blog.WebMvc.Areas.Admin.Controllers
 		{
 			if (!ModelState.IsValid) return View(viewModel);
 
-			var webLog = WebLogs.Where(w => w.ID == 1).SingleOrDefault(); // TODO
-
 			PostState postState;
 			Post post;
 
@@ -67,12 +64,11 @@ namespace Inspira.Blog.WebMvc.Areas.Admin.Controllers
 			{
 				postState = PostState.New;
 				post = new Post();
-				post.WebLog = webLog;
-				webLog.Posts.Add(post);
+				post.WebLog.ID = 1;
 			}
 			else
 			{
-				post = webLog.Posts.Where(p => p.ID == viewModel.PostID).SingleOrDefault();
+				post = postRepository.Where(p => p.ID == viewModel.PostID).SingleOrDefault();
 
 				if (post.IsPublished)
 				{
@@ -104,7 +100,8 @@ namespace Inspira.Blog.WebMvc.Areas.Admin.Controllers
 				{
 					post.CreatedAt = DateTime.Now;
 				}
-				WebLogs.SaveChanges();
+				postRepository.SaveOrUpdate(post);
+				postRepository.SaveChanges();
 
 				// redirect to confirmation
 				ViewData["ID"] = post.ID;
@@ -113,7 +110,8 @@ namespace Inspira.Blog.WebMvc.Areas.Admin.Controllers
 			else // Save
 			{
 				post.IsPublished = false;
-				WebLogs.SaveChanges();
+				postRepository.SaveOrUpdate(post);
+				postRepository.SaveChanges();
 
 				if (postState == PostState.Published)
 				{

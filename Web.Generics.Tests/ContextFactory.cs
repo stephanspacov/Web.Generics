@@ -13,8 +13,7 @@ namespace Web.Generics.Tests
 			NHibernateSessionFactoryConfig.ConfigFilePath = @"..\..\..\Web.Generics.Tests\hibernate.cfg.xml";
 			NHibernateSessionFactoryConfig.RepositoryType = typeof(PostRepository);
 
-			var nhibernateSession = FluentNHibernateHelper<Post>.OpenSession();
-			var context = new NHibernateRepositoryContext(nhibernateSession);
+			var context = new NHibernateRepositoryContext();
 
 			//var context = new EntityFrameworkRepositoryContext(new BlogContext());
 

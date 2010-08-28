@@ -101,23 +101,8 @@
     <Compile Include="DomainModel\CustomTypes\Money.cs" />
     <Compile Include="DomainModel\CustomTypes\PhoneNumber.cs" />
     <Compile Include="DomainModel\CustomTypes\PostalCode.cs" />
+    <Compile Include="Infrastructure\ConfigurationFactory.cs" />
     <Compile Include="Infrastructure\DataAccess\EntityFramework\EntityFrameworkRepositoryContext.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Infrastructure\DataAccess\FluentNHibernate\ColumnNullabilityConvention.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Infrastructure\DataAccess\FluentNHibernate\EnumConvention.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Infrastructure\DataAccess\FluentNHibernate\FluentNHibernateHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Infrastructure\DataAccess\FluentNHibernate\ForeignKeyConstraintNameConvention.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Infrastructure\DataAccess\FluentNHibernate\PrimaryKeyNameConvention.cs" />
-    <Compile Include="Infrastructure\DataAccess\FluentNHibernate\StringColumnLengthConvention.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Infrastructure\DataAccess\LinqExtensions.cs" />
@@ -180,16 +165,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\NHibernate\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Castle.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\NHibernate\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\NHibernate\Castle.DynamicProxy2.dll</HintPath>
-    </Reference>
-    <Reference Include="FluentNHibernate, Version=1.1.0.685, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="FluentNHibernate">
       <HintPath>..\lib\NHibernate\FluentNHibernate.dll</HintPath>
     </Reference>
     <Reference Include="Iesi.Collections">
@@ -199,20 +175,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Log4Net\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Unity\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="NHibernate">
       <HintPath>..\lib\NHibernate\NHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\NHibernate\NHibernate.ByteCode.Castle.dll</HintPath>
-    </Reference>
-    <Reference Include="NHibernate.Linq, Version=1.1.0.1001, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="NHibernate.Linq">
       <HintPath>..\lib\NHibernate\NHibernate.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -225,7 +196,6 @@
     <Reference Include="System.Security" />
     <Reference Include="System.XML" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
