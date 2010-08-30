@@ -21,5 +21,9 @@ namespace Inspira.Blog.WebMvc.ViewModels.Account
 
         [Required]
         public String Password { get; set; }
-    }
+
+		public bool ShowMinimumCharaterLengthMessage { get; set; }
+
+		public Int32 MinimumCharaterLength { get; set; }
+	}
 }

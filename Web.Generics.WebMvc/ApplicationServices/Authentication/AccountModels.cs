@@ -69,6 +69,9 @@ namespace Web.Generics.UserInterface.Models
         [DataType(DataType.Password)]
         [DisplayName("Confirm password")]
         public string ConfirmPassword { get; set; }
+
+		public Boolean ShowMinimumCharaterLengthMessage { get; internal set; }
+		public Int32 MinimumCharaterLength { get; internal set; }
     }
     #endregion
 

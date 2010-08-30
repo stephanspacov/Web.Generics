@@ -20,7 +20,7 @@ namespace Inspira.Blog.WebMvc
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional }, // Parameter defaults
-                new[] { "Inspira.Blog.WebMvc.Controllers" }
+                new[] { "Inspira.Blog.WebMvc.Controllers", "Web.Generics.UserInterface.Controllers" }
             );
         }
 

@@ -78,11 +78,11 @@ namespace Web.Generics.UserInterface.Controllers
         // URL: /Account/Register
         // **************************************
 
-        public ActionResult Register()
-        {
-            ViewData["PasswordLength"] = MembershipService.MinPasswordLength;
-            return View();
-        }
+		[HttpGet]
+		public ActionResult Register()
+		{
+			return View(new RegisterModel());
+		}
 
         [HttpPost]
         public ActionResult Register(RegisterModel model)
