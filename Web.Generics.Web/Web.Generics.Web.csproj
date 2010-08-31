@@ -54,7 +54,7 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationManager.cs" />
+    <Compile Include="AspNetApplicationManager.cs" />
     <Compile Include="ApplicationServices\Authentication\IMembershipConverter.cs" />
     <Compile Include="ApplicationServices\Authentication\IMembershipRepository.cs" />
     <Compile Include="ApplicationServices\Authentication\IMembershipRoleRepository.cs" />
@@ -76,9 +76,7 @@
       <Name>Web.Generics</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Infrastructure\DataAccess\NHibernate\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>rem copy $(Targetir)Web.Generics.* C:\Users\Raphael\Documents\Inspira\bms4.mesadenegociacao\libs\Inspira\</PostBuildEvent>

@@ -14,6 +14,8 @@ using Web.Generics.ApplicationServices.DataAccess;
 using Web.Generics.Infrastructure.DataAccess.NHibernate;
 using Web.Generics.Infrastructure.Logging;
 using Web.Generics.Infrastructure.InversionOfControl.Unity;
+using FluentNHibernate.Conventions.Helpers;
+using Web.Generics.Infrastructure.DataAccess.FluentNHibernate;
 
 namespace Web.Generics
 {
@@ -83,6 +85,21 @@ namespace Web.Generics
 			if (overrideAssembly != null) {
 				autoMap.UseOverridesFromAssembly(overrideAssembly);
 			}
+
+            autoMap.Conventions.Add(
+                DefaultCascade.SaveUpdate(),
+                DefaultLazy.Always(),
+                new ColumnNullabilityConvention(),
+                new ForeignKeyConstraintNameConvention(),
+                new StringColumnLengthConvention(),
+                new EnumConvention(),
+                ForeignKey.EndsWith("_ID"),
+                ConventionBuilder.Reference.Always(x => x.Not.Nullable()),
+                ConventionBuilder.Reference.Always(x => x.Cascade.None()),
+                ConventionBuilder.Reference.Always(x => x.Not.LazyLoad()),
+                ConventionBuilder.HasMany.Always(x => x.Inverse()),
+                ConventionBuilder.HasManyToMany.Always(x => x.Table(x.TableName.Replace("ListTo", "").Substring(0, x.TableName.Length - 10)))
+            );
 
             var sessionFactory = Fluently.Configure(nhConfiguration)
                 .Mappings(m => m.AutoMappings.Add(autoMap))
