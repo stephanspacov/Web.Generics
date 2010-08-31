@@ -9,12 +9,11 @@
             <h2 class="title">Register to create your blog</h2>
             <div class="inner">
 				<div class="flash">
-				<div class='message error'>
 				<% if (Model.ShowMinimumCharaterLengthMessage) { %>
-					<p>Passwords are required to be a minimum of <%: Model.MinimumCharaterLength %> characters in length.</p>
+					<div class='message error'>
+						<p>Passwords are required to be a minimum of <%: Model.MinimumCharaterLength %> characters in length.</p>
+					</div>
 				<% } %>
-				</div>
-
 				</div>
                 <form action="" method="post" class="form">
                 <div class="group fieldWithErrors">

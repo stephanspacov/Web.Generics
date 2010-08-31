@@ -22,7 +22,7 @@ namespace Web.Generics.Infrastructure.DataAccess.NHibernate
 
         public IQueryable<T> Query<T>() where T : class
         {
-            var query = this.session.Linq<T>();
+            var query = this.session.Query<T>();
             return (IQueryable<T>)query;
         }
 

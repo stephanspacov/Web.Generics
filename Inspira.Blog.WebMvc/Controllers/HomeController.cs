@@ -26,6 +26,8 @@ namespace Inspira.Blog.WebMvc.Controllers
 
         public ActionResult Index()
         {
+			if (User.Identity.IsAuthenticated) return RedirectToRoute("Admin");
+
             var viewModel = new HomeIndexViewModel();
             viewModel.WebLogs = this.webLogService.Select();
             viewModel.LastWebLogs = this.webLogService.SelectRecent(2);

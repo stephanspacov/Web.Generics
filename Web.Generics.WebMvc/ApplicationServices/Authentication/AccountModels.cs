@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Web.Generics.UserInterface.Validators;
 
 namespace Web.Generics.UserInterface.Models
 {
@@ -57,6 +58,7 @@ namespace Web.Generics.UserInterface.Models
         [Required]
         [DataType(DataType.EmailAddress)]
         [DisplayName("Email address")]
+		[Email]
         public string Email { get; set; }
 
         [Required]
