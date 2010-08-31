@@ -9,7 +9,7 @@ namespace Web.Generics.Infrastructure.Logging
 {
 	public class Log4NetLogger : ILogger
 	{
-		ILog logger = log4net.LogManager.GetLogger("LogInFile");
+		ILog logger = log4net.LogManager.GetLogger("Web.Generics");
 		public void Debug(String logMessage, params object[] parameters)
 		{
 			logger.Debug(String.Format(logMessage, parameters));
@@ -25,6 +25,11 @@ namespace Web.Generics.Infrastructure.Logging
 		public void Warn(String logMessage, params object[] parameters)
 		{
 			logger.Warn(String.Format(logMessage, parameters));
+		}
+
+		public static ILogger GetLogger<T>()
+		{
+			return new Log4NetLogger();
 		}
 	}
 }

@@ -4,39 +4,48 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 using Web.Generics.ApplicationServices.Authentication;
+using Web.Generics.Infrastructure.Logging;
 
 namespace Web.Generics.Infrastructure.Authentication
 {
     public class RoleProvider : System.Web.Security.RoleProvider
     {
-
         private IMembershipRoleRepository repository;
+		private static ILogger logger = Log4NetLogger.GetLogger<RoleProvider>();
 
         public RoleProvider()
         {
-            string assembly = String.Empty;
-            string repositoryType = String.Empty;
+			try
+			{
+				string assembly = String.Empty;
+				string repositoryType = String.Empty;
 
-            System.Configuration.Configuration configuration = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
-            System.Web.Configuration.RoleManagerSection roleSection = (System.Web.Configuration.RoleManagerSection)configuration.GetSection("system.web/roleManager");
+				System.Configuration.Configuration configuration = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
+				System.Web.Configuration.RoleManagerSection roleSection = (System.Web.Configuration.RoleManagerSection)configuration.GetSection("system.web/roleManager");
 
-            foreach (System.Configuration.ProviderSettings p in roleSection.Providers)
-            {
-                if (p.Name == roleSection.DefaultProvider)
-                {
-                    assembly = p.Parameters["repositoryAssembly"];
-                    repositoryType = p.Parameters["repository"];
-                }
-            }
+				foreach (System.Configuration.ProviderSettings p in roleSection.Providers)
+				{
+					if (p.Name == roleSection.DefaultProvider)
+					{
+						assembly = p.Parameters["repositoryAssembly"];
+						repositoryType = p.Parameters["repository"];
+					}
+				}
 
-            Assembly thisAssembly = Assembly.GetAssembly(typeof(MembershipProvider));
-            string currentAssembly = thisAssembly.FullName;
+				Assembly thisAssembly = Assembly.GetAssembly(typeof(MembershipProvider));
+				string currentAssembly = thisAssembly.FullName;
 
-            if (assembly != currentAssembly)
-                thisAssembly = Assembly.Load(assembly);
+				if (assembly != currentAssembly)
+					thisAssembly = Assembly.Load(assembly);
 
-            Type repType = thisAssembly.GetType(repositoryType);
-            repository = (IMembershipRoleRepository)Activator.CreateInstance(repType, true);
+				Type repType = thisAssembly.GetType(repositoryType);
+				repository = (IMembershipRoleRepository)Activator.CreateInstance(repType, true);
+			}
+			catch (Exception exc)
+			{
+				logger.Error("Não foi possível construir o RoleProvider: " + exc.ToString());
+				throw new Exception("Não foi possível construir o RoleProvider: " + exc.ToString(), exc);
+			}
         }
 
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)

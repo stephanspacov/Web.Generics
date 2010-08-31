@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="ApplicationConfiguration.cs" />
     <Compile Include="ApplicationManager.cs" />
+    <Compile Include="ApplicationServices\DataAccess\GenericNHibernateRepository.cs" />
     <Compile Include="ApplicationServices\DataAccess\GenericRepository.cs">
       <SubType>Code</SubType>
     </Compile>

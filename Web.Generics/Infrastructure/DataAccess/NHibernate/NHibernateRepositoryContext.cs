@@ -40,5 +40,7 @@ namespace Web.Generics.Infrastructure.DataAccess.NHibernate
         {
             return this.session.Get<T>(id);
         }
-    }
+
+		public ISession Session { get { return this.session; } }
+	}
 }

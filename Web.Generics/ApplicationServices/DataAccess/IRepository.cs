@@ -12,5 +12,6 @@ namespace Web.Generics.ApplicationServices.DataAccess
         void SaveOrUpdate(T obj);
         void Delete(T obj);
         T SelectById(object id);
+		void SaveChanges();
     }
 }

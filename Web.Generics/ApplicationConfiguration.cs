@@ -24,7 +24,8 @@ namespace Web.Generics
         public class FluentConfiguration
         {
             public IAutomappingConfiguration MappingConfigurationInstance { get; set; }
-        }
+			public Assembly OverrideAssembly { get; set; }
+		}
 
         public class InversionOfControlConfiguration
         {

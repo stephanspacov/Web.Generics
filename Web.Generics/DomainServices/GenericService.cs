@@ -48,9 +48,21 @@ namespace Web.Generics.DomainServices
             return this.genericRepository.Query().Where(expression).ToList();
         }
 
-        internal T SelectById(object id)
+        virtual public T SelectById(object id)
         {
             return this.genericRepository.SelectById(id);
         }
+
+		[Obsolete("Use SaveOrUpdate()", false)]
+		virtual public void Insert(T obj)
+		{
+			this.SaveOrUpdate(obj);
+		}
+
+		[Obsolete("Use SaveOrUpdate()", false)]
+		virtual public void Update(T obj)
+		{
+			this.SaveOrUpdate(obj);
+		}
 	}
 }

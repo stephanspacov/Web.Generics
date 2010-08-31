@@ -40,6 +40,8 @@ namespace Web.Generics
                 mapper.DefineMappings(Container);
             }
 
+			log4net.Config.XmlConfigurator.Configure();
+
             // DefineControllerFactory(domainAssembly, container);
         }
 
@@ -75,8 +77,16 @@ namespace Web.Generics
             var fluentConfiguration = ApplicationConfiguration.Fluent.MappingConfigurationInstance;
             var assembly = ApplicationConfiguration.DomainAssembly;
 
+			var autoMap = AutoMap.Assembly(assembly, fluentConfiguration);
+
+			var overrideAssembly = ApplicationConfiguration.Fluent.OverrideAssembly;
+			if (overrideAssembly != null) {
+				autoMap.UseOverridesFromAssembly(overrideAssembly);
+			}
+
             var sessionFactory = Fluently.Configure(nhConfiguration)
-                .Mappings(m => m.AutoMappings.Add(AutoMap.Assembly(assembly, fluentConfiguration))).BuildSessionFactory();
+                .Mappings(m => m.AutoMappings.Add(autoMap))
+				.BuildSessionFactory();
 
             return sessionFactory;
         }
