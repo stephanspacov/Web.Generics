@@ -182,6 +182,7 @@
     <Content Include="Global.asax" />
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Account\SignUpConfirm.aspx" />
     <Content Include="Views\Post\Details.aspx" />
