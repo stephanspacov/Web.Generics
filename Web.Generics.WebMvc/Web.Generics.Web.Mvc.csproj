@@ -91,9 +91,6 @@
     <Compile Include="UserInterface\HtmlHelpers\PagerInfo.cs" />
     <Compile Include="UserInterface\HtmlHelpers\RowList.cs" />
     <Compile Include="UserInterface\HtmlHelpers\RowListDataSource.cs" />
-    <Compile Include="UserInterface\HtmlHelpers\SortOrder.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="UserInterface\HtmlHelpers\UserInterfaceExtensions.cs">
       <SubType>Code</SubType>
     </Compile>

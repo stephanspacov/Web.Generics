@@ -13,5 +13,6 @@ namespace Web.Generics.ApplicationServices.DataAccess
         void Delete(T obj);
         T SelectById(object id);
 		void SaveChanges();
-    }
+		IList<T> SelectWithPagingAndSorting(Expression<Func<T, bool>> expression, int? pageSize, int? pageIndex, Expression<Func<T, object>> sortProperty, UserInterface.HtmlHelpers.SortOrder? sortOrder, out int totalItemCount);
+	}
 }

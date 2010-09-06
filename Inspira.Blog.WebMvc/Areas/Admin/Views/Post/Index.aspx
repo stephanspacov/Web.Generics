@@ -1,10 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Inspira.Blog.WebMvc.Areas.Admin.ViewModels.Post.IndexViewModel>" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Blogs</h2>	
-	<p>Lista de blogs</p>
+    <h2>Posts</h2>	
+	<p>Lista de posts</p>
 
-	<%= Html.Grid(model => model.AllPosts) %>
+	<% using (Html.BeginForm(null, null, FormMethod.Get)) { %>
+		<% Html.RenderPartial("Partial/Filter", Model); %>
+		<%= Html.Grid(model => model.AllPosts) %>
+	<% } %>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="BoxContent" runat="server">

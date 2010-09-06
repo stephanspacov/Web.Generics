@@ -8,32 +8,43 @@ using Web.Generics.UserInterface.HtmlHelpers;
 using Inspira.Blog.DomainModel;
 using Web.Generics.ApplicationServices.DataAccess;
 using Web.Generics.Infrastructure.DataAccess.NHibernate;
-
+using Web.Generics.UserInterface.Extensions;
 
 namespace Inspira.Blog.WebMvc.Areas.Admin.Controllers
 {
 	public class PostController : Controller
 	{
 		private readonly GenericRepository<Post> postRepository;
-		public PostController(GenericRepository<Post> postRepository)
+		private readonly GenericRepository<WebLog> blogRepository;
+		public PostController(GenericRepository<Post> postRepository, GenericRepository<WebLog> blogRepository)
 		{
 			this.postRepository = postRepository;
+			this.blogRepository = blogRepository;
 		}
 
-		public ActionResult Index()
+		public ActionResult Index(IndexViewModel viewModel)
 		{
-			var viewModel = new IndexViewModel();
+			FillDropDowns(viewModel);
+
+			var expression = viewModel.Filter.GetExpression();
 			var gridBuilder = new GridBuilder(viewModel.AllPosts);
 
-			var posts = new[] {
-				new Post { Title= "post 1" },
-				new Post { Title= "post 2" },
-				new Post { Title= "post 3" },
-			};
+			var posts = postRepository.Where(expression).ToList();
 
 			gridBuilder.Populate(posts);
 
 			return View(viewModel);
+		}
+
+		private void FillDropDowns(IndexViewModel viewModel)
+		{
+			viewModel.Filter.PublishedSelectList = new[] {
+				new SelectListItem { Value = "1", Text = "Yes" }
+				,new SelectListItem { Value = "2", Text = "No" }
+			};
+
+			var list = blogRepository.ToList();
+			viewModel.Filter.BlogSelectList = list.ToSelectList(b => b.ID, b => b.Title);
 		}
 
 		public ActionResult Create(Int32? id)

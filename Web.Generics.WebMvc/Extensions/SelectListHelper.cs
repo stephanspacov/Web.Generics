@@ -7,7 +7,6 @@ using System.Web.Mvc;
 using System.Reflection;
 using System.Resources;
 
-
 namespace Web.Generics.UserInterface.Extensions
 {
     public static class SelectListHelper

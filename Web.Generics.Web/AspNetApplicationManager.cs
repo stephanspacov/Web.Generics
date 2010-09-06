@@ -26,13 +26,11 @@ namespace Web.Generics
 			ISession session = ManagedWebSessionContext.Unbind(HttpContext.Current, ApplicationManager.SessionFactory);
             if (session != null)
             {
-                if (session.Transaction != null &&
-                    session.Transaction.IsActive)
+                if (session.Transaction != null && session.Transaction.IsActive)
                 {
                     session.Transaction.Rollback();
                 }
-                else
-                    session.Flush();
+                // else session.Flush();
 
                 Trace.WriteLine(DateTime.Now + "    Closing session(" + HttpContext.Current.Request.RawUrl + ")", "NHTests");
                 session.Close();

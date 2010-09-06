@@ -11,8 +11,10 @@ namespace Inspira.Blog.WebMvc.Areas.Admin.ViewModels.Post
 		public IndexViewModel()
 		{
 			this.AllPosts = new Grid();
+			this.Filter = new FilterViewModel();
 		}
 
 		public Grid AllPosts { get; set; }
+		public FilterViewModel Filter { get; set; }
 	}
 }
