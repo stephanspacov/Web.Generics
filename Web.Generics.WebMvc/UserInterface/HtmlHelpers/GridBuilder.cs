@@ -18,8 +18,8 @@ namespace Web.Generics.UserInterface.HtmlHelpers
 
 		public void Populate(IEnumerable objectList)
 		{
-			grid.AllowPaging = true;
-			grid.AllowSorting = true;
+			grid.PagingInfo.PagingEnabled = true;
+			grid.SortingInfo.SortingEnabled = true;
 
 			var count = 0;
 
@@ -48,27 +48,27 @@ namespace Web.Generics.UserInterface.HtmlHelpers
 			// filtering
 
 			// sorting
-			if (grid.SortProperty != null)
+			if (grid.SortingInfo.SortProperty != null)
 			{
 				var param = Expression.Parameter(typeof(T), "p");
-				var mySortExpression = Expression.Lambda<Func<T, Object>>(Expression.Convert(Expression.Property(param, grid.SortProperty), typeof(Object)), param);
+				var mySortExpression = Expression.Lambda<Func<T, Object>>(Expression.Convert(Expression.Property(param, grid.SortingInfo.SortProperty.Name), typeof(Object)), param);
 
-				if (grid.SortOrder == SortOrder.Ascending)
+				if (grid.SortingInfo.SortOrder == SortOrder.Ascending)
 				{
 					query = query.OrderBy(mySortExpression);
-					grid.SortOrder = SortOrder.Descending;
+					grid.SortingInfo.SortOrder = SortOrder.Descending;
 				}
 				else
 				{
 					query = query.OrderByDescending(mySortExpression);
-					grid.SortOrder = SortOrder.Ascending;
+					grid.SortingInfo.SortOrder = SortOrder.Ascending;
 				}
 			}
 
 			// paging
-			if (grid.AllowPaging)
+			if (grid.PagingInfo.PagingEnabled)
 			{
-				query = query.Skip((grid.PageIndex - 1) * grid.PageSize).Take(grid.PageSize);
+				query = query.Skip((grid.PagingInfo.PageIndex - 1) * grid.PagingInfo.PageSize).Take(grid.PagingInfo.PageSize);
 			}
 
 			return query;

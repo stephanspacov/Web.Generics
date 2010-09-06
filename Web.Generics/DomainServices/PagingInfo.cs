@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Web.Generics.UserInterface.HtmlHelpers
+namespace Web.Generics.DomainServices
 {
-    public partial class PagerInfo
+    public partial class PagingInfo
     {
-		public PagerInfo()
+		public PagingInfo()
 		{
 			this.PageSize = 10;
 			this.PageIndex = 1;

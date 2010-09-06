@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Web.Generics.WebMvc.UserInterface.HtmlHelpers;
+using System.Collections;
 
 namespace Web.Generics.UserInterface.HtmlHelpers
 {
@@ -15,5 +16,12 @@ namespace Web.Generics.UserInterface.HtmlHelpers
 
         public IList<GridColumn> Columns { get; set; }
         public IList<GridRow> Rows { get; set; }
+
+        public IEnumerable DataSource { get; set; }
+
+        public void DataBind()
+        {
+            
+        }
     }
 }

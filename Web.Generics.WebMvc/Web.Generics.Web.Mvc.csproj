@@ -60,7 +60,8 @@
     <Compile Include="ApplicationServices\Authentication\AccountModels.cs" />
     <Compile Include="ApplicationServices\Authentication\SpecializedAuthorizeAttribute.cs" />
     <Compile Include="Captcha\CaptchaService.cs" />
-    <Compile Include="Extensions\SelectListHelper.cs" />
+    <Compile Include="UserInterface\Extensions\FileUploadExtensions.cs" />
+    <Compile Include="UserInterface\Extensions\SelectListHelper.cs" />
     <Compile Include="Infrastructure\GenericControllerFactory.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -76,22 +77,14 @@
     <Compile Include="UserInterface\GenericListViewModel.cs" />
     <Compile Include="UserInterface\GenericViewModel.cs" />
     <Compile Include="UserInterface\GenericViewModel_2.cs" />
-    <Compile Include="UserInterface\HtmlHelpers\FileUploadExtensions.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="UserInterface\HtmlHelpers\Filter.cs" />
-    <Compile Include="UserInterface\HtmlHelpers\FilterComparerType.cs" />
-    <Compile Include="UserInterface\HtmlHelpers\FilterCondition.cs" />
     <Compile Include="UserInterface\HtmlHelpers\Grid.cs" />
     <Compile Include="UserInterface\HtmlHelpers\GridBuilder.cs" />
     <Compile Include="UserInterface\HtmlHelpers\GridCell.cs" />
     <Compile Include="UserInterface\HtmlHelpers\GridColumn.cs" />
-    <Compile Include="UserInterface\HtmlHelpers\GridOptions.cs" />
     <Compile Include="UserInterface\HtmlHelpers\GridRow.cs" />
-    <Compile Include="UserInterface\HtmlHelpers\PagerInfo.cs" />
     <Compile Include="UserInterface\HtmlHelpers\RowList.cs" />
     <Compile Include="UserInterface\HtmlHelpers\RowListDataSource.cs" />
-    <Compile Include="UserInterface\HtmlHelpers\UserInterfaceExtensions.cs">
+    <Compile Include="UserInterface\Extensions\UserInterfaceExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="UserInterface\Validators\CnpjAttribute.cs" />

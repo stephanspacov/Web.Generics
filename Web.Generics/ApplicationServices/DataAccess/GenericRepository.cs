@@ -72,7 +72,11 @@ namespace Web.Generics.ApplicationServices.DataAccess
 
 		public virtual IList<T> SelectWithPagingAndSorting(Expression<Func<T, bool>> expression, int? pageSize, int? pageIndex, Expression<Func<T, object>> sortProperty, UserInterface.HtmlHelpers.SortOrder? sortOrder, out int totalItemCount)
 		{
-			var query = this.Query().Where(expression);
+            var query = this.Query();
+            if (expression != null)
+            {
+                query = query.Where(expression);
+            }
 
 			if (sortProperty != null)
 			{

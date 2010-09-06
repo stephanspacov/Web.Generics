@@ -38,6 +38,33 @@ namespace Web.Generics.DomainServices
 			return this.genericRepository.Query().ToList();
 		}
 
+        virtual public IList<T> Select(DataRetrievalInfo<T> dataRetrievalInfo)
+        {
+            Int32? pageSize = null;
+            Int32? pageIndex = null;
+
+            if (dataRetrievalInfo.PagingInfo != null && dataRetrievalInfo.PagingInfo.PagingEnabled)
+            {
+                pageSize = dataRetrievalInfo.PagingInfo.PageSize;
+                pageIndex = dataRetrievalInfo.PagingInfo.PageIndex;
+            }
+
+            Expression<Func<T, Object>> sortProperty = null;
+            SortOrder? sortOrder = null;
+            if (dataRetrievalInfo.SortingInfo != null && dataRetrievalInfo.SortingInfo.SortingEnabled)
+            {
+                sortProperty = dataRetrievalInfo.SortingInfo.SortProperty;
+                sortOrder = dataRetrievalInfo.SortingInfo.SortOrder;
+            }
+
+            Int32 itemCount;
+            var result = this.Select(dataRetrievalInfo.Filter, pageSize, pageIndex, sortProperty, sortOrder, out itemCount);
+
+            dataRetrievalInfo.TotalItemCount = itemCount;
+
+            return result;
+        }
+
         virtual public IList<T> Select(Expression<Func<T, Boolean>> expression)
         {
             return this.genericRepository.Query().Where(expression).ToList();

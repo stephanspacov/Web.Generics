@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Web.Generics.WebMvc.UserInterface.HtmlHelpers;
+using Web.Generics.DomainServices;
 
 namespace Web.Generics.UserInterface.HtmlHelpers
 {
 	public class RowList
 	{
-		public Boolean AllowPaging { get; set; }
-		public Boolean AllowSorting { get; set; }
-		public String SortProperty { get; set; }
-		public SortOrder SortOrder { get; set; }
-		public Int32 PageSize { get; set; }
-		public Int32 PageIndex { get; set; }
+        public RowList()
+        {
+        }
+
+        public PagingInfo PagingInfo { get; set; }
+        public SortingInfo<Object> SortingInfo { get; set; }
 	}
 }
