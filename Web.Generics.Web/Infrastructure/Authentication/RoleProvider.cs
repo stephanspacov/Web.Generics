@@ -10,104 +10,173 @@ namespace Web.Generics.Infrastructure.Authentication
 {
     public class RoleProvider : System.Web.Security.RoleProvider
     {
+
         private IMembershipRoleRepository repository;
-		private static ILogger logger = Log4NetLogger.GetLogger<RoleProvider>();
 
         public RoleProvider()
         {
-			try
-			{
-				string assembly = String.Empty;
-				string repositoryType = String.Empty;
+            string assembly = String.Empty;
+            string repositoryType = String.Empty;
 
-				System.Configuration.Configuration configuration = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
-				System.Web.Configuration.RoleManagerSection roleSection = (System.Web.Configuration.RoleManagerSection)configuration.GetSection("system.web/roleManager");
+            System.Configuration.Configuration configuration = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
+            System.Web.Configuration.RoleManagerSection roleSection = (System.Web.Configuration.RoleManagerSection)configuration.GetSection("system.web/roleManager");
 
-				foreach (System.Configuration.ProviderSettings p in roleSection.Providers)
-				{
-					if (p.Name == roleSection.DefaultProvider)
-					{
-						assembly = p.Parameters["repositoryAssembly"];
-						repositoryType = p.Parameters["repository"];
-					}
-				}
+            foreach (System.Configuration.ProviderSettings p in roleSection.Providers)
+            {
+                if (p.Name == roleSection.DefaultProvider)
+                {
+                    assembly = p.Parameters["repositoryAssembly"];
+                    repositoryType = p.Parameters["repository"];
+                }
+            }
 
-				Assembly thisAssembly = Assembly.GetAssembly(typeof(MembershipProvider));
-				string currentAssembly = thisAssembly.FullName;
+            Assembly thisAssembly = Assembly.GetAssembly(typeof(RoleProvider));
+            string currentAssembly = thisAssembly.FullName;
 
-				if (assembly != currentAssembly)
-					thisAssembly = Assembly.Load(assembly);
+            try
+            {
+                if (assembly != currentAssembly)
+                    thisAssembly = Assembly.Load(assembly);
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("Inspira RoleProvider: Error loading the repository's assembly.", e);
+            }
 
-				Type repType = thisAssembly.GetType(repositoryType);
-				repository = (IMembershipRoleRepository)Activator.CreateInstance(repType, true);
-			}
-			catch (Exception exc)
-			{
-				logger.Error("Não foi possível construir o RoleProvider: " + exc.ToString());
-				throw new Exception("Não foi possível construir o RoleProvider: " + exc.ToString(), exc);
-			}
+            try
+            {
+                Type repType = thisAssembly.GetType(repositoryType);
+                repository = (IMembershipRoleRepository)Activator.CreateInstance(repType, true);
+
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("Inspira RoleProvider: Error creating an instance of the repository.", e);
+            }
         }
 
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)
         {
-            throw new NotImplementedException();
+            VerifyParameters(usernames, "username");
+            VerifyParameters(roleNames, "role");
+
+            foreach (string user in usernames)
+                repository.AddUsersToRoles(new string[] { user }, roleNames);
         }
 
         public override string ApplicationName
         {
             get
             {
-                throw new NotImplementedException();
+                System.Configuration.Configuration configuration = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~");
+                System.Web.Configuration.RoleManagerSection roleSection = (System.Web.Configuration.RoleManagerSection)configuration.GetSection("system.web/roleManager");
+
+                foreach (System.Configuration.ProviderSettings p in roleSection.Providers)
+                {
+                    if (p.Name == roleSection.DefaultProvider)
+                        return p.Parameters["applicationName"];
+                }
+
+                return null;
             }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            set { }
         }
 
         public override void CreateRole(string roleName)
         {
-            throw new NotImplementedException();
+            if (repository.RoleExists(roleName))
+                throw new ApplicationException("Inspira RoleProvider: Role already exists.");
+
+            repository.CreateRole(roleName);
         }
 
         public override bool DeleteRole(string roleName, bool throwOnPopulatedRole)
         {
-            throw new NotImplementedException();
+            VerifyParameters(new string[] { roleName }, "role");
+
+            if (throwOnPopulatedRole)
+            {
+                string[] users = repository.GetUsersInRole(roleName);
+                if (users.Length > 0)
+                    throw new ApplicationException("Inspira RoleProvider: roleName has one or more members and throwOnPopulatedRole is true.");
+            }
+            if (repository.RoleExists(roleName))
+            {
+                repository.DeleteRole(roleName, false);
+                return true;
+            }
+            return false;
         }
 
         public override string[] FindUsersInRole(string roleName, string usernameToMatch)
         {
-            throw new NotImplementedException();
+            VerifyParameters(new string[] { roleName }, "role");
+            VerifyParameters(new string[] { usernameToMatch }, "user");
+
+            return repository.FindUsersInRole(roleName, usernameToMatch);
         }
 
         public override string[] GetAllRoles()
         {
-            throw new NotImplementedException();
+            return repository.GetAllRoles();
         }
 
         public override string[] GetRolesForUser(string username)
         {
-            throw new NotImplementedException();
+            VerifyParameters(new string[] { username }, "username");
+
+            return repository.GetRolesForUser(username);
         }
 
         public override string[] GetUsersInRole(string roleName)
         {
-            throw new NotImplementedException();
+            VerifyParameters(new string[] { roleName }, "role");
+
+            if (!repository.RoleExists(roleName))
+                throw new ApplicationException(String.Format("Inspira RoleProvider: The role '{0}' does not exists.", roleName));
+
+            return repository.GetUsersInRole(roleName);
         }
 
         public override bool IsUserInRole(string username, string roleName)
         {
-            throw new NotImplementedException();
+            VerifyParameters(new string[] { username }, "user");
+
+            return repository.IsUserInRole(username, roleName);
         }
 
         public override void RemoveUsersFromRoles(string[] usernames, string[] roleNames)
         {
-            throw new NotImplementedException();
+            VerifyParameters(usernames, "username");
+            VerifyParameters(roleNames, "role");
+
+            //foreach(string user in usernames)
+            //    if (System.Web.Security.Membership.GetUser(user) == null)
+            //        throw new ProviderException(String.Format("Inspira RoleProvider: The user '{0}' does not exist.", user));
+
+            //foreach (string role in roleNames)
+            //    if (!repository.RoleExists(role))
+            //        throw new ProviderException(String.Format("Inspira RoleProvider: The role '{0}' does not exists.", role));
+
+            foreach (string user in usernames)
+                repository.RemoveUsersFromRoles(new string[] { user }, roleNames);
+
         }
 
         public override bool RoleExists(string roleName)
         {
-            throw new NotImplementedException();
+            return repository.RoleExists(roleName);
+        }
+
+        private void VerifyParameters(string[] parameters, string singularParameterName)
+        {
+            for (int i = 0; i < parameters.Length; i++)
+            {
+                if (parameters[i] == null)
+                    throw new ArgumentNullException(String.Format("Inspira RoleProvider: The '{0}' of index '{1}' cannot be null", singularParameterName, i));
+                else if (parameters[i] == String.Empty)
+                    throw new ArgumentException(String.Format("Inspira RoleProvider: The '{0}' if index '{1}' cannot be empty", singularParameterName, i));
+            }
         }
     }
 }
