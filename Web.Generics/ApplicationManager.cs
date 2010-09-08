@@ -47,12 +47,12 @@ namespace Web.Generics
             // DefineControllerFactory(domainAssembly, container);
         }
 
-        public static void Configure(IInversionOfControlMapper mapper)
+		private static void Configure(IInversionOfControlMapper mapper)
         {
             //Configure<NHibernateRepositoryContext, UnityInversionOfControlContainer>();
         }
 
-        public static void Configure<RepositoryContextT, InversionOfControlT>(IInversionOfControlMapper mapper)
+        private static void Configure<RepositoryContextT, InversionOfControlT>(IInversionOfControlMapper mapper)
         {
             //// define contexto padrão para os repositórios
             //container.RegisterInstance<IRepositoryContext>(repositoryContext);
@@ -68,7 +68,7 @@ namespace Web.Generics
             //mapper.DefineMappings(container);
         }
 
-        private static ISessionFactory CreateSessionFactory()
+        public static ISessionFactory CreateSessionFactory()
         {
             Trace.WriteLine(DateTime.Now + "    Creating a new session factory", "NHTests");
 

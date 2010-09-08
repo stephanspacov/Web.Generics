@@ -7,7 +7,7 @@ using Web.Generics.UserInterface.HtmlHelpers;
 
 namespace Web.Generics.DomainServices
 {
-	public class GenericService<T>
+	public class GenericService<T> where T : class
 	{
         private readonly IRepository<T> genericRepository;
 		public IRepository<T> GenericRepository
@@ -26,11 +26,13 @@ namespace Web.Generics.DomainServices
 		virtual public void SaveOrUpdate(T obj)
 		{
 			this.genericRepository.SaveOrUpdate(obj);
+			this.genericRepository.SaveChanges();
 		}
 
         virtual public void Delete(T obj)
 		{
 			this.genericRepository.Delete(obj);
+			this.genericRepository.SaveChanges();
 		}
 
 		virtual public IList<T> Select()
@@ -53,7 +55,7 @@ namespace Web.Generics.DomainServices
             SortOrder? sortOrder = null;
             if (dataRetrievalInfo.SortingInfo != null && dataRetrievalInfo.SortingInfo.SortingEnabled)
             {
-                sortProperty = dataRetrievalInfo.SortingInfo.SortProperty;
+                sortProperty = dataRetrievalInfo.SortingInfo.GetSortExpression<T>();
                 sortOrder = dataRetrievalInfo.SortingInfo.SortOrder;
             }
 

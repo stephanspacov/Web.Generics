@@ -7,11 +7,11 @@ using Web.Generics.UserInterface.HtmlHelpers;
 
 namespace Web.Generics.DomainServices
 {
-    public class DataRetrievalInfo<T>
+    public class DataRetrievalInfo<T> where T : class
     {
         public Expression<Func<T, Boolean>> Filter { get; set; }
         public PagingInfo PagingInfo { get; set; }
-        public SortingInfo<T> SortingInfo { get; set; }
+        public SortingInfo SortingInfo { get; set; }
         public Int32 TotalItemCount { get; set; }
     }
 }

@@ -10,12 +10,17 @@ namespace Web.Generics.Infrastructure.DataAccess.NHibernate
     public class NHibernateRepositoryContext : IRepositoryContext
     {
         private readonly ISession session;
-        public NHibernateRepositoryContext()
-        {
-            this.session = ApplicationManager.GetCurrentSession();
-        }
+		public NHibernateRepositoryContext()
+		{
+			this.session = ApplicationManager.GetCurrentSession();
+		}
 
-        public void SaveChanges()
+		internal NHibernateRepositoryContext(ISession session)
+		{
+			this.session = session;
+		}
+
+		public void SaveChanges()
         {
             session.Flush();
         }

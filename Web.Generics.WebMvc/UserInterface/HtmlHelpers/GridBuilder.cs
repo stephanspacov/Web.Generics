@@ -50,17 +50,15 @@ namespace Web.Generics.UserInterface.HtmlHelpers
 			// sorting
 			if (grid.SortingInfo.SortProperty != null)
 			{
-				var param = Expression.Parameter(typeof(T), "p");
-				var mySortExpression = Expression.Lambda<Func<T, Object>>(Expression.Convert(Expression.Property(param, grid.SortingInfo.SortProperty.Name), typeof(Object)), param);
-
+				var mySortExpression = grid.SortingInfo.GetSortExpression<T>();
 				if (grid.SortingInfo.SortOrder == SortOrder.Ascending)
 				{
-					query = query.OrderBy(mySortExpression);
+					// query = query.OrderBy(mySortExpression);
 					grid.SortingInfo.SortOrder = SortOrder.Descending;
 				}
 				else
 				{
-					query = query.OrderByDescending(mySortExpression);
+					// query = query.OrderByDescending(mySortExpression);
 					grid.SortingInfo.SortOrder = SortOrder.Ascending;
 				}
 			}

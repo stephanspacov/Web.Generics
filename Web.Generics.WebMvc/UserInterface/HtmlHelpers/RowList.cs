@@ -14,6 +14,6 @@ namespace Web.Generics.UserInterface.HtmlHelpers
         }
 
         public PagingInfo PagingInfo { get; set; }
-        public SortingInfo<Object> SortingInfo { get; set; }
+        public SortingInfo SortingInfo { get; set; }
 	}
 }

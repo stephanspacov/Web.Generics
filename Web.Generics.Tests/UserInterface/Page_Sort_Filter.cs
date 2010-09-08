@@ -44,9 +44,9 @@ namespace Web.Generics.Tests.UserInterface
         public void Order_by_ID_desc_must_return_7_items_in_descending_order()
         {
             var dri = new DataRetrievalInfo<WebLog> {
-                SortingInfo = new SortingInfo<WebLog> {
+                SortingInfo = new SortingInfo {
                     SortingEnabled = true,
-                    SortProperty = w => w.ID,
+                    SortProperty = "ID",
                     SortOrder = SortOrder.Descending,
                 }
             };
@@ -73,7 +73,7 @@ namespace Web.Generics.Tests.UserInterface
         [TestMethod]
         public void Default_sortinginfo_is_null_property_ascending_with_sorting_disabled()
         {
-            var sortingInfo = new SortingInfo<WebLog>();
+            var sortingInfo = new SortingInfo();
             Assert.IsFalse(sortingInfo.SortingEnabled);
             Assert.IsNull(sortingInfo.SortProperty);
             Assert.AreEqual(SortOrder.Ascending, sortingInfo.SortOrder);
@@ -83,9 +83,9 @@ namespace Web.Generics.Tests.UserInterface
         public void Pagesize_2_and_pageindex_2_order_by_ID_asc_yields_ids_3_and_4()
         {
             var dri = new DataRetrievalInfo<WebLog> {
-                SortingInfo = new SortingInfo<WebLog> {
+                SortingInfo = new SortingInfo {
                     SortingEnabled = true,
-                    SortProperty = w => w.ID,
+                    SortProperty = "ID",
                 },
                 PagingInfo = new PagingInfo {
                     PageIndex = 2,
