@@ -47,7 +47,7 @@ namespace Web.Generics.Tests.UserInterface
                 SortingInfo = new SortingInfo {
                     SortingEnabled = true,
                     SortProperty = "ID",
-                    SortOrder = SortOrder.Descending,
+                    Order = SortOrder.Descending,
                 }
             };
             var items = webLogService.Select(dri);
@@ -76,7 +76,7 @@ namespace Web.Generics.Tests.UserInterface
             var sortingInfo = new SortingInfo();
             Assert.IsFalse(sortingInfo.SortingEnabled);
             Assert.IsNull(sortingInfo.SortProperty);
-            Assert.AreEqual(SortOrder.Ascending, sortingInfo.SortOrder);
+            Assert.AreEqual(SortOrder.Ascending, sortingInfo.Order);
         }
 
         [TestMethod]

@@ -56,7 +56,7 @@ namespace Web.Generics.DomainServices
             if (dataRetrievalInfo.SortingInfo != null && dataRetrievalInfo.SortingInfo.SortingEnabled)
             {
                 sortProperty = dataRetrievalInfo.SortingInfo.GetSortExpression<T>();
-                sortOrder = dataRetrievalInfo.SortingInfo.SortOrder;
+                sortOrder = dataRetrievalInfo.SortingInfo.Order;
             }
 
             Int32 itemCount;

@@ -51,15 +51,15 @@ namespace Web.Generics.UserInterface.HtmlHelpers
 			if (grid.SortingInfo.SortProperty != null)
 			{
 				var mySortExpression = grid.SortingInfo.GetSortExpression<T>();
-				if (grid.SortingInfo.SortOrder == SortOrder.Ascending)
+				if (grid.SortingInfo.Order == SortOrder.Ascending)
 				{
 					// query = query.OrderBy(mySortExpression);
-					grid.SortingInfo.SortOrder = SortOrder.Descending;
+					grid.SortingInfo.Order = SortOrder.Descending;
 				}
 				else
 				{
 					// query = query.OrderByDescending(mySortExpression);
-					grid.SortingInfo.SortOrder = SortOrder.Ascending;
+					grid.SortingInfo.Order = SortOrder.Ascending;
 				}
 			}
 
