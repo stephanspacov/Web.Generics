@@ -14,18 +14,25 @@ namespace Web.Generics
         public ApplicationConfiguration()
         {
             this.Fluent = new FluentConfiguration();
+            this.NHibernate = new NHibernateConfiguration();
             this.InversionOfControl = new InversionOfControlConfiguration();
         }
 
         public FluentConfiguration Fluent { get; set; }
+        public NHibernateConfiguration NHibernate { get; set; }
         public InversionOfControlConfiguration InversionOfControl { get; set; }
         public Assembly DomainAssembly { get; set; }
+
+        public class NHibernateConfiguration
+        {
+            public String ConfigurationFilePath { get; set; }
+        }
 
         public class FluentConfiguration
         {
             public IAutomappingConfiguration MappingConfigurationInstance { get; set; }
-			public Assembly OverrideAssembly { get; set; }
-		}
+            public Assembly OverrideAssembly { get; set; }
+        }
 
         public class InversionOfControlConfiguration
         {

@@ -73,7 +73,17 @@ namespace Web.Generics
             Trace.WriteLine(DateTime.Now + "    Creating a new session factory", "NHTests");
 
             var nhConfiguration = new Configuration();
-            nhConfiguration.Configure();
+
+            var configPath = ApplicationConfiguration.NHibernate.ConfigurationFilePath;
+            if (configPath != null)
+            {
+                // used to allow visual studio unit tests
+                nhConfiguration.Configure(configPath);
+            }
+            else
+            {
+                nhConfiguration.Configure();
+            }
             //return configuration.BuildSessionFactory();
 
             var fluentConfiguration = ApplicationConfiguration.Fluent.MappingConfigurationInstance;
