@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Web.Generics</RootNamespace>
     <AssemblyName>Web.Generics</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <StartupObject>
     </StartupObject>
@@ -105,10 +105,6 @@
     <Compile Include="DomainServices\DataRetrievalInfo.cs" />
     <Compile Include="DomainServices\PagingInfo.cs" />
     <Compile Include="DomainServices\SortingInfo.cs" />
-    <Compile Include="Infrastructure\ConfigurationFactory.cs" />
-    <Compile Include="Infrastructure\DataAccess\EntityFramework\EntityFrameworkRepositoryContext.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Infrastructure\DataAccess\FluentNHibernate\ColumnNullabilityConvention.cs" />
     <Compile Include="Infrastructure\DataAccess\FluentNHibernate\EnumConvention.cs" />
     <Compile Include="Infrastructure\DataAccess\FluentNHibernate\ForeignKeyConstraintNameConvention.cs" />

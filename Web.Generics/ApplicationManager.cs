@@ -106,7 +106,6 @@ namespace Web.Generics
                 ForeignKey.EndsWith("_ID"),
                 ConventionBuilder.Reference.Always(x => x.Not.Nullable()),
                 ConventionBuilder.Reference.Always(x => x.Cascade.None()),
-                ConventionBuilder.Reference.Always(x => x.Not.LazyLoad()),
                 ConventionBuilder.HasMany.Always(x => x.Inverse()),
                 ConventionBuilder.HasManyToMany.Always(x => x.Table(x.TableName.Replace("ListTo", "").Substring(0, x.TableName.Length - 10)))
             );

@@ -4,15 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Inspira.BlogModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="Inspira.BlogModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="InspiraBlogModelStoreContainer">
-          <EntitySet Name="Comment" EntityType="Inspira.BlogModel.Store.Comment" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Post" EntityType="Inspira.BlogModel.Store.Post" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Post_Tag" EntityType="Inspira.BlogModel.Store.Post_Tag" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Tag" EntityType="Inspira.BlogModel.Store.Tag" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="User" EntityType="Inspira.BlogModel.Store.User" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="User_WebLog" EntityType="Inspira.BlogModel.Store.User_WebLog" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="WebLog" EntityType="Inspira.BlogModel.Store.WebLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Comment" EntityType="Inspira.BlogModel.Store.Comment" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Post" EntityType="Inspira.BlogModel.Store.Post" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Post_Tag" EntityType="Inspira.BlogModel.Store.Post_Tag" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Tag" EntityType="Inspira.BlogModel.Store.Tag" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="User" EntityType="Inspira.BlogModel.Store.User" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="User_WebLog" EntityType="Inspira.BlogModel.Store.User_WebLog" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="WebLog" EntityType="Inspira.BlogModel.Store.WebLog" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <AssociationSet Name="FK_Blogs_User" Association="Inspira.BlogModel.Store.FK_Blogs_User">
             <End Role="User" EntitySet="User" />
             <End Role="User_WebLog" EntitySet="User_WebLog" />
@@ -180,8 +180,8 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Inspira.Blog.DomainModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="BlogModelContainer" annotation:LazyLoadingEnabled="true">
+      <Schema Namespace="Inspira.Blog.DomainModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="BlogModelContainer" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="Comments" EntityType="Inspira.Blog.DomainModel.Comment" />
           <EntitySet Name="Posts" EntityType="Inspira.Blog.DomainModel.Post" />
           <EntitySet Name="Tags" EntityType="Inspira.Blog.DomainModel.Tag" />
@@ -208,7 +208,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="Title" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Text" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="AuthorName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -223,7 +223,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="Title" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Text" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="CreatedAt" Nullable="false" />
@@ -238,7 +238,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="Text" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="CreatedAt" Nullable="false" />
           <NavigationProperty Name="Posts" Relationship="Inspira.Blog.DomainModel.Post_Tag" FromRole="Tag" ToRole="Post" />
@@ -247,7 +247,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Blogs" Relationship="Inspira.Blog.DomainModel.User_WebLog" FromRole="User" ToRole="WebLog" />
         </EntityType>
@@ -255,7 +255,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="Title" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="CreatedAt" Nullable="false" />
           <NavigationProperty Name="Posts" Relationship="Inspira.Blog.DomainModel.FK_Posts_WebLog" FromRole="WebLog" ToRole="Post" />
@@ -397,20 +397,20 @@
         <EntityTypeShape EntityType="Inspira.Blog.DomainModel.Tag" Width="1.5" PointX="7.5" PointY="4" Height="1.5923063151041674" />
         <EntityTypeShape EntityType="Inspira.Blog.DomainModel.User" Width="1.5" PointX="0.875" PointY="1.375" Height="1.4279589843749996" />
         <EntityTypeShape EntityType="Inspira.Blog.DomainModel.WebLog" Width="1.5" PointX="3" PointY="1.375" Height="1.7566536458333317" />
-        <AssociationConnector Association="Inspira.Blog.DomainModel.FK_Comments_Post" >
+        <AssociationConnector Association="Inspira.Blog.DomainModel.FK_Comments_Post">
           <ConnectorPoint PointX="6.75" PointY="2.2891951497395833" />
           <ConnectorPoint PointX="7.5" PointY="2.2891951497395833" />
         </AssociationConnector>
-        <AssociationConnector Association="Inspira.Blog.DomainModel.FK_Posts_WebLog" >
+        <AssociationConnector Association="Inspira.Blog.DomainModel.FK_Posts_WebLog">
           <ConnectorPoint PointX="4.5" PointY="2.2533268229166659" />
           <ConnectorPoint PointX="5.25" PointY="2.2533268229166659" />
         </AssociationConnector>
-        <AssociationConnector Association="Inspira.Blog.DomainModel.Post_Tag" >
+        <AssociationConnector Association="Inspira.Blog.DomainModel.Post_Tag">
           <ConnectorPoint PointX="7.5" PointY="4.7961531575520837" />
           <ConnectorPoint PointX="6" PointY="4.7961531575520837" />
           <ConnectorPoint PointX="6" PointY="3.5783902994791674" />
         </AssociationConnector>
-        <AssociationConnector Association="Inspira.Blog.DomainModel.User_WebLog" >
+        <AssociationConnector Association="Inspira.Blog.DomainModel.User_WebLog">
           <ConnectorPoint PointX="2.375" PointY="2.0889794921875" />
           <ConnectorPoint PointX="3" PointY="2.0889794921875" />
         </AssociationConnector>

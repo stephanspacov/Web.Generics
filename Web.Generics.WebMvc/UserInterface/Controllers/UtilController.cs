@@ -14,7 +14,7 @@ namespace Web.Generics.UserInterface
     {
         public ActionResult Minify(String parameters)
         {
-            var cache = !String.IsNullOrWhiteSpace(Request.QueryString["cache"]);
+            var cache = !String.IsNullOrEmpty(Request.QueryString["cache"]);
 
             var url = Request.QueryString["url"];
 
