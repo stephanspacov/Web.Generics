@@ -8,9 +8,6 @@ namespace Web.Generics
 {
     public class RoleProvider : System.Web.Security.RoleProvider
     {
-
-        private IMembershipRoleRepository repository;
-
         public RoleProvider()
         {
             string assembly = String.Empty;
@@ -35,7 +32,6 @@ namespace Web.Generics
                 thisAssembly = Assembly.Load(assembly);
 
             Type repType = thisAssembly.GetType(repositoryType);
-            repository = (IMembershipRoleRepository)Activator.CreateInstance(repType, true);
         }
 
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)

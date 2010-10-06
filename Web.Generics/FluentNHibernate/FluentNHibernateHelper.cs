@@ -23,28 +23,26 @@ namespace Web.Generics.FluentNHibernate
             get
             {
                 if (HttpContext.Current != null)
+                {
+                    if (HttpContext.Current.Application["SessionFactory"] == null)
+                    {
+                        HttpContext.Current.Application["SessionFactory"] = CreateSessionFactory();
+                    }
                     return (ISessionFactory)HttpContext.Current.Application["SessionFactory"];
+                }
                 else
                 {
-                    if(container == null)
+                    if (container == null)
                         container = CreateSessionFactory();
                     return container;
                 }
             }
-            set 
-            {
-                if (HttpContext.Current != null)
-                    HttpContext.Current.Application["SessionFactory"] = value;
-                else
-                    container = value;
-            }
         }
-
-        public static Type RepositoryType { get; set; }
 
         public static ISessionFactory CreateSessionFactory()
         {
             var configuration = new Configuration();
+            var repositoryType = NHibernateSessionFactoryConfig.RepositoryType;
             
             if (NHibernateSessionFactoryConfig.ConfigFilePath == null)
             {
@@ -59,7 +57,7 @@ namespace Web.Generics.FluentNHibernate
             configuration.AddAssembly(typeof(T).Assembly);
 
             var autoMapping = AutoMap.AssemblyOf<T>()
-                            .Alterations(x=>x.AddFromAssembly(RepositoryType.Assembly))
+                            .Alterations(x=>x.AddFromAssembly(repositoryType.Assembly))
                             .Setup(s =>
                                 s.FindIdentity =
                                     property => property.Name == "ID")
@@ -80,7 +78,7 @@ namespace Web.Generics.FluentNHibernate
                                 ConventionBuilder.HasManyToMany.Always(x=>x.Table(x.TableName.Replace("ListTo", "").Substring(0, x.TableName.Length - 10)))
                             );
 
-            autoMapping.GetType().GetMethod("UseOverridesFromAssemblyOf").MakeGenericMethod(RepositoryType).Invoke(autoMapping, null);
+            autoMapping.GetType().GetMethod("UseOverridesFromAssemblyOf").MakeGenericMethod(repositoryType).Invoke(autoMapping, null);
 
             return Fluently.Configure(configuration).Mappings(m => m.AutoMappings.Add(autoMapping)).BuildSessionFactory();
         }
@@ -99,11 +97,6 @@ namespace Web.Generics.FluentNHibernate
         public static ISession OpenSession()
         {
             return SessionFactory.OpenSession();
-        }
-
-        internal static void DefineSessionFactory()
-        {
-            SessionFactory = CreateSessionFactory();
         }
     }
 }

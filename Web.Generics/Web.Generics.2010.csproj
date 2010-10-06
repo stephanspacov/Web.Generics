@@ -211,6 +211,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Compile Include="NHibernateSessionFactoryConfig.cs" />
     <Compile Include="PasswordHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.2010.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

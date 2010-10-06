@@ -49,7 +49,7 @@ namespace Web.Generics.Infrastructure
 			// logging
 			// log4net.Config.XmlConfigurator.Configure();
 
-            FluentNHibernateHelper<T>.DefineSessionFactory();
+            //FluentNHibernateHelper<T>.DefineSessionFactory();
 		}
 	}
 }

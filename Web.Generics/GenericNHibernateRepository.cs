@@ -12,7 +12,7 @@ namespace Web.Generics
 {
 	public class GenericNHibernateRepository<T> : IGenericRepository<T> where T : class
 	{
-		ISession session;
+		protected ISession session;
 
 		protected ISession Session
 		{
@@ -21,21 +21,7 @@ namespace Web.Generics
 
 		public GenericNHibernateRepository()
 		{
-			if (HttpContext.Current == null)//
-			{
-				session = NHibernateSessionFactory<T>.OpenSession();
-				return;
-			}
-
-			if (!HttpContext.Current.Items.Contains("NHibernateSession"))
-			{
-				session = NHibernateSessionFactory<T>.OpenSession();
-				HttpContext.Current.Items.Add("NHibernateSession", session);
-			}
-			else
-			{
-				session = (ISession)HttpContext.Current.Items["NHibernateSession"];
-			}
+		    session = NHibernateSessionFactory<T>.OpenSession();
 		}
 
 		virtual public Int32 Insert(T obj)
@@ -66,7 +52,8 @@ namespace Web.Generics
             {
                 IdPropertyAttribute idProperty = (IdPropertyAttribute)obj.GetType().GetCustomAttributes(typeof(IdPropertyAttribute), true).SingleOrDefault();
                 string idPropertyName = idProperty != null ? idProperty.PropertyName : "ID";
-                obj = this.SelectById(obj.GetType().GetProperty(idPropertyName).GetValue(obj, null));
+                var id = obj.GetType().GetProperty(idPropertyName).GetValue(obj, null);
+                var objProxy = session.Load<T>(id);
 				session.Delete(obj);
 				transaction.Commit();
             }
