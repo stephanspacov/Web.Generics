@@ -332,7 +332,6 @@ namespace Web.Generics.Infrastructure.Authentication
             MembershipUser user = Repository.SelectUserByLogin(username, PasswordHelper.ComputeHash(password));
             if (user != null)
             {
-                HttpContext.Current.Response.Cookies.Add(new HttpCookie("LastActivityDate", user.LastLoginDate.ToString()));
                 user.LastActivityDate = DateTime.Now;
                 Repository.UpdateUser(user);
                 return true;
