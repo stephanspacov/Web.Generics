@@ -10,11 +10,13 @@ namespace Web.Generics.DomainServices
 		public PagingInfo()
 		{
 			this.PageSize = 10;
-			this.PageIndex = 1;
-			this.PagingEnabled = false;
+            this.PageIndex = 1;
+            this.PagingEnabled = false;
+            this.ShowPageNumbers = true;
 		}
 
-		public Boolean PagingEnabled { get; set; }
+        public Boolean PagingEnabled { get; set; }
+        public Boolean ShowPageNumbers { get; set; }
         public Int32 TotalItemCount { get; set; }
         public Int32 PageSize { get; set; }
         public Int32 PageIndex { get; set; }

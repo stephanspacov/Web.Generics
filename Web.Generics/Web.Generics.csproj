@@ -111,6 +111,7 @@
     <Compile Include="Infrastructure\DataAccess\FluentNHibernate\PrimaryKeyNameConvention.cs" />
     <Compile Include="Infrastructure\DataAccess\FluentNHibernate\StringColumnLengthConvention.cs" />
     <Compile Include="Infrastructure\DataAccess\LinqExtensions.cs" />
+    <Compile Include="Infrastructure\DataAccess\NHibernate\NHibernateRepositoryTestContext.cs" />
     <Compile Include="Infrastructure\DataAccess\NHibernate\NHibernateHelper.cs" />
     <Compile Include="Infrastructure\DataAccess\NHibernate\NHibernateRepositoryContext.cs">
       <SubType>Code</SubType>
