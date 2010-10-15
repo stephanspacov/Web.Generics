@@ -61,6 +61,7 @@
     <Compile Include="ApplicationServices\Authentication\AccountModels.cs" />
     <Compile Include="ApplicationServices\Authentication\SpecializedAuthorizeAttribute.cs" />
     <Compile Include="Captcha\CaptchaService.cs" />
+    <Compile Include="Extensions\HtmlHelperExtensions.cs" />
     <Compile Include="Extensions\SelectListHelper.cs" />
     <Compile Include="Infrastructure\GenericControllerFactory.cs">
       <SubType>Code</SubType>
