@@ -14,7 +14,7 @@ namespace Web.Generics
 	{
 		protected ISession session;
 
-		protected ISession Session
+		public ISession Session
 		{
 			get { return this.session; }
 		}

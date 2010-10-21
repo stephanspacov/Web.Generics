@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Web.Generics.HtmlHelpers;
 using System.Linq.Expressions;
+using NHibernate;
 
 namespace Web.Generics
 {
