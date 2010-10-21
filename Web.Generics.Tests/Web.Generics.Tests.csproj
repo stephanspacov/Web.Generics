@@ -75,7 +75,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authentication\MembershipServices.cs" />
+    <Compile Include="Authentication\MembershipServicesTests.cs" />
     <Compile Include="ContextFactory.cs" />
     <Compile Include="Infrastructure_Authentication_Tests.cs" />
     <Compile Include="Infrastructure_Logging_Tests.cs" />
