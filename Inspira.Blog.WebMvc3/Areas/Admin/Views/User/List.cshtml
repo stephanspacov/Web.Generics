@@ -1,0 +1,44 @@
+﻿@model UserViewModel
+
+@{
+    View.Title = "List";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<!-- page body --> 
+        <div id="bd"> 
+            <div id="yui-main"> 
+                <div class="yui-b"><div class="yui-g"> 
+                    <h2>Hello, there.</h2> 
+                    <p><a href="http://github.com/tylerhall/yui-app-theme/">YUI App Theme</a> is a generic, skinnable layout for web applications.</p> 
+                    <p>What you're looking at is the basic page template. Because it's built on top of the <a href="http://developer.yahoo.com/yui/grids/">YUI Grids</a> foundation, you can easily change the page and column widths or even swap the columns around to suit your needs. Not only is it cross-browser compatible (we support all the major browsers including IE6), but it's super easy to extend as well.</p>                    
+ 
+                    <!-- Tables --> 
+                    <div class="block"> 
+                        <div class="hd"> 
+							<h2>User List!!</h2>
+                        </div> 
+                        <div class="bd"> 
+                            <h3>Grids</h3>
+							@Html.DisplayFor(model => model.Grid)
+                        </div> 
+                    </div> 
+                    
+                </div> 
+                </div> 
+            </div> 
+            <div id="sidebar" class="yui-b"> 
+ 
+                <!-- Sidebar block (same markup as basic block) --> 
+                <div class="block"> 
+                    <div class="hd"> 
+                        <h2>Sidebar Block  &larr; This is an H2 or H3</h2> 
+                    </div> 
+                    <div class="bd"> 
+                        <p>This sidebar block uses the exact same markup as the main body blocks. This lets you move them around easily - as they automatically resize to fit the available space.</p> 
+                    </div> 
+                </div> 
+                
+            </div> 
+        </div> 
+		<!-- /page body --> 

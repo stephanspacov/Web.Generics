@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using Web.Generics.DomainServices;
 using Web.Generics.Infrastructure.Logging;
 using Web.Generics.UserInterface.Compression;
-using Web.Generics.UserInterface.HtmlHelpers;
 using Web.Generics.ApplicationServices.DataAccess;
 using Web.Generics.CustomTypes;
+using Web.Generics.UserInterface.Components;
 
 namespace Web.Generics.UserInterface
 {

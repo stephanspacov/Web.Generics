@@ -45,6 +45,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\NHibernate\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="FluentNHibernate, Version=1.1.0.695, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NHibernate\FluentNHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\NHibernate\Iesi.Collections.dll</HintPath>
@@ -57,6 +61,9 @@
     </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\lib\NHibernate\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.LinFu">
+      <HintPath>..\lib\NHibernate\NHibernate.ByteCode.LinFu.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -76,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication\MembershipServicesTests.cs" />
+    <Compile Include="Blog_Services.cs" />
     <Compile Include="ContextFactory.cs" />
     <Compile Include="Infrastructure_Authentication_Tests.cs" />
     <Compile Include="Infrastructure_Logging_Tests.cs" />
@@ -85,6 +93,7 @@
     <Compile Include="InversionOfControl\MockMapper.cs" />
     <Compile Include="InversionOfControl\PowerOfTwo.cs" />
     <Compile Include="Logging\MockLogger.cs" />
+    <Compile Include="NHibernateSessionTests.cs" />
     <Compile Include="Repositories\LogTestController.cs" />
     <Compile Include="UserInterface\Page_Sort_Filter.cs" />
     <Compile Include="UserInterface\PostController.cs" />
@@ -107,6 +116,10 @@
     <ProjectReference Include="..\Inspira.Blog\Inspira.Blog.csproj">
       <Project>{A882E9BB-3675-462F-9A82-C7F6B9787752}</Project>
       <Name>Inspira.Blog</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Web.Generics.Futures\Web.Generics.Futures.csproj">
+      <Project>{6B86B224-D432-49EE-9E9D-526CCBF61D5B}</Project>
+      <Name>Web.Generics.Futures</Name>
     </ProjectReference>
     <ProjectReference Include="..\Web.Generics.WebMvc\Web.Generics.Web.Mvc.csproj">
       <Project>{F6200C98-8601-49C8-B471-6DECACCD297C}</Project>

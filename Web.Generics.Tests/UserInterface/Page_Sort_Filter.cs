@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Inspira.Blog.DomainModel;
-using Web.Generics.UserInterface.HtmlHelpers;
 using Web.Generics.DomainServices;
 using Web.Generics.ApplicationServices.DataAccess;
 

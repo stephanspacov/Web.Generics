@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Web.Generics.UserInterface.HtmlHelpers;
 using System.Linq.Expressions;
+using Web.Generics.ApplicationServices.DataAccess;
 
 namespace Web.Generics.DomainServices
 {

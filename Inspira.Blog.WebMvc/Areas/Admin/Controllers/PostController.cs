@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Inspira.Blog.WebMvc.Areas.Admin.ViewModels.Post;
-using Web.Generics.UserInterface.HtmlHelpers;
 using Inspira.Blog.DomainModel;
 using Web.Generics.ApplicationServices.DataAccess;
 using Web.Generics.Infrastructure.DataAccess.NHibernate;
 using Web.Generics.UserInterface.Extensions;
+using Web.Generics.UserInterface.Components;
 
 namespace Inspira.Blog.WebMvc.Areas.Admin.Controllers
 {

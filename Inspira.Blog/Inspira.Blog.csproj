@@ -58,6 +58,13 @@
     </Compile>
     <Compile Include="DomainServices\WebLogService.cs" />
     <Compile Include="Infrastructure\DataAccess\EntityFramework\BlogContext.cs" />
+    <Compile Include="Infrastructure\DataAccess\FluentNHibernate\Overrides\AddressOverride.cs" />
+    <Compile Include="Infrastructure\DataAccess\FluentNHibernate\Overrides\UserOverride.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\DataAccess\FluentNHibernate\Overrides\WebLogOverride.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Infrastructure\DataAccess\UnitOfWork.cs" />
     <Compile Include="Infrastructure\InversionOfControl\InversionOfControlMapper.cs" />
     <Compile Include="Infrastructure\DataAccess\FluentNHibernate\MappingConfiguration.cs" />

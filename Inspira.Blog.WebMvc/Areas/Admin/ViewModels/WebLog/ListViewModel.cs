@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Web.Generics.UserInterface.HtmlHelpers;
+using Web.Generics.UserInterface.Models;
 
 namespace Inspira.Blog.WebMvc.Areas.Admin.ViewModels.WebLog
 {

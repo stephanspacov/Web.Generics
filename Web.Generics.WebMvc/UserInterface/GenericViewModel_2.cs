@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Web.Generics.UserInterface.HtmlHelpers;
+using Web.Generics.UserInterface.Models;
 
 namespace Web.Generics.UserInterface
 {

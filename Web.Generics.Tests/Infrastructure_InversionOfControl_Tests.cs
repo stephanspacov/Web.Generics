@@ -24,6 +24,7 @@ namespace Web.Generics.Tests
             NHibernateSessionFactoryConfig.ConfigFilePath = @"..\..\..\Web.Generics.Tests\hibernate.cfg.xml";
             NHibernateSessionFactoryConfig.RepositoryType = typeof(PostRepository);
 
+            container = ApplicationManager.Container;
             //ConfigurationFactory.Initialize<Post>(InversionOfControlContainer.Unity, new MockMapper());
 			//container = ConfigurationFactory.GetInversionOfControlContainer();
 

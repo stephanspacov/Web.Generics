@@ -4,7 +4,8 @@ using Inspira.Blog.DomainModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Web.Generics.ApplicationServices.DataAccess;
 using Web.Generics.Infrastructure.DataAccess;
-using Web.Generics.UserInterface.HtmlHelpers;
+using Web.Generics.UserInterface.Components;
+using Web.Generics.UserInterface.Models;
 
 namespace Web.Generics.Tests
 {

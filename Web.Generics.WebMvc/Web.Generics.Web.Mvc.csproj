@@ -36,7 +36,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\NHibernate\FluentNHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.Unity">
       <HintPath>..\lib\Unity\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
@@ -51,7 +50,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
-    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Routing" />
   </ItemGroup>
@@ -74,16 +72,17 @@
     <Compile Include="UserInterface\DataAnnotations\DataType.cs" />
     <Compile Include="UserInterface\DataAnnotations\DropDownListAttribute.cs" />
     <Compile Include="UserInterface\DataAnnotations\InspiraSerializer.cs" />
+    <Compile Include="UserInterface\Extensions\HtmlHelpers.cs" />
     <Compile Include="UserInterface\GenericController.cs" />
     <Compile Include="UserInterface\GenericListViewModel.cs" />
     <Compile Include="UserInterface\GenericViewModel.cs" />
     <Compile Include="UserInterface\GenericViewModel_2.cs" />
-    <Compile Include="UserInterface\HtmlHelpers\Grid.cs" />
-    <Compile Include="UserInterface\HtmlHelpers\GridBuilder.cs" />
-    <Compile Include="UserInterface\HtmlHelpers\GridCell.cs" />
-    <Compile Include="UserInterface\HtmlHelpers\GridColumn.cs" />
-    <Compile Include="UserInterface\HtmlHelpers\GridRow.cs" />
-    <Compile Include="UserInterface\HtmlHelpers\RowList.cs" />
+    <Compile Include="UserInterface\Models\Grid.cs" />
+    <Compile Include="UserInterface\Components\GridBuilder.cs" />
+    <Compile Include="UserInterface\Models\GridCell.cs" />
+    <Compile Include="UserInterface\Models\GridColumn.cs" />
+    <Compile Include="UserInterface\Models\GridRow.cs" />
+    <Compile Include="UserInterface\Models\RowList.cs" />
     <Compile Include="UserInterface\HtmlHelpers\RowListDataSource.cs" />
     <Compile Include="UserInterface\Validators\CnpjAttribute.cs" />
     <Compile Include="UserInterface\Validators\CpfAttribute.cs" />

@@ -1,0 +1,43 @@
+﻿@model Web.Generics.UserInterface.Models.Grid
+
+<input type="hidden" name="@(this.ViewData.TemplateInfo.HtmlFieldPrefix).PreviousSortProperty" value="@Model.SortingInfo.SortProperty" />
+<input type="hidden" name="@(this.ViewData.TemplateInfo.HtmlFieldPrefix).PreviousOrder" value="@Model.SortingInfo.Order" />
+
+@if (Model.Rows.Count > 0) {
+<table class="zebra">	
+	<thead>
+		<tr>
+			<!-- th class="first"><input type="checkbox" class="select-all-activator" /></th -->
+			@foreach (var column in Model.Columns) {
+			<th><button type="submit" name="@(this.ViewData.TemplateInfo.HtmlFieldPrefix).SortProperty" value="@column.PropertyName">@column.HeaderText</button></th>
+            }
+			<th class="text-right"></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var row in Model.Rows) {
+		<tr>
+			<!-- td><input type="checkbox" class="select-all" name="DeletedItems" value="" /></td -->
+			@foreach (var cell in row.Cells) {
+			<td>@cell.Value</td>
+			}
+			<td class="text-right">
+				<a href='@Url.Action("Details", new { ID=row.KeyValue })'>view</a> |
+				<a href='@Url.Action("Edit", new { ID=row.KeyValue })'>edit</a> |
+				<a href='@Url.Action("Delete", new { ID=row.KeyValue })'>delete</a>
+			</td>
+		</tr>
+		}
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="20">
+			</td>
+		</tr>
+	</tfoot>
+</table>
+} else {
+		<tr align="center"><td colspan="20">No records found</td></tr>
+}
+
+@Html.DisplayFor(model => model.PagingInfo)

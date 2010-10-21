@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Inspira.Blog.WebMvc.Areas.Admin.ViewModels.WebLog;
-using Web.Generics.UserInterface.HtmlHelpers;
 using System.Linq.Expressions;
 using Inspira.Blog.DomainModel;
 using Web.Generics.ApplicationServices.DataAccess;
 using System.Reflection;
+using Web.Generics.UserInterface.Components;
 
 namespace Inspira.Blog.WebMvc.Areas.Admin.Controllers
 {

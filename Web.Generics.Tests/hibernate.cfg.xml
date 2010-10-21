@@ -10,6 +10,7 @@
 		<property name="hbm2ddl.auto">create-drop</property>
 		<property name="adonet.batch_size">500</property>
 		<property name="proxyfactory.factory_class">NHibernate.ByteCode.LinFu.ProxyFactoryFactory, NHibernate.ByteCode.LinFu</property>
-		<!--<mapping assembly="Web.Generics.Tests" />-->
+    <property name="current_session_context_class">thread_static</property>
+    <!--<mapping assembly="Web.Generics.Tests" />-->
 	</session-factory>
 </hibernate-configuration>

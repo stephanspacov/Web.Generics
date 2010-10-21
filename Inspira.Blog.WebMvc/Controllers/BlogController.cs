@@ -10,6 +10,7 @@ namespace Inspira.Blog.WebMvc.Controllers
     {
         public ActionResult Index()
         {
+            
             return View();
         }
     }

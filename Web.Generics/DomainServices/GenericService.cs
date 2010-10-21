@@ -3,7 +3,6 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using Web.Generics.ApplicationServices.DataAccess;
-using Web.Generics.UserInterface.HtmlHelpers;
 
 namespace Web.Generics.DomainServices
 {

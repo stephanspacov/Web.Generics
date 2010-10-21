@@ -53,7 +53,7 @@ relacionamento trinario
             var post = new Post { Title = title, Text = "oi", CreatedAt = DateTime.Now, LastUpdatedAt = DateTime.Now, PublishedAt = DateTime.Now };
 
             webLog.Collaborators.Add(user);
-            user.Blogs.Add(webLog);
+            user.AddBlog(webLog);
             webLog.Posts.Add(post);
             post.WebLog = webLog;
 

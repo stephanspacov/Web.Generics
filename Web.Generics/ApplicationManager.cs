@@ -119,6 +119,7 @@ namespace Web.Generics
 
         public static ISession GetCurrentSession()
         {
+            if (SessionFactory == null) throw new ApplicationException("Session factory not configured. Did you call ApplicationManager.Initialize()?");
             return SessionFactory.GetCurrentSession();
         }
 

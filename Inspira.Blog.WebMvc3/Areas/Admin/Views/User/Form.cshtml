@@ -1,0 +1,134 @@
+﻿@model Inspira.Blog.WebMvc3.Areas.Admin.Models.UserViewModel
+
+@if (false) {
+<p class="alert error">Error message</p>
+}
+
+<form action="#" method="get" class="navform">
+	<fieldset>
+		<legend>Credentials</legend>
+		<p>
+			@Html.LabelFor(u => u.User.Username)
+			@Html.TextBoxFor(u => u.User.Username, new {@class="text",maxlength=100})
+			<span class="info">Only letters, numbers, dots (.) and underscores (_) allowed</span>
+		</p>
+		<p>
+			@Html.LabelFor(u => u.User.Password)
+			@Html.PasswordFor(u => u.User.Password, new {@class="text",maxlength=10})
+			<span class="info">6-8 alphanumeric characters</span>
+		</p>
+		<p>
+			@Html.LabelFor(u => u.PasswordConfirmation)
+			@Html.PasswordFor(u => u.PasswordConfirmation, new {@class="text",maxlength=10})
+			<span class="info">same as password</span>
+		</p>
+	</fieldset>
+    <p>
+		@Html.LabelFor(u => u.User.Name)
+		@Html.TextBoxFor(u => u.User.Name, new {@class="text",maxlength=100})
+        <span class="info">Use your complete name (e.g.: John Smith)</span>
+    </p>
+    <p>
+		@Html.LabelFor(u => u.User.Email) <span class="validation">must be unique</span></label>
+		@Html.TextBoxFor(u => u.User.Email, new {@class="text",maxlength=70})
+        <span class="info">d.r.dre@hotmail.com</span>
+    </p>
+	<p>
+		@Html.LabelFor(u => u.User.Cpf) <span class="validation">must be valid</span></label>
+		@Html.TextBoxFor(u => u.User.Cpf, new {@class="text cpf",maxlength=14})
+        <span class="info">299.480.038-10</span>
+    </p>
+	<fieldset>
+		<legend>Address</legend>
+		<p>
+			@Html.LabelFor(u => u.User.Address.ZipCode)
+			@Html.TextBoxFor(u => u.User.Address.ZipCode, new {@class="text cep",maxlength=9})
+			<span class="info">Zip Code</span>
+		</p>
+		<p>
+			@Html.LabelFor(u => u.User.Address.State)
+			@Html.DropDownListFor(u => u.User.Address.State, new SelectList(new []{"Acre","Amazonas"}), "--Select one--", new{maxlength=2})
+			<!--select class="text">
+				<option> -- Select one -- </option>
+				<option>Acre</option>
+			</select-->
+			<span class="info">Lots of text can go in here</span>
+		</p>
+		<p>
+			@Html.LabelFor(u => u.User.Address.City)
+			@Html.TextBoxFor(u => u.User.Address.City, new{@class="text",maxlength=50})
+			<span class="info">Ex: some text</span>
+		</p>
+		<p>
+			@Html.LabelFor(u => u.User.Address.StreetName)
+			@Html.TextBoxFor(u => u.User.Address.StreetName, new{@class="text",maxlength=50})
+			<span class="info">Ex: some more text</span>
+		</p>
+		<p>
+			@Html.LabelFor(u => u.User.Address.Number)
+			@Html.TextBoxFor(u => u.User.Address.Number, new{@class="text",maxlength=10})
+			<span class="info">Ex: some more text</span>
+		</p>
+		<p>
+			@Html.LabelFor(u => u.User.Address.Complement)
+			@Html.TextBoxFor(u => u.User.Address.Complement, new{@class="text",maxlength=30})
+			<span class="info">Ex: some more text</span>
+		</p>
+	</fieldset>
+	<p>
+		TIPO! (enum)
+		@Html.DropDownListFor(u => u.User.Address.State, new SelectList(new []{"Tipo 1","Tipo 2"}), "--Select one--", new{maxlength=2})
+		<!--select class="text">
+			<option> -- Select one -- </option>
+			<option>Acre</option>
+		</select-->
+		<span class="info">Lots of text can go in here</span>
+	</p>
+    <p>
+		@Html.LabelFor(u => u.User.NumberOfChildren)
+		@Html.TextBoxFor(u => u.User.NumberOfChildren, new{@class="text unsigned-integer",maxlength=2})
+        <span class="info">Ex: 22</span>
+    </p>
+    <p>
+		@Html.LabelFor(u => u.User.BirthDate)
+        @Html.TextBoxFor(u => u.User.BirthDate, new{@class="text date",maxlength=10})
+        <span class="info">dd/mm/yyyy (e.g.: 14/11/2010)</span>
+    </p>
+	<p>
+		@Html.LabelFor(u => u.User.BirthDate)
+        @Html.TextBoxFor(u => u.User.BirthDate, new{@class="text date",maxlength=10})
+        <span class="info">dd/mm/yyyy (e.g.: 14/11/2010)</span>
+    </p>
+    <p>
+		@Html.LabelFor(u => u.User.Phone)
+        @Html.TextBoxFor(u => u.User.Phone, new{@class="text phone",maxlength=14})
+        <span class="info">(11) 5084-2668</span>
+    </p>
+    <p>
+		@Html.LabelFor(u => u.User.Salary)
+        R$ @Html.TextBoxFor(u => u.User.Salary, new{@class="text money",maxlength=20})
+        <span class="info">R$ 2.023,34</span>
+    </p>
+    <p>
+		@Html.LabelFor(u => u.User.Photo)
+		<input type="file" id="Photo" name="Photo" class="text" />
+        <span class="info">JPEG or GIF - max 500kB</span>
+    </p>
+    <p>
+		@Html.LabelFor(u => u.User.Resume)
+        @Html.TextAreaFor(u => u.User.Resume, new {@class="text richtext", rows=4, cols=40})
+        <span class="info">Put your colorful résumé here</span>
+    </p>
+    <p>
+		@Html.LabelFor(u => u.User.AdditionalInfo)
+        @Html.TextAreaFor(u => u.User.AdditionalInfo, new {@class="text", rows=4, cols=40})
+        <span class="info">Include additional information here</span>
+    </p>
+    <p>	
+        @Html.CheckBoxFor(u => u.User.HasAcceptedTerms)
+		@Html.LabelFor(u => u.User.HasAcceptedTerms)
+        <span class="info">Include additional information here</span>
+    </p>
+    <p><input type="submit" name="test4" id="test4" value="Submit"> or <a href="#">Cancel</a></p>
+</form>
+

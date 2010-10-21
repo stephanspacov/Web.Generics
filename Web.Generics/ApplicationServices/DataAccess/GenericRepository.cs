@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Linq.Expressions;
-using Web.Generics.UserInterface.HtmlHelpers;
 
 namespace Web.Generics.ApplicationServices.DataAccess
 {
@@ -70,7 +69,7 @@ namespace Web.Generics.ApplicationServices.DataAccess
             get { return Query().Provider; }
         }
 
-		public virtual IList<T> SelectWithPagingAndSorting(Expression<Func<T, bool>> expression, int? pageSize, int? pageIndex, Expression<Func<T, object>> sortProperty, UserInterface.HtmlHelpers.SortOrder? sortOrder, out int totalItemCount)
+		public virtual IList<T> SelectWithPagingAndSorting(Expression<Func<T, bool>> expression, int? pageSize, int? pageIndex, Expression<Func<T, object>> sortProperty, SortOrder? sortOrder, out int totalItemCount)
 		{
             var query = this.Query();
             if (expression != null)

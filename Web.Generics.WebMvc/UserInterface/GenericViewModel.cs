@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Web.Mvc;
-using Web.Generics.UserInterface.HtmlHelpers;
 using Web.Generics.WebMvc.UserInterface;
-//using Web.Generics.HtmlHelpers;
 
 namespace Web.Generics.UserInterface
 {
@@ -19,7 +17,7 @@ namespace Web.Generics.UserInterface
             //this.SelectListValues = new Dictionary<String, Object>();
         }
 
-		virtual public T Instance { get; set; }
+		virtual new public T Instance { get; set; }
 
 		/*
 		virtual public IList<T> InstanceList { get; set; }
