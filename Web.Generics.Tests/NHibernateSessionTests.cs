@@ -18,20 +18,7 @@ namespace Web.Generics.Tests
         [TestInitialize]
         public void Initialize()
         {
-            ApplicationManager.Initialize(new ApplicationConfiguration
-            {
-                DomainAssembly = Assembly.Load("Inspira.Blog.DomainModel"),
-                Fluent = new ApplicationConfiguration.FluentConfiguration
-                {
-                    OverrideAssembly = Assembly.Load("Inspira.Blog"),
-                    MappingConfigurationInstance = new MappingConfiguration()
-                },
-                InversionOfControl = new ApplicationConfiguration.InversionOfControlConfiguration { MapperInstance = new InversionOfControlMapper() },
-                NHibernate = new ApplicationConfiguration.NHibernateConfiguration
-                {
-                    ConfigurationFilePath = @"..\..\hibernate.cfg.xml"
-                }
-            });
+
 
             var session = ApplicationManager.SessionFactory.OpenSession();
             var user = new User { Username="user", Name = "my name", Email = "thiago@inspira.com.br", Password = "******", Address = new Address { City = "São paulo", StreetName="name", Number="123B", State="SP", ZipCode="03423-234" } };

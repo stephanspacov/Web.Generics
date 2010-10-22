@@ -75,6 +75,10 @@
     <Compile Include="ApplicationServices\DataAccess\IRepositoryContext.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ApplicationServices\Identity\IdentityService.cs" />
+    <Compile Include="ApplicationServices\Identity\IUser.cs" />
+    <Compile Include="ApplicationServices\Identity\IUserRepository.cs" />
+    <Compile Include="ApplicationServices\Identity\RegisterStatus.cs" />
     <Compile Include="ApplicationServices\InversionOfControl\DuplicateTypeException.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -140,6 +144,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -184,6 +189,9 @@
     <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Unity\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.3.1.416.3\lib\Moq.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\lib\NHibernate\NHibernate.dll</HintPath>

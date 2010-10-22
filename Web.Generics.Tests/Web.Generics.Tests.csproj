@@ -59,6 +59,9 @@
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\Arquivos de programas\Microsoft Visual Studio 9.0\Common7\IDE\PublicAssemblies\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\lib\Moq\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\lib\NHibernate\NHibernate.dll</HintPath>
     </Reference>

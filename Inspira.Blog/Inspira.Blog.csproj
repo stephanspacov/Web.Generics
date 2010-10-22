@@ -65,10 +65,12 @@
     <Compile Include="Infrastructure\DataAccess\FluentNHibernate\Overrides\WebLogOverride.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Infrastructure\DataAccess\Repositories\UserRepository.cs" />
     <Compile Include="Infrastructure\DataAccess\UnitOfWork.cs" />
     <Compile Include="Infrastructure\InversionOfControl\InversionOfControlMapper.cs" />
     <Compile Include="Infrastructure\DataAccess\FluentNHibernate\MappingConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryInterfaces\IUserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Inspira.Blog.DomainModel\Inspira.Blog.DomainModel.csproj">
