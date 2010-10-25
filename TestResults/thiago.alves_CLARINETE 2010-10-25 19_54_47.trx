@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="83251714-b723-4a88-b9c3-aafd6ecd2395" name="thiago.alves@CLARINETE 2010-10-25 19:54:47" runUser="Clarinete\thiago.alves" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Default Test Settings" id="1d59a641-397a-4c3f-b9c5-8dc989f738d7">
+    <Deployment userDeploymentRoot="C:\Users\thiago.alves\Projects\Web.Generics\TestResults" useDefaultDeploymentRoot="false" runDeploymentRoot="thiago.alves_CLARINETE 2010-10-25 19_54_47">
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\lib\NHibernate\System.Data.SQLite.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\Inspira.Blog.DomainModel\bin\Debug\Inspira.Blog.DomainModel.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\lib\NHibernate\log4net.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\lib\NHibernate\NHibernate.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\Web.Generics\bin\Debug\Web.Generics.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\lib\NHibernate\NHibernate.ByteCode.LinFu.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\lib\NHibernate\Antlr3.Runtime.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\Web.Generics.Web\bin\Debug\Web.Generics.Web.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\Web.Generics.Futures\bin\Debug\Web.Generics.Futures.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\Inspira.Blog\bin\Debug\Inspira.Blog.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\lib\NHibernate\Iesi.Collections.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\lib\Moq\Moq.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\Web.Generics.WebMvc\bin\Debug\Web.Generics.WebMvc.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\lib\NHibernate\FluentNHibernate.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2010-10-25T19:54:47.6780970-02:00" queuing="2010-10-25T19:54:47.8171049-02:00" start="2010-10-25T19:54:47.8221052-02:00" finish="2010-10-25T19:54:48.0331173-02:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="CLARINETE" outcome="Warning" timestamp="2010-10-25T19:54:47.8161049-02:00">
+        <Text>Warning: Test Run deployment issue: The assembly or module 'Microsoft.Practices.ServiceLocation' directly or indirectly referenced by the test container 'c:\users\thiago.alves\projects\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll' was not found.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="Create_gridcolumns_4_items" storage="c:\users\thiago.alves\projects\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="66c54571-61e8-ed34-7b37-ad9ef9e40030">
+      <Execution id="2b62a871-b6d2-453e-9fad-577d71983504" />
+      <TestMethod codeBase="C:/Users/thiago.alves/Projects/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.UserInterface.GridTests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Create_gridcolumns_4_items" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="66c54571-61e8-ed34-7b37-ad9ef9e40030" executionId="2b62a871-b6d2-453e-9fad-577d71983504" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="2b62a871-b6d2-453e-9fad-577d71983504" testId="66c54571-61e8-ed34-7b37-ad9ef9e40030" testName="Create_gridcolumns_4_items" computerName="CLARINETE" duration="00:00:00.0207733" startTime="2010-10-25T19:54:47.8241053-02:00" endTime="2010-10-25T19:54:48.0221166-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2b62a871-b6d2-453e-9fad-577d71983504">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;Property&gt;. Actual:&lt;(null)&gt;. </Message>
+          <StackTrace>   at Web.Generics.Tests.UserInterface.GridTests.Create_gridcolumns_4_items() in C:\Users\thiago.alves\Projects\Web.Generics\Web.Generics.Tests\UserInterface\GridTests.cs:line 38
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="a51ac3b1-0143-4017-878c-03c39b8b30a0" name="thiago.alves@CLARINETE 2010-10-25 19:53:17" runUser="Clarinete\thiago.alves" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Default Test Settings" id="1d59a641-397a-4c3f-b9c5-8dc989f738d7">
+    <Deployment runDeploymentRoot="thiago.alves_CLARINETE 2010-10-25 19_53_17">
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\lib\NHibernate\System.Data.SQLite.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\Inspira.Blog.DomainModel\bin\Debug\Inspira.Blog.DomainModel.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\lib\NHibernate\log4net.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\lib\NHibernate\NHibernate.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\Web.Generics\bin\Debug\Web.Generics.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\lib\NHibernate\NHibernate.ByteCode.LinFu.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\lib\NHibernate\Antlr3.Runtime.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\Web.Generics.Web\bin\Debug\Web.Generics.Web.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\Web.Generics.Futures\bin\Debug\Web.Generics.Futures.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\Inspira.Blog\bin\Debug\Inspira.Blog.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\lib\NHibernate\Iesi.Collections.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\lib\Moq\Moq.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\Web.Generics.WebMvc\bin\Debug\Web.Generics.WebMvc.dll" />
+      <DeploymentItem filename="C:\Users\thiago.alves\Projects\Web.Generics\lib\NHibernate\FluentNHibernate.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2010-10-25T19:53:17.1419186-02:00" queuing="2010-10-25T19:53:17.3279292-02:00" start="2010-10-25T19:53:17.3339296-02:00" finish="2010-10-25T19:53:17.6419472-02:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="4" executed="4" passed="3" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="CLARINETE" outcome="Warning" timestamp="2010-10-25T19:53:17.3279292-02:00">
+        <Text>Warning: Test Run deployment issue: The assembly or module 'Microsoft.Practices.ServiceLocation' directly or indirectly referenced by the test container 'c:\users\thiago.alves\projects\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll' was not found.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="Create_gridcolumns_4_items" storage="c:\users\thiago.alves\projects\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="66c54571-61e8-ed34-7b37-ad9ef9e40030">
+      <Execution id="aa26eddc-1dba-4cac-b44d-5bba0cc03cd1" />
+      <TestMethod codeBase="C:/Users/thiago.alves/Projects/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.UserInterface.GridTests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Create_gridcolumns_4_items" />
+    </UnitTest>
+    <UnitTest name="Create_gridcolumns_0_items" storage="c:\users\thiago.alves\projects\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="29cde594-6aec-d68e-3857-7a4b9d282a2c">
+      <Execution id="4c9ed7be-45e6-4ca8-be83-06c38309c729" />
+      <TestMethod codeBase="C:/Users/thiago.alves/Projects/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.UserInterface.GridTests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Create_gridcolumns_0_items" />
+    </UnitTest>
+    <UnitTest name="Create_gridcolumns_3_items" storage="c:\users\thiago.alves\projects\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="6bcac391-9788-10e8-747e-efef0cd644a3">
+      <Execution id="a46ad4ef-135b-406c-89f6-65ab786564f4" />
+      <TestMethod codeBase="C:/Users/thiago.alves/Projects/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.UserInterface.GridTests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Create_gridcolumns_3_items" />
+    </UnitTest>
+    <UnitTest name="Create_gridcolumns_2_items" storage="c:\users\thiago.alves\projects\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="cb3eda27-b10b-b25b-3e1c-155f0c451f45">
+      <Execution id="9dac928c-092b-4dfa-b0ed-9ac66d113b80" />
+      <TestMethod codeBase="C:/Users/thiago.alves/Projects/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.UserInterface.GridTests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Create_gridcolumns_2_items" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="29cde594-6aec-d68e-3857-7a4b9d282a2c" executionId="4c9ed7be-45e6-4ca8-be83-06c38309c729" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="66c54571-61e8-ed34-7b37-ad9ef9e40030" executionId="aa26eddc-1dba-4cac-b44d-5bba0cc03cd1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6bcac391-9788-10e8-747e-efef0cd644a3" executionId="a46ad4ef-135b-406c-89f6-65ab786564f4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cb3eda27-b10b-b25b-3e1c-155f0c451f45" executionId="9dac928c-092b-4dfa-b0ed-9ac66d113b80" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="4c9ed7be-45e6-4ca8-be83-06c38309c729" testId="29cde594-6aec-d68e-3857-7a4b9d282a2c" testName="Create_gridcolumns_0_items" computerName="CLARINETE" duration="00:00:00.0132333" startTime="2010-10-25T19:53:17.3349296-02:00" endTime="2010-10-25T19:53:17.5929444-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4c9ed7be-45e6-4ca8-be83-06c38309c729">
+    </UnitTestResult>
+    <UnitTestResult executionId="aa26eddc-1dba-4cac-b44d-5bba0cc03cd1" testId="66c54571-61e8-ed34-7b37-ad9ef9e40030" testName="Create_gridcolumns_4_items" computerName="CLARINETE" duration="00:00:00.0104154" startTime="2010-10-25T19:53:17.5959446-02:00" endTime="2010-10-25T19:53:17.6109454-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="aa26eddc-1dba-4cac-b44d-5bba0cc03cd1">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;Property&gt;. Actual:&lt;Property 2&gt;. </Message>
+          <StackTrace>   at Web.Generics.Tests.UserInterface.GridTests.Create_gridcolumns_4_items() in C:\Users\thiago.alves\Projects\Web.Generics\Web.Generics.Tests\UserInterface\GridTests.cs:line 38
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a46ad4ef-135b-406c-89f6-65ab786564f4" testId="6bcac391-9788-10e8-747e-efef0cd644a3" testName="Create_gridcolumns_3_items" computerName="CLARINETE" duration="00:00:00.0004095" startTime="2010-10-25T19:53:17.6119455-02:00" endTime="2010-10-25T19:53:17.6209460-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a46ad4ef-135b-406c-89f6-65ab786564f4">
+    </UnitTestResult>
+    <UnitTestResult executionId="9dac928c-092b-4dfa-b0ed-9ac66d113b80" testId="cb3eda27-b10b-b25b-3e1c-155f0c451f45" testName="Create_gridcolumns_2_items" computerName="CLARINETE" duration="00:00:00.0002362" startTime="2010-10-25T19:53:17.6229461-02:00" endTime="2010-10-25T19:53:17.6279464-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9dac928c-092b-4dfa-b0ed-9ac66d113b80">
+    </UnitTestResult>
+  </Results>
+</TestRun>
