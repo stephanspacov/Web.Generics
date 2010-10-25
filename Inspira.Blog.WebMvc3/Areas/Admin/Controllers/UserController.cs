@@ -6,11 +6,18 @@ using System.Web.Mvc;
 using Inspira.Blog.WebMvc3.Areas.Admin.Models;
 using Web.Generics.UserInterface.Models;
 using Web.Generics.DomainServices;
+using Inspira.Blog.DomainServices;
 
 namespace Inspira.Blog.WebMvc3.Areas.Admin.Controllers
 {
     public class UserController : Controller
     {
+        UserService userService;
+        public UserController()
+        {
+            this.userService = new UserService();
+        }
+
         public ActionResult List()
         {
             return View(new UserViewModel { Grid = new Grid { PagingInfo=new PagingInfo { TotalItemCount=44, PagingEnabled=true, PageSize=10, PageIndex=2 }, Columns = new [] { new GridColumn { HeaderText = "Column 1", PropertyName = "PropertyName" } }, 
@@ -31,14 +38,16 @@ namespace Inspira.Blog.WebMvc3.Areas.Admin.Controllers
         } 
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(UserViewModel userViewModel)
         {
-            try
+            var isViewValid = userViewModel.Validate();
+            if (isViewValid)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
-            catch
+            else
             {
+                ModelState.AddModelError("_FORM", "Opa! Deu erro!");
                 return View();
             }
         }

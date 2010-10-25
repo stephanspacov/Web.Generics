@@ -1,10 +1,10 @@
 ﻿@model Inspira.Blog.WebMvc3.Areas.Admin.Models.UserViewModel
 
-@if (false) {
+@if (!ViewData.ModelState.IsValid) {
 <p class="alert error">Error message</p>
 }
 
-<form action="#" method="get" class="navform">
+@using (Html.BeginForm()) {
 	<fieldset>
 		<legend>Credentials</legend>
 		<p>
@@ -29,12 +29,12 @@
         <span class="info">Use your complete name (e.g.: John Smith)</span>
     </p>
     <p>
-		@Html.LabelFor(u => u.User.Email) <span class="validation">must be unique</span></label>
+		@Html.LabelFor(u => u.User.Email) <span class="validation">must be unique</span>
 		@Html.TextBoxFor(u => u.User.Email, new {@class="text",maxlength=70})
         <span class="info">d.r.dre@hotmail.com</span>
     </p>
 	<p>
-		@Html.LabelFor(u => u.User.Cpf) <span class="validation">must be valid</span></label>
+		@Html.LabelFor(u => u.User.Cpf) <span class="validation">must be valid</span>
 		@Html.TextBoxFor(u => u.User.Cpf, new {@class="text cpf",maxlength=14})
         <span class="info">299.480.038-10</span>
     </p>
@@ -124,11 +124,27 @@
         @Html.TextAreaFor(u => u.User.AdditionalInfo, new {@class="text", rows=4, cols=40})
         <span class="info">Include additional information here</span>
     </p>
-    <p>	
+    <p>
         @Html.CheckBoxFor(u => u.User.HasAcceptedTerms)
 		@Html.LabelFor(u => u.User.HasAcceptedTerms)
         <span class="info">Include additional information here</span>
     </p>
+	@*
+    <p>
+        @Html.CheckBoxListFor(u => u.User.FavoriteColors)
+		@Html.LabelFor(u => u.User.FavoriteColors)
+        <span class="info">Include additional information here</span>
+    </p>
+	<p>
+        @Html.RadioButtonFor(u => u.User.Gender)
+		@Html.LabelFor(u => u.User.Gender, "Female")
+        <span class="info">Include additional information here</span>
+    </p>
+	<p>
+        @Html.RadioButtonFor(u => u.User.Gender)
+		@Html.LabelFor(u => u.User.Gender, "Male")
+        <span class="info">Include additional information here</span>
+    </p>
+	*@
     <p><input type="submit" name="test4" id="test4" value="Submit"> or <a href="#">Cancel</a></p>
-</form>
-
+}

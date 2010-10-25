@@ -14,26 +14,22 @@
 		<!-- header -->
         <div id="hd">
             <h1>Inspira Admin</h1>
-            <div id="navigation">
-                <ul id="primary-navigation">
-                    <li><a href="welcome.html">Welcome</a></li>
-                    <li><a href="forms.html">Forms</a></li>
-                    <li><a href="tabs.html">Tabs</a></li>
-                    <li class="active"><a href="grid.html">Grid</a></li>
-                    <li>@Html.ActionLink("Users", "List", "User")</li>
-                    <li>@Html.ActionLink("WebLogs", "List", "WebLog")</li>
+			<div id="navigation">
+				<ul id="primary-navigation">
+					<li>@Html.ActionLink("Users", "List", "User")</li>
+					<li>@Html.ActionLink("WebLogs", "List", "WebLog")</li>
 					<li>@Html.ActionLink("Posts", "List", "Post")</li>
 					<li>@Html.ActionLink("Comments", "List", "Comment")</li>
 					<li>@Html.ActionLink("Tags", "List", "Tag")</li>
-                </ul>
-                 <ul id="user-navigation">
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Settings</a></li>
-                    <li><a href="#">Logout</a></li>
+				</ul>
+				<ul id="user-navigation">
+					<li><a href="#">Profile</a></li>
+					<li><a href="#">Settings</a></li>
+					<li><a href="#">Logout</a></li>
 					@Html.Partial("_LogOnPartial")
-                </ul>
-                <div class="clear"></div>
-            </div>
+				</ul>
+				<div class="clear"></div>
+			</div>
         </div>
         <!-- /header -->
 

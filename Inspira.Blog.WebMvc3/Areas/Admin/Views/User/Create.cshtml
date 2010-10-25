@@ -6,14 +6,24 @@
 }
 
 <!-- page body --> 
-        <div id="bd">
+        <div id="bd"> 
             <div id="yui-main"> 
                 <div class="yui-b"><div class="yui-g"> 
-                    <h2>Hello, there.</h2> 
-                    <p><a href="http://github.com/tylerhall/yui-app-theme/">YUI App Theme</a> is a generic, skinnable layout for web applications.</p> 
-                    <p>What you're looking at is the basic page template. Because it's built on top of the <a href="http://developer.yahoo.com/yui/grids/">YUI Grids</a> foundation, you can easily change the page and column widths or even swap the columns around to suit your needs. Not only is it cross-browser compatible (we support all the major browsers including IE6), but it's super easy to extend as well.</p>
+                    <h2>Users</h2> 
+					<p><a href="http://github.com/tylerhall/yui-app-theme/">YUI App Theme</a> is a generic, skinnable layout for web applications.</p> 
+					<p>What you're looking at is the basic page template. Because it's built on top of the <a href="http://developer.yahoo.com/yui/grids/">YUI Grids</a> foundation, you can easily change the page and column widths or even swap the columns around to suit your needs. Not only is it cross-browser compatible (we support all the major browsers including IE6), but it's super easy to extend as well.</p>
+ 
+                    <!-- Tables --> 
+                    <div class="block"> 
+                        <div class="hd"> 
+							<h2>Create new user</h2>
+                        </div> 
+                        <div class="bd">
+							<h2>Form</h2>
 
-					@{Html.RenderPartial("Form");}
+							@{Html.RenderPartial("Form");}
+						</div>
+					</div>
                 </div>
 			</div>
         </div> 

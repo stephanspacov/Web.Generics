@@ -12,5 +12,9 @@ namespace Inspira.Blog.WebMvc3.Areas.Admin.Models
         public Grid Grid { get; set; }
         public User User { get; set; }
         public String PasswordConfirmation { get; set; }
+        public Boolean Validate()
+        {
+            return User.Username == "thiago";
+        }
     }
 }
