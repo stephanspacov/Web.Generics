@@ -1,7 +1,7 @@
 ﻿@model Web.Generics.UserInterface.Models.Grid
 
-<input type="hidden" name="@(this.ViewData.TemplateInfo.HtmlFieldPrefix).PreviousSortProperty" value="@Model.SortingInfo.SortProperty" />
-<input type="hidden" name="@(this.ViewData.TemplateInfo.HtmlFieldPrefix).PreviousOrder" value="@Model.SortingInfo.Order" />
+<input type="hidden" name="@(this.ViewData.TemplateInfo.HtmlFieldPrefix).SortingInfo.PreviousSortProperty" value="@Model.SortingInfo.SortProperty" />
+<input type="hidden" name="@(this.ViewData.TemplateInfo.HtmlFieldPrefix).SortingInfo.PreviousOrder" value="@Model.SortingInfo.GetSortOrder()" />
 
 @if (Model.Rows.Count > 0) {
 <table class="zebra">	
@@ -9,7 +9,7 @@
 		<tr>
 			<!-- th class="first"><input type="checkbox" class="select-all-activator" /></th -->
 			@foreach (var column in Model.Columns) {
-			<th><button type="submit" name="@(this.ViewData.TemplateInfo.HtmlFieldPrefix).SortProperty" value="@column.PropertyName">@column.HeaderText</button></th>
+			<th><button type="submit" name="@(this.ViewData.TemplateInfo.HtmlFieldPrefix).SortingInfo.SortProperty" value="@column.PropertyName">@column.HeaderText</button></th>
             }
 			<th class="text-right"></th>
 		</tr>

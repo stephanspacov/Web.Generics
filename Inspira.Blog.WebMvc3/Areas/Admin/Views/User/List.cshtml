@@ -19,7 +19,9 @@
                         <div class="bd"> 
                             <h3>Grids</h3>
 							<p>@Html.ActionLink("Create new user", "Create")</p>
-							@Html.DisplayFor(model => model.Grid)
+							@using (Html.BeginForm(null, null, FormMethod.Get)) {
+								@Html.DisplayFor(model => model.Grid)
+							}
                         </div>
                     </div>
                 </div>

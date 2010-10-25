@@ -12,8 +12,7 @@ namespace Web.Generics.Tests.UserInterface
     [TestClass]
     public class Given_a_repository_with_7_elements
     {
-        /*           
-             
+        /*             
              * Pagesize 10 and pageindex 0 must yield page 1
              * Pagesize 10 and pageindex -1 must yield page 1
              * Pagesize 5 and pageindex 2 ordering by ID asc must return #6 and #7

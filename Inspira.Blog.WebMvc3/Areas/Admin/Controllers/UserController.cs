@@ -7,6 +7,8 @@ using Inspira.Blog.WebMvc3.Areas.Admin.Models;
 using Web.Generics.UserInterface.Models;
 using Web.Generics.DomainServices;
 using Inspira.Blog.DomainServices;
+using Inspira.Blog.DomainModel;
+using Web.Generics.ApplicationServices.DataAccess;
 
 namespace Inspira.Blog.WebMvc3.Areas.Admin.Controllers
 {
@@ -18,13 +20,51 @@ namespace Inspira.Blog.WebMvc3.Areas.Admin.Controllers
             this.userService = new UserService();
         }
 
-        public ActionResult List()
+        public ActionResult List(UserViewModel viewModel)
         {
-            return View(new UserViewModel { Grid = new Grid { PagingInfo=new PagingInfo { TotalItemCount=44, PagingEnabled=true, PageSize=10, PageIndex=2 }, Columns = new [] { new GridColumn { HeaderText = "Column 1", PropertyName = "PropertyName" } }, 
-                Rows=new[]{
-                    new GridRow { KeyValue="08", Cells = new [] { new GridCell { Value="Cell value" } },  },
-                    new GridRow { KeyValue="08", Cells = new [] { new GridCell { Value="Cell value" } },  }
-                } }});
+            var users = new[] {
+                new User { Name="Loreto", Salary=1234.45M, BirthDate=DateTime.Now.AddYears(-28) },
+                new User { Name="Thiagão", Salary=99234.45M, BirthDate=DateTime.Now.AddYears(-28) },
+            };
+
+            // TODO: ler de um serviço ou repositório
+            if (viewModel.Grid.SortingInfo.GetSortOrder() == SortOrder.Descending)
+            {
+                Func<User, Object> exp = viewModel.Grid.SortingInfo.GetSortExpression<User>().Compile();
+                users = users.OrderByDescending(exp).ToArray();
+            }
+
+            var grid = viewModel.Grid;
+            grid.Columns = GridColumn.Create("Name", "Nome completo", "Salary", "Salário", "BirthDate", "Data de nascimento");
+            grid.DataSource = users;
+            grid.DataBind();
+
+            grid.SortingInfo.SortingEnabled = true;
+            grid.PagingInfo.PagingEnabled = true;
+
+            viewModel.Grid = grid;
+            return View(viewModel);
+        }
+
+        public ActionResult List2()
+        {
+            var viewModel = new UserViewModel
+            {
+                Grid = new Grid
+                {
+                    PagingInfo = new PagingInfo { TotalItemCount = 44, PagingEnabled = true, PageSize = 10, PageIndex = 2 },
+                    Columns = new[] {
+                            new GridColumn { HeaderText = "Column 1", PropertyName = "PropertyName" },
+                            new GridColumn { HeaderText = "Column 2", PropertyName = "PropertyName2" },
+                    },
+                    Rows = new[] {
+                        new GridRow("Cell value 1-1", "Cell value 1-2") { KeyValue="08" },
+                        new GridRow("Cell value 2-1", "Cell value 2-2") { KeyValue="18" },
+                        new GridRow("Cell value 3-1", "Cell value 3-2") { KeyValue="28" },
+                    }
+                }
+            };
+            return View("List", viewModel);
         }
 
         public ActionResult Details(int id)

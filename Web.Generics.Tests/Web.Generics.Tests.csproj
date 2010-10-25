@@ -99,6 +99,7 @@
     <Compile Include="Logging\MockLogger.cs" />
     <Compile Include="NHibernateSessionTests.cs" />
     <Compile Include="Repositories\LogTestController.cs" />
+    <Compile Include="UserInterface\GridTests.cs" />
     <Compile Include="UserInterface\Page_Sort_Filter.cs" />
     <Compile Include="UserInterface\PostController.cs" />
     <Compile Include="UserInterface\WebLogMockRepository.cs" />
