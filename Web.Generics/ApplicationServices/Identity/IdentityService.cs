@@ -120,5 +120,18 @@ namespace Web.Generics.ApplicationServices.Identity
 
             return this.userRepository.ChangePassword(username, hashedNewPassword) ? PasswordChangeStatus.Success : PasswordChangeStatus.UnexistentUser;
         }
+
+        public string GenerateValidationKey(string email)
+        {
+            string validationKey = Guid.NewGuid().ToString();
+
+            //The validation key cannot be stored in plain text
+            string hashedValidationKey = this.EncryptPassword(validationKey);
+
+            if (!userRepository.SetValidationKey(email, hashedValidationKey))
+                return null;
+
+            return validationKey;
+        }
     }
 }

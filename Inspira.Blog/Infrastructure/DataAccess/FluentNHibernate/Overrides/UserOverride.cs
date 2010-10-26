@@ -22,6 +22,7 @@ namespace Inspira.Blog.Infrastructure.DataAccess.FluentNHibernate.Overrides
             mapping.Map(u => u.Salary).Nullable();
             mapping.Map(u => u.Resume).Nullable();
             mapping.HasMany<WebLog>(Reveal.Member<User>("ownedBlogs")).AsBag().LazyLoad().Cascade.All();
+            mapping.Map(x => x.ValidationKey).Nullable();
             //mapping.HasManyToMany(u => u.AssociatedBlogs).Table("User_WebLog");
             // mapping.Component(u => u.Address);
         }

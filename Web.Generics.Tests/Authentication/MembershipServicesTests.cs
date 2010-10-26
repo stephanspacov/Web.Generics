@@ -311,10 +311,35 @@ namespace Web.Generics.Tests.Authentication
          * ResetPasswordWithValidationKey:
          *    - Password reset for existing user with valid validation key changes password and returns it
          *    - Password reset for existing user with invalid validation key returns null
-         *    - Password reset for non-existing user returns null
-         * GenerateValidationKey:
-         *    - GenerateValidationKey for existing email generates key and returns it
-         *    - GenerateValidationKey for nonexisting email returns null
+         *    - Password reset for non-existing user returns null*/
+         // GenerateValidationKey:
+        [TestMethod]
+        public void GenerateValidationKey_for_existing_email_generates_key_and_returns_it() 
+        {
+            var password = "neoistheone";
+            var user = new User
+            {
+                Name = "John Doe",
+                BirthDate = new DateTime(1982, 8, 1),
+                Email = "john.doe@inspira.com.br",
+                Username = "john_doe",
+                Address = new Address { City = "São paulo", StreetName = "name", Number = "123B", State = "SP", ZipCode = "03423-234" }
+            };
+
+            try
+            {
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+            }
+            catch (Exception e)
+            {
+                session.Transaction.Rollback();
+                throw;
+            }
+
+            Assert.IsNotNull(identityService.GenerateValidationKey("john.doe@inspira.com.br"));
+        }
+       
+         /*    - GenerateValidationKey for nonexisting email returns null
          * Unlock:
          *     - Unlock verify if the user exists and update lock flag to false
          * Lock:

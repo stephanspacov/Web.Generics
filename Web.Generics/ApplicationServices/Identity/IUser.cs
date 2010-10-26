@@ -10,5 +10,6 @@ namespace Web.Generics.ApplicationServices.Identity
         string Email { get; set; }
         string Username { get; set; }
         string Password { get; set; }
+        string ValidationKey { get; set; }
     }
 }

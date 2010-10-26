@@ -66,6 +66,11 @@ namespace Inspira.Blog.Infrastructure.DataAccess.Repositories
             return false;
         }
 
+        public User Select(string email)
+        {
+            return this.session.Query<User>().Where(x => x.Email == email).SingleOrDefault();
+        }
+
         public bool ChangePassword(string username, string newPassword)
         {
             User user = this.session.Query<User>().Where(x => x.Username == username).SingleOrDefault();
@@ -79,6 +84,20 @@ namespace Inspira.Blog.Infrastructure.DataAccess.Repositories
             }
 
             return false;
+        }
+
+        public bool SetValidationKey(string email, string validationKey)
+        {
+            User user = this.session.Query<User>().Where(x => x.Email == email).SingleOrDefault();
+
+            if (user == null)
+                return false;
+
+            user.ValidationKey = validationKey;
+
+            this.SaveOrUpdate(user);
+
+            return true;
         }
     }
 }
