@@ -331,10 +331,41 @@ namespace Web.Generics.Tests.Authentication
 
         }
          /*    - User changing password with correct current password and invalid new password returns InvalidNewPassword
-         * ResetPassword:
-         *    - Password reset for existing user changes password and returns it
-         *    - Password reset for non-existing user returns null
-         * ResetPasswordWithValidationKey:
+         * ResetPassword:*/
+
+        [TestMethod]
+        public void Password_reset_for_existing_user_changes_password_and_returns_it()
+        {
+            var password = "neoistheone";
+            var user = new User
+            {
+                Name = "John Doe",
+                BirthDate = new DateTime(1982, 8, 1),
+                Email = "john.doe@inspira.com.br",
+                Username = "john_doe",
+                Address = new Address { City = "São paulo", StreetName = "name", Number = "123B", State = "SP", ZipCode = "03423-234" }
+            };
+
+            try
+            {
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+            }
+            catch (Exception e)
+            {
+                session.Transaction.Rollback();
+                throw;
+            }
+
+            Assert.IsNotNull(identityService.ResetPassword("john_doe"));
+        }
+
+        [TestMethod]
+        public void Password_reset_for_non_existing_user_returns_null() 
+        {
+            Assert.IsNull(identityService.ResetPassword("idontexist"));
+        }
+
+         /* ResetPasswordWithValidationKey:
          *    - Password reset for existing user with valid validation key changes password and returns it
          *    - Password reset for existing user with invalid validation key returns null
          *    - Password reset for non-existing user returns null*/
