@@ -325,6 +325,7 @@ namespace Web.Generics.Tests.Authentication
         }
 
          /*    - Admin changing password with invalid new password returns InvalidCurrentPassword*/
+
         [TestMethod]
         public void User_changing_password_with_incorrect_current_password_returns_IncorrectCurrentPassword() 
         {
@@ -350,6 +351,7 @@ namespace Web.Generics.Tests.Authentication
 
             Assert.AreEqual(PasswordChangeStatus.InvalidCurrentPassword, identityService.ChangePassword("john_doe", "wrongPassword", "newPassword"));
         }
+
          /*    - User changing password with correct current password and invalid new password returns InvalidNewPassword
          * ResetPassword:*/
 
@@ -385,9 +387,38 @@ namespace Web.Generics.Tests.Authentication
             Assert.IsNull(identityService.ResetPassword("idontexist"));
         }
 
-         /* ResetPasswordWithValidationKey:
-         *    - Password reset for existing user with valid validation key changes password and returns it
-         *    - Password reset for existing user with invalid validation key returns null
+         /* ResetPasswordWithValidationKey:*/
+        [TestMethod]
+        public void Password_reset_for_existing_user_with_valid_validation_key_changes_password_and_returns_it()
+        {
+            var password = "neoistheone";
+            var user = new User
+            {
+                Name = "John Doe",
+                BirthDate = new DateTime(1982, 8, 1),
+                Email = "john.doe@inspira.com.br",
+                Username = "john_doe",
+                Address = new Address { City = "São paulo", StreetName = "name", Number = "123B", State = "SP", ZipCode = "03423-234" }
+            };
+
+            try
+            {
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+            }
+            catch (Exception e)
+            {
+                session.Transaction.Rollback();
+                throw;
+            }
+
+            string validationKey = identityService.GenerateValidationKey("john.doe@inspira.com.br");
+
+            Assert.IsNotNull(validationKey);
+
+            Assert.IsNotNull(identityService.ResetPasswordWithValidationKey("john_doe", validationKey));
+        }
+
+        /*    - Password reset for existing user with invalid validation key returns null
          *    - Password reset for non-existing user returns null*/
          // GenerateValidationKey:
         [TestMethod]

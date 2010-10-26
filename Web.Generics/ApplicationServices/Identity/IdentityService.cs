@@ -161,5 +161,12 @@ namespace Web.Generics.ApplicationServices.Identity
 
             return userRepository.ChangePassword(username, hashedNewPassword) ? hashedNewPassword : null;
         }
+
+        public string ResetPasswordWithValidationKey(string username, string validationKey)
+        {
+            string hashedNewPassword = PasswordHelper.ComputeHash(PasswordHelper.Generate());
+
+            return userRepository.ChangePasswordWithValidationKey(username, PasswordHelper.ComputeHash(validationKey), hashedNewPassword) ? hashedNewPassword : null;
+        }
     }
 }

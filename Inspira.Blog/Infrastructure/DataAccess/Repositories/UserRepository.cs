@@ -43,7 +43,9 @@ namespace Inspira.Blog.Infrastructure.DataAccess.Repositories
 
         public void SaveOrUpdate(DomainModel.User user)
         {
-            this.session.SaveOrUpdate(user);            
+            this.session.SaveOrUpdate(user);
+            this.session.Flush();
+            this.session.Clear();
         }
 
         public void ChangeBirthDate(int id, DateTime newBirthDate)
@@ -71,6 +73,23 @@ namespace Inspira.Blog.Infrastructure.DataAccess.Repositories
         public User Select(string username, string password)
         {
             return this.session.Query<User>().Where(x => x.Username == username && x.Password == password).SingleOrDefault();
+        }
+
+        public bool ChangePasswordWithValidationKey(string username, string validationKey, string newPassword)
+        {
+            User user = this.session.Query<User>().Where(x => x.Username == username && x.ValidationKey == validationKey).SingleOrDefault();
+
+            if (user != null)
+            {
+                user.ValidationKey = null;
+                user.Password = newPassword;
+
+                this.SaveOrUpdate(user);
+
+                return true;
+            }
+
+            return false;
         }
 
         public bool ChangePassword(string username, string currentPassword, string newPassword)

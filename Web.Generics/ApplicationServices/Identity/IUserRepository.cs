@@ -36,6 +36,7 @@ namespace Web.Generics.ApplicationServices.Identity
         T Select(string email);
         bool ChangePassword(string username, string currentPassword, string newPassword);
         bool ChangePassword(string username, string newPassword);
+        bool ChangePasswordWithValidationKey(string username, string validationKey, string newPassword);
         bool SetValidationKey(string email, string validationKey);
     }
 }
