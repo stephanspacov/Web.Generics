@@ -8,12 +8,10 @@ using Inspira.Blog.WebMvc3.Controllers;
 using Web.Generics;
 using System.Reflection;
 using Inspira.Blog.Infrastructure.DataAccess.FluentNHibernate;
+using Inspira.Blog.Infrastructure.InversionOfControl;
 
 namespace Inspira.Blog.WebMvc3
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
-
     public class MvcApplication : System.Web.HttpApplication
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -41,7 +39,8 @@ namespace Inspira.Blog.WebMvc3
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
-            ApplicationManager.Initialize(Assembly.Load("Inspira.Blog.DomainModel"), Assembly.Load("Inspira.Blog"), new MappingConfiguration());
+            ApplicationManager.Initialize(Assembly.Load("Inspira.Blog.DomainModel"), Assembly.Load("Inspira.Blog"), new MappingConfiguration(), new InversionOfControlMapper());
+            MvcApplicationManager.DefineControllerFactory();
         }
 
         protected void Application_BeginRequest()
