@@ -25,6 +25,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Linq.Expressions;
+using System.Text.RegularExpressions;
 
 namespace Web.Generics.ApplicationServices.Identity
 {
@@ -104,13 +105,54 @@ namespace Web.Generics.ApplicationServices.Identity
 
         private bool IsValidEmail(string email)
         {
-            return true;
+            string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
+                @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+                @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+            Regex re = new Regex(strRegex);
+            if (re.IsMatch(email))
+                return (true);
+            else
+                return (false);
         }
 
         public string EncryptPassword(string password)
         {
-            String encryptedPassword = password.GetHashCode().ToString();
-            return encryptedPassword;
+            return PasswordHelper.ComputeHash(password);
+        }
+
+        public bool Validate(string username, string password)
+        {
+            string hashedPassword = this.EncryptPassword(password);
+
+            return this.userRepository.Select(username, hashedPassword) != null;
+        }
+
+        public PasswordChangeStatus ChangePassword(string username, string currentPassword, string newPassword)
+        {
+            string hashedNewPassword = this.EncryptPassword(newPassword);
+            string hashedCurrentPassword = this.EncryptPassword(currentPassword);
+
+            return this.userRepository.ChangePassword(username, hashedCurrentPassword, hashedNewPassword) ? PasswordChangeStatus.Success : PasswordChangeStatus.InvalidCurrentPassword;
+        }
+
+        public PasswordChangeStatus AdministrativePasswordChange(string username, string newPassword)
+        {
+            string hashedNewPassword = this.EncryptPassword(newPassword);
+
+            return this.userRepository.ChangePassword(username, hashedNewPassword) ? PasswordChangeStatus.Success : PasswordChangeStatus.UnexistentUser;
+        }
+
+        public string GenerateValidationKey(string email)
+        {
+            string validationKey = Guid.NewGuid().ToString();
+
+            //The validation key cannot be stored in plain text
+            string hashedValidationKey = this.EncryptPassword(validationKey);
+
+            if (!userRepository.SetValidationKey(email, hashedValidationKey))
+                return null;
+
+            return validationKey;
         }
     }
 }

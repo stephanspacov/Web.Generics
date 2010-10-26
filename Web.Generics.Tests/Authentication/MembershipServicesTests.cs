@@ -152,9 +152,9 @@ namespace Web.Generics.Tests.Authentication
 
 
         [TestMethod]
-        public void Register_with_invalid_data_returns_invalid_state() //O que vem a ser invalid data??
+        public void Register_with_invalid_data_returns_invalid_state() //What's the criteria?
         {
-
+            throw new NotImplementedException();
         }
 
         [TestMethod]
@@ -179,17 +179,152 @@ namespace Web.Generics.Tests.Authentication
                 throw;
             }
         }
-        // Register with null role throws argumentNullException
-        // Register fail must rollback transaction
+
+        [TestMethod]
+        public void Register_with_null_role_throws_argumentNullException()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void Register_fail_must_rollback_transaction() 
+        {
+            throw new NotImplementedException();
+        }
   
-         /* Validate:
-         *   - Validate existing user with correct password returns true
-         *   - Validate existing user with incorrect password returns false
-         *   - Validate non-existing user returns false
-         * ChangePassword
-         *    - User changing password with correct current password and valid new password returns Success
-         *    - Admin changing password with valid new password returns Success
-         *    - Admin changing password with invalid new password returns InvalidNewPassword
+         // Validate:
+        [TestMethod]
+        public void Validate_existing_user_with_correct_password_returns_true()
+        {
+            var password = "neoistheone";
+            var user = new User
+            {
+                Name = "John Doe",
+                BirthDate = new DateTime(1982, 8, 1),
+                Email = "john.doe@inspira.com.br",
+                Username = "john_doe",
+                Address = new Address { City = "São paulo", StreetName = "name", Number = "123B", State = "SP", ZipCode = "03423-234" }
+            };
+
+            try
+            {
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+            }
+            catch (Exception e)
+            {
+                session.Transaction.Rollback();
+                throw;
+            }
+
+            Assert.IsTrue(identityService.Validate("john_doe", password));
+        }
+
+        [TestMethod]
+        public void Validate_existing_user_with_incorrect_password_returns_false()
+        {
+            var password = "neoistheone";
+            var user = new User
+            {
+                Name = "John Doe",
+                BirthDate = new DateTime(1982, 8, 1),
+                Email = "john.doe@inspira.com.br",
+                Username = "john_doe",
+                Address = new Address { City = "São paulo", StreetName = "name", Number = "123B", State = "SP", ZipCode = "03423-234" }
+            };
+
+            try
+            {
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+            }
+            catch (Exception e)
+            {
+                session.Transaction.Rollback();
+                throw;
+            }
+
+            Assert.IsFalse(identityService.Validate("john_doe", "something"));
+        }
+
+        [TestMethod]
+        public void Validate_non_existing_user_returns_false()
+        {
+            var password = "neoistheone";
+            var user = new User
+            {
+                Name = "John Doe",
+                BirthDate = new DateTime(1982, 8, 1),
+                Email = "john.doe@inspira.com.br",
+                Username = "john_doe",
+                Address = new Address { City = "São paulo", StreetName = "name", Number = "123B", State = "SP", ZipCode = "03423-234" }
+            };
+
+            try
+            {
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+            }
+            catch (Exception e)
+            {
+                session.Transaction.Rollback();
+                throw;
+            }
+
+            Assert.IsFalse(identityService.Validate("huckleberry finn", "something"));
+        }
+
+         // ChangePassword
+        [TestMethod]
+        public void User_changing_password_with_correct_password_and_valid_new_password_returns_success()
+        {
+            var password = "neoistheone";
+            var user = new User
+            {
+                Name = "John Doe",
+                BirthDate = new DateTime(1982, 8, 1),
+                Email = "john.doe@inspira.com.br",
+                Username = "john_doe",
+                Address = new Address { City = "São paulo", StreetName = "name", Number = "123B", State = "SP", ZipCode = "03423-234" }
+            };
+
+            try
+            {
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+            }
+            catch (Exception e)
+            {
+                session.Transaction.Rollback();
+                throw;
+            }
+
+            Assert.AreEqual(PasswordChangeStatus.Success, identityService.ChangePassword("john_doe", password, "newPassword"));
+        }
+
+        [TestMethod]
+        public void Admin_changing_password_with_valid_new_password_returns_Success()
+        {
+            var password = "neoistheone";
+            var user = new User
+            {
+                Name = "John Doe",
+                BirthDate = new DateTime(1982, 8, 1),
+                Email = "john.doe@inspira.com.br",
+                Username = "john_doe",
+                Address = new Address { City = "São paulo", StreetName = "name", Number = "123B", State = "SP", ZipCode = "03423-234" }
+            };
+
+            try
+            {
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+            }
+            catch (Exception e)
+            {
+                session.Transaction.Rollback();
+                throw;
+            }
+
+            Assert.AreEqual(PasswordChangeStatus.Success, identityService.AdministrativePasswordChange("john_doe", "newPassword"));
+        }
+
+         /*    - Admin changing password with invalid new password returns InvalidNewPassword
          *    - User changing password with incorrect current password returns IncorrectNewPassword
          *    - User changing password with correct current password and invalid new password returns InvalidNewPassword
          * ResetPassword:
@@ -198,11 +333,41 @@ namespace Web.Generics.Tests.Authentication
          * ResetPasswordWithValidationKey:
          *    - Password reset for existing user with valid validation key changes password and returns it
          *    - Password reset for existing user with invalid validation key returns null
-         *    - Password reset for non-existing user returns null
-         * GenerateValidationKey:
-         *    - GenerateValidationKey for existing email generates key and returns it
-         *    - GenerateValidationKey for nonexisting email returns null
-         * Unlock:
+         *    - Password reset for non-existing user returns null*/
+         // GenerateValidationKey:
+        [TestMethod]
+        public void GenerateValidationKey_for_existing_email_generates_key_and_returns_it() 
+        {
+            var password = "neoistheone";
+            var user = new User
+            {
+                Name = "John Doe",
+                BirthDate = new DateTime(1982, 8, 1),
+                Email = "john.doe@inspira.com.br",
+                Username = "john_doe",
+                Address = new Address { City = "São paulo", StreetName = "name", Number = "123B", State = "SP", ZipCode = "03423-234" }
+            };
+
+            try
+            {
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+            }
+            catch (Exception e)
+            {
+                session.Transaction.Rollback();
+                throw;
+            }
+
+            Assert.IsNotNull(identityService.GenerateValidationKey("john.doe@inspira.com.br"));
+        }
+
+        [TestMethod]
+        public void GenerateValidationKey_for_nonexisting_email_returns_null()
+        {
+            Assert.IsNull(identityService.GenerateValidationKey("idontexist@inspira.com.br"));
+        }
+
+         /* Unlock:
          *     - Unlock verify if the user exists and update lock flag to false
          * Lock:
          *     - Unlock verify if the user exists and update lock flag to true

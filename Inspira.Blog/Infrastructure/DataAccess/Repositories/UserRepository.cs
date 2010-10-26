@@ -67,5 +67,59 @@ namespace Inspira.Blog.Infrastructure.DataAccess.Repositories
         {
             this.session.Save(user);
         }
+
+        public User Select(string username, string password)
+        {
+            return this.session.Query<User>().Where(x => x.Username == username && x.Password == password).SingleOrDefault();
+        }
+
+        public bool ChangePassword(string username, string currentPassword, string newPassword)
+        {
+            User user = this.session.Query<User>().Where(x => x.Username == username && x.Password == currentPassword).SingleOrDefault();
+
+            if (user != null) 
+            {
+                user.Password = newPassword;
+                this.SaveOrUpdate(user);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        public User Select(string email)
+        {
+            return this.session.Query<User>().Where(x => x.Email == email).SingleOrDefault();
+        }
+
+        public bool ChangePassword(string username, string newPassword)
+        {
+            User user = this.session.Query<User>().Where(x => x.Username == username).SingleOrDefault();
+
+            if (user != null)
+            {
+                user.Password = newPassword;
+                this.SaveOrUpdate(user);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool SetValidationKey(string email, string validationKey)
+        {
+            User user = this.session.Query<User>().Where(x => x.Email == email).SingleOrDefault();
+
+            if (user == null)
+                return false;
+
+            user.ValidationKey = validationKey;
+
+            this.SaveOrUpdate(user);
+
+            return true;
+        }
     }
 }
