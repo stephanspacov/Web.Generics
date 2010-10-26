@@ -157,12 +157,47 @@ namespace Web.Generics.Tests.Authentication
                 throw;
             }
         }
-        // Register with null role throws argumentNullException
-        // Register fail must rollback transaction
+
+        [TestMethod]
+        public void Register_with_null_role_throws_argumentNullException()
+        {
+            
+        }
+
+        [TestMethod]
+        public void Register_fail_must_rollback_transaction() 
+        {
+
+        }
   
-         /* Validate:
-         *   - Validate existing user with correct password returns true
-         *   - Validate existing user with incorrect password returns false
+         // Validate:
+        [TestMethod]
+        public void Validate_existing_user_with_correct_password_returns_true()
+        {
+            var password = "neoistheone";
+            var user = new User
+            {
+                Name = "John Doe",
+                BirthDate = new DateTime(1982, 8, 1),
+                Email = "john.doe@inspira.com.br",
+                Username = "john_doe",
+                Address = new Address { City = "São paulo", StreetName = "name", Number = "123B", State = "SP", ZipCode = "03423-234" }
+            };
+
+            try
+            {
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+            }
+            catch (Exception e)
+            {
+                session.Transaction.Rollback();
+                throw;
+            }
+
+            Assert.IsTrue(identityService.Validate("john_doe", password));
+        }
+
+         /*   - Validate existing user with incorrect password returns false
          *   - Validate non-existing user returns false
          * ChangePassword
          *    - User changing password with correct current password and valid new password returns Success

@@ -9,5 +9,6 @@ namespace Web.Generics.ApplicationServices.Identity
     {
         RegisterStatus VerifyUniqueUser(T user);
         void InsertUser(T user);
+        T Select(string username, string password);
     }
 }

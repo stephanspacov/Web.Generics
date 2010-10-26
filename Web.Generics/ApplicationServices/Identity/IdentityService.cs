@@ -98,5 +98,12 @@ namespace Web.Generics.ApplicationServices.Identity
             String encryptedPassword = password.GetHashCode().ToString();
             return encryptedPassword;
         }
+
+        public bool Validate(string username, string password)
+        {
+            string hashedPassword = this.EncryptPassword(password);
+
+            return this.userRepository.Select(username, hashedPassword) != null;
+        }
     }
 }

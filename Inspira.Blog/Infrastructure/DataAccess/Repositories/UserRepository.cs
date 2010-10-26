@@ -45,5 +45,10 @@ namespace Inspira.Blog.Infrastructure.DataAccess.Repositories
         {
             this.session.Save(user);
         }
+
+        public User Select(string username, string password)
+        {
+            return this.session.Query<User>().Where(x => x.Username == username && x.Password == password).SingleOrDefault();
+        }
     }
 }
