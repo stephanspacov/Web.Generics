@@ -8,6 +8,7 @@ using NHibernate.Criterion;
 using Web.Generics.ApplicationServices.Identity;
 using Inspira.Blog.DomainModel;
 using Inspira.Blog.Infrastructure.DataAccess.Repositories;
+using System.Reflection;
 
 namespace Web.Generics.Tests.Authentication
 {
@@ -33,7 +34,7 @@ namespace Web.Generics.Tests.Authentication
 
         /* Register: */
         [TestMethod]
-        public void Register_with_valid_data_inserts_user_into_database_and_returns_them()
+        public void Register_with_valid_data_inserts_user_into_database_and_returns_success()
         {
             var password = "neoistheone";
             var user = new User
@@ -47,7 +48,7 @@ namespace Web.Generics.Tests.Authentication
 
             try
             {
-                identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password);
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
             }
             catch(Exception e)
             {
@@ -79,12 +80,83 @@ namespace Web.Generics.Tests.Authentication
                 Username = "john_doe",
                 Address = new Address { City = "São paulo", StreetName = "name", Number = "123B", State = "SP", ZipCode = "03423-234" }
             };
-            userRepository.SaveOrUpdate(user);
+
+            try
+            {
+                Assert.AreEqual(RegisterStatus.UsernameAlreadyExists, identityService.Register(user2, u => u.Username, u => u.Email, (s) => user2.Password = s, "minhasenha"));
+            }
+            catch (Exception e)
+            {
+                session.Transaction.Rollback();
+                throw;
+            }
         }
 
         // Register with existing e-mail returns ExistingEmail state
-        // Register with invalid data returns invalid state
-        // Register with null data throws argument invalid exception
+        [TestMethod]
+        public void Register_with_existing_email_returns_ExistingEmail_state() 
+        {
+            var user = new User
+            {
+                Name = "John Doe",
+                BirthDate = new DateTime(1982, 8, 1),
+                Email = "john.doe@inspira.com.br",
+                Password = "****",
+                Username = "john_doe",
+                Address = new Address { City = "São paulo", StreetName = "name", Number = "123B", State = "SP", ZipCode = "03423-234" }
+            };
+
+            userRepository.SaveOrUpdate(user);
+            var user2 = new User
+            {
+                Name = "Fulano",
+                BirthDate = DateTime.Now,
+                Email = "john.doe@inspira.com.br",
+                Password = "$$$$",
+                Username = "james_dogheart",
+                Address = new Address { City = "São paulo", StreetName = "name", Number = "123B", State = "SP", ZipCode = "03423-234" }
+            };
+
+            try
+            {
+                Assert.AreEqual(RegisterStatus.EmailAlreadyExists, identityService.Register(user2, u => u.Username, u => u.Email, (s) => user2.Password = s, "minhasenha"));
+            }
+            catch (Exception e)
+            {
+                session.Transaction.Rollback();
+                throw;
+            }
+        }
+
+
+        [TestMethod]
+        public void Register_with_invalid_data_returns_invalid_state() //O que vem a ser invalid data??
+        {
+
+        }
+
+        [TestMethod]
+        public void Register_with_null_data_throws_argumentnullexception()
+        {
+            var password = "neoistheone";
+            var user = new User();
+
+            try
+            {
+                identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password);
+
+                Assert.Fail();
+            }
+            catch (ArgumentNullException e)
+            {
+                Assert.IsInstanceOfType(e, typeof(ArgumentNullException));
+            }
+            catch 
+            {
+                session.Transaction.Rollback();
+                throw;
+            }
+        }
         // Register with null role throws argumentNullException
         // Register fail must rollback transaction
   

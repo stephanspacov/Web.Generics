@@ -16,6 +16,18 @@ namespace Web.Generics.ApplicationServices.Identity
 
         public RegisterStatus Register(string username, string password, string email, Func<String, String, RegisterStatus> userExists, Action insertUser)
         {
+
+            if (username == null)
+                throw new ArgumentNullException("username");
+            if (password == null)
+                throw new ArgumentNullException("password");
+            if (email== null)
+                throw new ArgumentNullException("email");
+            if (userExists == null)
+                throw new ArgumentNullException("userExists");
+            if (password == null)
+                throw new ArgumentNullException("insertUser");
+
             if (IsValidEmail(email)) return RegisterStatus.InvalidEmail;
 
             RegisterStatus status = userExists(username, email);
@@ -29,8 +41,27 @@ namespace Web.Generics.ApplicationServices.Identity
 
         public RegisterStatus Register(T userInstance, Func<T, String> usernameProperty, Func<T, String> emailProperty, Action<String> encryptedPasswordProperty, String cleanPassword)
         {
+            if (userInstance == null)
+                throw new ArgumentNullException("userInstance");
+            if (encryptedPasswordProperty == null)
+                throw new ArgumentNullException("encryptedPasswordProperty");
+            if (emailProperty == null)
+                throw new ArgumentNullException("emailProperty");
+            if (cleanPassword == null)
+                throw new ArgumentNullException("cleanPassword");
+
+
+
+
             var username = usernameProperty.Invoke(userInstance);
             var email = emailProperty.Invoke(userInstance);
+
+
+            if (username == null)
+                throw new ArgumentNullException("insertUser");
+            if (email == null)
+                throw new ArgumentNullException("insertUser");
+
 
             if (!IsValidEmail(email)) return RegisterStatus.InvalidEmail;
             // TODO: verificar username e senha
