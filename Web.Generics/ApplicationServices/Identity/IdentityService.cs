@@ -139,7 +139,7 @@ namespace Web.Generics.ApplicationServices.Identity
         {
             string hashedNewPassword = this.EncryptPassword(newPassword);
 
-            return this.userRepository.ChangePassword(username, hashedNewPassword) ? PasswordChangeStatus.Success : PasswordChangeStatus.UnexistentUser;
+            return this.userRepository.ChangePassword(username, hashedNewPassword) ? PasswordChangeStatus.Success : PasswordChangeStatus.InexistentUser;
         }
 
         public string GenerateValidationKey(string email)
