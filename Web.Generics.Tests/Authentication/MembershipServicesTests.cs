@@ -324,11 +324,31 @@ namespace Web.Generics.Tests.Authentication
             Assert.AreEqual(PasswordChangeStatus.Success, identityService.AdministrativePasswordChange("john_doe", "newPassword"));
         }
 
-         /*    - Admin changing password with invalid new password returns InvalidNewPassword*/
+         /*    - Admin changing password with invalid new password returns InvalidCurrentPassword*/
         [TestMethod]
-        public void User_changing_password_with_incorrect_current_password_returns_IncorrectNewPassword() 
+        public void User_changing_password_with_incorrect_current_password_returns_IncorrectCurrentPassword() 
         {
+            var password = "neoistheone";
+            var user = new User
+            {
+                Name = "John Doe",
+                BirthDate = new DateTime(1982, 8, 1),
+                Email = "john.doe@inspira.com.br",
+                Username = "john_doe",
+                Address = new Address { City = "São paulo", StreetName = "name", Number = "123B", State = "SP", ZipCode = "03423-234" }
+            };
 
+            try
+            {
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+            }
+            catch (Exception e)
+            {
+                session.Transaction.Rollback();
+                throw;
+            }
+
+            Assert.AreEqual(PasswordChangeStatus.InvalidCurrentPassword, identityService.ChangePassword("john_doe", "wrongPassword", "newPassword"));
         }
          /*    - User changing password with correct current password and invalid new password returns InvalidNewPassword
          * ResetPassword:*/
