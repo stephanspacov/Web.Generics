@@ -338,9 +338,14 @@ namespace Web.Generics.Tests.Authentication
 
             Assert.IsNotNull(identityService.GenerateValidationKey("john.doe@inspira.com.br"));
         }
-       
-         /*    - GenerateValidationKey for nonexisting email returns null
-         * Unlock:
+
+        [TestMethod]
+        public void GenerateValidationKey_for_nonexisting_email_returns_null()
+        {
+            Assert.IsNull(identityService.GenerateValidationKey("idontexist@inspira.com.br"));
+        }
+
+         /* Unlock:
          *     - Unlock verify if the user exists and update lock flag to false
          * Lock:
          *     - Unlock verify if the user exists and update lock flag to true
