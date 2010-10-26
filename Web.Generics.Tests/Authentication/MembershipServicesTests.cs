@@ -418,8 +418,42 @@ namespace Web.Generics.Tests.Authentication
             Assert.IsNotNull(identityService.ResetPasswordWithValidationKey("john_doe", validationKey));
         }
 
-        /*    - Password reset for existing user with invalid validation key returns null
-         *    - Password reset for non-existing user returns null*/
+        [TestMethod]
+        public void Password_resetfor_existing_user_with_invalid_validation_key_returns_null()
+        {
+            var password = "neoistheone";
+            var user = new User
+            {
+                Name = "John Doe",
+                BirthDate = new DateTime(1982, 8, 1),
+                Email = "john.doe@inspira.com.br",
+                Username = "john_doe",
+                Address = new Address { City = "São paulo", StreetName = "name", Number = "123B", State = "SP", ZipCode = "03423-234" }
+            };
+
+            try
+            {
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+            }
+            catch (Exception e)
+            {
+                session.Transaction.Rollback();
+                throw;
+            }
+
+            string validationKey = identityService.GenerateValidationKey("john.doe@inspira.com.br");
+
+            Assert.IsNotNull(validationKey);
+
+            Assert.IsNull(identityService.ResetPasswordWithValidationKey("john_doe", "something else"));
+        }
+
+        [TestMethod]
+        public void Password_reset_with_validation_key_for_non_existing_user_returns_null()
+        {
+            Assert.IsNull(identityService.ResetPasswordWithValidationKey("idontexist", "something else"));
+        }
+
          // GenerateValidationKey:
         [TestMethod]
         public void GenerateValidationKey_for_existing_email_generates_key_and_returns_it() 
