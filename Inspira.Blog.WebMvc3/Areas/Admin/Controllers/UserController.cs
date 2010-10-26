@@ -29,63 +29,11 @@ namespace Inspira.Blog.WebMvc3.Areas.Admin.Controllers
             viewModel.MyGrid.DataSource = users;
             viewModel.MyGrid.DataBind();
 
-            viewModel.MyGrid.SortingInfo.SortingEnabled = true;
-            viewModel.MyGrid.PagingInfo.PagingEnabled = true;
+            var blogs = new GenericService<WebLog>(new GenericRepository<WebLog>(new NHibernateRepositoryContext())).Select(null, viewModel.MyGrid2);
+            viewModel.MyGrid2.Columns = GridColumn.Create("Title", "Título", "Creator", "Criador", "CreatedAt", "Criado em");
+            viewModel.MyGrid2.DataSource = blogs;
+            viewModel.MyGrid2.DataBind();
 
-            return View("List", viewModel);
-        }
-
-        public ActionResult List3(UserViewModel viewModel)
-        {
-            //var users = new GenericService<User>(new GenericRepository<User>(new NHibernateRepositoryContext())).Select(null, viewModel.MyGrid.PagingInfo.PageSize, viewModel.MyGrid.PagingInfo.PageIndex, viewModel.MyGrid.SortingInfo.GetSortExpression<User>(), viewModel.MyGrid.SortingInfo.GetSortOrder(), out totalItemCount);
-            //grid.PagingInfo.TotalItemCount = totalItemCount;
-            
-            var users = new[] {
-                new User { Name="Loreto", Salary=1234.45M, BirthDate=DateTime.Now.AddYears(-28) },
-                new User { Name="Thiagão", Salary=99234.45M, BirthDate=DateTime.Now.AddYears(-38) },
-                new User { Name="Qiyan", Salary=234.45M, BirthDate=DateTime.Now.AddYears(-18) },
-            };
-
-            // TODO: ler de um serviço ou repositório
-            if (viewModel.MyGrid.SortingInfo.GetSortOrder() == SortOrder.Descending)
-            {
-                Func<User, Object> exp = viewModel.MyGrid.SortingInfo.GetSortExpression<User>().Compile();
-                users = users.OrderByDescending(exp).ToArray();
-            }
-
-            var grid = viewModel.MyGrid;
-            grid.Columns = GridColumn.Create("Name", "Nome completo", "Salary", "Salário", "BirthDate", "Data de nascimento");
-            grid.DataSource = users;
-            grid.DataBind();
-
-            grid.SortingInfo.SortingEnabled = true;
-            grid.PagingInfo.PagingEnabled = true;
-            grid.PagingInfo.PageSize = 2;
-            grid.PagingInfo.PageIndex = 1;
-            grid.PagingInfo.TotalItemCount = 3;
-
-            viewModel.MyGrid = grid;
-            return View("List", viewModel);
-        }
-
-        public ActionResult List2()
-        {
-            var viewModel = new UserViewModel
-            {
-                MyGrid = new Grid
-                {
-                    PagingInfo = new PagingInfo { TotalItemCount = 44, PagingEnabled = true, PageSize = 10, PageIndex = 2 },
-                    Columns = new[] {
-                            new GridColumn { HeaderText = "Column 1", PropertyName = "PropertyName" },
-                            new GridColumn { HeaderText = "Column 2", PropertyName = "PropertyName2" },
-                    },
-                    Rows = new[] {
-                        new GridRow("Cell value 1-1", "Cell value 1-2") { KeyValue="08" },
-                        new GridRow("Cell value 2-1", "Cell value 2-2") { KeyValue="18" },
-                        new GridRow("Cell value 3-1", "Cell value 3-2") { KeyValue="28" },
-                    }
-                }
-            };
             return View("List", viewModel);
         }
 

@@ -20,6 +20,12 @@ namespace Web.Generics.DomainServices
         public Int32 TotalItemCount { get; set; }
         public Int32 PageSize { get; set; }
         public Int32 PageIndex { get; set; }
+        public Int32 PreviousPageIndex { get; set; }
+
+        public Int32 GetPageIndex()
+        {
+            return PageIndex;
+        }
 
 		public Boolean HasPrevious
 		{

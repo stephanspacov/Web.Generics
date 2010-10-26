@@ -43,5 +43,10 @@ namespace Inspira.Blog.DomainModel
 
         virtual public String Username { get; set; }
         virtual public String Password { get; set; }
+
+        public override string ToString()
+        {
+            return this.Username;
+        }
     }
 }
