@@ -132,7 +132,7 @@ namespace Web.Generics.Tests.Authentication
         [TestMethod]
         public void Register_with_invalid_data_returns_invalid_state() //What's the criteria?
         {
-
+            throw new NotImplementedException();
         }
 
         [TestMethod]
@@ -161,13 +161,13 @@ namespace Web.Generics.Tests.Authentication
         [TestMethod]
         public void Register_with_null_role_throws_argumentNullException()
         {
-            
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void Register_fail_must_rollback_transaction() 
         {
-
+            throw new NotImplementedException();
         }
   
          // Validate:
@@ -249,10 +249,60 @@ namespace Web.Generics.Tests.Authentication
             Assert.IsFalse(identityService.Validate("huckleberry finn", "something"));
         }
 
-         /* ChangePassword
-         *    - User changing password with correct current password and valid new password returns Success
-         *    - Admin changing password with valid new password returns Success
-         *    - Admin changing password with invalid new password returns InvalidNewPassword
+         // ChangePassword
+        [TestMethod]
+        public void User_changing_password_with_correct_password_and_valid_new_password_returns_success()
+        {
+            var password = "neoistheone";
+            var user = new User
+            {
+                Name = "John Doe",
+                BirthDate = new DateTime(1982, 8, 1),
+                Email = "john.doe@inspira.com.br",
+                Username = "john_doe",
+                Address = new Address { City = "São paulo", StreetName = "name", Number = "123B", State = "SP", ZipCode = "03423-234" }
+            };
+
+            try
+            {
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+            }
+            catch (Exception e)
+            {
+                session.Transaction.Rollback();
+                throw;
+            }
+
+            Assert.AreEqual(PasswordChangeStatus.Success, identityService.ChangePassword("john_doe", password, "newPassword"));
+        }
+
+        [TestMethod]
+        public void Admin_changing_password_with_valid_new_password_returns_Success()
+        {
+            var password = "neoistheone";
+            var user = new User
+            {
+                Name = "John Doe",
+                BirthDate = new DateTime(1982, 8, 1),
+                Email = "john.doe@inspira.com.br",
+                Username = "john_doe",
+                Address = new Address { City = "São paulo", StreetName = "name", Number = "123B", State = "SP", ZipCode = "03423-234" }
+            };
+
+            try
+            {
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+            }
+            catch (Exception e)
+            {
+                session.Transaction.Rollback();
+                throw;
+            }
+
+            Assert.AreEqual(PasswordChangeStatus.Success, identityService.AdministrativePasswordChange("john_doe", "newPassword"));
+        }
+
+         /*    - Admin changing password with invalid new password returns InvalidNewPassword
          *    - User changing password with incorrect current password returns IncorrectNewPassword
          *    - User changing password with correct current password and invalid new password returns InvalidNewPassword
          * ResetPassword:

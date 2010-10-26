@@ -50,5 +50,35 @@ namespace Inspira.Blog.Infrastructure.DataAccess.Repositories
         {
             return this.session.Query<User>().Where(x => x.Username == username && x.Password == password).SingleOrDefault();
         }
+
+        public bool ChangePassword(string username, string currentPassword, string newPassword)
+        {
+            User user = this.session.Query<User>().Where(x => x.Username == username && x.Password == currentPassword).SingleOrDefault();
+
+            if (user != null) 
+            {
+                user.Password = newPassword;
+                this.SaveOrUpdate(user);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool ChangePassword(string username, string newPassword)
+        {
+            User user = this.session.Query<User>().Where(x => x.Username == username).SingleOrDefault();
+
+            if (user != null)
+            {
+                user.Password = newPassword;
+                this.SaveOrUpdate(user);
+
+                return true;
+            }
+
+            return false;
+        }
     }
 }

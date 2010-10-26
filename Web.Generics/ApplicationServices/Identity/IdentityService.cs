@@ -105,5 +105,20 @@ namespace Web.Generics.ApplicationServices.Identity
 
             return this.userRepository.Select(username, hashedPassword) != null;
         }
+
+        public PasswordChangeStatus ChangePassword(string username, string currentPassword, string newPassword)
+        {
+            string hashedNewPassword = this.EncryptPassword(newPassword);
+            string hashedCurrentPassword = this.EncryptPassword(currentPassword);
+
+            return this.userRepository.ChangePassword(username, hashedCurrentPassword, hashedNewPassword) ? PasswordChangeStatus.Success : PasswordChangeStatus.InvalidCurrentPassword;
+        }
+
+        public PasswordChangeStatus AdministrativePasswordChange(string username, string newPassword)
+        {
+            string hashedNewPassword = this.EncryptPassword(newPassword);
+
+            return this.userRepository.ChangePassword(username, hashedNewPassword) ? PasswordChangeStatus.Success : PasswordChangeStatus.UnexistentUser;
+        }
     }
 }

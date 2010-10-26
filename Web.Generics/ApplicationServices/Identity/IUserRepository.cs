@@ -10,5 +10,7 @@ namespace Web.Generics.ApplicationServices.Identity
         RegisterStatus VerifyUniqueUser(T user);
         void InsertUser(T user);
         T Select(string username, string password);
+        bool ChangePassword(string username, string currentPassword, string newPassword);
+        bool ChangePassword(string username, string newPassword);
     }
 }

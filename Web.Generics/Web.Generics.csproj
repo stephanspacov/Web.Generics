@@ -78,6 +78,7 @@
     <Compile Include="ApplicationServices\Identity\IdentityService.cs" />
     <Compile Include="ApplicationServices\Identity\IUser.cs" />
     <Compile Include="ApplicationServices\Identity\IUserRepository.cs" />
+    <Compile Include="ApplicationServices\Identity\PasswordChangeStatus.cs" />
     <Compile Include="ApplicationServices\Identity\RegisterStatus.cs" />
     <Compile Include="ApplicationServices\InversionOfControl\DuplicateTypeException.cs">
       <SubType>Code</SubType>
