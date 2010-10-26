@@ -130,7 +130,7 @@ namespace Web.Generics.Tests.Authentication
 
 
         [TestMethod]
-        public void Register_with_invalid_data_returns_invalid_state() //O que vem a ser invalid data??
+        public void Register_with_invalid_data_returns_invalid_state() //What's the criteria?
         {
 
         }
@@ -197,9 +197,59 @@ namespace Web.Generics.Tests.Authentication
             Assert.IsTrue(identityService.Validate("john_doe", password));
         }
 
-         /*   - Validate existing user with incorrect password returns false
-         *   - Validate non-existing user returns false
-         * ChangePassword
+        [TestMethod]
+        public void Validate_existing_user_with_incorrect_password_returns_false()
+        {
+            var password = "neoistheone";
+            var user = new User
+            {
+                Name = "John Doe",
+                BirthDate = new DateTime(1982, 8, 1),
+                Email = "john.doe@inspira.com.br",
+                Username = "john_doe",
+                Address = new Address { City = "São paulo", StreetName = "name", Number = "123B", State = "SP", ZipCode = "03423-234" }
+            };
+
+            try
+            {
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+            }
+            catch (Exception e)
+            {
+                session.Transaction.Rollback();
+                throw;
+            }
+
+            Assert.IsFalse(identityService.Validate("john_doe", "something"));
+        }
+
+        [TestMethod]
+        public void Validate_non_existing_user_returns_false()
+        {
+            var password = "neoistheone";
+            var user = new User
+            {
+                Name = "John Doe",
+                BirthDate = new DateTime(1982, 8, 1),
+                Email = "john.doe@inspira.com.br",
+                Username = "john_doe",
+                Address = new Address { City = "São paulo", StreetName = "name", Number = "123B", State = "SP", ZipCode = "03423-234" }
+            };
+
+            try
+            {
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+            }
+            catch (Exception e)
+            {
+                session.Transaction.Rollback();
+                throw;
+            }
+
+            Assert.IsFalse(identityService.Validate("huckleberry finn", "something"));
+        }
+
+         /* ChangePassword
          *    - User changing password with correct current password and valid new password returns Success
          *    - Admin changing password with valid new password returns Success
          *    - Admin changing password with invalid new password returns InvalidNewPassword
