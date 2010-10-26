@@ -7,7 +7,7 @@ using Web.Generics.DomainServices;
 
 namespace Web.Generics.UserInterface.Models
 {
-	public class RowList
+	public class RowList : IRowList
 	{
         public RowList()
         {

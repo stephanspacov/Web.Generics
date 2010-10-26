@@ -106,8 +106,7 @@ namespace Web.Generics
                 ForeignKey.EndsWith("_ID"),
                 ConventionBuilder.Reference.Always(x => x.Not.Nullable()),
                 ConventionBuilder.Reference.Always(x => x.Cascade.None()),
-                ConventionBuilder.HasMany.Always(x => x.Inverse()),
-                ConventionBuilder.HasManyToMany.Always(x => x.Table(x.TableName.Replace("ListTo", "").Substring(0, x.TableName.Length - 10)))
+                ConventionBuilder.HasMany.Always(x => x.Inverse())
             );
 
             var sessionFactory = Fluently.Configure(nhConfiguration)
@@ -123,5 +122,14 @@ namespace Web.Generics
             return SessionFactory.GetCurrentSession();
         }
 
+
+        public static void Initialize(System.Reflection.Assembly domainAssembly, System.Reflection.Assembly infrastructureAssembly, DefaultAutomappingConfiguration mappingConfiguration)
+        {
+            ApplicationManager.Initialize(new ApplicationConfiguration
+            {
+                DomainAssembly = domainAssembly,
+                Fluent = new ApplicationConfiguration.FluentConfiguration { OverrideAssembly = infrastructureAssembly, MappingConfigurationInstance = mappingConfiguration },
+            });
+        }
     }
 }

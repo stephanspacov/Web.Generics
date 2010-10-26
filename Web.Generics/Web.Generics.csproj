@@ -107,6 +107,7 @@
     <Compile Include="DomainModel\CustomTypes\PhoneNumber.cs" />
     <Compile Include="DomainModel\CustomTypes\PostalCode.cs" />
     <Compile Include="DomainServices\DataRetrievalInfo.cs" />
+    <Compile Include="DomainServices\IRowList.cs" />
     <Compile Include="DomainServices\PagingInfo.cs" />
     <Compile Include="DomainServices\SortingInfo.cs" />
     <Compile Include="Infrastructure\DataAccess\FluentNHibernate\ColumnNullabilityConvention.cs" />

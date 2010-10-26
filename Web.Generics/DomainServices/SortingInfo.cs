@@ -65,6 +65,9 @@ namespace Web.Generics.DomainServices
 			{
 				sortOrder = SortOrder.Ascending;
 			}
+
+            if (this.SortProperty != null) this.PreviousSortProperty = this.SortProperty;
+
 			return sortOrder;
 		}
 

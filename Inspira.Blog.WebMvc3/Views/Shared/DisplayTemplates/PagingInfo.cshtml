@@ -1,13 +1,13 @@
 ﻿@model Web.Generics.DomainServices.PagingInfo
 
-<input type="hidden" name="@(ViewData.ModelMetadata.PropertyName).PreviousPageIndex" value="@Model.PageIndex" />
+<input type="hidden" name="@(ViewData.TemplateInfo.HtmlFieldPrefix).PreviousPageIndex" value="@Model.PageIndex" />
 @if (Model.NumberOfPages > 1) {
 	<ul class="pager">
-		<li><button type="submit" name="@(ViewData.ModelMetadata.PropertyName).PageIndex" value="@(Model.PageIndex - 1)" class="prev_page"@(Model.HasPrevious ? "" : " disabled='disabled'")>&#171;« Anterior</button></li>
+		<li><button type="submit" name="@(ViewData.TemplateInfo.HtmlFieldPrefix).PageIndex" value="@(Model.PageIndex - 1)" class="prev_page"@(Model.HasPrevious ? "" : " disabled='disabled'")>&#171;« Anterior</button></li>
 		@for (var i = 1; i <= Model.NumberOfPages; i++) {
-		<li class="@(Model.PageIndex == i ? "active" : "")"><button type="submit" name="@(ViewData.ModelMetadata.PropertyName).PageIndex" value="@i">@i</button></li>
+		<li class="@(Model.PageIndex == i ? "active" : "")"><button type="submit" name="@(ViewData.TemplateInfo.HtmlFieldPrefix).PageIndex" value="@i">@i</button></li>
 		}
-		<li><button type="submit" name="@(ViewData.ModelMetadata.PropertyName).PageIndex" value="@(Model.PageIndex + 1)>" class="next_page"@(Model.HasNext ? "" : " disabled='disabled'")>Próxima »&#187;</button></li>
+		<li><button type="submit" name="@(ViewData.TemplateInfo.HtmlFieldPrefix).PageIndex" value="@(Model.PageIndex + 1)" class="next_page"@(Model.HasNext ? "" : " disabled='disabled'")>Próxima »&#187;</button></li>
 	</ul>
 }
 

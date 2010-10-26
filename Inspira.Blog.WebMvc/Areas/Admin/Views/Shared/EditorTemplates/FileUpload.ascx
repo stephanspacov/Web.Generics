@@ -2,7 +2,7 @@
 <%@ Import Namespace="Web.Generics.HtmlHelpers" %>
 <% 
     string uniqueId = Guid.NewGuid().ToString();
-    string propertyUniqueName = uniqueId + ViewData.ModelMetadata.PropertyName;
+    string propertyUniqueName = uniqueId + ViewData.TemplateInfo.HtmlFieldPrefix
     
     %>
     <%=Html.Hidden("", Model, new { rel = propertyUniqueName })%>

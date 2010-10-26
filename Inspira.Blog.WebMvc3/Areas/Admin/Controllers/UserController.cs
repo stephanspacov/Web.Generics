@@ -9,6 +9,7 @@ using Web.Generics.DomainServices;
 using Inspira.Blog.DomainServices;
 using Inspira.Blog.DomainModel;
 using Web.Generics.ApplicationServices.DataAccess;
+using Web.Generics.Infrastructure.DataAccess.NHibernate;
 
 namespace Inspira.Blog.WebMvc3.Areas.Admin.Controllers
 {
@@ -22,35 +23,56 @@ namespace Inspira.Blog.WebMvc3.Areas.Admin.Controllers
 
         public ActionResult List(UserViewModel viewModel)
         {
+            var users = new GenericService<User>(new GenericRepository<User>(new NHibernateRepositoryContext())).Select(null, viewModel.MyGrid);
+
+            viewModel.MyGrid.Columns = GridColumn.Create("Name", "Nome completo", "Salary", "Salário", "BirthDate", "Data de nascimento");
+            viewModel.MyGrid.DataSource = users;
+            viewModel.MyGrid.DataBind();
+
+            viewModel.MyGrid.SortingInfo.SortingEnabled = true;
+            viewModel.MyGrid.PagingInfo.PagingEnabled = true;
+
+            return View("List", viewModel);
+        }
+
+        public ActionResult List3(UserViewModel viewModel)
+        {
+            //var users = new GenericService<User>(new GenericRepository<User>(new NHibernateRepositoryContext())).Select(null, viewModel.MyGrid.PagingInfo.PageSize, viewModel.MyGrid.PagingInfo.PageIndex, viewModel.MyGrid.SortingInfo.GetSortExpression<User>(), viewModel.MyGrid.SortingInfo.GetSortOrder(), out totalItemCount);
+            //grid.PagingInfo.TotalItemCount = totalItemCount;
+            
             var users = new[] {
                 new User { Name="Loreto", Salary=1234.45M, BirthDate=DateTime.Now.AddYears(-28) },
-                new User { Name="Thiagão", Salary=99234.45M, BirthDate=DateTime.Now.AddYears(-28) },
+                new User { Name="Thiagão", Salary=99234.45M, BirthDate=DateTime.Now.AddYears(-38) },
+                new User { Name="Qiyan", Salary=234.45M, BirthDate=DateTime.Now.AddYears(-18) },
             };
 
             // TODO: ler de um serviço ou repositório
-            if (viewModel.Grid.SortingInfo.GetSortOrder() == SortOrder.Descending)
+            if (viewModel.MyGrid.SortingInfo.GetSortOrder() == SortOrder.Descending)
             {
-                Func<User, Object> exp = viewModel.Grid.SortingInfo.GetSortExpression<User>().Compile();
+                Func<User, Object> exp = viewModel.MyGrid.SortingInfo.GetSortExpression<User>().Compile();
                 users = users.OrderByDescending(exp).ToArray();
             }
 
-            var grid = viewModel.Grid;
+            var grid = viewModel.MyGrid;
             grid.Columns = GridColumn.Create("Name", "Nome completo", "Salary", "Salário", "BirthDate", "Data de nascimento");
             grid.DataSource = users;
             grid.DataBind();
 
             grid.SortingInfo.SortingEnabled = true;
             grid.PagingInfo.PagingEnabled = true;
+            grid.PagingInfo.PageSize = 2;
+            grid.PagingInfo.PageIndex = 1;
+            grid.PagingInfo.TotalItemCount = 3;
 
-            viewModel.Grid = grid;
-            return View(viewModel);
+            viewModel.MyGrid = grid;
+            return View("List", viewModel);
         }
 
         public ActionResult List2()
         {
             var viewModel = new UserViewModel
             {
-                Grid = new Grid
+                MyGrid = new Grid
                 {
                     PagingInfo = new PagingInfo { TotalItemCount = 44, PagingEnabled = true, PageSize = 10, PageIndex = 2 },
                     Columns = new[] {

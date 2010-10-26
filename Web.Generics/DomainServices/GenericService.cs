@@ -82,6 +82,16 @@ namespace Web.Generics.DomainServices
 			return this.genericRepository.SelectWithPagingAndSorting(expression, pageSize, pageIndex, sortProperty, sortOrder, out totalItemCount);
 		}
 
+        virtual public IList<T> Select(Expression<Func<T, Boolean>> expression, IRowList rowList)
+        {
+            Int32 totalItemCount;
+            var pagingInfo = rowList.PagingInfo;
+            var sortingInfo = rowList.SortingInfo;
+            var result = this.genericRepository.SelectWithPagingAndSorting(expression, pagingInfo.PageSize, pagingInfo.PageIndex, sortingInfo.GetSortExpression<T>(), sortingInfo.GetSortOrder(), out totalItemCount);
+            pagingInfo.TotalItemCount = totalItemCount;
+            return result;
+        }
+
         virtual public T SelectById(object id)
         {
             return this.genericRepository.SelectById(id);

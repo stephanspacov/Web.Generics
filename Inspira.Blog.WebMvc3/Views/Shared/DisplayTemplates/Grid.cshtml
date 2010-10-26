@@ -1,6 +1,6 @@
 ﻿@model Web.Generics.UserInterface.Models.Grid
 
-<input type="hidden" name="@(this.ViewData.TemplateInfo.HtmlFieldPrefix).SortingInfo.PreviousSortProperty" value="@Model.SortingInfo.SortProperty" />
+<input type="hidden" name="@(this.ViewData.TemplateInfo.HtmlFieldPrefix).SortingInfo.PreviousSortProperty" value="@Model.SortingInfo.PreviousSortProperty" />
 <input type="hidden" name="@(this.ViewData.TemplateInfo.HtmlFieldPrefix).SortingInfo.PreviousOrder" value="@Model.SortingInfo.GetSortOrder()" />
 
 @if (Model.Rows.Count > 0) {

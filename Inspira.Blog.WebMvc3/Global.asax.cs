@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Inspira.Blog.WebMvc3.Controllers;
+using Web.Generics;
+using System.Reflection;
+using Inspira.Blog.Infrastructure.DataAccess.FluentNHibernate;
 
 namespace Inspira.Blog.WebMvc3
 {
@@ -37,6 +40,18 @@ namespace Inspira.Blog.WebMvc3
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            ApplicationManager.Initialize(Assembly.Load("Inspira.Blog.DomainModel"), Assembly.Load("Inspira.Blog"), new MappingConfiguration());
+        }
+
+        protected void Application_BeginRequest()
+        {
+            AspNetApplicationManager.BindSessionToCurrentContext();
+        }
+
+        protected void Application_EndRequest()
+        {
+            AspNetApplicationManager.BindSessionToCurrentContext();
         }
     }
 }

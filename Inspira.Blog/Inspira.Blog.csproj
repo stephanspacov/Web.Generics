@@ -60,6 +60,7 @@
     <Compile Include="DomainServices\WebLogService.cs" />
     <Compile Include="Infrastructure\DataAccess\EntityFramework\BlogContext.cs" />
     <Compile Include="Infrastructure\DataAccess\FluentNHibernate\Overrides\AddressOverride.cs" />
+    <Compile Include="Infrastructure\DataAccess\FluentNHibernate\Overrides\PostOverride.cs" />
     <Compile Include="Infrastructure\DataAccess\FluentNHibernate\Overrides\UserOverride.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -11,10 +11,10 @@ namespace Inspira.Blog.WebMvc3.Areas.Admin.Models
     {
         public UserViewModel()
         {
-            this.Grid = new Grid();
+            this.MyGrid = new Grid();
         }
 
-        public Grid Grid { get; set; }
+        public Grid MyGrid { get; set; }
         public User User { get; set; }
         public String PasswordConfirmation { get; set; }
         public Boolean Validate()
