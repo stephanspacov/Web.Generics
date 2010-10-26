@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="e5479b57-f77f-492d-8ae1-8e6e39ffe2ca" name="raphael.cruzeiro@PIANO 2010-10-25 18:02:26" runUser="PIANO\raphael.cruzeiro" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Default Test Settings" id="54dd9288-d5fd-4c06-8318-8cfddf712330">
+    <Deployment runDeploymentRoot="raphael.cruzeiro_PIANO 2010-10-25 18_02_26">
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\lib\NHibernate\Antlr3.Runtime.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Web\bin\Debug\Web.Generics.Web.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Inspira.Blog\bin\Debug\Inspira.Blog.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\lib\NHibernate\NHibernate.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\lib\NHibernate\Iesi.Collections.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics\bin\Debug\Web.Generics.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\lib\NHibernate\System.Data.SQLite.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Futures\bin\Debug\Web.Generics.Futures.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\lib\NHibernate\FluentNHibernate.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\lib\NHibernate\NHibernate.ByteCode.LinFu.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.WebMvc\bin\Debug\Web.Generics.WebMvc.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\lib\NHibernate\log4net.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\lib\Moq\Moq.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Inspira.Blog.DomainModel\bin\Debug\Inspira.Blog.DomainModel.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2010-10-25T18:02:26.9886595-02:00" queuing="2010-10-25T18:02:29.9855380-02:00" start="2010-10-25T18:02:30.5753440-02:00" finish="2010-10-25T18:02:33.7616635-02:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="1" executed="1" error="1" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="PIANO" outcome="Warning" timestamp="2010-10-25T18:02:28.7981140-02:00">
+        <Text>Warning: Test Run deployment issue: The assembly or module 'Microsoft.Practices.ServiceLocation' directly or indirectly referenced by the test container 'e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll' was not found.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="Register_with_valid_data_inserts_user_into_database_and_returns_them" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="62e7782a-96ba-f050-32e7-bd90d51e8098">
+      <Execution id="534cbb06-aeb4-4a39-8bce-e585935746b9" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.Authentication.MembershipServicesTests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Register_with_valid_data_inserts_user_into_database_and_returns_them" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="62e7782a-96ba-f050-32e7-bd90d51e8098" executionId="534cbb06-aeb4-4a39-8bce-e585935746b9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="534cbb06-aeb4-4a39-8bce-e585935746b9" testId="62e7782a-96ba-f050-32e7-bd90d51e8098" testName="Register_with_valid_data_inserts_user_into_database_and_returns_them" computerName="PIANO" startTime="2010-10-25T18:02:31.0128160-02:00" endTime="2010-10-25T18:02:33.4189120-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="534cbb06-aeb4-4a39-8bce-e585935746b9">
+      <Output>
+        <ErrorInfo>
+          <Message>Unit Test Adapter threw exception: 
+Type is not resolved for member 'NHibernate.Cfg.HibernateConfigException,NHibernate, Version=3.0.0.2001, Culture=neutral, PublicKeyToken=aa95f207798dfdb4'..</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

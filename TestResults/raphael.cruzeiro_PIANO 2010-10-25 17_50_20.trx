@@ -1,0 +1,418 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="cac213bc-0121-48d9-b219-0e5525e1ac03" name="raphael.cruzeiro@PIANO 2010-10-25 17:50:20" runUser="PIANO\raphael.cruzeiro" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Default Test Settings" id="a4a6d974-be4e-4572-ab56-a447954f2f62">
+    <Deployment runDeploymentRoot="raphael.cruzeiro_PIANO 2010-10-25 17_50_20">
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\lib\NHibernate\Antlr3.Runtime.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Web\bin\Debug\Web.Generics.Web.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Inspira.Blog\bin\Debug\Inspira.Blog.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\lib\NHibernate\NHibernate.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\lib\NHibernate\Iesi.Collections.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics\bin\Debug\Web.Generics.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\lib\NHibernate\System.Data.SQLite.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Futures\bin\Debug\Web.Generics.Futures.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\lib\NHibernate\FluentNHibernate.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\lib\NHibernate\NHibernate.ByteCode.LinFu.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.WebMvc\bin\Debug\Web.Generics.WebMvc.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\lib\NHibernate\log4net.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\lib\Moq\Moq.dll" />
+      <DeploymentItem filename="E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Inspira.Blog.DomainModel\bin\Debug\Inspira.Blog.DomainModel.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2010-10-25T17:50:20.0215165-02:00" queuing="2010-10-25T17:50:20.3105605-02:00" start="2010-10-25T17:50:20.3261845-02:00" finish="2010-10-25T17:50:21.2040580-02:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="27" executed="27" passed="8" error="2" failed="17" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="PIANO" outcome="Warning" timestamp="2010-10-25T17:50:20.3105605-02:00">
+        <Text>Warning: Test Run deployment issue: The assembly or module 'Microsoft.Practices.ServiceLocation' directly or indirectly referenced by the test container 'e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll' was not found.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="Register_Interface_And_Resolve_To_Implementation_Without_Chaining" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="26b86960-9ce0-9813-79f0-22eb253ddaa4">
+      <Execution id="3c3dea84-8ad2-44e0-84a5-b0fe64e20fcd" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.Infrastructure_InversionOfControl_Tests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Register_Interface_And_Resolve_To_Implementation_Without_Chaining" />
+    </UnitTest>
+    <UnitTest name="Resolve_Controller_With_Generic_Implementations" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="9fc42f36-ca29-aff9-0c1e-58648d096479">
+      <Execution id="bf07d312-a424-4c9d-b33f-b6246a407ab1" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.Infrastructure_InversionOfControl_Tests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Resolve_Controller_With_Generic_Implementations" />
+    </UnitTest>
+    <UnitTest name="Default_sortinginfo_is_null_property_ascending_with_sorting_disabled" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="20883c91-712f-7bd9-84c5-0e6b4f0b789d">
+      <Execution id="61f4f61d-008c-4c66-a20d-e0e901b95e09" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.UserInterface.Given_a_repository_with_7_elements, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Default_sortinginfo_is_null_property_ascending_with_sorting_disabled" />
+    </UnitTest>
+    <UnitTest name="All_null_parameters_brings_all_values" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="6d4cc1b8-84b5-98a2-bb17-b334fc688462">
+      <Execution id="cb1aa767-f7cc-4e52-a8a3-aac09441b3bd" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.UserInterface.Given_a_repository_with_7_elements, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="All_null_parameters_brings_all_values" />
+    </UnitTest>
+    <UnitTest name="Insert_child_does_not_load_children_v2" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="aac57191-7373-4d93-174a-e11b361b9a1b">
+      <Execution id="6ae4e01a-c68a-4862-838e-d94b16c815c3" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.NHibernateSessionTests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Insert_child_does_not_load_children_v2" />
+    </UnitTest>
+    <UnitTest name="Register_with_existing_username_returns_ExistingUsername_state" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="32bcb943-d87d-582b-883d-16c950347d82">
+      <Execution id="5ddef75e-aa23-4532-8c9d-d21d00d21a74" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.Authentication.MembershipServicesTests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Register_with_existing_username_returns_ExistingUsername_state" />
+    </UnitTest>
+    <UnitTest name="InsertPostWithNullableProperty" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="afec351d-c5bd-e807-4f9f-6c708da25c8f">
+      <Execution id="d6cb663f-d5e3-4832-a732-0b1de0015fba" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.Infrastructure_Repository_Tests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="InsertPostWithNullableProperty" />
+    </UnitTest>
+    <UnitTest name="List_Posts_By_Date_Range" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="8aafd531-d21c-00a8-ee90-e1b37e3a3694">
+      <Execution id="59f3f9ea-db51-48f2-9096-763686a9fcf4" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inspira.Blog.Tests.Blog_Services, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="List_Posts_By_Date_Range" />
+    </UnitTest>
+    <UnitTest name="Resolve_Controller_With_Specific_Controller_And_ViewModel" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="e7a87bf2-4851-5b1c-7df0-92fdcafd03ca">
+      <Execution id="c8fe16e9-9bae-4d1e-85a8-076c33291676" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.Infrastructure_InversionOfControl_Tests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Resolve_Controller_With_Specific_Controller_And_ViewModel" />
+    </UnitTest>
+    <UnitTest name="Pagesize_10_and_pageindex_1_must_return_7_rows" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="2bbbf406-154d-cfeb-98b8-963991468c1d">
+      <Execution id="fec92cc3-0e47-45f1-a335-61b333ccf270" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.UserInterface.Given_a_repository_with_7_elements, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Pagesize_10_and_pageindex_1_must_return_7_rows" />
+    </UnitTest>
+    <UnitTest name="Search_with_null_parameters_must_return_all_7_rows" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="168fbeca-bfc1-581c-b9ec-3c4572d00ed1">
+      <Execution id="68b045bf-0785-46a3-aec1-6d450e6619fd" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.UserInterface.Given_a_repository_with_7_elements, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Search_with_null_parameters_must_return_all_7_rows" />
+    </UnitTest>
+    <UnitTest name="Resolve_With_Chaining" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="ef70adab-cbca-46bf-0d19-52da0a032597">
+      <Execution id="fb9593e1-3db0-4bfe-9b53-6bba2bae9f7c" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.Infrastructure_InversionOfControl_Tests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Resolve_With_Chaining" />
+    </UnitTest>
+    <UnitTest name="Log" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="3dd40f28-a6cf-b821-cc15-2eeb654b586d">
+      <Execution id="c688ec70-bcec-43c7-a5c2-f04bf0d1d4a9" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.Infrastructure_Logging_Tests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Log" />
+    </UnitTest>
+    <UnitTest name="Insert_child_does_not_load_children" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="1e6af77b-1d3b-9555-806e-265331e477a5">
+      <Execution id="2b131c55-0df3-4377-b09f-d58dc2408b9e" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.NHibernateSessionTests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Insert_child_does_not_load_children" />
+    </UnitTest>
+    <UnitTest name="Resolve_Controller_With_Generic_Controller_And_Specific_ViewModel" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="700866d8-e2eb-49cb-74d4-1ae85ea12f69">
+      <Execution id="bb967f05-85e9-41a9-bbc5-413ddbe5ecc1" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.Infrastructure_InversionOfControl_Tests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Resolve_Controller_With_Generic_Controller_And_Specific_ViewModel" />
+    </UnitTest>
+    <UnitTest name="SelectWithLambdaExpressions" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="e8e3591b-e3ff-7a0c-2871-7ffb31567b9f">
+      <Execution id="2fa45fb9-ea07-4585-ad2f-c18e6db435f8" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.Infrastructure_Repository_Tests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="SelectWithLambdaExpressions" />
+    </UnitTest>
+    <UnitTest name="Register_with_valid_data_inserts_user_into_database_and_returns_them" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="62e7782a-96ba-f050-32e7-bd90d51e8098">
+      <Execution id="bc8c6611-47ae-4990-b5b5-b89cea9377d7" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.Authentication.MembershipServicesTests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Register_with_valid_data_inserts_user_into_database_and_returns_them" />
+    </UnitTest>
+    <UnitTest name="Paging" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="6631986b-0730-1229-232f-35d009da40d6">
+      <Execution id="5e59a9b4-2e5a-40bc-8924-72c03fc944ac" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.UserInterface_Grids, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Paging" />
+    </UnitTest>
+    <UnitTest name="Log_With_Aspect" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="b6819492-f9db-dcf2-0ded-3161c5b9aa32">
+      <Execution id="ee8d5e8d-31bc-4556-b589-664dc3d9083f" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.Infrastructure_Logging_Tests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Log_With_Aspect" />
+    </UnitTest>
+    <UnitTest name="Default_paginginfo_is_pageindex_1_and_pagesize_10_with_paging_disabled" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="a7821dd2-9252-958d-d6a8-4c25750f0215">
+      <Execution id="0dc8d6e9-e3d1-4087-9790-ab716fdb98c6" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.UserInterface.Given_a_repository_with_7_elements, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Default_paginginfo_is_pageindex_1_and_pagesize_10_with_paging_disabled" />
+    </UnitTest>
+    <UnitTest name="Add_Comment_In_Post" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="b4297581-ff1b-3999-5fd8-95b6036938c0">
+      <Execution id="4f9e20b3-7b6a-460a-b005-ba7ab5dfab64" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Inspira.Blog.Tests.Blog_Services, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Add_Comment_In_Post" />
+    </UnitTest>
+    <UnitTest name="InsertPostWithExistingTagsAndComments" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="a2c49a2b-d39d-2796-5d55-e3bc20513b27">
+      <Execution id="7d8de28d-758d-4502-a497-6177a96065ee" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.Infrastructure_Repository_Tests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="InsertPostWithExistingTagsAndComments" />
+    </UnitTest>
+    <UnitTest name="Pagesize_10_and_pageindex_2_must_yield_page_1" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="4e379a55-99f6-73bf-d87b-986cf08e255e">
+      <Execution id="323fe68d-b9b2-430a-88d1-c3131119ecb6" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.UserInterface.Given_a_repository_with_7_elements, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Pagesize_10_and_pageindex_2_must_yield_page_1" />
+    </UnitTest>
+    <UnitTest name="Pagesize_2_and_pageindex_2_order_by_ID_asc_yields_ids_3_and_4" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="373d2bfa-dc22-934f-5046-20f337ec11ab">
+      <Execution id="93115440-1c37-4ded-980a-58646e6af00e" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.UserInterface.Given_a_repository_with_7_elements, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Pagesize_2_and_pageindex_2_order_by_ID_asc_yields_ids_3_and_4" />
+    </UnitTest>
+    <UnitTest name="Show_Items_In_Grid" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="51ec1ccd-48f5-8524-1192-acdbaed7610f">
+      <Execution id="19252146-6669-4ee2-bbe5-4b3fd80ae1d8" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.UserInterface_Grids, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Show_Items_In_Grid" />
+    </UnitTest>
+    <UnitTest name="InsertPostWithNewTagsAndComments" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="ca9b6d7d-c72c-ffd4-9266-ae65f3adb659">
+      <Execution id="5d308248-55c1-4762-b430-9fe8bb4d4249" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.Infrastructure_Repository_Tests, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="InsertPostWithNewTagsAndComments" />
+    </UnitTest>
+    <UnitTest name="Order_by_ID_desc_must_return_7_items_in_descending_order" storage="e:\users\raphael.cruzeiro\documents\projects\open\web.generics\web.generics.tests\bin\debug\web.generics.tests.dll" id="2c5bb296-3514-19d6-f667-9488bbac924d">
+      <Execution id="030c1669-fb26-4f40-b3fd-26318e32dc2f" />
+      <TestMethod codeBase="E:/Users/raphael.cruzeiro/Documents/Projects/open/Web.Generics/Web.Generics.Tests/bin/Debug/Web.Generics.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Web.Generics.Tests.UserInterface.Given_a_repository_with_7_elements, Web.Generics.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Order_by_ID_desc_must_return_7_items_in_descending_order" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="168fbeca-bfc1-581c-b9ec-3c4572d00ed1" executionId="68b045bf-0785-46a3-aec1-6d450e6619fd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1e6af77b-1d3b-9555-806e-265331e477a5" executionId="2b131c55-0df3-4377-b09f-d58dc2408b9e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="20883c91-712f-7bd9-84c5-0e6b4f0b789d" executionId="61f4f61d-008c-4c66-a20d-e0e901b95e09" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="26b86960-9ce0-9813-79f0-22eb253ddaa4" executionId="3c3dea84-8ad2-44e0-84a5-b0fe64e20fcd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2bbbf406-154d-cfeb-98b8-963991468c1d" executionId="fec92cc3-0e47-45f1-a335-61b333ccf270" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2c5bb296-3514-19d6-f667-9488bbac924d" executionId="030c1669-fb26-4f40-b3fd-26318e32dc2f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="32bcb943-d87d-582b-883d-16c950347d82" executionId="5ddef75e-aa23-4532-8c9d-d21d00d21a74" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="373d2bfa-dc22-934f-5046-20f337ec11ab" executionId="93115440-1c37-4ded-980a-58646e6af00e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3dd40f28-a6cf-b821-cc15-2eeb654b586d" executionId="c688ec70-bcec-43c7-a5c2-f04bf0d1d4a9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4e379a55-99f6-73bf-d87b-986cf08e255e" executionId="323fe68d-b9b2-430a-88d1-c3131119ecb6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="51ec1ccd-48f5-8524-1192-acdbaed7610f" executionId="19252146-6669-4ee2-bbe5-4b3fd80ae1d8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="62e7782a-96ba-f050-32e7-bd90d51e8098" executionId="bc8c6611-47ae-4990-b5b5-b89cea9377d7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6631986b-0730-1229-232f-35d009da40d6" executionId="5e59a9b4-2e5a-40bc-8924-72c03fc944ac" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6d4cc1b8-84b5-98a2-bb17-b334fc688462" executionId="cb1aa767-f7cc-4e52-a8a3-aac09441b3bd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="700866d8-e2eb-49cb-74d4-1ae85ea12f69" executionId="bb967f05-85e9-41a9-bbc5-413ddbe5ecc1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8aafd531-d21c-00a8-ee90-e1b37e3a3694" executionId="59f3f9ea-db51-48f2-9096-763686a9fcf4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9fc42f36-ca29-aff9-0c1e-58648d096479" executionId="bf07d312-a424-4c9d-b33f-b6246a407ab1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a2c49a2b-d39d-2796-5d55-e3bc20513b27" executionId="7d8de28d-758d-4502-a497-6177a96065ee" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a7821dd2-9252-958d-d6a8-4c25750f0215" executionId="0dc8d6e9-e3d1-4087-9790-ab716fdb98c6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="aac57191-7373-4d93-174a-e11b361b9a1b" executionId="6ae4e01a-c68a-4862-838e-d94b16c815c3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="afec351d-c5bd-e807-4f9f-6c708da25c8f" executionId="d6cb663f-d5e3-4832-a732-0b1de0015fba" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b4297581-ff1b-3999-5fd8-95b6036938c0" executionId="4f9e20b3-7b6a-460a-b005-ba7ab5dfab64" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b6819492-f9db-dcf2-0ded-3161c5b9aa32" executionId="ee8d5e8d-31bc-4556-b589-664dc3d9083f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ca9b6d7d-c72c-ffd4-9266-ae65f3adb659" executionId="5d308248-55c1-4762-b430-9fe8bb4d4249" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e7a87bf2-4851-5b1c-7df0-92fdcafd03ca" executionId="c8fe16e9-9bae-4d1e-85a8-076c33291676" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e8e3591b-e3ff-7a0c-2871-7ffb31567b9f" executionId="2fa45fb9-ea07-4585-ad2f-c18e6db435f8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ef70adab-cbca-46bf-0d19-52da0a032597" executionId="fb9593e1-3db0-4bfe-9b53-6bba2bae9f7c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="68b045bf-0785-46a3-aec1-6d450e6619fd" testId="168fbeca-bfc1-581c-b9ec-3c4572d00ed1" testName="Search_with_null_parameters_must_return_all_7_rows" computerName="PIANO" duration="00:00:00.0192326" startTime="2010-10-25T17:50:20.3271610-02:00" endTime="2010-10-25T17:50:20.6279230-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="68b045bf-0785-46a3-aec1-6d450e6619fd">
+    </UnitTestResult>
+    <UnitTestResult executionId="2b131c55-0df3-4377-b09f-d58dc2408b9e" testId="1e6af77b-1d3b-9555-806e-265331e477a5" testName="Insert_child_does_not_load_children" computerName="PIANO" duration="00:00:00.0374762" startTime="2010-10-25T17:50:20.6298760-02:00" endTime="2010-10-25T17:50:20.6718655-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2b131c55-0df3-4377-b09f-d58dc2408b9e">
+      <Output>
+        <ErrorInfo>
+          <Message>Initialization method Web.Generics.Tests.NHibernateSessionTests.Initialize threw exception. System.NullReferenceException: System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at Web.Generics.Tests.NHibernateSessionTests.Initialize() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\NHibernateSessionTests.cs:line 23
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="61f4f61d-008c-4c66-a20d-e0e901b95e09" testId="20883c91-712f-7bd9-84c5-0e6b4f0b789d" testName="Default_sortinginfo_is_null_property_ascending_with_sorting_disabled" computerName="PIANO" duration="00:00:00.0055914" startTime="2010-10-25T17:50:20.6787010-02:00" endTime="2010-10-25T17:50:20.6884660-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="61f4f61d-008c-4c66-a20d-e0e901b95e09">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;Ascending&gt;. Actual:&lt;(null)&gt;. </Message>
+          <StackTrace>   at Web.Generics.Tests.UserInterface.Given_a_repository_with_7_elements.Default_sortinginfo_is_null_property_ascending_with_sorting_disabled() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\UserInterface\Page_Sort_Filter.cs:line 78
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3c3dea84-8ad2-44e0-84a5-b0fe64e20fcd" testId="26b86960-9ce0-9813-79f0-22eb253ddaa4" testName="Register_Interface_And_Resolve_To_Implementation_Without_Chaining" computerName="PIANO" duration="00:00:00.0032118" startTime="2010-10-25T17:50:20.6904190-02:00" endTime="2010-10-25T17:50:20.7040900-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3c3dea84-8ad2-44e0-84a5-b0fe64e20fcd">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method Web.Generics.Tests.Infrastructure_InversionOfControl_Tests.Register_Interface_And_Resolve_To_Implementation_Without_Chaining threw exception: 
+System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at Web.Generics.Tests.Infrastructure_InversionOfControl_Tests.Register_Interface_And_Resolve_To_Implementation_Without_Chaining() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\Infrastructure_InversionOfControl_Tests.cs:line 43
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="fec92cc3-0e47-45f1-a335-61b333ccf270" testId="2bbbf406-154d-cfeb-98b8-963991468c1d" testName="Pagesize_10_and_pageindex_1_must_return_7_rows" computerName="PIANO" duration="00:00:00.0006489" startTime="2010-10-25T17:50:20.7099490-02:00" endTime="2010-10-25T17:50:20.7148315-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fec92cc3-0e47-45f1-a335-61b333ccf270">
+    </UnitTestResult>
+    <UnitTestResult executionId="030c1669-fb26-4f40-b3fd-26318e32dc2f" testId="2c5bb296-3514-19d6-f667-9488bbac924d" testName="Order_by_ID_desc_must_return_7_items_in_descending_order" computerName="PIANO" duration="00:00:00.0059669" startTime="2010-10-25T17:50:20.7167845-02:00" endTime="2010-10-25T17:50:20.7275260-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="030c1669-fb26-4f40-b3fd-26318e32dc2f">
+    </UnitTestResult>
+    <UnitTestResult executionId="5ddef75e-aa23-4532-8c9d-d21d00d21a74" testId="32bcb943-d87d-582b-883d-16c950347d82" testName="Register_with_existing_username_returns_ExistingUsername_state" computerName="PIANO" startTime="2010-10-25T17:50:20.7294790-02:00" endTime="2010-10-25T17:50:20.8749775-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5ddef75e-aa23-4532-8c9d-d21d00d21a74">
+      <Output>
+        <ErrorInfo>
+          <Message>Unit Test Adapter threw exception: 
+Type is not resolved for member 'NHibernate.Cfg.HibernateConfigException,NHibernate, Version=3.0.0.2001, Culture=neutral, PublicKeyToken=aa95f207798dfdb4'..</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="93115440-1c37-4ded-980a-58646e6af00e" testId="373d2bfa-dc22-934f-5046-20f337ec11ab" testName="Pagesize_2_and_pageindex_2_order_by_ID_asc_yields_ids_3_and_4" computerName="PIANO" duration="00:00:00.0029308" startTime="2010-10-25T17:50:20.8808365-02:00" endTime="2010-10-25T17:50:20.8886485-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="93115440-1c37-4ded-980a-58646e6af00e">
+    </UnitTestResult>
+    <UnitTestResult executionId="c688ec70-bcec-43c7-a5c2-f04bf0d1d4a9" testId="3dd40f28-a6cf-b821-cc15-2eeb654b586d" testName="Log" computerName="PIANO" duration="00:00:00.0010230" startTime="2010-10-25T17:50:20.8906015-02:00" endTime="2010-10-25T17:50:20.8964605-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c688ec70-bcec-43c7-a5c2-f04bf0d1d4a9">
+    </UnitTestResult>
+    <UnitTestResult executionId="323fe68d-b9b2-430a-88d1-c3131119ecb6" testId="4e379a55-99f6-73bf-d87b-986cf08e255e" testName="Pagesize_10_and_pageindex_2_must_yield_page_1" computerName="PIANO" duration="00:00:00.0028897" startTime="2010-10-25T17:50:20.8984135-02:00" endTime="2010-10-25T17:50:20.9052490-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="323fe68d-b9b2-430a-88d1-c3131119ecb6">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;1,2,3,4,5,6,7&gt;. Actual:&lt;&gt;. </Message>
+          <StackTrace>   at Web.Generics.Tests.UserInterface.Given_a_repository_with_7_elements.Pagesize_10_and_pageindex_2_must_yield_page_1() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\UserInterface\Page_Sort_Filter.cs:line 141
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="19252146-6669-4ee2-bbe5-4b3fd80ae1d8" testId="51ec1ccd-48f5-8524-1192-acdbaed7610f" testName="Show_Items_In_Grid" computerName="PIANO" duration="00:00:00.0022899" startTime="2010-10-25T17:50:20.9150140-02:00" endTime="2010-10-25T17:50:20.9228260-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="19252146-6669-4ee2-bbe5-4b3fd80ae1d8">
+      <Output>
+        <ErrorInfo>
+          <Message>Initialization method Web.Generics.Tests.UserInterface_Grids.Initialize threw exception. System.ApplicationException: System.ApplicationException: Session factory not configured. Did you call ApplicationManager.Initialize()?.</Message>
+          <StackTrace>    at Web.Generics.ApplicationManager.GetCurrentSession() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics\ApplicationManager.cs:line 122
+   at Web.Generics.Infrastructure.DataAccess.NHibernate.NHibernateRepositoryContext..ctor() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics\Infrastructure\DataAccess\NHibernate\NHibernateRepositoryContext.cs:line 15
+   at Web.Generics.Tests.ContextFactory.GetContext() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\ContextFactory.cs:line 19
+   at Web.Generics.Tests.UserInterface_Grids.Initialize() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\UserInterface_Grids.cs:line 20
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="bc8c6611-47ae-4990-b5b5-b89cea9377d7" testId="62e7782a-96ba-f050-32e7-bd90d51e8098" testName="Register_with_valid_data_inserts_user_into_database_and_returns_them" computerName="PIANO" startTime="2010-10-25T17:50:20.9238025-02:00" endTime="2010-10-25T17:50:20.9325910-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bc8c6611-47ae-4990-b5b5-b89cea9377d7">
+      <Output>
+        <ErrorInfo>
+          <Message>Unit Test Adapter threw exception: 
+Type is not resolved for member 'NHibernate.Cfg.HibernateConfigException,NHibernate, Version=3.0.0.2001, Culture=neutral, PublicKeyToken=aa95f207798dfdb4'..</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5e59a9b4-2e5a-40bc-8924-72c03fc944ac" testId="6631986b-0730-1229-232f-35d009da40d6" testName="Paging" computerName="PIANO" duration="00:00:00.0011940" startTime="2010-10-25T17:50:20.9325910-02:00" endTime="2010-10-25T17:50:20.9384500-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5e59a9b4-2e5a-40bc-8924-72c03fc944ac">
+      <Output>
+        <ErrorInfo>
+          <Message>Initialization method Web.Generics.Tests.UserInterface_Grids.Initialize threw exception. System.ApplicationException: System.ApplicationException: Session factory not configured. Did you call ApplicationManager.Initialize()?.</Message>
+          <StackTrace>    at Web.Generics.ApplicationManager.GetCurrentSession() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics\ApplicationManager.cs:line 122
+   at Web.Generics.Infrastructure.DataAccess.NHibernate.NHibernateRepositoryContext..ctor() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics\Infrastructure\DataAccess\NHibernate\NHibernateRepositoryContext.cs:line 15
+   at Web.Generics.Tests.ContextFactory.GetContext() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\ContextFactory.cs:line 19
+   at Web.Generics.Tests.UserInterface_Grids.Initialize() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\UserInterface_Grids.cs:line 20
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="cb1aa767-f7cc-4e52-a8a3-aac09441b3bd" testId="6d4cc1b8-84b5-98a2-bb17-b334fc688462" testName="All_null_parameters_brings_all_values" computerName="PIANO" duration="00:00:00.0008565" startTime="2010-10-25T17:50:20.9384500-02:00" endTime="2010-10-25T17:50:20.9443090-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cb1aa767-f7cc-4e52-a8a3-aac09441b3bd">
+    </UnitTestResult>
+    <UnitTestResult executionId="bb967f05-85e9-41a9-bbc5-413ddbe5ecc1" testId="700866d8-e2eb-49cb-74d4-1ae85ea12f69" testName="Resolve_Controller_With_Generic_Controller_And_Specific_ViewModel" computerName="PIANO" duration="00:00:00.0021460" startTime="2010-10-25T17:50:20.9540740-02:00" endTime="2010-10-25T17:50:20.9609095-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bb967f05-85e9-41a9-bbc5-413ddbe5ecc1">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method Web.Generics.Tests.Infrastructure_InversionOfControl_Tests.Resolve_Controller_With_Generic_Controller_And_Specific_ViewModel threw exception: 
+System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at Web.Generics.Tests.Infrastructure_InversionOfControl_Tests.Resolve_Controller_With_Generic_Controller_And_Specific_ViewModel() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\Infrastructure_InversionOfControl_Tests.cs:line 71
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="59f3f9ea-db51-48f2-9096-763686a9fcf4" testId="8aafd531-d21c-00a8-ee90-e1b37e3a3694" testName="List_Posts_By_Date_Range" computerName="PIANO" duration="00:00:00.0890051" startTime="2010-10-25T17:50:20.9657920-02:00" endTime="2010-10-25T17:50:21.0585595-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="59f3f9ea-db51-48f2-9096-763686a9fcf4">
+      <Output>
+        <ErrorInfo>
+          <Message>Initialization method Inspira.Blog.Tests.Blog_Services.Initialize threw exception. System.Data.MetadataException: System.Data.MetadataException: Schema specified is not valid. Errors: 
+The relationship 'Inspira.Blog.DomainModel.FK_Posts_WebLog' was not loaded because the type 'Inspira.Blog.DomainModel.WebLog' is not available.
+The following information may be useful in resolving the previous error:
+The required property 'Owners' does not exist on the type 'Inspira.Blog.DomainModel.WebLog'.
+
+.</Message>
+          <StackTrace>    at System.Data.Metadata.Edm.ObjectItemCollection.LoadAssemblyFromCache(ObjectItemCollection objectItemCollection, Assembly assembly, Boolean loadReferencedAssemblies, EdmItemCollection edmItemCollection, Action`1 logLoadMessage)
+   at System.Data.Metadata.Edm.ObjectItemCollection.ImplicitLoadAssemblyForType(Type type, EdmItemCollection edmItemCollection)
+   at System.Data.Metadata.Edm.MetadataWorkspace.ImplicitLoadAssemblyForType(Type type, Assembly callingAssembly)
+   at System.Data.Objects.ObjectContext.GetTypeUsage(Type entityCLRType)
+   at System.Data.Objects.ObjectContext.GetEntitySetFromContainer(EntityContainer container, Type entityCLRType, String exceptionParameterName)
+   at System.Data.Objects.ObjectContext.GetEntitySetForType(Type entityCLRType, String exceptionParameterName)
+   at System.Data.Objects.ObjectContext.CreateObjectSet[TEntity]()
+   at Web.Generics.Infrastructure.DataAccess.EntityFramework.EntityFrameworkRepositoryContext.Query[T]() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Futures\Infrastructure\DataAccess\EntityFramework\EntityFrameworkRepositoryContext.cs:line 24
+   at Web.Generics.Infrastructure.DataAccess.EntityFramework.EntityFrameworkRepositoryContext.SaveOrUpdate[T](T obj) in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Futures\Infrastructure\DataAccess\EntityFramework\EntityFrameworkRepositoryContext.cs:line 30
+   at Web.Generics.ApplicationServices.DataAccess.GenericRepository`1.SaveOrUpdate(T obj) in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics\ApplicationServices\DataAccess\GenericRepository.cs:line 24
+   at Inspira.Blog.Tests.Blog_Services.Initialize() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\Blog_Services.cs:line 35
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="bf07d312-a424-4c9d-b33f-b6246a407ab1" testId="9fc42f36-ca29-aff9-0c1e-58648d096479" testName="Resolve_Controller_With_Generic_Implementations" computerName="PIANO" duration="00:00:00.0016887" startTime="2010-10-25T17:50:21.0644185-02:00" endTime="2010-10-25T17:50:21.0702775-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bf07d312-a424-4c9d-b33f-b6246a407ab1">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method Web.Generics.Tests.Infrastructure_InversionOfControl_Tests.Resolve_Controller_With_Generic_Implementations threw exception: 
+System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at Web.Generics.Tests.Infrastructure_InversionOfControl_Tests.Resolve_Controller_With_Generic_Implementations() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\Infrastructure_InversionOfControl_Tests.cs:line 57
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7d8de28d-758d-4502-a497-6177a96065ee" testId="a2c49a2b-d39d-2796-5d55-e3bc20513b27" testName="InsertPostWithExistingTagsAndComments" computerName="PIANO" duration="00:00:00.0017644" startTime="2010-10-25T17:50:21.0761365-02:00" endTime="2010-10-25T17:50:21.0819955-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7d8de28d-758d-4502-a497-6177a96065ee">
+      <Output>
+        <ErrorInfo>
+          <Message>Initialization method Web.Generics.Tests.Infrastructure_Repository_Tests.TestInitialize threw exception. System.ApplicationException: System.ApplicationException: Session factory not configured. Did you call ApplicationManager.Initialize()?.</Message>
+          <StackTrace>    at Web.Generics.ApplicationManager.GetCurrentSession() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics\ApplicationManager.cs:line 122
+   at Web.Generics.Infrastructure.DataAccess.NHibernate.NHibernateRepositoryContext..ctor() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics\Infrastructure\DataAccess\NHibernate\NHibernateRepositoryContext.cs:line 15
+   at Web.Generics.Tests.ContextFactory.GetContext() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\ContextFactory.cs:line 19
+   at Web.Generics.Tests.Infrastructure_Repository_Tests.TestInitialize() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\Infrastructure_Repository_Tests.cs:line 34
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="0dc8d6e9-e3d1-4087-9790-ab716fdb98c6" testId="a7821dd2-9252-958d-d6a8-4c25750f0215" testName="Default_paginginfo_is_pageindex_1_and_pagesize_10_with_paging_disabled" computerName="PIANO" duration="00:00:00.0002430" startTime="2010-10-25T17:50:21.0868780-02:00" endTime="2010-10-25T17:50:21.0907840-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0dc8d6e9-e3d1-4087-9790-ab716fdb98c6">
+    </UnitTestResult>
+    <UnitTestResult executionId="6ae4e01a-c68a-4862-838e-d94b16c815c3" testId="aac57191-7373-4d93-174a-e11b361b9a1b" testName="Insert_child_does_not_load_children_v2" computerName="PIANO" duration="00:00:00.0011004" startTime="2010-10-25T17:50:21.0937135-02:00" endTime="2010-10-25T17:50:21.0985960-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6ae4e01a-c68a-4862-838e-d94b16c815c3">
+      <Output>
+        <ErrorInfo>
+          <Message>Initialization method Web.Generics.Tests.NHibernateSessionTests.Initialize threw exception. System.NullReferenceException: System.NullReferenceException: Object reference not set to an instance of an object..</Message>
+          <StackTrace>    at Web.Generics.Tests.NHibernateSessionTests.Initialize() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\NHibernateSessionTests.cs:line 23
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d6cb663f-d5e3-4832-a732-0b1de0015fba" testId="afec351d-c5bd-e807-4f9f-6c708da25c8f" testName="InsertPostWithNullableProperty" computerName="PIANO" duration="00:00:00.0011870" startTime="2010-10-25T17:50:21.1044550-02:00" endTime="2010-10-25T17:50:21.1093375-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d6cb663f-d5e3-4832-a732-0b1de0015fba">
+      <Output>
+        <ErrorInfo>
+          <Message>Initialization method Web.Generics.Tests.Infrastructure_Repository_Tests.TestInitialize threw exception. System.ApplicationException: System.ApplicationException: Session factory not configured. Did you call ApplicationManager.Initialize()?.</Message>
+          <StackTrace>    at Web.Generics.ApplicationManager.GetCurrentSession() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics\ApplicationManager.cs:line 122
+   at Web.Generics.Infrastructure.DataAccess.NHibernate.NHibernateRepositoryContext..ctor() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics\Infrastructure\DataAccess\NHibernate\NHibernateRepositoryContext.cs:line 15
+   at Web.Generics.Tests.ContextFactory.GetContext() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\ContextFactory.cs:line 19
+   at Web.Generics.Tests.Infrastructure_Repository_Tests.TestInitialize() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\Infrastructure_Repository_Tests.cs:line 34
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4f9e20b3-7b6a-460a-b005-ba7ab5dfab64" testId="b4297581-ff1b-3999-5fd8-95b6036938c0" testName="Add_Comment_In_Post" computerName="PIANO" duration="00:00:00.0024248" startTime="2010-10-25T17:50:21.1151965-02:00" endTime="2010-10-25T17:50:21.1220320-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4f9e20b3-7b6a-460a-b005-ba7ab5dfab64">
+      <Output>
+        <ErrorInfo>
+          <Message>Initialization method Inspira.Blog.Tests.Blog_Services.Initialize threw exception. System.Data.MetadataException: System.Data.MetadataException: Schema specified is not valid. Errors: 
+The relationship 'Inspira.Blog.DomainModel.FK_Posts_WebLog' was not loaded because the type 'Inspira.Blog.DomainModel.WebLog' is not available.
+The following information may be useful in resolving the previous error:
+The required property 'Owners' does not exist on the type 'Inspira.Blog.DomainModel.WebLog'.
+
+.</Message>
+          <StackTrace>    at System.Data.Metadata.Edm.ObjectItemCollection.LoadAssemblyFromCache(ObjectItemCollection objectItemCollection, Assembly assembly, Boolean loadReferencedAssemblies, EdmItemCollection edmItemCollection, Action`1 logLoadMessage)
+   at System.Data.Metadata.Edm.ObjectItemCollection.ImplicitLoadAssemblyForType(Type type, EdmItemCollection edmItemCollection)
+   at System.Data.Metadata.Edm.MetadataWorkspace.ImplicitLoadAssemblyForType(Type type, Assembly callingAssembly)
+   at System.Data.Objects.ObjectContext.GetTypeUsage(Type entityCLRType)
+   at System.Data.Objects.ObjectContext.GetEntitySetFromContainer(EntityContainer container, Type entityCLRType, String exceptionParameterName)
+   at System.Data.Objects.ObjectContext.GetEntitySetForType(Type entityCLRType, String exceptionParameterName)
+   at System.Data.Objects.ObjectContext.CreateObjectSet[TEntity]()
+   at Web.Generics.Infrastructure.DataAccess.EntityFramework.EntityFrameworkRepositoryContext.Query[T]() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Futures\Infrastructure\DataAccess\EntityFramework\EntityFrameworkRepositoryContext.cs:line 24
+   at Web.Generics.Infrastructure.DataAccess.EntityFramework.EntityFrameworkRepositoryContext.SaveOrUpdate[T](T obj) in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Futures\Infrastructure\DataAccess\EntityFramework\EntityFrameworkRepositoryContext.cs:line 30
+   at Web.Generics.ApplicationServices.DataAccess.GenericRepository`1.SaveOrUpdate(T obj) in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics\ApplicationServices\DataAccess\GenericRepository.cs:line 24
+   at Inspira.Blog.Tests.Blog_Services.Initialize() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\Blog_Services.cs:line 35
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ee8d5e8d-31bc-4556-b589-664dc3d9083f" testId="b6819492-f9db-dcf2-0ded-3161c5b9aa32" testName="Log_With_Aspect" computerName="PIANO" duration="00:00:00.0007257" startTime="2010-10-25T17:50:21.1259380-02:00" endTime="2010-10-25T17:50:21.1327735-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ee8d5e8d-31bc-4556-b589-664dc3d9083f">
+    </UnitTestResult>
+    <UnitTestResult executionId="5d308248-55c1-4762-b430-9fe8bb4d4249" testId="ca9b6d7d-c72c-ffd4-9266-ae65f3adb659" testName="InsertPostWithNewTagsAndComments" computerName="PIANO" duration="00:00:00.0011789" startTime="2010-10-25T17:50:21.1366795-02:00" endTime="2010-10-25T17:50:21.1425385-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5d308248-55c1-4762-b430-9fe8bb4d4249">
+      <Output>
+        <ErrorInfo>
+          <Message>Initialization method Web.Generics.Tests.Infrastructure_Repository_Tests.TestInitialize threw exception. System.ApplicationException: System.ApplicationException: Session factory not configured. Did you call ApplicationManager.Initialize()?.</Message>
+          <StackTrace>    at Web.Generics.ApplicationManager.GetCurrentSession() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics\ApplicationManager.cs:line 122
+   at Web.Generics.Infrastructure.DataAccess.NHibernate.NHibernateRepositoryContext..ctor() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics\Infrastructure\DataAccess\NHibernate\NHibernateRepositoryContext.cs:line 15
+   at Web.Generics.Tests.ContextFactory.GetContext() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\ContextFactory.cs:line 19
+   at Web.Generics.Tests.Infrastructure_Repository_Tests.TestInitialize() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\Infrastructure_Repository_Tests.cs:line 34
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c8fe16e9-9bae-4d1e-85a8-076c33291676" testId="e7a87bf2-4851-5b1c-7df0-92fdcafd03ca" testName="Resolve_Controller_With_Specific_Controller_And_ViewModel" computerName="PIANO" duration="00:00:00.0013331" startTime="2010-10-25T17:50:21.1474210-02:00" endTime="2010-10-25T17:50:21.1532800-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c8fe16e9-9bae-4d1e-85a8-076c33291676">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method Web.Generics.Tests.Infrastructure_InversionOfControl_Tests.Resolve_Controller_With_Specific_Controller_And_ViewModel threw exception: 
+System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at Web.Generics.Tests.Infrastructure_InversionOfControl_Tests.Resolve_Controller_With_Specific_Controller_And_ViewModel() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\Infrastructure_InversionOfControl_Tests.cs:line 64
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2fa45fb9-ea07-4585-ad2f-c18e6db435f8" testId="e8e3591b-e3ff-7a0c-2871-7ffb31567b9f" testName="SelectWithLambdaExpressions" computerName="PIANO" duration="00:00:00.0011403" startTime="2010-10-25T17:50:21.1601155-02:00" endTime="2010-10-25T17:50:21.1649980-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2fa45fb9-ea07-4585-ad2f-c18e6db435f8">
+      <Output>
+        <ErrorInfo>
+          <Message>Initialization method Web.Generics.Tests.Infrastructure_Repository_Tests.TestInitialize threw exception. System.ApplicationException: System.ApplicationException: Session factory not configured. Did you call ApplicationManager.Initialize()?.</Message>
+          <StackTrace>    at Web.Generics.ApplicationManager.GetCurrentSession() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics\ApplicationManager.cs:line 122
+   at Web.Generics.Infrastructure.DataAccess.NHibernate.NHibernateRepositoryContext..ctor() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics\Infrastructure\DataAccess\NHibernate\NHibernateRepositoryContext.cs:line 15
+   at Web.Generics.Tests.ContextFactory.GetContext() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\ContextFactory.cs:line 19
+   at Web.Generics.Tests.Infrastructure_Repository_Tests.TestInitialize() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\Infrastructure_Repository_Tests.cs:line 34
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="fb9593e1-3db0-4bfe-9b53-6bba2bae9f7c" testId="ef70adab-cbca-46bf-0d19-52da0a032597" testName="Resolve_With_Chaining" computerName="PIANO" duration="00:00:00.0013934" startTime="2010-10-25T17:50:21.1698805-02:00" endTime="2010-10-25T17:50:21.1757395-02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fb9593e1-3db0-4bfe-9b53-6bba2bae9f7c">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method Web.Generics.Tests.Infrastructure_InversionOfControl_Tests.Resolve_With_Chaining threw exception: 
+System.NullReferenceException: Object reference not set to an instance of an object.</Message>
+          <StackTrace>    at Web.Generics.Tests.Infrastructure_InversionOfControl_Tests.Resolve_With_Chaining() in E:\Users\raphael.cruzeiro\Documents\Projects\open\Web.Generics\Web.Generics.Tests\Infrastructure_InversionOfControl_Tests.cs:line 50
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>
