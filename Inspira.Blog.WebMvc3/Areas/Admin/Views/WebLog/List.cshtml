@@ -1,0 +1,44 @@
+﻿@model Inspira.Blog.WebMvc3.Areas.Admin.Models.WebLogViewModel
+
+@{
+    View.Title = "List";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<!-- page body --> 
+        <div id="bd"> 
+            <div id="yui-main"> 
+                <div class="yui-b"><div class="yui-g"> 
+                    <h2>Users</h2> 
+ 
+                    <!-- Tables --> 
+                    <div class="block"> 
+                        <div class="hd"> 
+							<h2>User List</h2>
+                        </div> 
+                        <div class="bd"> 
+                            <h3>Grids</h3>
+							<p>@Html.ActionLink("Create new blog", "Create")</p>
+
+@using (Html.BeginForm(null, null, FormMethod.Get)) {
+	@Html.DisplayFor(m => m.WebLogGrid)
+	@Html.DisplayFor(m => m.UserGrid)
+}
+ </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="sidebar" class="yui-b">
+            <!-- Sidebar block (same markup as basic block) -->
+            <div class="block">
+                <div class="hd">
+                    <h2>Sidebar Block  &larr; This is an H2 or H3</h2>
+                </div>
+                <div class="bd">
+                    <p>This sidebar block uses the exact same markup as the main body blocks. This lets you move them around easily - as they automatically resize to fit the available space.</p>
+                </div>
+            </div>                
+        </div> 
+    </div> 
+	<!-- /page body --> 

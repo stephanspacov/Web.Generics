@@ -123,12 +123,13 @@ namespace Web.Generics
         }
 
 
-        public static void Initialize(System.Reflection.Assembly domainAssembly, System.Reflection.Assembly infrastructureAssembly, DefaultAutomappingConfiguration mappingConfiguration)
+        public static void Initialize(System.Reflection.Assembly domainAssembly, System.Reflection.Assembly infrastructureAssembly, DefaultAutomappingConfiguration mappingConfiguration, IInversionOfControlMapper inversionOfControlMapper)
         {
             ApplicationManager.Initialize(new ApplicationConfiguration
             {
                 DomainAssembly = domainAssembly,
                 Fluent = new ApplicationConfiguration.FluentConfiguration { OverrideAssembly = infrastructureAssembly, MappingConfigurationInstance = mappingConfiguration },
+                InversionOfControl = new ApplicationConfiguration.InversionOfControlConfiguration { MapperInstance = inversionOfControlMapper }
             });
         }
     }

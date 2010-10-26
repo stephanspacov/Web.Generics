@@ -65,8 +65,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\WebLogController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Models\WebLogViewModel.cs" />
     <Compile Include="Areas\Admin\Models\UserViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -128,6 +130,7 @@
     <None Include="Areas\Admin\Views\User\Create.cshtml" />
     <None Include="Areas\Admin\Views\User\Form.cshtml" />
     <None Include="Areas\Admin\Views\User\List.cshtml" />
+    <None Include="Areas\Admin\Views\WebLog\List.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\Grid.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\PagingInfo.cshtml" />
   </ItemGroup>
