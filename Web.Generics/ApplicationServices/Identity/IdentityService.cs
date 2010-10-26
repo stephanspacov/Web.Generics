@@ -32,7 +32,7 @@ namespace Web.Generics.ApplicationServices.Identity
             var username = usernameProperty.Invoke(userInstance);
             var email = emailProperty.Invoke(userInstance);
 
-            if (IsValidEmail(email)) return RegisterStatus.InvalidEmail;
+            if (!IsValidEmail(email)) return RegisterStatus.InvalidEmail;
             // TODO: verificar username e senha
 
             RegisterStatus status = this.userRepository.VerifyUniqueUser(userInstance);

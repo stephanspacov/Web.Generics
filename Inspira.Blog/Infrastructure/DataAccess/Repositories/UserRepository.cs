@@ -5,6 +5,8 @@ using System.Text;
 using Web.Generics.ApplicationServices.Identity;
 using Inspira.Blog.RepositoryInterfaces;
 using NHibernate.Criterion;
+using NHibernate.Linq;
+using Inspira.Blog.DomainModel;
 
 namespace Inspira.Blog.Infrastructure.DataAccess.Repositories
 {
@@ -29,10 +31,9 @@ namespace Inspira.Blog.Infrastructure.DataAccess.Repositories
 
         public RegisterStatus VerifyUniqueUser(DomainModel.User user)
         {
-            var query = this.session.CreateQuery("from u in User where u.Username=:username or u.Email=:email select u");
-            query.SetParameter("username", user.Username);
-            query.SetParameter("email", user.Email);
-            var userFromDb = query.UniqueResult<DomainModel.User>();
+            //var query = this.session.CreateQuery("from u in User where u.Username=:username or u.Email=:email select u");
+            var query = this.session.Query<User>().Where(u => u.Username == user.Username || u.Email == user.Email);
+            var userFromDb = query.SingleOrDefault();
 
             if (userFromDb == null) return RegisterStatus.Success;
             if (userFromDb.Username == user.Username) return RegisterStatus.UsernameAlreadyExists;

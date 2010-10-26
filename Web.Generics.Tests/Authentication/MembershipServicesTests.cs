@@ -49,7 +49,7 @@ namespace Web.Generics.Tests.Authentication
             {
                 identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password);
             }
-            catch
+            catch(Exception e)
             {
                 session.Transaction.Rollback();
                 throw;
