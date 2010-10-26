@@ -302,9 +302,13 @@ namespace Web.Generics.Tests.Authentication
             Assert.AreEqual(PasswordChangeStatus.Success, identityService.AdministrativePasswordChange("john_doe", "newPassword"));
         }
 
-         /*    - Admin changing password with invalid new password returns InvalidNewPassword
-         *    - User changing password with incorrect current password returns IncorrectNewPassword
-         *    - User changing password with correct current password and invalid new password returns InvalidNewPassword
+         /*    - Admin changing password with invalid new password returns InvalidNewPassword*/
+        [TestMethod]
+        public void User_changing_password_with_incorrect_current_password_returns_IncorrectNewPassword() 
+        {
+
+        }
+         /*    - User changing password with correct current password and invalid new password returns InvalidNewPassword
          * ResetPassword:
          *    - Password reset for existing user changes password and returns it
          *    - Password reset for non-existing user returns null
