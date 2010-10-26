@@ -1,0 +1,41 @@
+.h1 Motivation and Goals
+
+Web.Generics is yet another component (or framework) to accelerate .NET application development.
+
+The main goals for the product are:
+
+1. Try to help programmers do their jobs. It this is not possible, at least don't put barriers to their work.
+2. Make it work fast, get feedback from customers and then optimize what is needed.
+3. Domain Driven Design rocks!
+4. Avoid "leaky abstractions":http://www.joelonsoftware.com/articles/LeakyAbstractions.html
+5. Simple is good.
+
+.h1 Requirements
+
+ * .NET Framework 3.5 (4.0 for the Futures Assembly)
+ * NHibernate 3.0 Beta 1
+ * Fluent NHibernate 1.1
+ * Microsoft Unity 2.1
+
+.h1 How to use it
+
+1. Add the components to your application
+2. Go to global.asax.cs:
+
+@
+        protected void Application_Start()
+        {
+		ApplicationManager.Initialize(Assembly.Load("<domain model assembly>"), Assembly.Load("<infrastructure assembly>"), <fluent configuration object>, <IoC mappings object>);
+		MvcApplicationManager.DefineControllerFactory();  // if using MVC, to enable dependency injection in controllers
+	}
+
+        protected void Application_BeginRequest()
+        {
+            AspNetApplicationManager.BindSessionToCurrentContext(); // Nhibernate's session-per-request pattern
+        }
+
+        protected void Application_EndRequest()
+        {
+            AspNetApplicationManager.BindSessionToCurrentContext(); // Nhibernate's session-per-request pattern
+        }
+@
