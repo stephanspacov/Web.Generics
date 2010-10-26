@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Linq.Expressions;
+using System.Text.RegularExpressions;
 
 namespace Web.Generics.ApplicationServices.Identity
 {
@@ -82,7 +83,14 @@ namespace Web.Generics.ApplicationServices.Identity
 
         private bool IsValidEmail(string email)
         {
-            return true;
+            string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
+                @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+                @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+            Regex re = new Regex(strRegex);
+            if (re.IsMatch(email))
+                return (true);
+            else
+                return (false);
         }
 
         public string EncryptPassword(string password)
