@@ -73,7 +73,7 @@ namespace Web.Generics.ApplicationServices.Identity
         }
 
         /// <summary>
-        /// Resgister a new user
+        /// Register a new user
         /// </summary>
         /// <param name="userInstance">The user object</param>
         /// <param name="usernameProperty">The property that represents the username</param>

@@ -22,8 +22,20 @@ along with Web.Generics.  If not, see <http://www.gnu.org/licenses/>.
 
 public enum PasswordChangeStatus
 {
+    /// <summary>
+    /// The supplied username does not exist
+    /// </summary>
     InexistentUser,
+    /// <summary>
+    /// The provided new password is invalid
+    /// </summary>
     InvalidPassword,
+    /// <summary>
+    /// The provided current password is invalid
+    /// </summary>
     InvalidCurrentPassword,
+    /// <summary>
+    /// The change password operation completed successfully
+    /// </summary>
     Success
 }
