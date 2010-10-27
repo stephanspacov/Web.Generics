@@ -122,6 +122,11 @@ namespace Web.Generics.ApplicationServices.Identity
             return RegisterStatus.Success;
         }
 
+        /// <summary>
+        /// Checks if a given string is an email
+        /// </summary>
+        /// <param name="email">The string to be validated</param>
+        /// <returns>True if the string is an email</returns>
         private bool IsValidEmail(string email)
         {
             string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
