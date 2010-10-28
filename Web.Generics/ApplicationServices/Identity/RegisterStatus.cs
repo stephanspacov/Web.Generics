@@ -29,9 +29,21 @@ namespace Web.Generics.ApplicationServices.Identity
 {
     public enum RegisterStatus
     {
+        /// <summary>
+        /// The registering process succeeded
+        /// </summary>
         Success,
+        /// <summary>
+        /// The email provided for this registration already exists
+        /// </summary>
         EmailAlreadyExists,
+        /// <summary>
+        /// The username provided for this registration already exists
+        /// </summary>
         UsernameAlreadyExists,
+        /// <summary>
+        /// The provided email for this registration is not a valid email
+        /// </summary>
         InvalidEmail
     }
 }

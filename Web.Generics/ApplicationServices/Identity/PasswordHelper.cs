@@ -28,10 +28,18 @@ using System.Security.Cryptography;
 
 namespace Web.Generics.ApplicationServices.Identity
 {
+    /// <summary>
+    /// A helper class for handling passwords
+    /// </summary>
     internal class PasswordHelper
     {
         private static SHA1Managed hasher = new SHA1Managed();
 
+        /// <summary>
+        /// Computes a SHA-1 hash for the given string
+        /// </summary>
+        /// <param name="password">The string to be hashesd</param>
+        /// <returns>The hashed string</returns>
         internal static string ComputeHash(string password)
         {
             byte[] passwordBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(password);
@@ -39,6 +47,10 @@ namespace Web.Generics.ApplicationServices.Identity
             return Convert.ToBase64String(passwordHash, 0, passwordHash.Length);
         }
 
+        /// <summary>
+        /// Generates a random alphanumeric password
+        /// </summary>
+        /// <returns>The generated password</returns>
         internal static string Generate()
         {
 
