@@ -32,13 +32,6 @@ namespace Inspira.Blog.WebMvc3.Controllers
     {
         public ActionResult Index()
         {
-            ViewModel.Message = "Welcome to ASP.NET MVC!";
-
-            return View();
-        }
-
-        public ActionResult About()
-        {
             return View();
         }
     }

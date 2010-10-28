@@ -70,12 +70,16 @@
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Models\WebLogViewModel.cs" />
     <Compile Include="Areas\Admin\Models\UserViewModel.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IdentityController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Identity\ChangePasswordModel.cs" />
+    <Compile Include="Models\Identity\ForgetPasswordModel.cs" />
+    <Compile Include="Models\Identity\LogOnModel.cs" />
+    <Compile Include="Models\Identity\RegisterModel.cs" />
+    <Compile Include="Models\Identity\ValidateKeyModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -109,15 +113,10 @@
     <Content Include="Scripts\MicrosoftMvcValidation.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\ChangePassword.cshtml" />
-    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
-    <Content Include="Views\Account\LogOn.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LogOnPartial.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Layout.default.cshtml" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup />
@@ -126,11 +125,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <None Include="Areas\Admin\Views\User\Create.cshtml" />
     <None Include="Areas\Admin\Views\User\Form.cshtml" />
     <None Include="Areas\Admin\Views\User\List.cshtml" />
     <None Include="Areas\Admin\Views\WebLog\List.cshtml" />
+    <None Include="Views\Identity\ChangePassword.cshtml" />
+    <None Include="Views\Identity\ForgetPassword.cshtml" />
+    <None Include="Views\Identity\Register.cshtml" />
+    <None Include="Views\Identity\LogOn.cshtml" />
+    <Content Include="Views\Shared\_BasicLayout.cshtml" />
+    <None Include="Views\Identity\ValidateKey.cshtml" />
+    <None Include="Views\Identity\ValidateKeySuccess.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\Grid.cshtml" />
     <None Include="Views\Shared\DisplayTemplates\PagingInfo.cshtml" />
   </ItemGroup>
