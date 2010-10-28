@@ -1,0 +1,91 @@
+﻿@model Inspira.Blog.WebMvc3.Models.Identity.ValidateKeyModel
+
+@{
+    Layout = "../Shared/_BasicLayout.cshtml";
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>@View.Title</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" /> 
+	<link rel="stylesheet" href="http://yui.yahooapis.com/2.7.0/build/reset-fonts-grids/reset-fonts-grids.css" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.8.1/build/calendar/assets/skins/sam/calendar.css" />
+	<link rel="stylesheet" href="@Url.Content("~/assets/css/yuiapp.css")" type="text/css" />
+	<link rel="stylesheet" href="@Url.Content("~/assets/css/jquery-ui.css")" type="text/css" />
+	<link id="theme" rel="stylesheet" href="@Url.Content("~/assets/css/structure.css")" type="text/css" />
+
+</head>
+<body class="rounded">
+		<!-- page body -->
+            <div id="yui-main">
+            	<!-- main wrapper -->
+                <div class="yui-b">
+	                <div class="yui-g">
+						<h2>Validate Key</h2>
+						<p>Fill the fields below.</p>
+						<!-- form -->
+						<div class="block">
+							<div class="hd">
+								<h2>Form data</h2>
+							</div>
+							<div class="bd">
+								<h3>A validation key has been sent to you e-mail</h3>
+
+								<!-- alerts -->
+								@if (ViewData.ModelState.ContainsKey("INVALID_KEY")) {
+								<p class="alert error">Invalid Key.</p>
+								}
+								@if (ViewData.ModelState.ContainsKey("PASSAWORD_AND_CONFIRM_DONT_MACHT")) {
+								<p class="alert error">New Password and Confirm don't match.</p>
+								}
+								<!-- /alerts -->
+
+								@using (Html.BeginForm()) {
+								<div>
+									<fieldset>
+										<legend>Account Information</legend>
+
+									        <div class="editor-label">
+												@Html.LabelFor(m => m.NewPassword)
+											</div>
+											<div class="editor-field">
+												@Html.PasswordFor(m => m.NewPassword, new { @class="text" })
+												@Html.ValidationMessageFor(m => m.NewPassword)
+											</div>
+
+											<div class="editor-label">
+												@Html.LabelFor(m => m.Confirm)
+											</div>
+											<div class="editor-field">
+												@Html.PasswordFor(m => m.Confirm, new { @class="text" })
+												@Html.ValidationMessageFor(m => m.Confirm)
+											</div>
+
+											<div class="editor-label">
+												@Html.LabelFor(m => m.Key)
+											</div>
+											<div class="editor-field">
+												@Html.TextBoxFor(m => m.Key, new { @class="text" })
+												@Html.ValidationMessageFor(m => m.Key)
+											</div>
+
+											<p>
+											<input type="submit" value="Reset Password" />
+											</p>
+										</fieldset>
+									</div>
+								}
+							</div>	                        
+						</div>
+						<!-- /form -->
+					</div>              	
+                </div>
+                <!-- /main wrapper -->
+
+		<!-- /page body -->		
+    </div>
+</body>
+</html>
+
