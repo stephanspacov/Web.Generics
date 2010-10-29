@@ -45,7 +45,7 @@ namespace Inspira.Blog.DomainModel
         virtual public Int32 NumberOfChildren { get; set; }
         virtual public String Phone { get; set; }
         virtual public Address Address { get; set; }
-        virtual public DateTime BirthDate { get; set; }
+        virtual public DateTime? BirthDate { get; set; }
         virtual public Decimal Salary { get; set; }
         virtual public String Resume { get; set; }
         virtual public String AdditionalInfo { get; set; }

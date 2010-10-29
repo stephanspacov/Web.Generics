@@ -26,6 +26,7 @@ using System.Linq;
 using System.Text;
 using System.Linq.Expressions;
 using System.Text.RegularExpressions;
+using System.Reflection;
 
 namespace Web.Generics.ApplicationServices.Identity
 {
@@ -81,7 +82,7 @@ namespace Web.Generics.ApplicationServices.Identity
         /// <param name="encryptedPasswordProperty">The property that represents the user's password</param>
         /// <param name="cleanPassword">The clear text password to be hashed and stored in the user object</param>
         /// <returns>The status of the register operation</returns>
-        public RegisterStatus Register(T userInstance, Func<T, String> usernameProperty, Func<T, String> emailProperty, Action<String> encryptedPasswordProperty, String cleanPassword)
+        public RegisterStatus Register(T userInstance, Func<T, String> usernameProperty, Func<T, String> emailProperty, Expression<Func<T, String>> encryptedPasswordProperty, String cleanPassword)
         {
             if (userInstance == null)
                 throw new ArgumentNullException("userInstance");
@@ -92,18 +93,13 @@ namespace Web.Generics.ApplicationServices.Identity
             if (cleanPassword == null)
                 throw new ArgumentNullException("cleanPassword");
 
-
-
-
             var username = usernameProperty.Invoke(userInstance);
             var email = emailProperty.Invoke(userInstance);
-
 
             if (username == null)
                 throw new ArgumentNullException("insertUser");
             if (email == null)
                 throw new ArgumentNullException("insertUser");
-
 
             if (!IsValidEmail(email)) return RegisterStatus.InvalidEmail;
             // TODO: verificar username e senha
@@ -116,7 +112,11 @@ namespace Web.Generics.ApplicationServices.Identity
 
             // Ready to insert user
             var encryptedPassword = this.EncryptPassword(cleanPassword);
-            encryptedPasswordProperty.Invoke(encryptedPassword);
+            var propertyInfo = ((MemberExpression)encryptedPasswordProperty.Body).Member as PropertyInfo;
+
+            propertyInfo.SetValue(userInstance, encryptedPassword, null);
+
+//            encryptedPasswordProperty.Invoke(encryptedPassword);
 
             this.userRepository.InsertUser(userInstance);
             return RegisterStatus.Success;

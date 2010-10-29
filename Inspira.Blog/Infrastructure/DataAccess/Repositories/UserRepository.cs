@@ -29,24 +29,21 @@ using Inspira.Blog.RepositoryInterfaces;
 using NHibernate.Criterion;
 using NHibernate.Linq;
 using Inspira.Blog.DomainModel;
+using Web.Generics.ApplicationServices.DataAccess;
+using NHibernate;
 
 namespace Inspira.Blog.Infrastructure.DataAccess.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : GenericNHibernateRepository<User>, IUserRepository
     {
-        private NHibernate.ISession session;
-
-        public UserRepository(NHibernate.ISession session)
-        {
-            this.session = session;
-        }
-
+        /*
         public void SaveOrUpdate(DomainModel.User user)
         {
             this.session.SaveOrUpdate(user);
             this.session.Flush();
             this.session.Clear();
         }
+         * */
 
         public void ChangeBirthDate(int id, DateTime newBirthDate)
         {
@@ -112,9 +109,9 @@ namespace Inspira.Blog.Infrastructure.DataAccess.Repositories
             return this.session.Query<User>().Where(x => x.Email == email).SingleOrDefault();
         }
 
-        public bool ChangePassword(string username, string newPassword)
+        public bool ChangePassword(string usernameOrEmail, string newPassword)
         {
-            User user = this.session.Query<User>().Where(x => x.Username == username).SingleOrDefault();
+            User user = this.session.Query<User>().Where(x => x.Username == usernameOrEmail || x.Email == usernameOrEmail).SingleOrDefault();
 
             if (user != null)
             {

@@ -10,6 +10,9 @@ namespace Inspira.Blog.WebMvc3.Models.Identity
     public class RegisterModel
     {
         [Required]
+        [Display(Name = "Name")]
+        public String Name { get; set; }
+        [Required]
         [Display(Name = "User name")]
         public String Username { get; set; }
         [Required]

@@ -23,6 +23,10 @@ along with Web.Generics.  If not, see <http://www.gnu.org/licenses/>.
 ﻿using Inspira.Blog.DomainModel;
 using Web.Generics.ApplicationServices.DataAccess;
 using Web.Generics.ApplicationServices.InversionOfControl;
+using Web.Generics.ApplicationServices.Identity;
+using Inspira.Blog.Infrastructure.DataAccess.Repositories;
+using NHibernate;
+using Web.Generics;
 
 namespace Inspira.Blog.Infrastructure.InversionOfControl
 {
@@ -31,6 +35,7 @@ namespace Inspira.Blog.Infrastructure.InversionOfControl
         public void DefineMappings(IInversionOfControlContainer container)
         {
             container.RegisterType<IRepository<User>, GenericRepository<User>>();
+            container.RegisterType<IUserRepository<User>, UserRepository>();
             container.RegisterType<IRepository<WebLog>, GenericRepository<WebLog>>();
             container.RegisterType<IRepository<Post>, GenericRepository<Post>>();
         }

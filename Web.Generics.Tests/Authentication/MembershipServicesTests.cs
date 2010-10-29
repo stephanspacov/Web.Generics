@@ -49,7 +49,7 @@ namespace Web.Generics.Tests.Authentication
         public void Initialize() {
             session = ApplicationManager.SessionFactory.OpenSession();
             session.BeginTransaction();
-            userRepository = new UserRepository(session);
+            userRepository = new UserRepository();
             identityService = new IdentityService<User>(userRepository);
         }
 
@@ -70,7 +70,7 @@ namespace Web.Generics.Tests.Authentication
 
             try
             {
-                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, u => u.Password, password));
             }
             catch(Exception e)
             {
@@ -105,7 +105,7 @@ namespace Web.Generics.Tests.Authentication
 
             try
             {
-                Assert.AreEqual(RegisterStatus.UsernameAlreadyExists, identityService.Register(user2, u => u.Username, u => u.Email, (s) => user2.Password = s, "minhasenha"));
+                Assert.AreEqual(RegisterStatus.UsernameAlreadyExists, identityService.Register(user2, u => u.Username, u => u.Email, u => u.Password, "minhasenha"));
             }
             catch (Exception e)
             {
@@ -141,7 +141,7 @@ namespace Web.Generics.Tests.Authentication
 
             try
             {
-                Assert.AreEqual(RegisterStatus.EmailAlreadyExists, identityService.Register(user2, u => u.Username, u => u.Email, (s) => user2.Password = s, "minhasenha"));
+                Assert.AreEqual(RegisterStatus.EmailAlreadyExists, identityService.Register(user2, u => u.Username, u => u.Email, u => u.Password, "minhasenha"));
             }
             catch (Exception e)
             {
@@ -149,7 +149,6 @@ namespace Web.Generics.Tests.Authentication
                 throw;
             }
         }
-
 
         [TestMethod]
         public void Register_with_invalid_data_returns_invalid_state() //What's the criteria?
@@ -165,7 +164,7 @@ namespace Web.Generics.Tests.Authentication
 
             try
             {
-                identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password);
+                identityService.Register(user, u => u.Username, u => u.Email, u => u.Password, password);
 
                 Assert.Fail();
             }
@@ -208,7 +207,7 @@ namespace Web.Generics.Tests.Authentication
 
             try
             {
-                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, u => u.Password, password));
             }
             catch (Exception e)
             {
@@ -234,7 +233,7 @@ namespace Web.Generics.Tests.Authentication
 
             try
             {
-                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, u => u.Password, password));
             }
             catch (Exception e)
             {
@@ -260,7 +259,7 @@ namespace Web.Generics.Tests.Authentication
 
             try
             {
-                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, u => u.Password, password));
             }
             catch (Exception e)
             {
@@ -287,7 +286,7 @@ namespace Web.Generics.Tests.Authentication
 
             try
             {
-                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, u => u.Password, password));
             }
             catch (Exception e)
             {
@@ -313,7 +312,7 @@ namespace Web.Generics.Tests.Authentication
 
             try
             {
-                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, u => u.Password, password));
             }
             catch (Exception e)
             {
@@ -341,7 +340,7 @@ namespace Web.Generics.Tests.Authentication
 
             try
             {
-                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, u => u.Password, password));
             }
             catch (Exception e)
             {
@@ -370,7 +369,7 @@ namespace Web.Generics.Tests.Authentication
 
             try
             {
-                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, u => u.Password, password));
             }
             catch (Exception e)
             {
@@ -403,7 +402,7 @@ namespace Web.Generics.Tests.Authentication
 
             try
             {
-                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, u => u.Password, password));
             }
             catch (Exception e)
             {
@@ -433,7 +432,7 @@ namespace Web.Generics.Tests.Authentication
 
             try
             {
-                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, u => u.Password, password));
             }
             catch (Exception e)
             {
@@ -470,7 +469,7 @@ namespace Web.Generics.Tests.Authentication
 
             try
             {
-                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, (s) => user.Password = s, password));
+                Assert.AreEqual(RegisterStatus.Success, identityService.Register(user, u => u.Username, u => u.Email, u => u.Password, password));
             }
             catch (Exception e)
             {

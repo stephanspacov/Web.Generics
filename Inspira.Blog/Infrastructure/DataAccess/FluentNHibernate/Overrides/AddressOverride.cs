@@ -36,6 +36,11 @@ namespace Inspira.Blog.Infrastructure.DataAccess.FluentNHibernate.Overrides
         public void Override(AutoMapping<Address> mapping)
         {
             mapping.Map(a => a.Complement).Nullable();
+            mapping.Map(a => a.City).Nullable();
+            mapping.Map(a => a.Number).Nullable();
+            mapping.Map(a => a.State).Nullable();
+            mapping.Map(a => a.StreetName).Nullable();
+            mapping.Map(a => a.ZipCode).Nullable();
         }
     }
 }

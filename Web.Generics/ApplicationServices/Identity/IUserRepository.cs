@@ -39,6 +39,7 @@ namespace Web.Generics.ApplicationServices.Identity
         /// <param name="user">The user to be verified for uniqueness</param>
         /// <returns>The resulting status of the cerification</returns>
         RegisterStatus VerifyUniqueUser(T user);
+
         /// <summary>
         /// Persists a new user
         /// </summary>
@@ -49,7 +50,7 @@ namespace Web.Generics.ApplicationServices.Identity
         /// Saves or updates the supplied user
         /// </summary>
         /// <param name="user">The user to be saved or updated</param>
-        void SaveOrUpdate(T user);
+//        void SaveOrUpdate(T user);
 
         /// <summary>
         /// Selects an users based on the supplied login information
@@ -58,12 +59,13 @@ namespace Web.Generics.ApplicationServices.Identity
         /// <param name="password">the password</param>
         /// <returns>The user or null if no user is found based on the supplied login</returns>
         T Select(string username, string password);
+
         /// <summary>
         /// Selects an user based on the supplied email
         /// </summary>
         /// <param name="email">The email</param>
         /// <returns>The user or null if no user is found based on the supplied email</returns>
-        T Select(string email);
+//        T Select(string email);
 
         /// <summary>
         /// Selects an user based on the supplied login information and changes it's password
@@ -97,6 +99,6 @@ namespace Web.Generics.ApplicationServices.Identity
         /// <param name="email">The user's email</param>
         /// <param name="validationKey">The validation key</param>
         /// <returns>True if the user was found and it's validation key persisted</returns>
-        bool SetValidationKey(string email, string validationKey);
+        bool SetValidationKey(string usernameOrEmail, string validationKey);
     }
 }

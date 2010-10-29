@@ -26,15 +26,21 @@ using System.Linq;
 using System.Text;
 using NHibernate;
 using Web.Generics.Infrastructure.DataAccess.NHibernate;
+using Microsoft.Practices.Unity;
 
 namespace Web.Generics.ApplicationServices.DataAccess
 {
 	public class GenericNHibernateRepository<T> : GenericRepository<T> where T : class
 	{
-		protected readonly ISession session;
-		public GenericNHibernateRepository(NHibernateRepositoryContext context): base(context)
+		protected ISession session;
+        [InjectionConstructor]
+		public GenericNHibernateRepository():base(new NHibernateRepositoryContext(ApplicationManager.SessionFactory.GetCurrentSession()))
 		{
-			this.session = context.Session;
+            this.session = ApplicationManager.SessionFactory.GetCurrentSession();
 		}
+        public GenericNHibernateRepository(ISession session) : base(new NHibernateRepositoryContext(session))
+        {
+            this.session = session;
+        }
 	}
 }

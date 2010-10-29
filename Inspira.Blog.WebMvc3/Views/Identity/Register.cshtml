@@ -34,14 +34,14 @@
 								<h3>Form data</h3>
 	                            
 								<!-- alerts -->
-								@if (ViewData.ModelState.ContainsKey("USER_ALREADY_EXIST")) {
+								@if (ViewData.ModelState.ContainsKey("USER_ALREADY_EXISTS")) {
 								<p class="alert error">User already exists.</p>
 								}
-								@if (ViewData.ModelState.ContainsKey("PASSAWORD_AND_CONFIRM_DONT_MACHT")){
+								@if (ViewData.ModelState.ContainsKey("PASSWORD_AND_CONFIRM_DONT_MATCH")){
 								<p class="alert error">Password and Confirm Password don't match.</p>
 								}
-								@if (ViewData.ModelState.ContainsKey("EMAIL_ALREADY_EXIST")){
-								<p class="alert error">Invalid e-mail.</p>
+								@if (ViewData.ModelState.ContainsKey("EMAIL_ALREADY_EXISTS")){
+								<p class="alert error">E-mail already exists.</p>
 								}
 								@if (false) {
 								<p class="alert warning">Warning message</p>
@@ -54,6 +54,14 @@
 									<div>
 										<fieldset>
 											<legend>Account Information</legend>
+
+											<div class="editor-label">
+												@Html.LabelFor(m => m.Name)
+											</div>
+											<div class="editor-field">
+												@Html.TextBoxFor(m => m.Name, new { @class="text" })
+												@Html.ValidationMessageFor(m => m.Name)
+											</div>
 
 											<div class="editor-label">
 												@Html.LabelFor(m => m.Username)
